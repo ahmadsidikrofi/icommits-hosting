@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+@include('partials.head')
+<body>
+    @include('partials.Firstnavbar')
+    <!-- Hero Section Begin -->
+    <section class="hero-section">
+        <div class="hero__slider owl-carousel">
+            <div class="hero__item set-bg" data-setbg="/image/hero/hero-1.png">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <h5><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> Rp9000/bulan</h5>
+                                <h2>Promo Diskon Hosting, Domain, sertifikat SSL & Cloud VPS</h2>
+                                <p class="text-light fs-5 lh-lg">
+                                    Dapatkan penawaran spesial dari DomaiNesia untuk memenuhi kebutuhan website Anda. Temukan berbagai kode promo terbaru untuk mendapat harga yang lebih terjangkau dengan kualitas layanan terbaik. Jangan sampai Anda melewatkan diskon hosting, domain, sertifikat SSL & Cloud VPS dari DomaiNesia.
+                                </p>
+                                <a href="#promo" class="btn btn-outline-primary fw-semibold">Lihat Daftar Promo Terbaru</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="hero__img">
+                                <img src="/image/hero/hero-right.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Promo Section Start -->
+    <section class="promo-section spad" id="promo">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col">
+                    <h2 class="fw-medium text-center lh-base" style="color: #1f72db;">Daftar Promo Diskon Hosting, <br> Sertifikat SSL & Cloud VPS DomaiNesia</h2>
+                    <p class="text-lg-center fs-6 mt-3 fw-semibold">Dapatkan layanan harga lebih terjangkau dengan beragam promo dari DomaiNesia untuk menunjang kebutuhan website Anda.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-5 col-sm-6">
+                    <div class="promo_card">
+                        <div class="promo_pic set-bg " data-setbg="image/blog/blog-1.jpg">
+                            <div class="label">Diskon Cloud Hosting</div>
+                        </div>
+                        <div class="promo_text">
+                            <h5 class="mb-2"><a href="#">Diskon Cloud Hosting Hingga 80% + Gratis Domain</a></h5>
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i> <span class="fw-semibold">Berlaku Hingga</span></li>
+                                <li class="p-2 rounded-bottom">
+                                    <h6>
+                                        <span class="fw-bold mx-1">29</span>
+                                        <span class="text-secondary fw-bold mx-1">hari</span>
+                                        <span class="fw-bold mx-1">7</span>
+                                        <span class="text-secondary fw-bold mx-1">jam</span>
+                                        <span class="fw-bold mx-1">00</span>
+                                        <span class="text-secondary fw-bold mx-1">menit</span>
+                                    </h6>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/hosting-unlimited" class="btn btn-go-link w-100 mt-2">Dapatkan Promo!</a></>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-6">
+                    <div class="promo_card">
+                        <div class="promo_pic set-bg " data-setbg="image/blog/blog-5.jpg">
+                            <div class="label">Promo Hosting UMKM</div>
+                        </div>
+                        <div class="promo_text">
+                            <h5 class="mb-2"><a href="#">Promo Diskon 40% Hosting UMKM & Personal</a></h5>
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i> <span class="fw-semibold">Berlaku Hingga</span></li>
+                                <li class="p-2 rounded-bottom">
+                                    <h6>
+                                        <span class="fw-bold mx-1">35</span>
+                                        <span class="text-secondary fw-bold mx-1">hari</span>
+                                        <span class="fw-bold mx-1">12</span>
+                                        <span class="text-secondary fw-bold mx-1">jam</span>
+                                        <span class="fw-bold mx-1">00</span>
+                                        <span class="text-secondary fw-bold mx-1">menit</span>
+                                    </h6>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="btn btn-go-link w-100 mt-2">Dapatkan Promo!</a></>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-6">
+                    <div class="promo_card">
+                        <div class="promo_pic set-bg " data-setbg="image/blog/blog-5.jpg">
+                            <div class="label">Promo Hosting UMKM</div>
+                        </div>
+                        <div class="promo_text">
+                            <h5 class="mb-2"><a href="#">Promo Diskon 40% Hosting UMKM & Personal</a></h5>
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i> <span class="fw-semibold">Berlaku Hingga</span></li>
+                                <li class="p-2 rounded-bottom">
+                                    <h6>
+                                        <span class="fw-bold mx-1">35</span>
+                                        <span class="text-secondary fw-bold mx-1">hari</span>
+                                        <span class="fw-bold mx-1">12</span>
+                                        <span class="text-secondary fw-bold mx-1">jam</span>
+                                        <span class="fw-bold mx-1">00</span>
+                                        <span class="text-secondary fw-bold mx-1">menit</span>
+                                    </h6>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="btn btn-go-link w-100 mt-2">Dapatkan Promo!</a></>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-6">
+                    <div class="promo_card">
+                        <div class="promo_pic set-bg " data-setbg="image/blog/blog-1.jpg">
+                            <div class="label">Promo Hosting UMKM</div>
+                        </div>
+                        <div class="promo_text">
+                            <h5 class="mb-2"><a href="#">Promo Diskon 40% Hosting UMKM & Personal</a></h5>
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i> <span class="fw-semibold">Berlaku Hingga</span></li>
+                                <li class="p-2 rounded-bottom">
+                                    <h6>
+                                        <span class="fw-bold mx-1">35</span>
+                                        <span class="text-secondary fw-bold mx-1">hari</span>
+                                        <span class="fw-bold mx-1">12</span>
+                                        <span class="text-secondary fw-bold mx-1">jam</span>
+                                        <span class="fw-bold mx-1">00</span>
+                                        <span class="text-secondary fw-bold mx-1">menit</span>
+                                    </h6>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="btn btn-go-link w-100 mt-2">Dapatkan Promo!</a></>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Promo Section End -->
+
+    <!-- Promo Menarik yang kelewatan Start -->
+    <section class="services-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h3 class="text-uppercase">Jangan Lewatkan Kesempatan Promo Yang Menarik</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="5em" fill="#4589c9" viewBox="0 0 448 512">
+                            <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                        </svg>
+                        <h5>Promo Diskon Terkini</h5>
+                        <p>Pastikan Anda mengikuti perkembangan terbaru agar dapat memanfaatkan harga termurah yang kami tawarkan.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="5em" fill="#4589c9" viewBox="0 0 448 512">
+                            <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                        </svg>
+                        <h5>Layanan Bermutu dan Berjasa</h5>
+                        <p>Didukung oleh teknologi mutakhir sehingga meningkatkan kinerja situs web menjadi lebih optimal dan stabil.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="5em" fill="#4589c9" viewBox="0 0 448 512">
+                            <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                        </svg>
+                        <h5>Lebih hemat dengan namahost</h5>
+                        <p>Promo diskon tersedia di beberapa layanan dan terdapat penawaran khusus untuk transfer hosting.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="5em" fill="#4589c9" viewBox="0 0 448 512">
+                            <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                        </svg>
+                        <h5>Fitur Lengkap Tak Terukur Waktu</h5>
+                        <p>Bandwidth tak terbatas, kompatibel dengan IPv4 & IPv6, dan tersedia dalam 5 lokasi server.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="5em" fill="#4589c9" viewBox="0 0 448 512">
+                            <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                        </svg>
+                        <h5>Manfaatkan Waktumu</h5>
+                        <p>Segera lakukan pembayaran agar tidak kehilangan promo diskon. Setiap promo memiliki batas waktu dan kuota yang terbatas</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="services__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="5em" fill="#4589c9" viewBox="0 0 448 512">
+                            <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                        </svg>
+                        <h5>Pengembalian dana Cepat & Mudah</h5>
+                        <p>Dana dapat dikembalikan jika anda tidak merasa puas dengan layanan kami selama kurun waktu 30 hari</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Promo Menarik yang kelewatan End -->
+
+        <!-- FAQ Start -->
+        <section class="faq spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 d-flex align-items-center">
+                        <h1 class="text-center fw-bold mx-5 text-light">FAQ <br>
+                            <span><p class="text-light fw-bold fs-5">Frequently Ask Question</p></span>
+                        </h1>
+                    </div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="faq-body rounded-4 p-3 mb-5">
+                            <div class="faq-title">
+                                <a href="#faqOne" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne">
+                                    <h4 class="text-light fw-bold mb-0">Apa itu Hosting ?</h4>
+                                </a>
+                                <a href="#faqOne" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne" onclick="toggleIcon(this)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <hr style="border: 2px solid;">
+                            <div class="faq-answer collapse" id="faqOne">
+                                <p class="text-light">
+                                    Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                    Tanpa hosting, Anda tidak akan bisa membuat website.
+                                    Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                    Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                    dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
+                                    menemani perjalanan Anda di dunia digital!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="faq-body rounded-4 p-3 mb-5">
+                            <div class="faq-title">
+                                <a href="#faqTwo" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqTwo">
+                                    <h4 class="text-light fw-bold mb-0">Mengapa saya harus menggunakan web hosting dari namahost?</h4>
+                                </a>
+                                <a href="#faqTwo" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqTwo" onclick="toggleIcon(this)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <hr style="border: 2px solid;">
+                            <div class="faq-answer collapse" id="faqTwo">
+                                <p class="text-light">
+                                    Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                    Tanpa hosting, Anda tidak akan bisa membuat website.
+                                    Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                    Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                    dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
+                                    menemani perjalanan Anda di dunia digital!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="faq-body rounded-4 p-3 mb-5">
+                            <div class="faq-title">
+                                <a href="#faqThree" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqThree">
+                                    <h4 class="text-light fw-bold mb-0">Apa itu domain?</h4>
+                                </a>
+                                <a href="#faqThree" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqThree" onclick="toggleIcon(this)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <hr style="border: 2px solid;">
+                            <div class="faq-answer collapse" id="faqThree">
+                                <p class="text-light">
+                                    Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                    Tanpa hosting, Anda tidak akan bisa membuat website.
+                                    Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                    Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                    dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
+                                    menemani perjalanan Anda di dunia digital!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="faq-body rounded-4 p-3 mb-5">
+                            <div class="faq-title">
+                                <a href="#faqFour" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqFour">
+                                    <h4 class="text-light fw-bold mb-0">Apa keuntungan sertifikat SSL?</h4>
+                                </a>
+                                <a href="#faqFour" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqFour" onclick="toggleIcon(this)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <hr style="border: 2px solid;">
+                            <div class="faq-answer collapse" id="faqFour">
+                                <p class="text-light">
+                                    Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                    Tanpa hosting, Anda tidak akan bisa membuat website.
+                                    Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                    Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                    dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
+                                    menemani perjalanan Anda di dunia digital!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ Start -->
+
+    <!-- Js Plugins -->
+    @include('partials.jsPlugin')
+</body>
+
+</html>

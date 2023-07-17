@@ -1,0 +1,24 @@
+.navbar {
+    height: 2.5cm;
+}
+.bg-nav{
+    background: #2891f7;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: end;
+}
+
+.nav-item {
+    margin: 0 1cm 0 13px;
+}
+
+.nav-item-btn {
+    padding: 10px;
+    background-color: transparent;
+    border: 4px white;
+    box-shadow: 1cm;
+    text-decoration: none;
+    z-index: 9999;
+}
