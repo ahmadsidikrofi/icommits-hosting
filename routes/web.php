@@ -27,3 +27,7 @@ Route::get('/promo', function () {
 Route::get('/hosting-unlimited', function () {
     return view('hosting.hostingUnlimited');
 });
+
+Route::get('/client', function () {
+    return view('clientArea.homeClient');
+});
