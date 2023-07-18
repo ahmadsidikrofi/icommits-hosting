@@ -32,7 +32,7 @@ Route::get('/hosting-unlimited', function () {
 
 Route::get('/cloud-hosting', function () {
     return view('hosting.cloudHosting');
-
+});
 
 Route::get('/client', function () {
     return view('clientArea.homeClient');
