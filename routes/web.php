@@ -28,6 +28,12 @@ Route::get('/promo', function () {
 Route::get('/hosting-unlimited', function () {
     return view('hosting.hostingUnlimited');
 });
+
+
 Route::get('/cloud-hosting', function () {
     return view('hosting.cloudHosting');
+
+
+Route::get('/client', function () {
+    return view('clientArea.homeClient');
 });
