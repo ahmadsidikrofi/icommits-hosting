@@ -1434,6 +1434,14 @@ ol {
 	/* z-index: 9999; */
 }
 
+.hero-right {
+    margin-top: 70px;
+}
+
+.hero-right-cloud {
+    margin-top: 150px;
+}
+
 /*---------------------
   Herro unlimited Hosting End
 -----------------------*/
