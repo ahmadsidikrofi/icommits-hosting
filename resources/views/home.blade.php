@@ -165,15 +165,17 @@
                     </div>
                 </div>
             </div>
-            <!-- Paket Bulanan -->
+            <!-- Paket perJam -->
             <div class="row paket_bulanan active">
+                @foreach ( $paketUnlimited as $paketWebHosting )
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="harga_paket">
-                        <h4>Hosting Bisnis</h4>
-                        <p>Untuk blog dan website sederhana</p>
-                        <h3>Rp100 <span>/ jam</span></h3>
+                        <h4>{{ $paketWebHosting->nama_paket }}</h4>
+                        <p>{{ $paketWebHosting->deskripsi_paket }}</p>
+                        <h3>Rp{{ $paketWebHosting->harga_paket }} <span>/ jam</span></h3>
                         <h5 class="fw-bold">Paket Unggulan</h5>
-                        <ul>
+                        {!! $paketWebHosting->paket_unggulan !!}
+                        {{-- <ul>
                             <li><span class="fa fa-check text-primary"></span> 100 GB SSD Storage</li>
                             <li><span class="fa fa-check text-primary"></span>Unlimited Bandwith</li>
                             <li><span class="fa fa-check text-primary"></span>Domain Gratis (Senilai Rp147.900)</li>
@@ -181,7 +183,7 @@
                             <li><span class="fa fa-check text-primary"></span>Backup Mingguan</li>
                             <li><span class="fa fa-check text-primary"></span>Gratis Premium Web Builder</li>
                             <li><span class="fa fa-check text-primary"></span>3 Database</li>
-                        </ul>
+                        </ul> --}}
                         <h5 class="fw-bold">Performa</h5>
                         <ul>
                             <li><span class="fa fa-check text-primary"></span> Ram 1 GB</li>
@@ -200,72 +202,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="harga_paket">
-                        <h4>Hosting Bisnis</h4>
-                        <p>Untuk blog dan website sederhana</p>
-                        <h3>Rp100 <span>/ jam</span></h3>
-                        <h5 class="fw-bold">Paket Unggulan</h5>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span> 100 GB SSD Storage</li>
-                            <li><span class="fa fa-check text-primary"></span>Unlimited Bandwith</li>
-                            <li><span class="fa fa-check text-primary"></span>Domain Gratis (Senilai Rp147.900)</li>
-                            <li><span class="fa fa-check text-primary"></span>SSL Gratis Unlimited</li>
-                            <li><span class="fa fa-check text-primary"></span>Backup Mingguan</li>
-                            <li><span class="fa fa-check text-primary"></span>Gratis Premium Web Builder</li>
-                            <li><span class="fa fa-check text-primary"></span>3 Database</li>
-                        </ul>
-                        <h5 class="fw-bold">Performa</h5>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span> Ram 1 GB</li>
-                            <li><span class="fa fa-check text-primary"></span> 1 CPU Core</li>
-                            <li><span class="fa fa-check text-primary"></span> Dedicated Resource</li>
-                            <li><span class="fa fa-check text-primary"></span> Alamat IP Dedicated</li>
-                        </ul>
-                        <h5 class="fw-bold">Keamanan</h5>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span> Nameserver Dilindungi Cloudflare</li>
-                            <li><span class="fa fa-check text-primary"></span> Pemindai Malware</li>
-                        </ul>
-                        <h5 class="fw-bold">Bonus Gratis</h5>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span> Email Gratis</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="harga_paket">
-                        <h4>Hosting Bisnis</h4>
-                        <p>Untuk blog dan website sederhana</p>
-                        <h3>Rp100 <span>/ jam</span></h3>
-                        <h5 class="fw-bold">Paket Unggulan</h5>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span> 100 GB SSD Storage</li>
-                            <li><span class="fa fa-check text-primary"></span>Unlimited Bandwith</li>
-                            <li><span class="fa fa-check text-primary"></span>Domain Gratis (Senilai Rp147.900)</li>
-                            <li><span class="fa fa-check text-primary"></span>SSL Gratis Unlimited</li>
-                            <li><span class="fa fa-check text-primary"></span>Backup Mingguan</li>
-                            <li><span class="fa fa-check text-primary"></span>Gratis Premium Web Builder</li>
-                            <li><span class="fa fa-check text-primary"></span>3 Database</li>
-                        </ul>
-                        <h5 class="fw-bold">Performa</h5>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span> Ram 1 GB</li>
-                            <li><span class="fa fa-check text-primary"></span> 1 CPU Core</li>
-                            <li><span class="fa fa-check text-primary"></span> Dedicated Resource</li>
-                            <li><span class="fa fa-check text-primary"></span> Alamat IP Dedicated</li>
-                        </ul>
-                        <h5 class="fw-bold">Keamanan</h5>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span> Nameserver Dilindungi Cloudflare</li>
-                            <li><span class="fa fa-check text-primary"></span> Pemindai Malware</li>
-                        </ul>
-                        <h5 class="fw-bold">Bonus Gratis</h5>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span> Email Gratis</li>
-                        </ul>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <!-- Paket Tahunan -->
