@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
     return view('home');
 });
@@ -32,8 +29,12 @@ Route::get('/hosting-unlimited', function () {
 
 Route::get('/cloud-hosting', function () {
     return view('hosting.cloudHosting');
-
+});
 
 Route::get('/client', function () {
     return view('clientArea.homeClient');
+});
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.admin');
 });
