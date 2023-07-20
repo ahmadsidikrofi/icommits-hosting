@@ -20,7 +20,7 @@
                                 <span style="margin-left: 10px; display: flex;">Web Hosting Unlimited Indonesia</span>
                             </a>
                         </li>
-                        <li><a class="btn bg-secondary" style="text-align: left;" href="#">
+                        <li><a href="/cloud-hosting" class="btn bg-secondary" style="text-align: left;" href="#">
                                 <span style="margin-left: 10px; display: flex;">Cloud Hosting cPanel Indonesia</span>
                             </a>
                         </li>

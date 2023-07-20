@@ -105,7 +105,20 @@
         } else if (e.target.htmlFor == 'tahunan') {
             $(".paket_bulanan").removeClass('active');
             $(".paket_tahunan").addClass('active');
-        }     
+        }
+    });
+
+    $(".pricing__swipe-paket-cloud-btn label").on('click', function (e) {
+        $(".pricing__swipe-paket-cloud-btn label").removeClass("active");
+        $(this).addClass("active");
+
+        if(e.target.htmlFor == 'cloud_starter') {
+            $(".paket_cloud_pro").removeClass('active');
+            $(".paket_cloud_starter").addClass('active');
+        } else if (e.target.htmlFor == 'cloud_pro') {
+            $(".paket_cloud_starter").removeClass('active');
+            $(".paket_cloud_pro").addClass('active');
+        }
     });
 
     /*------------------
