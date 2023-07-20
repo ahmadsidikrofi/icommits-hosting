@@ -2,7 +2,7 @@
     <!-- Logo Header -->
     <div class="logo-header" style="background: rgb(58, 77, 255);">
         <a href="/admin/dashboard" class="logo" style="margin-bottom: 12px; margin-left: 15px;">
-            <img src="{{ asset('image/logo-icommits.png') }}" width="40px" alt="">
+            <img src="/image/logo-icommits-1.svg" alt="">
             <h1 class="navbar-brand text-white mt-2">Icommits</h2>
         </a>
         <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\qnaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,6 @@ Route::get('/admin/dashboard', function () {
 Route::get('/admin/module', function () {
     return view('admin.module');
 });
+
+
+Route::resource('admin/qna', qnaController::class);

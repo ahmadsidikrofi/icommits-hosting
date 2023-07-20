@@ -449,100 +449,95 @@
                         <span><p class="text-light fw-bold fs-5">Frequently Ask Question</p></span>
                     </h1>
                 </div>
-                <div class="col-lg-8 col-md-8">
-                    <div class="faq-body rounded-4 p-3 mb-5">
-                        <div class="faq-title">
-                            <a href="#faqOne" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne">
-                                <h4 class="text-light fw-bold mb-0">Apa itu Hosting ?</h4>
-                            </a>
-                            <a href="#faqOne" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne" onclick="toggleIcon(this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                </svg>
-                            </a>
+                @foreach ($pertanyaan as $item)
+                    <div class="col-lg-8 col-md-8">
+                        <div class="faq-body rounded-4 p-3 mb-5">
+                            <div class="faq-title">
+                                <a href="#faqOne" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne">
+                                    <h4 class="text-light fw-bold mb-0">{{ $item->pertanyaan }}</h4>
+                                </a>
+                                <a href="#faqOne" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne" onclick="toggleIcon(this)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <hr style="border: 2px solid;">
+                            <div class="faq-answer collapse" id="faqOne">
+                                <p class="text-light">{{ $item->jawaban }}</p>
+                            </div>
                         </div>
-                        <hr style="border: 2px solid;">
-                        <div class="faq-answer collapse" id="faqOne">
-                            <p class="text-light">
-                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
-                                Tanpa hosting, Anda tidak akan bisa membuat website.
-                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
-                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
-                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
-                                menemani perjalanan Anda di dunia digital!
-                            </p>
-                        </div>
+                @endforeach
+                        {{-- <div class="faq-body rounded-4 p-3 mb-5">
+                            <div class="faq-title">
+                                <a href="#faqTwo" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqTwo">
+                                    <h4 class="text-light fw-bold mb-0">Mengapa saya harus menggunakan web hosting dari namahost?</h4>
+                                </a>
+                                <a href="#faqTwo" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqTwo" onclick="toggleIcon(this)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <hr style="border: 2px solid;">
+                            <div class="faq-answer collapse" id="faqTwo">
+                                <p class="text-light">
+                                    Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                    Tanpa hosting, Anda tidak akan bisa membuat website.
+                                    Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                    Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                    dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
+                                    menemani perjalanan Anda di dunia digital!
+                                </p>
+                            </div>
+                        </div> --}}
+                        {{-- <div class="faq-body rounded-4 p-3 mb-5">
+                            <div class="faq-title">
+                                <a href="#faqThree" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqThree">
+                                    <h4 class="text-light fw-bold mb-0">Apa itu domain?</h4>
+                                </a>
+                                <a href="#faqThree" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqThree" onclick="toggleIcon(this)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <hr style="border: 2px solid;">
+                            <div class="faq-answer collapse" id="faqThree">
+                                <p class="text-light">
+                                    Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                    Tanpa hosting, Anda tidak akan bisa membuat website.
+                                    Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                    Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                    dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
+                                    menemani perjalanan Anda di dunia digital!
+                                </p>
+                            </div>
+                        </div> --}}
+                        {{-- <div class="faq-body rounded-4 p-3 mb-5">
+                            <div class="faq-title">
+                                <a href="#faqFour" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqFour">
+                                    <h4 class="text-light fw-bold mb-0">Apa keuntungan sertifikat SSL?</h4>
+                                </a>
+                                <a href="#faqFour" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqFour" onclick="toggleIcon(this)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <hr style="border: 2px solid;">
+                            <div class="faq-answer collapse" id="faqFour">
+                                <p class="text-light">
+                                    Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                    Tanpa hosting, Anda tidak akan bisa membuat website.
+                                    Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                    Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                    dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
+                                    menemani perjalanan Anda di dunia digital!
+                                </p>
+                            </div>
+                        </div> --}}
                     </div>
-                    <div class="faq-body rounded-4 p-3 mb-5">
-                        <div class="faq-title">
-                            <a href="#faqTwo" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqTwo">
-                                <h4 class="text-light fw-bold mb-0">Mengapa saya harus menggunakan web hosting dari namahost?</h4>
-                            </a>
-                            <a href="#faqTwo" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqTwo" onclick="toggleIcon(this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                </svg>
-                            </a>
-                        </div>
-                        <hr style="border: 2px solid;">
-                        <div class="faq-answer collapse" id="faqTwo">
-                            <p class="text-light">
-                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
-                                Tanpa hosting, Anda tidak akan bisa membuat website.
-                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
-                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
-                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
-                                menemani perjalanan Anda di dunia digital!
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-body rounded-4 p-3 mb-5">
-                        <div class="faq-title">
-                            <a href="#faqThree" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqThree">
-                                <h4 class="text-light fw-bold mb-0">Apa itu domain?</h4>
-                            </a>
-                            <a href="#faqThree" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqThree" onclick="toggleIcon(this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                </svg>
-                            </a>
-                        </div>
-                        <hr style="border: 2px solid;">
-                        <div class="faq-answer collapse" id="faqThree">
-                            <p class="text-light">
-                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
-                                Tanpa hosting, Anda tidak akan bisa membuat website.
-                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
-                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
-                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
-                                menemani perjalanan Anda di dunia digital!
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-body rounded-4 p-3 mb-5">
-                        <div class="faq-title">
-                            <a href="#faqFour" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqFour">
-                                <h4 class="text-light fw-bold mb-0">Apa keuntungan sertifikat SSL?</h4>
-                            </a>
-                            <a href="#faqFour" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqFour" onclick="toggleIcon(this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                </svg>
-                            </a>
-                        </div>
-                        <hr style="border: 2px solid;">
-                        <div class="faq-answer collapse" id="faqFour">
-                            <p class="text-light">
-                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
-                                Tanpa hosting, Anda tidak akan bisa membuat website.
-                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
-                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
-                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
-                                menemani perjalanan Anda di dunia digital!
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
