@@ -35,6 +35,10 @@ Route::get('/client', function () {
     return view('clientArea.homeClient');
 });
 
+// Halaman dan Menu Admin (CMS)
 Route::get('/admin/dashboard', function () {
-    return view('admin.admin');
+    return view('admin.dashboard');
+});
+Route::get('/admin/module', function () {
+    return view('admin.module');
 });
