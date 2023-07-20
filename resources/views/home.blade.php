@@ -376,10 +376,10 @@
                     </h1>
                 </div>
                 <div class="col-lg-8 col-md-8">
-                    @foreach ($pertanyaan as $item)
+                    @foreach ($pertanyaan as $index => $item)
                         <div class="faq-body rounded-4 p-3 mb-5">
                             <div class="faq-title">
-                                <a href="#faqOne" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne">
+                                <a href="#faq{{ $index }}" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne">
                                     <h4 class="text-light fw-bold mb-0">{{ $item->pertanyaan }}</h4>
                                 </a>
                                 <a href="#faqOne" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne" onclick="toggleIcon(this)">
@@ -389,7 +389,7 @@
                                 </a>
                             </div>
                             <hr style="border: 2px solid;">
-                            <div class="faq-answer collapse" id="faqOne">
+                            <div class="faq-answer collapse" id="faq{{ $index }}">
                                 <p class="text-light">{{ $item->jawaban }}</p>
                             </div>
                         </div>
