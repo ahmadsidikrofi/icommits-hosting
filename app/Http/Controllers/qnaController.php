@@ -10,7 +10,7 @@ class qnaController extends Controller
     public function index()
     {
         $pertanyaan = Qna::all();
-        return view('admin.qna.index', compact('pertanyaan'));
+        return view('admin.module.qna.index', compact('pertanyaan'));
     }
     
 
