@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleHostingUnlimitedController;
 use App\Http\Controllers\qnaController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\HeroController;
 
 
 
@@ -67,6 +68,12 @@ Route::post('/admin/create/paket-hosting-unlimited/store', [ModuleHostingUnlimit
 //Menampilkan QnA dihalaman admin
 Route::resource('admin/qna', qnaController::class);
 
+//Module Hero
+// Route::get('/admin/hero', function () {
+//     return view('admin.module.hero.index');
+// });
+
+Route::resource('/admin/hero', HeroController::class);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 

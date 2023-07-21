@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\DB;
 
 class Qna extends Model
 {
@@ -20,5 +21,13 @@ class Qna extends Model
                 'source' => 'pertanyaan'
             ]
         ];
+    }
+
+    public function heroes()
+    {
+        return DB::table('tb_hero')
+            ->join('tb_qna', 'tb_hero.halaman', '=', 'tb_qna.kategori')
+            ->select('tb_hero.*')
+            ->get();
     }
 }
