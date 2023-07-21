@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('qna', function (Blueprint $table) {
+        Schema::create('tb_qna', function (Blueprint $table) {
             $table->id();
+            $table->string('slug',255);
+            $table->enum('kategori', ['Home','Unlimited Hosting','Cloud Hosting Cpanel','Migration Hosting','Domain','VPS','Email Bisnis','Email Hosting','SSL Certificate','CPanel','Promo','Poin']);
             $table->text('pertanyaan');
             $table->text('jawaban');
             $table->timestamps();
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('qna');
+        Schema::dropIfExists('tb_qna');
     }
 };

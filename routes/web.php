@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\qnaController;
-
 use App\Models\ModuleHostingUnlimited;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleHostingUnlimitedController;
+use App\Http\Controllers\qnaController;
+use App\Http\Controllers\PromoController;
+
 
 
 /*
@@ -22,9 +23,12 @@ use App\Http\Controllers\ModuleHostingUnlimitedController;
 
 Route::get('/', [HomeController::class, "showHome"]);
 
+//Bab Promo
 Route::get('/promo', function () {
     return view('promo');
 });
+
+Route::get('/promo', [PromoController::class, "tanya"]);
 
 // Bab Hosting
 Route::get('/hosting-unlimited', function () {
@@ -38,6 +42,8 @@ Route::get('/cloud-hosting', function () {
 Route::get('/client', function () {
     return view('clientArea.homeClient');
 });
+
+Route::get('/hosting-unlimited', [ModuleHostingUnlimitedController::class, "tanya"]);
 
 // ====== Halaman dan Menu Admin (CMS) Start // ======
 

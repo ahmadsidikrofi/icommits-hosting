@@ -28,6 +28,10 @@ class ModuleHostingUnlimitedController extends Controller
         return redirect('/admin/paket-unlimited');
     }
 
-
+    function tanya()
+    {
+        $pertanyaan = Qna::all();
+        return view('hosting.hostingUnlimited', compact('pertanyaan'));
+    }
 
 }
