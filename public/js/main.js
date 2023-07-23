@@ -99,12 +99,12 @@
         $(".pricing__swipe-btn label").removeClass("active");
         $(this).addClass("active");
 
-        if(e.target.htmlFor == 'bulanan') {
-            $(".paket_tahunan").removeClass('active');
-            $(".paket_bulanan").addClass('active');
-        } else if (e.target.htmlFor == 'tahunan') {
+        if(e.target.htmlFor == 'jam') {
             $(".paket_bulanan").removeClass('active');
-            $(".paket_tahunan").addClass('active');
+            $(".paket_perjam").addClass('active');
+        } else if (e.target.htmlFor == 'bulanan') {
+            $(".paket_perjam").removeClass('active');
+            $(".paket_bulanan").addClass('active');
         }
     });
 

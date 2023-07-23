@@ -21,7 +21,7 @@
                 </li>
 
                 <li class="nav-item {{ Request::is('admin/menu') ? 'active' : '' }}">
-                    <a href="/admin/menu">
+                    <a href="/admin/menu-navbar">
                         <i class="fa-solid fa-bars-staggered"></i>
                         <p>Menu</p>
                     </a>

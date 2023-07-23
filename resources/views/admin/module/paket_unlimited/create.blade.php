@@ -1,23 +1,11 @@
 @extends('partials.admin')
 
-{{-- @section('ckeditor')
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <script>
-        CKEDITOR.replace('ckeditor', {
-            filebrowserUploadUrl: "{{ route('upload', ['_token' => csrf_token()]) }}",
-            filebrowserUploadMethod: 'form'
-        });
-    </script>
-@endsection --}}
-
 @section('js')
     <script src="{{ asset('assets/admin/js/jquery.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/o61nnuwogclhd3z601n2k0zh479m9kbnsivauhaxrlu4jco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        $(".theSelect").select2();
-    </script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         tinymce.init({
             selector: 'textarea',
@@ -41,7 +29,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/produk">Produk</a>
+                    <a href="/admin/paket-unlimited">Paket Unlimited</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -59,6 +47,13 @@
                 <form action="/admin/create/paket-hosting-unlimited/store" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
+                        <label for="durasi">Durasi Paket</label>
+                        <div class="input-group mb-3">
+                            <select class="form-control get-durasi" name="durasi" id="durasi">
+                                <option value="jam">Jam</option>
+                                <option value="bulan">Bulan</option>
+                            </select>
+                        </div>
                         <label>Nama Paket</label>
                         <div class="input-group">
                             <input type="text" value="{{ old('nama_paket') }}" placeholder="Masukkan nama paket"
@@ -99,15 +94,16 @@
             </div>
         </div>
     </div>
-    <script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    {{-- <script>
         // Add the following code if you want the name of the file appear on select
         $(".custom-file-input").on("change", function() {
             var fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
-    </script>
+    </script> --}}
 
-    <script>
+    {{-- <script>
         function tampilkanPreview(gambar, idpreview) {
             var gb = gambar.files;
             for (var i = 0; i < gb.length; i++) {
@@ -130,5 +126,10 @@
 
             }
         }
+    </script> --}}
+    <script>
+        $(document).ready(function() {
+            $('.get-durasi').select2();
+        });
     </script>
 @endsection

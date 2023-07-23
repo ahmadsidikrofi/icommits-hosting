@@ -6,6 +6,14 @@
 
 @section('js')
     <script src="{{ asset('assets/admin/assets/js/plugin/datatables/datatables.min.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/o61nnuwogclhd3z601n2k0zh479m9kbnsivauhaxrlu4jco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+        </script>
     <script>
         $(document).ready(function() {
             $('#artikel').DataTable();
@@ -15,21 +23,7 @@
     <script src="{{ asset('js/delete.js') }}"></script>
 @endsection
 
-{{-- @section('ckeditor')
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <script>
-        CKEDITOR.replace('ckeditor', {
-            filebrowserUploadUrl: "{{ route('upload', ['_token' => csrf_token()]) }}",
-            filebrowserUploadMethod: 'form'
-        });
-    </script>
-@endsection --}}
-
 @section('content')
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
     <div class="page-inner">
         <div class="page-header">
             <h4 class="page-title">Paket Web Hosting</h4>
@@ -93,76 +87,103 @@
                                     <form action="#" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="#"
+                                        <a title="Edit" data-toggle="modal" data-target="#edit{{ $paketWebHosting->id }}" href="#" class="btn btn-outline-warning text-dark btn-sm">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        {{-- <a href="#"
                                             class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
                                             data-placement="top" title="Edit"><i
-                                                class="fa-solid fa-pen-to-square"></i> </a>
-                                        <button type="submit" class="btn btn-danger btn-sm delete-confirm"
+                                                class="fa-solid fa-pen-to-square"></i> </a> --}}
+                                        {{-- <button type="submit" class="btn btn-danger btn-sm delete-confirm"
                                             data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                                class="fa-solid fa-trash"></i></button>
+                                                class="fa-solid fa-trash"></i></button> --}}
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach
-                            {{-- @foreach ($produk as $item)
-                                <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>Nama Paket</td>
-                                    <td> {!! Str::limit($item->deskripsi, 20) !!} </td>
-                                    <td><img src="{{ $item->cover() }}" width="80px" alt=""></td>
-                                    <td>
-                                        <form action="{{ route('produk.destroy', $item->id) }}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <a href="{{ route('produk.edit', $item->id) }}"
-                                                class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
-                                                data-placement="top" title="Edit"><i
-                                                    class="fa-solid fa-pen-to-square"></i> </a>
-                                            <button type="submit" class="btn btn-danger btn-sm delete-confirm"
-                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                                    class="fa-solid fa-trash"></i></button>
+                            <div class="modal fade" id="edit{{ $paketWebHosting->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="modalSayaLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg border-0" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header ">
+                                            <h5 class="modal-title" id="modalSayaLabel">Edit Paket Web Hosting</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/admin/edit/paket-hosting-unlimited/{{ $paketWebHosting->slug }}/store" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="form-group">
+                                                    <label for="durasi">Durasi Paket</label>
+                                                    <div class="input-group mb-3">
+                                                        <select class="get-durasi form-control" name="durasi" id="durasi">
+                                                            <option @if ($paketWebHosting->durasi === "jam") selected @endif>Jam</option>
+                                                            <option @if ($paketWebHosting->durasi === "bulan") selected @endif>Bulan</option>
+                                                        </select>
+                                                    </div>
+                                                    <label>Nama Paket</label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" value="{{ $paketWebHosting->nama_paket }}"
+                                                        name="nama_paket" autocomplete='off' class="form-control
+                                                        @error('nama_paket') is-invalid @enderror"
+                                                        required>
+                                                        @error('nama_paket')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <label>Deskripsi Paket</label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" name="deskripsi_paket" class="form-control" value="{{ $paketWebHosting->deskripsi_paket }}">
+                                                    </div>
+                                                    <label>Harga Paket</label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" name="harga_paket" class="form-control" value="{{ $paketWebHosting->harga_paket }}">
+                                                    </div>
+                                                    <label>Paket Unggulan</label>
+                                                    <div class="input-group mb-3">
+                                                        <textarea name="paket_unggulan" id="paket_unggulan" autocomplete='off'
+                                                            class="form-control @error('paket_unggulan') is-invalid @enderror" cols="30" rows="8">{{ $paketWebHosting->paket_unggulan }}</textarea>
+                                                        @error('paket_unggulan')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <center>
+                                                                    <span id="edit"></span>
+                                                                </center>
+                                                            </div>
+                                                            <div class="col">
+                                                                <img id="pedit" src="" alt=""
+                                                                    class="rounded img-fluid float-right" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Tutup</button>
+                                            <button type="submit" class="btn btn-warning text-white">Simpan
+                                                Perubahan</button>
+                                        </div>
                                         </form>
-                                    </td>
-                                </tr>
-                            @endforeach --}}
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
-
-    <script>
-        function tampilkanPreview(gambar, idpreview) {
-            var gb = gambar.files;
-            for (var i = 0; i < gb.length; i++) {
-                var gbPreview = gb[i];
-                var imageType = /image.*/;
-                var preview = document.getElementById(idpreview);
-                var reader = new FileReader();
-
-                if (gbPreview.type.match(imageType)) {
-                    preview.file = gbPreview;
-                    reader.onload = (function(element) {
-                        return function(e) {
-                            element.src = e.target.result;
-                        };
-                    })(preview);
-                    reader.readAsDataURL(gbPreview);
-                } else {
-                    alert("file yang anda upload tidak sesuai. Khusus mengunakan image.");
-                }
-
-            }
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 @endsection
