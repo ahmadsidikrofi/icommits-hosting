@@ -353,10 +353,10 @@ ol {
 /* Dropdown list start */
 .header__menu ul li .dropdown {
 	position: absolute;
-	left: -10cm;
+	left: -4cm;
 	top: 40px;
 	margin-top: 30px;
-	width: 21cm;
+	width: 10cm;
 	background: #7d5ccc;
 	opacity: 0;
 	visibility: hidden;
@@ -381,6 +381,21 @@ ol {
 
 .header__menu ul li .dropdown li a:after {
 	display: none;
+}
+
+
+
+.header__menu ul li .dropdown li a:hover {
+    transform: translateX(5px);
+    font-size: 17px;
+    transition: transform 250ms cubic-bezier(.10, .15, .6, 1.9);
+	box-shadow: 0 0 0 0 #fff;
+}
+.header__menu ul li .dropdown li svg:hover {
+    transform: translateX(5px);
+    font-size: 17px;
+    transition: transform 250ms cubic-bezier(.10, .15, .6, 1.9);
+	box-shadow: 0 0 0 0 #fff;
 }
 /* Dropdown list end */
 
@@ -1031,13 +1046,13 @@ ol {
 	visibility: hidden;
 }
 
-.paket_bulanan,
-.paket_tahunan {
+.paket_perjam,
+.paket_bulanan {
 	display: none;
 }
 
-.paket_bulanan.active,
-.paket_tahunan.active {
+.paket_perjam.active,
+.paket_bulanan.active {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -2446,8 +2461,8 @@ ol {
 }
 
 .promo_card:hover {
-    transform: translateY(-30px);
 	/* transform: scale(0.95); */
+    transform: translateY(-30px);
 	transition: all 0.3s;
 	box-shadow: 0 0 0 0 #fff;
   }

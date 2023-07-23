@@ -6,8 +6,10 @@ use App\Http\Controllers\qnaController;
 
 use App\Models\ModuleHostingUnlimited;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuNavbarController;
 use App\Http\Controllers\ModuleHostingUnlimitedController;
-
+use App\Http\Controllers\subMenuNavbarController;
+use App\Models\MenuNavbar;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,16 +53,25 @@ Route::get('/admin/module', function () {
 
 // Module Hosting Unlimited
 Route::get('/admin/paket-unlimited', [ModuleHostingUnlimitedController::class, "viewPageHostingUnlimited"]);
-
 // Create Paket Hosting Unlimited
 Route::get('/admin/create/paket-hosting-unlimited', [ModuleHostingUnlimitedController::class, "viewPageAddPaketHostingUnlimited"]);
 Route::post('/admin/create/paket-hosting-unlimited/store', [ModuleHostingUnlimitedController::class, "addPaketHostingUnlimited"]);
+// Update Paket Hosting Unlimited
+Route::put('/admin/edit/paket-hosting-unlimited/{slug}/store', [ModuleHostingUnlimitedController::class, "editPaketHostingUnlimited"]);
 
 
 //Module QnA
 //Menampilkan QnA dihalaman admin
 Route::resource('admin/qna', qnaController::class);
 
+// Fitur Menu Navbar
+Route::get('/admin/menu-navbar', [MenuNavbarController::class, "viewPageMenu"]);
+Route::post('/admin/tambah/menu-navbar', [MenuNavbarController::class, "tambahMenu"]);
+Route::put('/admin/edit/menu-navbar/{slug}', [MenuNavbarController::class, "editMenu"]);
+
+// Fitur Sub Menu
+Route::get('/admin/sub-menu-navbar/{id}', [subMenuNavbarController::class, "viewPageSubMenu"]);
+Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tambahSubMenu"]);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 

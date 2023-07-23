@@ -93,6 +93,30 @@
                 <div class="col-lg-9 col-md-9">
                     <nav class="header__menu">
                         <ul>
+                            @foreach ( $menuNavbar as $menu )
+                                @if ($menu->tipe_menu === "link")
+                                    <li><a href="{{ $menu->link }}">{{ $menu->nama_menu }}</a></li>
+                                @else
+                                    <li class="active"><a href="{{ $menu->link }}">{{ $menu->nama_menu }}</a>
+                                        <ul class="dropdown rounded-4">
+                                            @foreach ($menu->subMenus as $subMenu )
+                                            <li class="btn w-100 rounded-4 d-flex text-light">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-infinity mt-2" viewBox="0 0 16 16">
+                                                    <path d="M5.68 5.792 7.345 7.75 5.681 9.708a2.75 2.75 0 1 1 0-3.916ZM8 6.978 6.416 5.113l-.014-.015a3.75 3.75 0 1 0 0 5.304l.014-.015L8 8.522l1.584 1.865.014.015a3.75 3.75 0 1 0 0-5.304l-.014.015L8 6.978Zm.656.772 1.663-1.958a2.75 2.75 0 1 1 0 3.916L8.656 7.75Z"/>
+                                                </svg>
+                                                <a class="text-light text-decoration-none" href="{{ $subMenu->link }}">
+                                                    <span class="">{{ $subMenu->nama_sub_menu }}</span>
+                                                    <p class="text-light">{{ $subMenu->deskripsi }}</p>
+                                                </a>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endif
+
+                            @endforeach
+                        </ul>
+                        {{-- <ul>
                             <li class="active"><a href="#">Hosting</a>
                                 <ul class="dropdown rounded-4 d-flex">
                                     <li class="btn w-100 rounded-4 ">
@@ -126,59 +150,6 @@
                                 </ul>
                             </li>
                             <li><a href="/domain.html">Domain</a></li>
-                            <li><a href="#">VPS</a>
-                                <ul class="dropdown rounded-4 d-flex">
-                                    <li class="btn w-100 rounded-4">
-                                        <a class="text-light d-flex align-items-center" href="#">
-                                            <img src="https://www.icommits.co.id/assets/frontend/assets/img/logo-icommits.png" class="img-fluid" width="50" height="60">
-
-                                            <span class="">VPS X ICOMMITS Hosting</span>
-                                        </a>
-                                        <p class="text-light">VPS Hosting menawarkan solusi hosting yang skalabel, andal, dan fleksibel</p>
-                                    </li>
-                                    <li class="btn w-100 rounded-4">
-                                        <a class="text-light d-flex align-items-center" href="#">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="40" fill="currentColor" class="bi bi-hdd-rack-fill" viewBox="0 0 16 16">
-                                                <path d="M2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1v2H2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2h-1V7h1a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-2 7a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zM12 7v2H4V7h8z"/>
-                                              </svg>
-                                            <span class="">VPS Managed</span>
-                                        </a>
-                                        <p class="text-light">VPS Managed memberikan performa maksimal untuk menjalankan website atau aplikasi</p>
-                                    </li>
-                                    <li class="btn w-100 rounded-4">
-                                        <a class="text-light d-flex align-items-center" href="#">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="40" fill="currentColor" class="bi bi-windows" viewBox="0 0 16 16">
-                                                <path d="M6.555 1.375 0 2.237v5.45h6.555V1.375zM0 13.795l6.555.933V8.313H0v5.482zm7.278-5.4.026 6.378L16 16V8.395H7.278zM16 0 7.33 1.244v6.414H16V0z"/>
-                                            </svg>
-                                            <span class="">VPS Windows</span>
-                                        </a>
-                                        <p class="text-light">VPS Windows hadir secara khusus untuk menyediakan pengalaman optimal pada produk Windows</p>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Email</a>
-                                <ul class="dropdown rounded-4 d-flex">
-                                    <li class="btn w-100 rounded-4">
-                                        <a class="text-light align-items-center" href="#">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="40" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
-                                                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
-                                                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
-                                            </svg>
-                                            <span class="">Email Bisnis</span>
-                                        </a>
-                                        <p class="text-light" style="margin-left: 95px;">Dengan Email Bisnis, kirim dan simpan file dengan biaya yang lebih terjangkau</p>
-                                    </li>
-                                    <li class="btn w-100 rounded-4">
-                                        <a class="text-light align-items-center" href="#">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="40" fill="currentColor" class="bi bi-envelope-open-fill" viewBox="0 0 16 16">
-                                                <path d="M8.941.435a2 2 0 0 0-1.882 0l-6 3.2A2 2 0 0 0 0 5.4v.314l6.709 3.932L8 8.928l1.291.718L16 5.714V5.4a2 2 0 0 0-1.059-1.765l-6-3.2ZM16 6.873l-5.693 3.337L16 13.372v-6.5Zm-.059 7.611L8 10.072.059 14.484A2 2 0 0 0 2 16h12a2 2 0 0 0 1.941-1.516ZM0 13.373l5.693-3.163L0 6.873v6.5Z"/>
-                                            </svg>
-                                            <span class="">Email Hosting</span>
-                                        </a>
-                                        <p class="text-light" style="margin-left: 95px;">Bangun kredibilitas Brand lebih proffesional dengan layanan Email Hosting Murah</p>
-                                    </li>
-                                </ul>
-                            </li>
                             <li><a href="#">Others</a>
                                 <ul class="dropdown-plugin rounded-4 d-flex">
                                     <li class="btn w-100 rounded-4">
@@ -212,7 +183,7 @@
                                     </li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </nav>
                 </div>
             </div>
