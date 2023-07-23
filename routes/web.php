@@ -2,14 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\qnaController;
-
 use App\Models\ModuleHostingUnlimited;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuNavbarController;
 use App\Http\Controllers\ModuleHostingUnlimitedController;
 use App\Http\Controllers\subMenuNavbarController;
 use App\Models\MenuNavbar;
+use App\Http\Controllers\qnaController;
+use App\Http\Controllers\PromoController;
+use App\Http\Controllers\HeroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,12 @@ use App\Models\MenuNavbar;
 
 Route::get('/', [HomeController::class, "showHome"]);
 
+//Bab Promo
 Route::get('/promo', function () {
     return view('promo');
 });
+
+Route::get('/promo', [PromoController::class, "tanya"]);
 
 // Bab Hosting
 Route::get('/hosting-unlimited', function () {
@@ -40,6 +44,8 @@ Route::get('/cloud-hosting', function () {
 Route::get('/client', function () {
     return view('clientArea.homeClient');
 });
+
+Route::get('/hosting-unlimited', [ModuleHostingUnlimitedController::class, "tanya"]);
 
 // ====== Halaman dan Menu Admin (CMS) Start // ======
 
@@ -72,6 +78,13 @@ Route::put('/admin/edit/menu-navbar/{slug}', [MenuNavbarController::class, "edit
 // Fitur Sub Menu
 Route::get('/admin/sub-menu-navbar/{id}', [subMenuNavbarController::class, "viewPageSubMenu"]);
 Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tambahSubMenu"]);
+
+//Module Hero
+// Route::get('/admin/hero', function () {
+//     return view('admin.module.hero.index');
+// });
+
+Route::resource('/admin/hero', HeroController::class);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 

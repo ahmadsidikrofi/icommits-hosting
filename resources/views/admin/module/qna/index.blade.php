@@ -13,12 +13,14 @@
     </script>
     <script src="{{ asset('js/sweetalert2.js') }}"></script>
     <script src="{{ asset('js/delete.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <div class="page-inner">
         <div class="page-header">
             <h4 class="page-title">Pertanyaan  </h4>
@@ -57,6 +59,24 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <div class="input-group">
+                                <select class="form-control kategori" name="kategori">
+                                    <option @if ($item->kategori === "Home") selected  @endif value="Home" >Home</option>
+                                    <option @if ($item->kategori === "Unlimited Hosting") selected  @endif >Unlimited Hosting</option>
+                                    <option @if ($item->kategori === "Cloud Hosting CPanel") selected  @endif >Cloud Hosting CPanel</option>
+                                    <option @if ($item->kategori === "Migration Hosting") selected  @endif >Migration Hosting</option>
+                                    <option @if ($item->kategori === "Domain") selected  @endif >Domain</option>
+                                    <option @if ($item->kategori === "VPS") selected  @endif >VPS</option>
+                                    <option @if ($item->kategori === "Email Bisnis") selected  @endif >Email Bisnis</option>
+                                    <option @if ($item->kategori === "Email Hosting") selected  @endif >Email Hosting</option>
+                                    <option @if ($item->kategori === "SSL Certificate") selected  @endif >SSL Certificate</option>
+                                    <option @if ($item->kategori === "CPanel") selected  @endif >CPanel</option>
+                                    <option @if ($item->kategori === "Promo") selected  @endif >Promo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Pertanyaan</label>
                             <div class="input-group ">
                                 <input type="text" value="{{ $item->pertanyaan }}" placeholder="Masukkan pertanyaan"
@@ -90,39 +110,15 @@
 
     </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <!-- Skrip inisialisasi Select2 -->
 
     <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        $(document).ready(function() {
+            $('.kategori').select2();
         });
     </script>
 
-    <script>
-        function tampilkanPreview(gambar, idpreview) {
-            var gb = gambar.files;
-            for (var i = 0; i < gb.length; i++) {
-                var gbPreview = gb[i];
-                var imageType = /image.*/;
-                var preview = document.getElementById(idpreview);
-                var reader = new FileReader();
-
-                if (gbPreview.type.match(imageType)) {
-                    preview.file = gbPreview;
-                    reader.onload = (function(element) {
-                        return function(e) {
-                            element.src = e.target.result;
-                        };
-                    })(preview);
-                    document.getElementById("panah").innerHTML =
-                        "<br><img src='{{ asset('images/arrow.png') }}' width='90'>";
-                    reader.readAsDataURL(gbPreview);
-                } else {
-                    alert("file yang anda upload tidak sesuai. Khusus mengunakan image.");
-                }
-
-            }
-        }
-    </script>
 @endsection

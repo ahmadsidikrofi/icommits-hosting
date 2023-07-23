@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('qna', function (Blueprint $table) {
+        Schema::create('tb_kategori', function (Blueprint $table) {
             $table->id();
-            $table->text('pertanyaan');
-            $table->text('jawaban');
-            $table->timestamps();
+            $table->string('nama');
+            $table->string('slug');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->dateTime('deleted_at')->nullable();
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('qna');
+        Schema::dropIfExists('tb_kategori');
     }
 };

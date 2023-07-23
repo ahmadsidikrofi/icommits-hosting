@@ -388,22 +388,24 @@
                 </div>
                 <div class="col-lg-8 col-md-8">
                     @foreach ($pertanyaan as $index => $item)
-                        <div class="faq-body rounded-4 p-3 mb-5">
-                            <div class="faq-title">
-                                <a href="#faq{{ $index }}" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne">
-                                    <h4 class="text-light fw-bold mb-0">{{ $item->pertanyaan }}</h4>
-                                </a>
-                                <a href="#faqOne" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne" onclick="toggleIcon(this)">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                    </svg>
-                                </a>
+                        @if ($item->kategori === "Home")
+                            <div class="faq-body rounded-4 p-3 mb-5">
+                                <div class="faq-title">
+                                    <a href="#faq{{ $index }}" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne">
+                                        <h4 class="text-light fw-bold mb-0">{{ $item->pertanyaan }}</h4>
+                                    </a>
+                                    <a href="#faq{{ $index }}" class="faq-toggle text-decoration-none mx-5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne" onclick="toggleIcon(this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#eeeffb" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <hr style="border: 2px solid;">
+                                <div class="faq-answer collapse" id="faq{{ $index }}">
+                                    <p class="text-light">{{ $item->jawaban }}</p>
+                                </div>
                             </div>
-                            <hr style="border: 2px solid;">
-                            <div class="faq-answer collapse" id="faq{{ $index }}">
-                                <p class="text-light">{{ $item->jawaban }}</p>
-                            </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
