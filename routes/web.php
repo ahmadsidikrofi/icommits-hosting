@@ -84,7 +84,7 @@ Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tam
 //     return view('admin.module.hero.index');
 // });
 
-Route::resource('/admin/hero', HeroController::class);
+Route::resource('/admin/hero', HeroController::class);  
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 
