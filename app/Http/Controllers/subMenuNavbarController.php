@@ -24,7 +24,7 @@ class subMenuNavbarController extends Controller
     public function tambahSubMenu(Request $request, MenuNavbar $menuNavbar)
     {
         $validator = Validator::make($request->all(), [
-            'id_menu_navbar' => 'required', 
+            'id_menu_navbar' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -51,6 +51,19 @@ class subMenuNavbarController extends Controller
         }
 
         session()->put('success', 'Data Berhasil ditambahkan');
+        return redirect()->back();
+    }
+
+    public function viewPageEditSubMenu($slug)
+    {
+        $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+        return view('admin.subMenuNavbar.editSubMenu', compact('subMenu'));
+    }
+
+    public function editSubMenuStore( $slug, Request $request )
+    {
+        $editSubMenu = SubMenuNavbar::where('slug', $slug)->first();
+        $editSubMenu->update($request->all());
         return redirect()->back();
     }
 
