@@ -19,6 +19,10 @@ class MenuNavbar extends Model
     {
         return $this->hasMany(SubMenuNavbar::class, 'id_menu_navbar');
     }
+    public function heroes()
+    {
+        return $this->hasOne(Hero::class, 'id_menu_navbar');
+    }
 
     public function sluggable(): array
     {

@@ -14,8 +14,6 @@
     </script>
     <script src="{{ asset('js/sweetalert2.js') }}"></script>
     <script src="{{ asset('js/delete.js') }}"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endsection
 
 @section('content')
@@ -52,15 +50,6 @@
                         <a class="btn btn-primary text-white float-right" data-toggle="modal" data-target="#tambahMenu">
                             <span class="fw-bold">Tambah Menu</span>
                         </a>
-                    </div>
-                    <div class="col">
-                        <select class="form-control menu-navbar" name="menu_navbar" id="menu_navbar">
-                            @foreach ( $menuNavbar as $menu )
-                                @if ($menu->tipe_menu === "link")
-                                <option value="{{ $menu->id }}">{{ $menu->nama_menu }}</option>
-                                @endif
-                            @endforeach
-                        </select>
                     </div>
                 </div>
             </div>
@@ -185,13 +174,5 @@
         </div>
     </div>
     @include('admin.menuNavbar.modalMenu')
-
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('.menu-navbar').select2();
-        });
-    </script>
-
 
 @endsection

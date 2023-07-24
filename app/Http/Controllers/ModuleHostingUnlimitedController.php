@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ModuleHostingUnlimited;
+use App\Models\Hero;
 use App\Models\Qna;
+use App\Models\MenuNavbar;
 use Illuminate\Http\Request;
+use App\Models\SubMenuNavbar;
+use App\Models\ModuleHostingUnlimited;
 
 class ModuleHostingUnlimitedController extends Controller
 {
@@ -36,10 +39,20 @@ class ModuleHostingUnlimitedController extends Controller
     //     return redirect('/admin/paket-unlimited');
     // }
 
-    function tanya()
+    function hostingUnlimited()
     {
+        $menuNavbar = MenuNavbar::all();
+        $subMenuNavbar = SubMenuNavbar::all();
         $pertanyaan = Qna::all();
-        return view('hosting.hostingUnlimited', compact('pertanyaan'));
+        $hero = Hero::all();
+        return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
     }
+
+    // function tanya()
+    // {
+
+    //     return view('hosting.hostingUnlimited', compact('pertanyaan'));
+    // }
+
 
 }

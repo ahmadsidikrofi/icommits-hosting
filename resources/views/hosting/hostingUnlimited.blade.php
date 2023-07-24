@@ -4,17 +4,18 @@
 <body>
     @include('partials.Firstnavbar')
     <!-- Hero Section Begin -->
-    <section class="hero-section ">
-        <div class="hero__slider owl-carousel z-0">
-            <div class="hero__item set-bg" data-setbg="/image/hero/hero-1-unlimited-hosting.png">
+    @foreach ( $hero as $hero )
+    <section class="hero-section">
+        <div class=" z-0">
+            <div class="hero__item set-bg" data-setbg="/image/{{ $hero->image_background }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <h5><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> Rp9000/bulan</h5>
-                                <h2>Menghadirkan Website Impian Anda dengan Layanan Hosting Terbaik!</h2>
+                                <h2>{{ $hero->title_hero }}</h2>
                                 <p class="text-light fs-5 lh-lg">
-                                    Kami menawarkan paket web hosting yang lengkap dengan fitur terbaik dan harga yang terjangkau. Jangan lewatkan kesempatan ini!
+                                    {{ $hero->deskripsi }}
                                 </p>
                                 <a href="#promo" class="btn btn-outline-primary fw-semibold">Lihat Daftar Promo Terbaru</a>
                             </div>
@@ -29,6 +30,7 @@
             </div>
         </div>
     </section>
+    @endforeach
     <!-- Hero Section End -->
 
     <!-- Paket Web Hosting Section Start -->
