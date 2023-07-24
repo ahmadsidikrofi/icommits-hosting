@@ -15,7 +15,7 @@ class Hero extends Model
 
     protected $table = "tb_hero";
     protected $guarded = [];
-    protected $fillable = ['title_hero', 'mini_title', 'deskripsi', 'link_button', 'image_background', 'image_right', 'id_menu_navbar', 'id_submenu_navbar'];
+    // protected $fillable = ['title_hero', 'mini_title', 'deskripsi', 'link_button', 'image_background', 'image_right', 'id_menu_navbar', 'id_submenu_navbar'];
     protected $dates = ['deleted_at'];
     public $timestamps = true;
     public function sluggable(): array
@@ -29,12 +29,12 @@ class Hero extends Model
 
     public function menu_navbar()
     {
-        return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar');
+        return $this->belongsTo(MenuNavbar::class, 'slug_menu_navbar');
     }
 
     public function submenu_navbar()
     {
-        return $this->belongsTo(SubMenuNavbar::class, 'id_submenu_navbar');
+        return $this->belongsTo(SubMenuNavbar::class, 'slug_submenu_navbar');
     }
 
 

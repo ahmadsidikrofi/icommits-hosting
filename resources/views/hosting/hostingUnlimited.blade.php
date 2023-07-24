@@ -4,18 +4,18 @@
 <body>
     @include('partials.Firstnavbar')
     <!-- Hero Section Begin -->
-    @foreach ( $hero as $hero )
     <section class="hero-section">
         <div class=" z-0">
-            <div class="hero__item set-bg" data-setbg="/image/{{ $hero->image_background }}">
+            @foreach ($hero as $herro)
+            <div class="hero__item set-bg" data-setbg="/image/hero/{{ $herro->image_background }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <h5><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> Rp9000/bulan</h5>
-                                <h2>{{ $hero->title_hero }}</h2>
+                                <h2>{{ $herro->title_hero }}</h2>
                                 <p class="text-light fs-5 lh-lg">
-                                    {{ $hero->deskripsi }}
+                                    {{ $herro->deskripsi }}
                                 </p>
                                 <a href="#promo" class="btn btn-outline-primary fw-semibold">Lihat Daftar Promo Terbaru</a>
                             </div>
@@ -28,9 +28,10 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
-    @endforeach
+
     <!-- Hero Section End -->
 
     <!-- Paket Web Hosting Section Start -->
