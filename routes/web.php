@@ -33,9 +33,7 @@ Route::get('/promo', function () {
 Route::get('/promo', [PromoController::class, "tanya"]);
 
 // Bab Hosting
-Route::get('/hosting-unlimited', function () {
-    return view('hosting.hostingUnlimited');
-});
+Route::get('/hosting-unlimited', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);
 
 Route::get('/cloud-hosting', function () {
     return view('hosting.cloudHosting');
@@ -45,7 +43,7 @@ Route::get('/client', function () {
     return view('clientArea.homeClient');
 });
 
-Route::get('/hosting-unlimited', [ModuleHostingUnlimitedController::class, "tanya"]);
+// Route::get('/hosting-unlimited', [ModuleHostingUnlimitedController::class, "tanya"]);
 
 // ====== Halaman dan Menu Admin (CMS) Start // ======
 
@@ -79,12 +77,12 @@ Route::put('/admin/edit/menu-navbar/{slug}', [MenuNavbarController::class, "edit
 Route::get('/admin/sub-menu-navbar/{id}', [subMenuNavbarController::class, "viewPageSubMenu"]);
 Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tambahSubMenu"]);
 
-//Module Hero
+// Module Hero
 // Route::get('/admin/hero', function () {
 //     return view('admin.module.hero.index');
 // });
 
-Route::resource('/admin/hero', HeroController::class);  
+Route::resource('/admin/hero', HeroController::class);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 

@@ -15,7 +15,6 @@ class subMenuNavbarController extends Controller
     {
         $submenu = SubMenuNavbar::orderBy('urutan', 'asc')->where('id_menu_navbar', $menuNavbar->id)->get();
         $submenuCount = SubMenuNavbar::where('id_menu_navbar', $menuNavbar->id)->count();
-        // $menuNavbar = MenuNavbar::where('slug', $slug)->first();
         $menuNavbar = MenuNavbar::find($id);
         $ShowSubMenu = SubMenuNavbar::where('id_menu_navbar', $menuNavbar->id)->get();
         return view('admin.subMenuNavbar.showSubMenu', compact(['ShowSubMenu', 'menuNavbar', 'submenu', 'submenuCount']));
@@ -25,8 +24,7 @@ class subMenuNavbarController extends Controller
     public function tambahSubMenu(Request $request, MenuNavbar $menuNavbar)
     {
         $validator = Validator::make($request->all(), [
-            'id_menu_navbar' => 'required', // Pastikan id_menu_navbar tidak kosong
-            // ... (validasi lainnya, jika ada)
+            'id_menu_navbar' => 'required', 
         ]);
 
         if ($validator->fails()) {
@@ -47,7 +45,7 @@ class subMenuNavbarController extends Controller
         DB::commit();
 
         if ( $request -> hasFile("image") ) {
-            $request -> file("image")->move("img/buku/", $request->file("image")->getClientOriginalName());
+            $request -> file("image")->move("image/", $request->file("image")->getClientOriginalName());
             $submenu -> image = $request -> file("image")->getClientOriginalName();
             $submenu -> save();
         }

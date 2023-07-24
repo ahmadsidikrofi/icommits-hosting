@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('tb_hero', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_menu_navbar')->unsigned()->nullable();
+            $table->bigInteger('id_submenu_navbar')->unsigned()->nullable();
+            $table->string('title_hero');
             $table->string('slug');
-            $table->bigInteger('id_kategori_hero')->unsigned();
-            $table->string('judul');
-            $table->string('sub_judul')->nullable();
+            $table->string('mini_title')->nullable();
+            $table->string('deskripsi')->nullable();
             $table->string('link_button')->nullable();
-            $table->foreign('id_kategori_hero')->references('id')->on('tb_kategori');
-            $table->string('gambar')->nullable();
+            $table->string('image_background')->nullable();
+            $table->string('image_right')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();

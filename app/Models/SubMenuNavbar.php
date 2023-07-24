@@ -19,6 +19,10 @@ class SubMenuNavbar extends Model
 
     public function menu()
     {
-        return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar');
+        return $this->belongsTo(MenuNavbar::class, 'id_submenu_navbar');
+    }
+    public function heroes()
+    {
+        return $this->hasOne(Hero::class, 'id_submenu_navbar');
     }
 }

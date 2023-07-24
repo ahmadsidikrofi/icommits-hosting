@@ -1,23 +1,10 @@
 @extends('partials.admin')
 
-@section('ckeditor')
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    {{-- <script>
-        CKEDITOR.replace('ckeditor', {
-            filebrowserUploadUrl: "{{ route('upload', ['_token' => csrf_token()]) }}",
-            filebrowserUploadMethod: 'form'
-        });
-    </script> --}}
-@endsection
-
 @section('js')
     <script src="{{ asset('assets/admin/js/jquery.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
-
-    <script>
-        $(".theSelect").select2();
-    </script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endsection
 
 @section('content')
@@ -52,12 +39,12 @@
                 <form action="{{ route('hero.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>Judul</label>
+                        <label>Title Hero</label>
                         <div class="input-group ">
-                            <input type="text" value="{{ old('judul') }}" placeholder="Masukkan Judul Hero"
-                                name="judul" autocomplete='off' class="form-control @error('judul') is-invalid @enderror"
+                            <input type="text" placeholder="Masukkan Judul Hero"
+                                name="title_hero" autocomplete='off' class="form-control @error('title_hero') is-invalid @enderror"
                                 required>
-                            @error('judul')
+                            @error('title_hero')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -65,19 +52,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Kategori Hero</label>
+                        <label>Mini Title</label>
                         <div class="input-group ">
-
-                            <select name="id_kategori_hero" required class="form-control"
-                                @error('id_kategori_hero') is-invalid @enderror>
-                                <option value="">-- Pilih Kategori Hero --</option>
-                                @foreach ($kategoriHero as $item)
-                                    <option value="{{ $item->id }}">
-                                        {{ $item->nama }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('id_kategori_hero')
+                            <input type="text" placeholder="Masukkan Mini Judul Hero"
+                                name="mini_title" class="form-control @error('mini_title') is-invalid @enderror"
+                                required>
+                            @error('mini_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -85,29 +65,63 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Teks</label>
-                        <textarea name="teks" id="ckeditor" autocomplete='off' class="form-control @error('teks') is-invalid @enderror"
-                            cols="30" rows="8">{{ old('teks') }}</textarea>
-                        @error('teks')
+                        <label>Pilih Menu Navbar</label>
+                        <div class="input-group ">
+                            <div class="col">
+                                <select class="form-control menu-navbar" name="menu_navbar" id="menu_navbar">
+                                    <option disabled selected> -- Silahkan Pilih -- </option>
+                                    @foreach ( $menuNavbar as $menu )
+                                        @if ($menu->tipe_menu === "link")
+                                            <option value="{{ $menu->id }}">{{ $menu->nama_menu }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('menu_navbar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Pilih subMenu Navbar</label>
+                        <div class="input-group ">
+                            <div class="col">
+                                <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
+                                    <option>Silahkan pilih</option>
+                                    @foreach ( $subMenuNavbar as $subMenu )
+                                        <option value="{{ $subMenu->id }}">{{ $subMenu->nama_sub_menu }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('submenu_navbar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi</label>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
+                            cols="30" rows="8">Tulis deskripsi hero disini</textarea>
+                        @error('deskripsi')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Upload File Gambar</label>
-                        <div class="custom-file mb-3">
-                            <input type="file" id="file" name="gambar"
-                                class="custom-file-input @error('gambar') is-invalid @enderror" accept="image/*"
-                                onchange="tampilkanPreview(this,'preview')" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        <label>Background Hero</label>
+                        <div class="input-group ">
+                            <input type="file" name="image_background" class="form-control @error('image_background') is-invalid @enderror">
+                                @error('image_background')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        <img id="preview" src="" alt="" class="rounded img-fluid" />
-                        @error('gambar')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
                     </div>
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary text-white">
@@ -149,4 +163,18 @@
             }
         }
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('.menu-navbar').select2();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.menu_submenu').select2();
+        });
+    </script>
+
+
 @endsection

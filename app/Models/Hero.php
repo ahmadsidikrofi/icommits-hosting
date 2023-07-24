@@ -14,28 +14,50 @@ class Hero extends Model
     use SoftDeletes;
 
     protected $table = "tb_hero";
+    protected $guarded = [];
+    protected $fillable = ['title_hero', 'mini_title', 'deskripsi', 'link_button', 'image_background', 'image_right', 'id_menu_navbar', 'id_submenu_navbar'];
     protected $dates = ['deleted_at'];
     public $timestamps = true;
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'kategori'
+                'source' => 'title_hero',
             ]
         ];
     }
 
-    public function kategoriHero()
+    public function menu_navbar()
     {
-        return $this->belongsTo(Kategori::class, 'id_kategori_hero');
+        return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar');
     }
+
+    public function submenu_navbar()
+    {
+        return $this->belongsTo(SubMenuNavbar::class, 'id_submenu_navbar');
+    }
+
+
+    // function menu_navbar()
+    // {
+    //     return $this->belongsTo(MenuNavbar::class, "hero_relation", "id_menu_navbar", "id_submenu_navbar", "id_hero");
+    // }
+
+    // public function menus()
+    // {
+    //     return $this->belongsTo(MenuNavbar::class, "id_menu_navbar");
+    // }
+    // public function subMenus()
+    // {
+    //     return $this->belongsTo(MenuNavbar::class, "id_submenu_navbar");
+    // }
 
     public function gambar()
     {
-        if ($this->gambar && file_exists(public_path('images/artikel/' . $this->gambar))) {
+        if ($this->gambar && file_exists(public_path('image/hero' . $this->gambar))) {
             return asset('image/hero/' . $this->gambar);
         } else {
-            return asset('images/no_image.png');
+            return asset('image/no_image.png');
         }
     }
 
