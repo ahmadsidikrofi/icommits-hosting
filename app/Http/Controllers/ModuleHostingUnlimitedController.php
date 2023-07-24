@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hero;
 use App\Models\Qna;
+use App\Models\Hero;
 use App\Models\MenuNavbar;
-use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
+use Illuminate\Support\Facades\DB;
 use App\Models\ModuleHostingUnlimited;
+use Illuminate\Support\Facades\Request;
 
 class ModuleHostingUnlimitedController extends Controller
 {
@@ -44,7 +45,12 @@ class ModuleHostingUnlimitedController extends Controller
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         $pertanyaan = Qna::all();
-        $hero = Hero::all();
+
+        // $selectedMenuSlug = Request::input('menu_navbar');
+        // $hero = DB::table('tb_hero')
+        // ->where('slug', $selectedMenuSlug)
+        // ->first();
+        $hero = Hero::all()->take(1);
         return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
     }
 

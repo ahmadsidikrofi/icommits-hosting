@@ -148,7 +148,7 @@
                                                         <label>Link Navbar</label>
                                                         <div class="input-group mb-3">
                                                             <input type="text" name="link" autocomplete='off' class="form-control
-                                                            @error('link') is-invalid @enderror" value="{{ $menu->link }}" required maxlength="30">
+                                                            @error('link') is-invalid @enderror" value="{{ $menu->link }}" required>
                                                             @error('link')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>

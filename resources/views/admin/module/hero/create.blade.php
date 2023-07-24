@@ -72,7 +72,7 @@
                                     <option disabled selected> -- Silahkan Pilih -- </option>
                                     @foreach ( $menuNavbar as $menu )
                                         @if ($menu->tipe_menu === "link")
-                                            <option value="{{ $menu->id }}">{{ $menu->nama_menu }}</option>
+                                            <option value="{{ $menu->slug }}">{{ $menu->nama_menu }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -85,11 +85,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Pilih subMenu Navbar</label>
+                        <label>Pilih Submenu Navbar</label>
                         <div class="input-group ">
                             <div class="col">
                                 <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
-                                    <option>Silahkan pilih</option>
+                                    <option disabled selected>Silahkan pilih</option>
                                     @foreach ( $subMenuNavbar as $subMenu )
                                         <option value="{{ $subMenu->id }}">{{ $subMenu->nama_sub_menu }}</option>
                                     @endforeach

@@ -1,15 +1,5 @@
 @extends('partials.admin')
 
-@section('ckeditor')
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <script>
-        CKEDITOR.replace('ckeditor', {
-            filebrowserUploadUrl: "{{ route('upload', ['_token' => csrf_token()]) }}",
-            filebrowserUploadMethod: 'form'
-        });
-    </script>
-@endsection
-
 @section('content')
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -17,7 +7,7 @@
 
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">Artikel</h4>
+            <h4 class="page-title">Hero</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a href="/admin/dashboard">
@@ -34,7 +24,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="">Edit Artikel</a>
+                    <a href="">Edit Hero</a>
                 </li>
             </ul>
         </div>
@@ -43,16 +33,16 @@
                 <h4 class="card-title col-sm-10">Edit Data Hero</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('hero.update', $artikel->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('hero.update', $hero->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label>Judul</label>
+                        <label>Title Hero</label>
                         <div class="input-group ">
-                            <input type="text" value="{{ $artikel->judul }}" placeholder="Masukkan Judul Hero"
-                                name="judul" autocomplete='off' class="form-control @error('judul') is-invalid @enderror"
+                            <input type="text" value="{{ $hero->title_hero }}" placeholder="Masukkan Title Hero"
+                                name="title_hero" autocomplete='off' class="form-control @error('title_hero') is-invalid @enderror"
                                 required>
-                            @error('judul')
+                            @error('title_hero')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
 
@@ -61,20 +51,32 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Kategori Hero</label>
+                        <label>Mini Title</label>
                         <div class="input-group ">
+                            <input type="text" value="{{ $hero->mini_title }}" placeholder="Masukkan Mini Title"
+                                name="mini_title" autocomplete='off' class="form-control @error('mini_title') is-invalid @enderror"
+                                required>
+                            @error('mini_title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
 
-                            <select name="id_kategori_hero" required class="form-control"
-                                @error('id_kategori_hero') is-invalid @enderror>
-                                <option value="">-- Pilih Kategori Hero --</option>
-                                @foreach ($kategoriHero as $item)
-                                    <option value="{{ $item->id }}"
-                                        {{ $artikel->id_kategori_artikel == $item->id ? 'selected' : '' }}>
-                                        {{ $item->nama }}
-                                    </option>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Pilih Menu Navbar</label>
+                        <div class="input-group ">
+                            <select name="menu_navbar" required class="form-control"
+                                @error('menu_navbar') is-invalid @enderror>
+                                <option value="{{ $hero->menu_navbar }}">-- Pilih Menu Navbar --</option>
+                                @foreach ( $menuNavbar as $menu )
+                                    @if ($menu->tipe_menu === "link")
+                                    <option value="{{ $menu->slug }}"{{ $hero->menu_navbar->slug === $menu->slug ? ' selected' : '' }}>{{ $menu->nama_menu }}</option>
+                                    @endif
                                 @endforeach
                             </select>
-                            @error('id_kategori_artikel')
+                            @error('menu_navbar')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -82,28 +84,45 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Teks</label>
-                        <textarea name="teks" id="ckeditor" autocomplete='off' class="form-control @error('teks') is-invalid @enderror"
-                            cols="30" rows="8">{{ $artikel->teks }}</textarea>
-                        @error('teks')
+                        <label>Pilih Submenu Navbar</label>
+                        <div class="input-group ">
+                            <select name="submenu_navbar" required class="form-control"
+                                @error('submenu_navbar') is-invalid @enderror>
+                                <option value="{{ $hero->submenu_navbar }}">-- Pilih Submenu Navbar --</option>
+                                @foreach ( $subMenuNavbar as $subMenu )
+                                    <option value="{{ $subMenu->id }}">{{ $subMenu->nama_sub_menu }}</option>
+                                @endforeach
+                            </select>
+                            @error('submenu_navbar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi</label>
+                        <textarea name="deskripsi" id="deskripsi" autocomplete='off' class="form-control @error('deskripsi') is-invalid @enderror"
+                            cols="30" rows="8">{{ $hero->deskripsi }}</textarea>
+                        @error('deskripsi')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Upload File Gambar</label>
+                        <label>Background Hero</label>
                         <div class="custom-file mb-3">
-                            <input type="file" id="file" name="gambar"
-                                class="custom-file-input @error('gambar') is-invalid @enderror" accept="image/*"
+                            <input type="file" id="file" name="image_background"
+                                class="custom-file-input @error('image_background') is-invalid @enderror" accept="image/*"
                                 onchange="tampilkanPreview(this,'preview')" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose
                                 file</label>
                         </div>
                         <div class="row">
-                            <div class="col">
-                                <img src="{{ $artikel->gambar() }}" class="rounded img-fluid" alt="">
-                            </div>
+                            {{-- <div class="col">
+                                <img src="{{ $hero->image_background() }}" class="rounded img-fluid" alt="">
+                            </div> --}}
                             <div class="col">
                                 <center>
                                     <span id="panah"></span>
@@ -113,7 +132,7 @@
                                 <img id="preview" src="" alt="" class="rounded img-fluid float-right" />
                             </div>
                         </div>
-                        @error('gambar')
+                        @error('image_background')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -123,6 +142,7 @@
                         <button type="submit" class="btn btn-warning text-white"><i class="fa fa-save mr-1"></i>
                             Simpan Perubahan</button>
                     </div>
+                </form>
             </div>
         </div>
     </div>
@@ -137,8 +157,8 @@
     </script>
 
     <script>
-        function tampilkanPreview(gambar, idpreview) {
-            var gb = gambar.files;
+        function tampilkanPreview(image_background, idpreview) {
+            var gb = image_background.files;
             for (var i = 0; i < gb.length; i++) {
                 var gbPreview = gb[i];
                 var imageType = /image.*/;
