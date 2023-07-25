@@ -9,12 +9,14 @@ use App\Models\SubMenuNavbar;
 
 class promoController extends Controller
 {
-    function tanya()
+    function tanya($slug)
     {
         $pertanyaan = Qna::all();
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
-        $hero = Hero::all()->take(2)->skip(1);
-        return view('promo', compact(['pertanyaan', 'menuNavbar', 'subMenuNavbar', 'hero']));
+        
+        // $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
+        // $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
+        // return view('promo', compact(['pertanyaan', 'menuNavbar', 'subMenuNavbar', 'hero']));
     }
 }

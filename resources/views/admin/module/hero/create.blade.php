@@ -38,6 +38,7 @@
             <div class="card-body">
                 <form action="{{ route('hero.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="text" name="slug_navbar" id="slug_navbar" hidden>
                     <div class="form-group">
                         <label>Title Hero</label>
                         <div class="input-group ">
@@ -72,7 +73,7 @@
                                     <option disabled selected> -- Silahkan Pilih -- </option>
                                     @foreach ( $menuNavbar as $menu )
                                         @if ($menu->tipe_menu === "link")
-                                            <option value="{{ $menu->slug }}">{{ $menu->nama_menu }}</option>
+                                            <option value="{{ $menu->id }}">{{ $menu->nama_menu }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -89,9 +90,9 @@
                         <div class="input-group ">
                             <div class="col">
                                 <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
-                                    <option disabled selected>Silahkan pilih</option>
-                                    @foreach ( $subMenuNavbar as $subMenu )
-                                        <option value="{{ $subMenu->id }}">{{ $subMenu->nama_sub_menu }}</option>
+                                    <option disabled selected> -- Silahkan Pilih -- </option>
+                                    @foreach ($subMenuNavbar as $subMenu)
+                                        <option value="{{ $subMenu->id }}" data-slug="{{ $subMenu->slug }}">{{ $subMenu->nama_sub_menu }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -131,6 +132,17 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            // Fungsi untuk mengisi nilai slug_navbar saat subMenuNavbar dipilih
+            $('#submenu_navbar').change(function() {
+                const selectedSubmenu = $(this).find(':selected').val();
+                const selectedSubmenuSlug = $(this).find(':selected').data('slug');
+                $('#slug_navbar').val(selectedSubmenuSlug);
+            });
+        });
+    </script>
     <script>
         // Add the following code if you want the name of the file appear on select
         $(".custom-file-input").on("change", function() {

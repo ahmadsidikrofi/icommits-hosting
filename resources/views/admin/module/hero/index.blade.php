@@ -81,7 +81,7 @@
                                             <td data-header="No">{{ $no++ }}</td>
                                             <td data-header="Judul Hero"> {{ $item->title_hero }}</td>
                                             <td data-header="Link"> {{ $item->link_button}} </td>
-                                            <td data-header="Background Hero"> {{ $item->image_background}} </td>
+                                            <td data-header="Background Hero"> <img src="/image/hero/{{ $item->image_background}}" class="img-responsive w-75 h-75" alt=""> </td>
                                             <td data-header="Right Hero"> {{ $item->image_right}} </td>
                                             <td>
                                                 <form action="{{ route('hero.destroy', $item->id) }}" method="post">
@@ -140,7 +140,7 @@
                                     @error('id_kategori_artikel') is-invalid @enderror>
                                     <option value="">-- Pilih Kategori Artikel --</option>
                                         <option value="">
-                                            
+
                                         </option>
                                 </select>
                                 @error('id_kategori_artikel')

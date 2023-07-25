@@ -37,9 +37,9 @@ class subMenuNavbarController extends Controller
         $submenu = new SubMenuNavbar();
         $submenu->id_menu_navbar = $request->id_menu_navbar;
         $submenu->nama_sub_menu = $request->nama_sub_menu;
-        $submenu->slug = Str::slug($request->nama_sub_menu);
+        $submenu->slug = Str::slug($request->link);
         $submenu->deskripsi = $request->deskripsi;
-        $submenu->link = $request->link;
+        $submenu->link = $request->link ."/". $submenu->slug;
         $submenu->urutan = $submenuCount + 1;
         $submenu->save();
         DB::commit();

@@ -30,10 +30,10 @@ Route::get('/promo', function () {
     return view('promo');
 });
 
-Route::get('/promo', [PromoController::class, "tanya"]);
+Route::get('/promo/{slug}', [PromoController::class, "tanya"]);
 
 // Bab Hosting
-Route::get('/hosting-unlimited', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);
+Route::get('/hosting-unlimited/{slug}', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);
 
 Route::get('/cloud-hosting', function () {
     return view('hosting.cloudHosting');

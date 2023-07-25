@@ -18,18 +18,21 @@ class HeroController extends Controller
         return view('admin.module.hero.index', compact('hero'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         return view('admin.module.hero.create', compact([ 'menuNavbar', 'subMenuNavbar']));
     }
+    // $hero = new Hero();
+    // $hero->slug = Str::slug('title_hero');
+    // $hero->slug_navbar = $request->input('slug_navbar');
 
     public function store( Request $request )
     {
-        // $tambahHero->menu_navbar()->sync($request->menu_navbar);
-        // $tambahHero->menu_navbar()->sync($request->menu_submenu);
         $tambahHero = Hero::create($request->except('menu_navbar', 'submenu_navbar'));
+        $slugSubMenu = $request->input('slug_navbar');
+        $tambahHero->slug_navbar = $slugSubMenu;
         $tambahHero->menu_navbar()->associate($request->menu_navbar);
 
         // Jika submenu_navbar dipilih, simpan relasinya
@@ -42,6 +45,7 @@ class HeroController extends Controller
             $tambahHero -> image_background = $request -> file("image_background")->getClientOriginalName();
             $tambahHero -> save();
         }
+        $tambahHero->save();
         return redirect()->back();
     }
 

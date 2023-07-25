@@ -129,7 +129,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/admin/edit/menu-navbar/{{ $menu->slug }}" method="post">
+                                                <form action="/admin/edit/menu-navbar/{{ $menu->id }}" method="post">
                                                     @csrf
                                                     @method('put')
                                                     <div class="form-group">

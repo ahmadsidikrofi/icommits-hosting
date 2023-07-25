@@ -72,7 +72,7 @@
                                 <option value="{{ $hero->menu_navbar }}">-- Pilih Menu Navbar --</option>
                                 @foreach ( $menuNavbar as $menu )
                                     @if ($menu->tipe_menu === "link")
-                                    <option value="{{ $menu->slug }}"{{ $hero->menu_navbar->slug === $menu->slug ? ' selected' : '' }}>{{ $menu->nama_menu }}</option>
+                                        <option value="{{ $subMenu->id }}">{{ $subMenu->nama_sub_menu }}</option>
                                     @endif
                                 @endforeach
                             </select>

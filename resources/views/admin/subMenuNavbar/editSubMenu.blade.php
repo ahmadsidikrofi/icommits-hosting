@@ -74,6 +74,11 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Slug</label>
+                        <input type="text" name="slug" class="form-control" value="{{ $subMenu->slug }}"
+                        readonly>
+                    </div>
+                    <div class="form-group">
                         <label>Link</label>
                         <input type="text" name="link" class="form-control" value="{{ $subMenu->link }}"
                          placeholder="Tulis link disini yang akan dituju">

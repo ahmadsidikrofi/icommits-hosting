@@ -14,6 +14,7 @@
                     <div class="form-group">
                         <label>Nama SubMenu</label>
                         <div class="input-group">
+                            <input type="text" name="slug_submenu">
                             <input type="hidden" name="id_menu_navbar" value="{{ $menuNavbar->id }}">
                             <input type="text" placeholder="Masukkan Nama SubMenu"
                                 name="nama_sub_menu" autocomplete='off'

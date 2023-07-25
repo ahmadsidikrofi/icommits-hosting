@@ -6,16 +6,15 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class=" z-0">
-            @foreach ($hero as $herro)
-            <div class="hero__item set-bg" data-setbg="/image/hero/{{ $herro->image_background }}">
+            <div class="hero__item set-bg" data-setbg="/image/hero/{{ $hero->image_background }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <h5><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> Rp9000/bulan</h5>
-                                <h2>{{ $herro->title_hero }}</h2>
+                                <h2>{{ $hero->title_hero }}</h2>
                                 <p class="text-light fs-5 lh-lg">
-                                    {{ $herro->deskripsi }}
+                                    {{ $hero->deskripsi }}
                                 </p>
                                 <a href="#promo" class="btn btn-outline-primary fw-semibold">Lihat Daftar Promo Terbaru</a>
                             </div>
@@ -28,7 +27,6 @@
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </section>
 

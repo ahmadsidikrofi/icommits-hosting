@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('tb_hero', function (Blueprint $table) {
             $table->id();
-            $table->string('slug_menu_navbar')->nullable();
-            $table->string('slug_submenu_navbar')->nullable();
+            $table->unsignedBigInteger('id_menu_navbar')->nullable();
+            $table->unsignedBigInteger('id_submenu_navbar')->nullable();
             $table->string('title_hero');
             $table->string('slug');
+            $table->string('slug_navbar')->nullable();
             $table->string('mini_title')->nullable();
             $table->string('deskripsi')->nullable();
             $table->string('link_button')->nullable();
