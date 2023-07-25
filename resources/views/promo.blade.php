@@ -2,7 +2,7 @@
 <html lang="en">
 @include('partials.head')
 <body>
-    @include('partials.Firstnavbar')
+    {{-- @include('partials.Firstnavbar') --}}
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="">

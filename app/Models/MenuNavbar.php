@@ -23,25 +23,7 @@ class MenuNavbar extends Model
         return $this->belongsTo(Hero::class, 'id_menu_navbar');
     }
 
-    public function subMenu()
-    {
-        return $this->belongsTo(SubMenuNavbar::class, 'slug_submenu', 'slug');
-    }
 
-    // Gunakan metode 'saving' untuk mengisi nilai 'slug_submenu' sebelum menyimpan data
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($menuNavbar) {
-            if ($menuNavbar->tipe_menu === 'sub_menu') {
-                $subMenu = SubMenuNavbar::where('slug', $menuNavbar->slug)->first();
-                if ($subMenu) {
-                    $menuNavbar->slug_submenu = $subMenu->slug;
-                }
-            }
-        });
-    }
 
 
 

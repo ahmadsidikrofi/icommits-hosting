@@ -26,11 +26,8 @@ use App\Http\Controllers\HeroController;
 Route::get('/', [HomeController::class, "showHome"]);
 
 //Bab Promo
-Route::get('/promo', function () {
-    return view('promo');
-});
 
-Route::get('/promo/{slug}', [PromoController::class, "tanya"]);
+Route::get('/promo/{slug}', [PromoController::class, "promo"]);
 
 // Bab Hosting
 Route::get('/hosting-unlimited/{slug}', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);

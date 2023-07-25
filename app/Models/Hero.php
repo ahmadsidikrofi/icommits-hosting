@@ -29,7 +29,7 @@ class Hero extends Model
 
     public function menu_navbar()
     {
-        return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar');
+        return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar', 'nama_menu');
     }
 
     public function submenu_navbar()
@@ -58,8 +58,8 @@ class Hero extends Model
 
     public function gambar()
     {
-        if ($this->gambar && file_exists(public_path('image/hero' . $this->gambar))) {
-            return asset('image/hero/' . $this->gambar);
+        if ($this->image_background && file_exists(public_path('image/hero' . $this->image_background))) {
+            return asset('image/hero/' . $this->image_background);
         } else {
             return asset('image/no_image.png');
         }
@@ -67,8 +67,8 @@ class Hero extends Model
 
     public function deleteGambar()
     {
-        if ($this->gambar && file_exists(public_path('image/hero/' . $this->gambar))) {
-            return unlink(public_path('image/hero/' . $this->gambar));
+        if ($this->image_background && file_exists(public_path('image/hero/' . $this->image_background))) {
+            return unlink(public_path('image/hero/' . $this->image_background));
         }
     }
 

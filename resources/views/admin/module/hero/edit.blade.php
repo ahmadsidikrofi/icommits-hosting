@@ -37,6 +37,13 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
+                        @if ( $menuNavbar && $menuNavbar->tipe_menu === "link")
+                            <h4 class="fw-bold">Menu saat ini: {{ $menuNavbar->nama_menu }}</h4>
+                        @else
+                            <h4 class="fw-bold">Menu saat ini: {{ $subMenuNavbar->nama_sub_menu }}</h4>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label>Title Hero</label>
                         <div class="input-group ">
                             <input type="text" value="{{ $hero->title_hero }}" placeholder="Masukkan Title Hero"
@@ -45,7 +52,6 @@
                             @error('title_hero')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
-
                                 </span>
                             @enderror
                         </div>
@@ -65,42 +71,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Pilih Menu Navbar</label>
-                        <div class="input-group ">
-                            <select name="menu_navbar" required class="form-control"
-                                @error('menu_navbar') is-invalid @enderror>
-                                <option value="{{ $hero->menu_navbar }}">-- Pilih Menu Navbar --</option>
-                                @foreach ( $menuNavbar as $menu )
-                                    @if ($menu->tipe_menu === "link")
-                                        <option value="{{ $subMenu->id }}">{{ $subMenu->nama_sub_menu }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                            @error('menu_navbar')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Pilih Submenu Navbar</label>
-                        <div class="input-group ">
-                            <select name="submenu_navbar" required class="form-control"
-                                @error('submenu_navbar') is-invalid @enderror>
-                                <option value="{{ $hero->submenu_navbar }}">-- Pilih Submenu Navbar --</option>
-                                @foreach ( $subMenuNavbar as $subMenu )
-                                    <option value="{{ $subMenu->id }}">{{ $subMenu->nama_sub_menu }}</option>
-                                @endforeach
-                            </select>
-                            @error('submenu_navbar')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label>Deskripsi</label>
                         <textarea name="deskripsi" id="deskripsi" autocomplete='off' class="form-control @error('deskripsi') is-invalid @enderror"
                             cols="30" rows="8">{{ $hero->deskripsi }}</textarea>
@@ -112,25 +82,14 @@
                     </div>
                     <div class="form-group">
                         <label>Background Hero</label>
+                        <input class="form-control" type="text" id="formFile" name="image_background"
+                        value="{{ $hero->image_background }}">
                         <div class="custom-file mb-3">
                             <input type="file" id="file" name="image_background"
                                 class="custom-file-input @error('image_background') is-invalid @enderror" accept="image/*"
                                 onchange="tampilkanPreview(this,'preview')" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose
                                 file</label>
-                        </div>
-                        <div class="row">
-                            {{-- <div class="col">
-                                <img src="{{ $hero->image_background() }}" class="rounded img-fluid" alt="">
-                            </div> --}}
-                            <div class="col">
-                                <center>
-                                    <span id="panah"></span>
-                                </center>
-                            </div>
-                            <div class="col">
-                                <img id="preview" src="" alt="" class="rounded img-fluid float-right" />
-                            </div>
                         </div>
                         @error('image_background')
                             <span class="invalid-feedback" role="alert">
