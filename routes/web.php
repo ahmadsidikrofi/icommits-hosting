@@ -30,10 +30,10 @@ Route::get('/promo', function () {
     return view('promo');
 });
 
-Route::get('/promo', [PromoController::class, "tanya"]);
+Route::get('/promo/{slug}', [PromoController::class, "tanya"]);
 
 // Bab Hosting
-Route::get('/hosting-unlimited', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);
+Route::get('/hosting-unlimited/{slug}', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);
 
 Route::get('/cloud-hosting', function () {
     return view('hosting.cloudHosting');
@@ -76,6 +76,8 @@ Route::put('/admin/edit/menu-navbar/{slug}', [MenuNavbarController::class, "edit
 // Fitur Sub Menu
 Route::get('/admin/sub-menu-navbar/{id}', [subMenuNavbarController::class, "viewPageSubMenu"]);
 Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tambahSubMenu"]);
+Route::get('/admin/edit/menu-navbar/{slug}', [subMenuNavbarController::class, "viewPageEditSubMenu"]);
+Route::put('/admin/edit/menu-navbar/{slug}/store', [subMenuNavbarController::class, "editSubMenuStore"]);
 
 // Module Hero
 // Route::get('/admin/hero', function () {

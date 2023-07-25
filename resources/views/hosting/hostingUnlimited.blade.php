@@ -4,10 +4,9 @@
 <body>
     @include('partials.Firstnavbar')
     <!-- Hero Section Begin -->
-    @foreach ( $hero as $hero )
     <section class="hero-section">
         <div class=" z-0">
-            <div class="hero__item set-bg" data-setbg="/image/{{ $hero->image_background }}">
+            <div class="hero__item set-bg" data-setbg="/image/hero/{{ $hero->image_background }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -30,7 +29,7 @@
             </div>
         </div>
     </section>
-    @endforeach
+
     <!-- Hero Section End -->
 
     <!-- Paket Web Hosting Section Start -->

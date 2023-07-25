@@ -18,18 +18,21 @@ class HeroController extends Controller
         return view('admin.module.hero.index', compact('hero'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         return view('admin.module.hero.create', compact([ 'menuNavbar', 'subMenuNavbar']));
     }
+    // $hero = new Hero();
+    // $hero->slug = Str::slug('title_hero');
+    // $hero->slug_navbar = $request->input('slug_navbar');
 
     public function store( Request $request )
     {
-        // $tambahHero->menu_navbar()->sync($request->menu_navbar);
-        // $tambahHero->menu_navbar()->sync($request->menu_submenu);
         $tambahHero = Hero::create($request->except('menu_navbar', 'submenu_navbar'));
+        $slugSubMenu = $request->input('slug_navbar');
+        $tambahHero->slug_navbar = $slugSubMenu;
         $tambahHero->menu_navbar()->associate($request->menu_navbar);
 
         // Jika submenu_navbar dipilih, simpan relasinya
@@ -38,10 +41,11 @@ class HeroController extends Controller
         }
 
         if ( $request -> hasFile("image_background") ) {
-            $request -> file("image_background")->move("image/", $request->file("image_background")->getClientOriginalName());
+            $request -> file("image_background")->move("image/hero", $request->file("image_background")->getClientOriginalName());
             $tambahHero -> image_background = $request -> file("image_background")->getClientOriginalName();
             $tambahHero -> save();
         }
+        $tambahHero->save();
         return redirect()->back();
     }
 
@@ -89,43 +93,27 @@ class HeroController extends Controller
     public function edit($id)
     {
         $hero = Hero::findOrFail($id);
-        return view('admin.module.hero.edit', compact('hero', 'kategoriHero'));
+        $menuNavbar = MenuNavbar::all();
+        $subMenuNavbar = SubMenuNavbar::all();
+        return view('admin.module.hero.edit', compact('hero'));
     }
 
     public function update(Request $request, $id)
     {
-        $rules = [
-            'judul' => 'required',
-            'id_kategori_artikel' => 'required',
-            'teks' => 'required|min:50',
-            'gambar' => 'nullable|image|max:2048',
-        ];
+        $updateHero = Hero::findOrFail($id);
+        $updateHero->Hero::update($request->except('menu_navbar', 'submenu_navbar'));
+        $updateHero->menu_navbar()->associate($request->menu_navbar);
 
-        $message = [
-            'required' => 'Data wajib diisi!',
-            'min' => 'Teks minimal :min karakter'
-        ];
+        if ($request->submenu_navbar) {
+            $updateHero->submenu_navbar()->associate($request->submenu_navbar);
+        }
 
-        $validation = Validator::make($request->all(), $rules, $message);
-        if ($validation->fails()) {
-            session()->put('danger', 'Data yang anda input tidak valid, silahkan di ulang');
-            return back()->withErrors($validation)->withInput();
+        if ( $request -> hasFile("image_background") ) {
+            $request -> file("image_background")->move("image/hero", $request->file("image_background")->getClientOriginalName());
+            $updateHero -> image_background = $request -> file("image_background")->getClientOriginalName();
+            $updateHero -> save();
         }
-        $hero = Hero::findOrFail($id);
-        $hero->id_kategori_hero = $request->id_kategori_hero;
-        $hero->judul = $request->judul;
-        $hero->slug = Str::slug($request->judul);
-        $hero->teks = $request->teks;
-        if ($request->hasFile('gambar')) {
-            $hero->deleteGambar();
-            $image = $request->gambar;
-            $name = rand(1000, 9999) . $image->getClientOriginalName();
-            $image->move('images/hero/', $name);
-            $hero->gambar = $name;
-        }
-        $hero->save();
-        session()->put('success', 'Data Berhasil diedit');
-        return redirect()->route('hero.index');
+        return view('admin.module.hero.index');
     }
 
     public function destroy($id)
