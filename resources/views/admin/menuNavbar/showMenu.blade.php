@@ -121,7 +121,7 @@
                                     aria-labelledby="modalSayaLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg border-0" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header ">
+                                            <div class="modal-header">
                                                 <h5 class="modal-title" id="modalSayaLabel">Buat Menu Navbar Baru</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
@@ -129,7 +129,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/admin/edit/menu-navbar/{{ $menu->slug }}" method="post">
+                                                <form action="/admin/edit/menu-navbar/{{ $menu->id }}" method="post">
                                                     @csrf
                                                     @method('put')
                                                     <div class="form-group">
@@ -148,7 +148,7 @@
                                                         <label>Link Navbar</label>
                                                         <div class="input-group mb-3">
                                                             <input type="text" name="link" autocomplete='off' class="form-control
-                                                            @error('link') is-invalid @enderror" value="{{ $menu->link }}" required maxlength="30">
+                                                            @error('link') is-invalid @enderror" value="{{ $menu->link }}" required>
                                                             @error('link')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>

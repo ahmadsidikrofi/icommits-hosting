@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\MenuNavbar;
+use App\Models\SubMenuNavbar;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class MenuNavbarController extends Controller
@@ -13,16 +15,26 @@ class MenuNavbarController extends Controller
         return view('admin.menuNavbar.showMenu', compact(['menuNavbar']));
     }
 
-    public function tambahMenu( Request $request )
+    public function tambahMenu(Request $request)
     {
-        $tambahMenu = MenuNavbar::create($request->all());
+        $tambahMenu = new MenuNavbar();
+        $subMenuNavbar = new SubMenuNavbar();
+        $tambahMenu->nama_menu = $request->nama_menu;
+        $tambahMenu->tipe_menu = $request->tipe_menu;
+        $tambahMenu->slug = Str::slug($request->nama_menu);
+        $tambahMenu->slug_submenu = $request->slug;
+        $tambahMenu->link = $request->link ? $request->link . "/" . $tambahMenu->slug : null;
+        $tambahMenu->save();
         return redirect()->back();
     }
 
-    public function editMenu( $slug, Request $request )
+    public function editMenu($id, Request $request)
     {
-        $editMenuNavbar = MenuNavbar::where('slug', $slug)->first();
-        $editMenuNavbar->update($request->all());
+        $editMenuNavbar = MenuNavbar::findOrFail($id);
+        $editMenuNavbar->nama_menu = $request->nama_menu;
+        $editMenuNavbar->slug = Str::slug($request->link);
+        $editMenuNavbar->link = $request->link ? $request->link . "/" . $editMenuNavbar->slug : null;
+        $editMenuNavbar->save();
         return redirect()->back();
     }
 }

@@ -5,23 +5,23 @@
     {{-- @include('partials.Firstnavbar') --}}
     <!-- Hero Section Begin -->
     <section class="hero-section">
-        <div class="hero__slider owl-carousel">
-            <div class="hero__item set-bg" data-setbg="/image/hero/hero-1.png">
+        <div class="">
+            <div class="hero__item set-bg" data-setbg="/image/hero/{{ $hero->image_background }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <h5><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> Rp9000/bulan</h5>
-                                <h2>Promo Diskon Hosting, Domain, sertifikat SSL & Cloud VPS</h2>
+                                <h2>{{ $hero->title_hero }}</h2>
                                 <p class="text-light fs-5 lh-lg">
-                                    Dapatkan penawaran spesial dari DomaiNesia untuk memenuhi kebutuhan website Anda. Temukan berbagai kode promo terbaru untuk mendapat harga yang lebih terjangkau dengan kualitas layanan terbaik. Jangan sampai Anda melewatkan diskon hosting, domain, sertifikat SSL & Cloud VPS dari DomaiNesia.
+                                    {{ $hero->deskripsi }}
                                 </p>
                                 <a href="#promo" class="btn btn-outline-primary fw-semibold">Lihat Daftar Promo Terbaru</a>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="hero__img">
-                                <img src="/image/hero/hero-right.png" alt="">
+                        <div class="col-lg-6 z-1">
+                            <div class="hero-right">
+                                <img src="/image/hero/hero-right-unlimited-hosting.png" class="img-fluid" alt="">
                             </div>
                         </div>
                     </div>

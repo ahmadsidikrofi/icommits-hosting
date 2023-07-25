@@ -2,31 +2,21 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('assets/admin/assets/js/plugin/datatables/datatables.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#artikel').DataTable();
-        });
-    </script>
     <script src="{{ asset('js/sweetalert2.js') }}"></script>
     <script src="{{ asset('js/delete.js') }}"></script>
-@endsection
-
-@section('ckeditor')
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
-        CKEDITOR.replace('ckeditor', {
-            filebrowserUploadUrl: "",
-            filebrowserUploadMethod: 'form'
-        });
+        new DataTable('#hero');
     </script>
 @endsection
 
 @section('content')
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -71,15 +61,14 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table responsive-3 table-hover" id="hero">
+                    <table class="table display nowrap" id="hero">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Kategori Hero</th>
-                                <th>Judul</th>
-                                <th>Judul Kecil</th>
+                                <th>Title Hero</th>
                                 <th>Link Button</th>
-                                <th>Gambar</th>
+                                <th>Background Hero</th>
+                                <th>Right Hero</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -90,16 +79,10 @@
                                 @foreach ($hero as $item)
                                         <tr>
                                             <td data-header="No">{{ $no++ }}</td>
-                                            <td data-header="Kategori"> {{ $item->id_kategori_hero}} </td>
-                                            <td data-header="Judul"> {{ $item->judul }}</td>
-                                            <td data-header="Judul Kecil"> {{ $item->sub_judul}} </td>
+                                            <td data-header="Judul Hero"> {{ $item->title_hero }}</td>
                                             <td data-header="Link"> {{ $item->link_button}} </td>
-                                            <td data-header="gambar"><a href="{{ $item->gambar() }}"
-                                                    data-caption="{{ $item->judul }}" data-fancybox="gallery"> <img
-                                                        src="{{ $item->gambar() }}" class="m-2 rounded"
-                                                        style="width: 110px; height: 70px;" alt="gambar"> </td>
-                                                    
-                                            </a>
+                                            <td data-header="Background Hero"> <img src="/image/hero/{{ $item->image_background}}" class="img-responsive w-75 h-75" alt=""> </td>
+                                            <td data-header="Right Hero"> {{ $item->image_right}} </td>
                                             <td>
                                                 <form action="{{ route('hero.destroy', $item->id) }}" method="post">
                                                     @method('delete')
@@ -157,7 +140,7 @@
                                     @error('id_kategori_artikel') is-invalid @enderror>
                                     <option value="">-- Pilih Kategori Artikel --</option>
                                         <option value="">
-                                            
+
                                         </option>
                                 </select>
                                 @error('id_kategori_artikel')
@@ -201,36 +184,4 @@
             </div>
         </div>
     </div>
-    <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
-
-    <script>
-        function tampilkanPreview(gambar, idpreview) {
-            var gb = gambar.files;
-            for (var i = 0; i < gb.length; i++) {
-                var gbPreview = gb[i];
-                var imageType = /image.*/;
-                var preview = document.getElementById(idpreview);
-                var reader = new FileReader();
-
-                if (gbPreview.type.match(imageType)) {
-                    preview.file = gbPreview;
-                    reader.onload = (function(element) {
-                        return function(e) {
-                            element.src = e.target.result;
-                        };
-                    })(preview);
-                    reader.readAsDataURL(gbPreview);
-                } else {
-                    alert("file yang anda upload tidak sesuai. Khusus mengunakan image.");
-                }
-
-            }
-        }
-    </script>
 @endsection

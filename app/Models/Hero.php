@@ -13,9 +13,9 @@ class Hero extends Model
     use Sluggable;
     use SoftDeletes;
 
+    // protected $fillable = ['title_hero', 'mini_title', 'deskripsi', 'link_button', 'image_background', 'image_right', 'id_menu_navbar', 'id_submenu_navbar'];
     protected $table = "tb_hero";
     protected $guarded = [];
-    protected $fillable = ['title_hero', 'mini_title', 'deskripsi', 'link_button', 'image_background', 'image_right', 'id_menu_navbar', 'id_submenu_navbar'];
     protected $dates = ['deleted_at'];
     public $timestamps = true;
     public function sluggable(): array
@@ -35,6 +35,10 @@ class Hero extends Model
     public function submenu_navbar()
     {
         return $this->belongsTo(SubMenuNavbar::class, 'id_submenu_navbar');
+    }
+    public static function getHeroBySlug($slug)
+    {
+        return self::where('slug', $slug)->orWhere('slug_navbar', $slug)->first();
     }
 
 
