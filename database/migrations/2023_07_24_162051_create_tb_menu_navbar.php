@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('nama_menu');
             $table->string('slug');
-            $table->string('slug_submenu')->nullable();
             $table->enum('tipe_menu', ["link", "sub_menu"]);
             $table->string('link')->nullable();
             $table->integer('urutan')->nullable();

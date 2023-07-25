@@ -9,14 +9,20 @@ use App\Models\SubMenuNavbar;
 
 class promoController extends Controller
 {
-    function tanya($slug)
+    function promo($slug)
     {
-        $pertanyaan = Qna::all();
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
-        
-        // $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
-        // $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-        // return view('promo', compact(['pertanyaan', 'menuNavbar', 'subMenuNavbar', 'hero']));
+        $pertanyaan = Qna::all();
+        $menu = MenuNavbar::where('slug', $slug)->first();
+        if ($menu) {
+            $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
+            $hero = Hero::where('id_menu_navbar', $menuParent->id)->firstOrFail();
+            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+        } else {
+            $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
+            $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
+            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+        }
     }
 }

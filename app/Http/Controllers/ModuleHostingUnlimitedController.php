@@ -56,24 +56,24 @@ class ModuleHostingUnlimitedController extends Controller
             return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
         }
 
-        // $menu = MenuNavbar::where('slug' , $slug)->first();
-        // if ($menu) {
-        //     if ($menu->tipe_menu === 'link') {
-        //         // Jika tipe menu adalah 'link', cari hero berdasarkan id_menu_navbar
-        //         $menuLink = MenuNavbar::where('slug' , $slug)->first();
-        //         $hero = Hero::where('id_menu_navbar', $menuLink->id)->firstOrFail();
-        //     } elseif ($menu->tipe_menu === 'sub_menu') {
-        //         // Jika tipe menu adalah 'sub_menu', gunakan relasi untuk mencari hero berdasarkan id_submenu_navbar
-        //         $subMenu = $menu->subMenu;
-        //         if ($subMenu) {
-        //             $subMenu = SubMenuNavbar::where('slug', $slug);
-        //             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-        //         } else {
-        //             abort(404);
-        //         }
-        //     }
-        //     return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
-        // }
+    //     $menu = MenuNavbar::where('slug' , $slug)->first();
+    //     if ($menu) {
+    //         if ($menu->tipe_menu === 'link') {
+    //             // Jika tipe menu adalah 'link', cari hero berdasarkan id_menu_navbar
+    //             $menuLink = MenuNavbar::where('slug' , $slug)->first();
+    //             $hero = Hero::where('id_menu_navbar', $menuLink->id)->firstOrFail();
+    //         } elseif ($menu->tipe_menu === 'sub_menu') {
+    //             // Jika tipe menu adalah 'sub_menu', gunakan relasi untuk mencari hero berdasarkan id_submenu_navbar
+    //             $subMenu = $menu->subMenu;
+    //             if ($subMenu) {
+    //                 $subMenu = SubMenuNavbar::where('slug', $slug);
+    //                 $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
+    //             } else {
+    //                 abort(404);
+    //             }
+    //         }
+    //         return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+    //     }
     }
 
 

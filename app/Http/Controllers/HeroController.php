@@ -49,53 +49,13 @@ class HeroController extends Controller
         return redirect()->back();
     }
 
-    // public function store(Request $request)
-    // {
-    //     $rules = [
-    //         'judul' => 'required|unique:tb_hero',
-    //         'id_kategori_artikel' => 'required',
-    //         'teks' => 'required|min:50',
-    //         'gambar' => 'nullable|image|max:2048',
-    //     ];
 
-    //     $message = [
-    //         'required' => 'Data wajib diisi!',
-    //         'unique' => 'Data sudah ada!',
-    //         'min' => 'Teks minimal :min karakter'
-    //     ];
-
-    //     $validation = Validator::make($request->all(), $rules, $message);
-    //     if ($validation->fails()) {
-    //         session()->put('danger', 'Data yang anda input tidak valid, silahkan di ulang');
-    //         return back()->withErrors($validation)->withInput();
-    //     }
-    //     $hero = new Hero();
-    //     // $hero->id_kategori_hero = $request->id_kategori_hero;
-    //     $hero->title = $request->judul;
-    //     $hero->slug = Str::slug($request->judul);
-    //     $hero->teks = $request->teks;
-    //     if ($request->hasFile('gambar')) {
-    //         $image = $request->gambar;
-    //         $name = rand(1000, 9999) . $image->getClientOriginalName();
-    //         $image->move('images/hero/', $name);
-    //         $hero->gambar = $name;
-    //     }
-    //     $hero->save();
-
-    //     $konten = new Konten();
-    //     $konten->id_hero = $hero->id;
-    //     $konten->save();
-    //     session()->put('success', 'Data Berhasil ditambahkan');
-    //     return redirect()->route('hero.index');
-    // }
-
-
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         $hero = Hero::findOrFail($id);
-        $menuNavbar = MenuNavbar::all();
-        $subMenuNavbar = SubMenuNavbar::all();
-        return view('admin.module.hero.edit', compact('hero'));
+        $menuNavbar = MenuNavbar::where('id', $hero->id_menu_navbar)->first();
+        $subMenuNavbar = SubMenuNavbar::where('id', $hero->id_submenu_navbar)->first();
+        return view('admin.module.hero.edit', compact('hero','menuNavbar','subMenuNavbar'));
     }
 
     public function update(Request $request, $id)

@@ -22,7 +22,6 @@ class MenuNavbarController extends Controller
         $tambahMenu->nama_menu = $request->nama_menu;
         $tambahMenu->tipe_menu = $request->tipe_menu;
         $tambahMenu->slug = Str::slug($request->nama_menu);
-        $tambahMenu->slug_submenu = $request->slug;
         $tambahMenu->link = $request->link ? $request->link . "/" . $tambahMenu->slug : null;
         $tambahMenu->save();
         return redirect()->back();

@@ -29,7 +29,7 @@ class Hero extends Model
 
     public function menu_navbar()
     {
-        return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar');
+        return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar', 'nama_menu');
     }
 
     public function submenu_navbar()
