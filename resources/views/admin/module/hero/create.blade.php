@@ -89,7 +89,7 @@
                         <div class="input-group ">
                             <div class="col">
                                 <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
-                                    <option>Silahkan pilih</option>
+                                    <option value="-1">Silahkan pilih</option>
                                     @foreach ( $subMenuNavbar as $subMenu )
                                         <option value="{{ $subMenu->id }}">{{ $subMenu->nama_sub_menu }}</option>
                                     @endforeach

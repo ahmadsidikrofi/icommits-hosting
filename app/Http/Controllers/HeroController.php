@@ -32,8 +32,8 @@ class HeroController extends Controller
         $tambahHero = Hero::create($request->except('menu_navbar', 'submenu_navbar'));
         $tambahHero->menu_navbar()->associate($request->menu_navbar);
 
-        // Jika submenu_navbar dipilih, simpan relasinya
-        if ($request->submenu_navbar) {
+        // Jika submenu_navbar dipilih dan nilainya valid, simpan relasinya
+        if ($request->submenu_navbar && $request->submenu_navbar != -1) {
             $tambahHero->submenu_navbar()->associate($request->submenu_navbar);
         }
 
@@ -133,13 +133,6 @@ class HeroController extends Controller
         $hero = Hero::findOrFail($id);
         $hero->deleteGambar();
         $hero->delete();
-
-        $kontens = Konten::where('id_hero', $hero->id)->get();
-        foreach ($kontens as $kontenb) {
-            $kontenb;
-        }
-        $konten = Konten::find($kontenb->id);
-        $konten->delete();
         session()->put('success', 'Data Berhasil dihapus');
         return redirect()->route('hero.index');
     }
