@@ -2,7 +2,7 @@
 <html lang="en">
 @include('partials.head')
 <body>
-    {{-- @include('partials.Firstnavbar') --}}
+    @include('partials.Firstnavbar')
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="">
@@ -11,17 +11,17 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
-                                <h5><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> Rp9000/bulan</h5>
+                                <h5><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> {{ $hero->mini_title }}</h5>
                                 <h2>{{ $hero->title_hero }}</h2>
                                 <p class="text-light fs-5 lh-lg">
                                     {{ $hero->deskripsi }}
                                 </p>
-                                <a href="#promo" class="btn btn-outline-primary fw-semibold">Lihat Daftar Promo Terbaru</a>
+                                <a href="#promo" class="btn btn-outline-primary fw-semibold">{{ $hero->link_button }}</a>
                             </div>
                         </div>
                         <div class="col-lg-6 z-1">
                             <div class="hero-right">
-                                <img src="/image/hero/hero-right-unlimited-hosting.png" class="img-fluid" alt="">
+                                <img src="/image/hero/{{ $hero->image_right }}" class="img-fluid" alt="">
                             </div>
                         </div>
                     </div>
