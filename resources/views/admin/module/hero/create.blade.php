@@ -10,7 +10,7 @@
 @section('content')
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">Halaman</h4>
+            <h4 class="page-title">Hero</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a href="/admin/dashboard">
@@ -21,7 +21,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/hero">Hero</a>
+                    <a href="/admin/hero">Daftar Hero</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -59,6 +59,19 @@
                                 name="mini_title" class="form-control @error('mini_title') is-invalid @enderror"
                                 required>
                             @error('mini_title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Get Started (Optional)</label>
+                        <div class="input-group ">
+                            <input type="text" placeholder="cth:Dapatkan Sekarang"
+                                name="link_button" class="form-control @error('link_button') is-invalid @enderror"
+                                required>
+                            @error('link_button')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -106,7 +119,7 @@
                     <div class="form-group">
                         <label>Deskripsi</label>
                         <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
-                            cols="30" rows="8">Tulis deskripsi hero disini</textarea>
+                            cols="30" rows="8" placeholder="Tulis deskripsi hero disini"></textarea>
                         @error('deskripsi')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -118,6 +131,17 @@
                         <div class="input-group ">
                             <input type="file" name="image_background" class="form-control @error('image_background') is-invalid @enderror">
                                 @error('image_background')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Right Hero</label>
+                        <div class="input-group ">
+                            <input type="file" name="image_right" class="form-control @error('image_right') is-invalid @enderror">
+                                @error('image_right')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

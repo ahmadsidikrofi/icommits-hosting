@@ -518,6 +518,10 @@ ol {
     top: 0;
 	opacity: 1;
 }
+.hero-section .hero__item .hero__text h5 {
+    top: 0;
+	opacity: 1;
+}
 
 .hero__slider.owl-carousel .owl-item.active .hero__item .hero__text .primary-btn {
 	top: 0;
