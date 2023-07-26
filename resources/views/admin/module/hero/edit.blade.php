@@ -72,6 +72,19 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Get Started (Optional)</label>
+                        <div class="input-group ">
+                            <input type="text"value="{{ $hero->link_button }}" placeholder="cth:Dapatkan Sekarang"
+                                name="link_button" class="form-control @error('link_button') is-invalid @enderror"
+                                required>
+                            @error('link_button')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>Deskripsi</label>
                         <textarea name="deskripsi" id="deskripsi" autocomplete='off' class="form-control @error('deskripsi') is-invalid @enderror"
                             cols="30" rows="8">{{ $hero->deskripsi }}</textarea>
@@ -100,6 +113,30 @@
                             </div>
                         </div>
                         @error('image_background')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Right Hero</label>
+                        <div class="row">
+                            <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">
+                                <img src="/image/hero/{{ $hero->image_right }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 mx-auto">
+                                <div> class="custom-file mb-3">
+                                    <input type="file" id="file" name="image_right"
+                                        class="custom-file-input @error('image_right') is-invalid @enderror" accept="image/*"
+                                        onchange="tampilkanPreview(this,'preview')" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose
+                                        file</label>
+                                </div>
+                            </div>
+                        </div>
+                        @error('image_right')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

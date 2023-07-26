@@ -45,6 +45,12 @@ class HeroController extends Controller
             $tambahHero -> image_background = $request -> file("image_background")->getClientOriginalName();
             $tambahHero -> save();
         }
+
+        if ( $request -> hasFile("image_right") ) {
+            $request -> file("image_right")->move("image/hero", $request->file("image_right")->getClientOriginalName());
+            $tambahHero -> image_right = $request -> file("image_right")->getClientOriginalName();
+            $tambahHero -> save();
+        }
         $tambahHero->save();
         return redirect()->back();
     }
@@ -62,15 +68,16 @@ class HeroController extends Controller
     {
         $updateHero = Hero::findOrFail($id);
         $updateHero->update($request->except('menu_navbar', 'submenu_navbar'));
-        $updateHero->menu_navbar()->associate($request->menu_navbar);
-
-        if ($request->submenu_navbar) {
-            $updateHero->submenu_navbar()->associate($request->submenu_navbar);
-        }
 
         if ( $request -> hasFile("image_background") ) {
             $request -> file("image_background")->move("image/hero", $request->file("image_background")->getClientOriginalName());
             $updateHero -> image_background = $request -> file("image_background")->getClientOriginalName();
+            $updateHero -> save();
+        }
+
+        if ( $request -> hasFile("image_right") ) {
+            $request -> file("image_right")->move("image/hero", $request->file("image_right")->getClientOriginalName());
+            $updateHero -> image_right = $request -> file("image_right")->getClientOriginalName();
             $updateHero -> save();
         }
         return redirect('/admin/hero');
@@ -83,25 +90,5 @@ class HeroController extends Controller
         $hero->delete();
         session()->put('success', 'Data Berhasil dihapus');
         return redirect()->route('hero.index');
-    }
-
-    public function upload(Request $request)
-    {
-        if ($request->hasFile('upload')) {
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName . '_' . time() . '.' . $extension;
-
-            $request->file('upload')->move(public_path('images/artikel'), $fileName);
-
-            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = asset('images/artikel/' . $fileName);
-            $msg = 'Image uploaded successfully';
-            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
-
-            @header('Content-type: text/html; charset=utf-8');
-            echo $response;
-        }
     }
 }

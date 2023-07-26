@@ -63,12 +63,22 @@ class Hero extends Model
         } else {
             return asset('image/no_image.png');
         }
+
+        if ($this->image_right && file_exists(public_path('image/hero' . $this->image_right))) {
+            return asset('image/hero/' . $this->image_right);
+        } else {
+            return asset('image/no_image.png');
+        }
     }
 
     public function deleteGambar()
     {
         if ($this->image_background && file_exists(public_path('image/hero/' . $this->image_background))) {
             return unlink(public_path('image/hero/' . $this->image_background));
+        }
+
+        if ($this->image_right && file_exists(public_path('image/hero/' . $this->image_right))) {
+            return unlink(public_path('image/hero/' . $this->image_right));
         }
     }
 

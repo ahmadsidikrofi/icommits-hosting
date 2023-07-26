@@ -80,9 +80,9 @@
                                         <tr>
                                             <td data-header="No">{{ $no++ }}</td>
                                             <td data-header="Judul Hero"> {{ $item->title_hero }}</td>
-                                            <td data-header="Link"> {{ $item->link_button}} </td>
+                                            <td data-header="Get Started"> {{ $item->link_button}} </td>
                                             <td data-header="Background Hero"> <img src="/image/hero/{{ $item->image_background}}" class="img-responsive w-75 h-75" alt=""> </td>
-                                            <td data-header="Right Hero"> {{ $item->image_right}} </td>
+                                        <td data-header="Right Hero"> <img src="/image/hero/{{ $item->image_right}}" class="img-responsive w-50 h-50" alt=""> </td>
                                             <td>
                                                 <form action="{{ route('hero.destroy', $item->id) }}" method="post">
                                                     @method('delete')
