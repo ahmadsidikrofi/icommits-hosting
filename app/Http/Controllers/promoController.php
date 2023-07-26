@@ -9,7 +9,7 @@ use App\Models\SubMenuNavbar;
 
 class promoController extends Controller
 {
-    function promo($slug)
+    function allPromo($slug)
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();

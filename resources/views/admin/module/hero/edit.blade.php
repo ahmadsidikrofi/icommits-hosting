@@ -1,9 +1,10 @@
 @extends('partials.admin')
 
 @section('content')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <div class="page-inner">
         <div class="page-header">
@@ -82,14 +83,21 @@
                     </div>
                     <div class="form-group">
                         <label>Background Hero</label>
-                        <input class="form-control" type="text" id="formFile" name="image_background"
-                        value="{{ $hero->image_background }}">
-                        <div class="custom-file mb-3">
-                            <input type="file" id="file" name="image_background"
-                                class="custom-file-input @error('image_background') is-invalid @enderror" accept="image/*"
-                                onchange="tampilkanPreview(this,'preview')" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose
-                                file</label>
+                        <div class="row">
+                            <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">
+                                <img src="/image/hero/{{ $hero->image_background }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 mx-auto">
+                                <div> class="custom-file mb-3">
+                                    <input type="file" id="file" name="image_background"
+                                        class="custom-file-input @error('image_background') is-invalid @enderror" accept="image/*"
+                                        onchange="tampilkanPreview(this,'preview')" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose
+                                        file</label>
+                                </div>
+                            </div>
                         </div>
                         @error('image_background')
                             <span class="invalid-feedback" role="alert">

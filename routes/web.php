@@ -27,7 +27,7 @@ Route::get('/', [HomeController::class, "showHome"]);
 
 //Bab Promo
 
-Route::get('/promo/{slug}', [PromoController::class, "promo"]);
+Route::get('/promo/{slug}', [PromoController::class, "allPromo"]);
 
 // Bab Hosting
 Route::get('/hosting-unlimited/{slug}', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);

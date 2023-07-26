@@ -61,7 +61,7 @@ class HeroController extends Controller
     public function update(Request $request, $id)
     {
         $updateHero = Hero::findOrFail($id);
-        $updateHero->Hero::update($request->except('menu_navbar', 'submenu_navbar'));
+        $updateHero->update($request->except('menu_navbar', 'submenu_navbar'));
         $updateHero->menu_navbar()->associate($request->menu_navbar);
 
         if ($request->submenu_navbar) {
@@ -73,7 +73,7 @@ class HeroController extends Controller
             $updateHero -> image_background = $request -> file("image_background")->getClientOriginalName();
             $updateHero -> save();
         }
-        return view('admin.module.hero.index');
+        return redirect('/admin/hero');
     }
 
     public function destroy($id)
