@@ -26,8 +26,12 @@ use App\Http\Controllers\HeroController;
 Route::get('/', [HomeController::class, "showHome"]);
 
 //Bab Promo
-
 Route::get('/promo/{slug}', [PromoController::class, "allPromo"]);
+
+// Domain
+Route::get('/domain', function () {
+    return view('domain');
+});
 
 // Bab Hosting
 Route::get('/hosting-unlimited/{slug}', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);
@@ -77,9 +81,6 @@ Route::get('/admin/edit/menu-navbar/{slug}', [subMenuNavbarController::class, "v
 Route::put('/admin/edit/menu-navbar/{slug}/store', [subMenuNavbarController::class, "editSubMenuStore"]);
 
 // Module Hero
-// Route::get('/admin/hero', function () {
-//     return view('admin.module.hero.index');
-// });
 
 Route::resource('/admin/hero', HeroController::class);
 // ====== Halaman dan Menu Admin (CMS) End // ======

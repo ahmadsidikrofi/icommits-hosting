@@ -32,13 +32,6 @@
                 </li>
                 <li><a href="#">Domain</a></li>
                 <li><a href="#">VPS</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Blog Details</a></li>
-                        <li><a href="#">404</a></li>
-                    </ul>
-                </li>
                 <li><a href="#">Email</a></li>
                 <li><a href="#">Plugins</a></li>
             </ul>
@@ -115,7 +108,7 @@
                                 @endif
                             @endforeach
                         </ul>
-                        
+
                         {{-- <ul>
                             <li class="active"><a href="#">Hosting</a>
                                 <ul class="dropdown rounded-4 d-flex">

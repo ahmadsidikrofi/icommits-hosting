@@ -18,11 +18,11 @@ class promoController extends Controller
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_menu_navbar', $menuParent->id)->firstOrFail();
-            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+            return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+            return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
         }
     }
 }

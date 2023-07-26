@@ -66,11 +66,6 @@
     <section class="pricing-section-cloud-hosting spad">
         <div class="container">
             <div class="row">
-                {{-- <div class="col-lg-7 col-md-7">
-                    <div class="section-title normal-title">
-                        <h3>Pilih Paket Web Hosting</h3>
-                    </div>
-                </div> --}}
                 <div class="col-lg-5 col-md-5 mx-auto mb-5">
                     <div class="pricing__swipe-paket-cloud-btn">
                         <label for="cloud_starter" class="active">Cloud Starter

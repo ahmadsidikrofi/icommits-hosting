@@ -16,7 +16,13 @@
                                 <p class="text-light fs-5 lh-lg">
                                     {{ $hero->deskripsi }}
                                 </p>
-                                <a href="#promo" class="btn btn-outline-primary fw-semibold">Lihat Daftar Promo Terbaru</a>
+                                @if ($hero->link_button === NULL)
+                                    
+                                @else
+                                    <a href="#promo" class="btn btn-outline-primary fw-semibold">
+                                        Lihat Daftar Promo Terbaru
+                                    </a>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-6 z-1">

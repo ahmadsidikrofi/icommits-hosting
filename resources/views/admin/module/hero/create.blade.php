@@ -21,7 +21,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/halaman">Halaman</a>
+                    <a href="/admin/hero">Hero</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>
