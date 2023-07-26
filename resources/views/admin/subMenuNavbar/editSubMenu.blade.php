@@ -41,7 +41,7 @@
         </div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Tambah Paket Web Hosting Unlimited</h4>
+                <h4 class="card-title">Get Started</h4>
             </div>
             <div class="card-body">
                 <form action="/admin/edit/menu-navbar/{{ $subMenu->slug }}/store" method="POST" enctype="multipart/form-data">
