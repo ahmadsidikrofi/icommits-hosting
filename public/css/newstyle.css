@@ -127,7 +127,7 @@ ol {
 	right: 0;
 	height: 13px;
 	width: 83px;
-	background-image: url(../img/line.png);
+	/* background-image: url(../image/line.png); */
 	content: "";
 	margin: 0 auto;
 }
@@ -356,7 +356,7 @@ ol {
 	left: -4cm;
 	top: 40px;
 	margin-top: 30px;
-	width: 10cm;
+	width: 13cm;
 	background: #7d5ccc;
 	opacity: 0;
 	visibility: hidden;
@@ -629,7 +629,7 @@ ol {
 
 /* Halaman Cek Domain Start */
 .hero_item_domain {
-	height: 945px;
+	height: 500px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -648,13 +648,20 @@ ol {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/img/hero/hero-domain.png');
+    background-image: url('/image/hero/hero-domain.png');
     filter: blur(8px);
     z-index: -1;
 }
 
 .hero_item_domain .item_domain_text {
 	padding-top: 184px;
+}
+.hero_item_domain .cek_domain .section-title {
+    margin-top: 150px;
+}
+.hero_item_domain .cek_domain .section-title h3 {
+    color: white;
+    text-shadow: 2px 8px 8px #000000
 }
 
 .hero_item_domain .item_domain_text h5 {
@@ -4132,7 +4139,7 @@ ol {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url('/img/hero/hero-domain.png');
+	/* background-image: url('/image/hero/hero-domain.png'); */
 	filter: blur(8px);
 	z-index: -1;
 }
