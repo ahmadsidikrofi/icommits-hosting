@@ -26,18 +26,6 @@
                         <p>Menu</p>
                     </a>
                 </li>
-                <li class="nav-item {{ Request::is('admin/halaman') ? 'active' : '' }}">
-                    <a href="/admin/halaman">
-                        <i class="fa-solid fa-layer-group"></i>
-                        <p>Halaman</p>
-                    </a>
-                </li>
-                <li class="nav-item {{ Request::is('admin/link') ? 'active' : '' }}">
-                    <a href="/admin/link">
-                        <i class="fa-solid fa-link"></i>
-                        <p>Link</p>
-                    </a>
-                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>

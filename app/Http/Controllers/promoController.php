@@ -25,4 +25,10 @@ class promoController extends Controller
             return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
         }
     }
+
+    public function index()
+    {
+        $hero = Hero::all();
+        return view('admin.module.hero.index', compact('hero'));
+    }
 }
