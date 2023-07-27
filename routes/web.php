@@ -9,7 +9,7 @@ use App\Http\Controllers\MenuNavbarController;
 use App\Http\Controllers\ModuleHostingUnlimitedController;
 use App\Http\Controllers\subMenuNavbarController;
 use App\Models\MenuNavbar;
-use App\Http\Controllers\qnaController;
+use App\Http\Controllers\QnaController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\HeroController;
 
@@ -28,6 +28,7 @@ Route::get('/', [HomeController::class, "showHome"]);
 
 //Bab Promo
 Route::get('/promo/{slug}', [PromoController::class, "allPromo"]);
+Route::resource('/admin/promo', PromoController::class);
 
 // Domain
 Route::get('/domain/{slug}', [DomainController::class, "searchDomainPage"]);
@@ -69,7 +70,7 @@ Route::put('/admin/edit/paket-hosting-unlimited/{slug}/store', [ModuleHostingUnl
 
 //Module QnA
 //Menampilkan QnA dihalaman admin
-Route::resource('admin/qna', qnaController::class);
+Route::resource('admin/qna', QnaController::class);
 
 // Fitur Menu Navbar
 Route::get('/admin/menu-navbar', [MenuNavbarController::class, "viewPageMenu"]);
@@ -83,7 +84,6 @@ Route::get('/admin/edit/menu-navbar/{slug}', [subMenuNavbarController::class, "v
 Route::put('/admin/edit/menu-navbar/{slug}/store', [subMenuNavbarController::class, "editSubMenuStore"]);
 
 // Module Hero
-
 Route::resource('/admin/hero', HeroController::class);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 

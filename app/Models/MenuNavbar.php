@@ -23,6 +23,11 @@ class MenuNavbar extends Model
         return $this->belongsTo(Hero::class, 'id_menu_navbar');
     }
 
+    public function promo()
+    {
+        return $this->belongsTo(Hero::class, 'id_menu_navbar');
+    }
+
 
 
 

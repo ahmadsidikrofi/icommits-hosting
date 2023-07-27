@@ -16,8 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('id_menu_navbar')->nullable();
             $table->unsignedBigInteger('id_submenu_navbar')->nullable();
             $table->string('slug');
-            $table->string('mini_title');
-            $table->string('title_promo');
+            $table->string('title_promo')->nullable();
+            $table->string('mini_title_promo')->nullable();
+            $table->string('mini_title_card');
+            $table->string('title_card');
             $table->string('link_promo')->nullable();
             $table->string('image')->nullable();
             $table->timestamp('expired_at')->nullable();

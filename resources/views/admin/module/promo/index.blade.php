@@ -22,7 +22,7 @@
 
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">Hero</h4>
+            <h4 class="page-title">Promo</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a href="/admin/dashboard">
@@ -61,11 +61,12 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Jenis Promo</th>
-                                <th>Judul Promo</th>
-                                <th>Durasi</th>
-                                <th>Gambar</th>
-                                <th>Aksi</th>
+                                <th>Mini Title</th>
+                                <th>Title</th>
+                                <th>Link</th>
+                                <th>Expired At</th>
+                                <th>Image</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,15 +76,16 @@
                                 @foreach ($promo as $item)
                                         <tr>
                                             <td data-header="No">{{ $no++ }}</td>
-                                            <td data-header="Judul Hero"> {{ $item->title_hero }}</td>
-                                            <td data-header="Get Started"> {{ $item->link_button}} </td>
-                                            <td data-header="Background Hero"> <img src="/image/hero/{{ $item->image_background}}" class="img-responsive w-75 h-75" alt=""> </td>
-                                        <td data-header="Right Hero"> <img src="/image/hero/{{ $item->image_right}}" class="img-responsive w-50 h-50" alt=""> </td>
+                                            <td data-header="mini_title"> {{ $item->mini_title_card }}</td>
+                                            <td data-header="title_promo"> {{ $item->title_card}} </td>
+                                            <td data-header="link_promo"> {{ $item->link_promo}} </td>
+                                            <td data-header="expired_at"> {{ $item->expired_at}} </td>
+                                            <td data-header="gambar_promo"> <img src="/image/{{ $item->image}}" class="img-responsive w-75 h-75" alt=""> </td>
                                             <td>
-                                                <form action="{{ route('hero.destroy', $item->id) }}" method="post">
+                                                <form action="{{ route('promo.destroy', $item->id) }}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <a href="{{ route('hero.edit', $item->id) }}"
+                                                    <a href="{{ route('promo.edit', $item->id) }}"
                                                         class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa-solid fa-pen-to-square"></i> </a>
@@ -102,82 +104,5 @@
         </div>
     </div>
 
-    <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg border-0" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalSayaLabel">Tambah Data Hero</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('hero.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label>Judul</label>
-                            <div class="input-group ">
-                                <input type="text" value="" placeholder="Masukkan Judul artikel"
-                                    name="judul" autocomplete='off'
-                                    class="form-control @error('judul') is-invalid @enderror" required>
-                                @error('judul')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Kategori Artikel</label>
-                            <div class="input-group ">
 
-                                <select name="id_kategori_artikel" required class="form-control"
-                                    @error('id_kategori_artikel') is-invalid @enderror>
-                                    <option value="">-- Pilih Kategori Artikel --</option>
-                                        <option value="">
-
-                                        </option>
-                                </select>
-                                @error('id_kategori_artikel')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Teks</label>
-                            <textarea name="teks" id="ckeditor" autocomplete='off' class="form-control @error('teks') is-invalid @enderror"
-                                cols="30" rows="8">{{ old('teks') }}</textarea>
-                            @error('teks')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Upload File Gambar</label>
-                            <div class="custom-file mb-3">
-                                <input type="file" id="file" name="gambar"
-                                    class="custom-file-input @error('gambar') is-invalid @enderror" accept="image/*"
-                                    onchange="tampilkanPreview(this,'preview')" id="customFile">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
-                            </div>
-                            <img id="preview" src="" alt="" class="rounded img-fluid" />
-                            @error('gambar')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary text-white">Simpan</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection
