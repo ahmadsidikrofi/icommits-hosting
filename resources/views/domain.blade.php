@@ -13,8 +13,8 @@
                         <div class="col-lg-10">
                             <div class="cek_domain">
                                 <div class="section-title">
-                                    <h3 class="text-light fs-4">Cek Domain & Dapatkan Dengan Harga Yang Lebih Murah</h3>
-                                    <p class="text-light fs-6 mt-2">Temukan dan aktifkan identitas digitalmu dengan memeriksa pilihan domain murah yang sesuai dengan keinginan!</p>
+                                    <h3 class="fs-4 mt-5"> {{ $hero->title_hero }} </h3>
+                                    <p class="text-light fs-6 mt-2">{{ $hero->mini_title }}</p>
                                 </div>
                                 <div class="form_cek_domain">
                                     <form action="#">

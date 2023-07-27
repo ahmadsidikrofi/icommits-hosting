@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Qna;
 use App\Models\Hero;
 use App\Models\MenuNavbar;
 use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
 
-class PromoController extends Controller
+class DomainController extends Controller
 {
-    function allPromo($slug)
+    public function searchDomainPage( $slug )
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
@@ -18,11 +19,11 @@ class PromoController extends Controller
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_menu_navbar', $menuParent->id)->firstOrFail();
-            return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+            return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-            return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+            return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
         }
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\domainController;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\ModuleHostingUnlimited;
@@ -29,9 +30,10 @@ Route::get('/', [HomeController::class, "showHome"]);
 Route::get('/promo/{slug}', [PromoController::class, "allPromo"]);
 
 // Domain
-Route::get('/domain', function () {
-    return view('domain');
-});
+Route::get('/domain/{slug}', [DomainController::class, "searchDomainPage"]);
+
+// Cloud Hosting
+
 
 // Bab Hosting
 Route::get('/hosting-unlimited/{slug}', [ModuleHostingUnlimitedController::class, "hostingUnlimited"]);

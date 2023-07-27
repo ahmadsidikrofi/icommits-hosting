@@ -656,6 +656,13 @@ ol {
 .hero_item_domain .item_domain_text {
 	padding-top: 184px;
 }
+.hero_item_domain .cek_domain .section-title {
+    margin-top: 150px;
+}
+.hero_item_domain .cek_domain .section-title h3 {
+    color: white;
+    text-shadow: 2px 8px 8px #000000
+}
 
 .hero_item_domain .item_domain_text h5 {
 	color: #ffffff;
