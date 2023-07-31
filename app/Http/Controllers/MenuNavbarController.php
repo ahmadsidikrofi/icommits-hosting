@@ -31,7 +31,7 @@ class MenuNavbarController extends Controller
     {
         $editMenuNavbar = MenuNavbar::findOrFail($id);
         $editMenuNavbar->nama_menu = $request->nama_menu;
-        $editMenuNavbar->slug = Str::slug($request->link);
+        $editMenuNavbar->slug = Str::slug($request->nama_menu);
         $editMenuNavbar->link = $request->link ? $request->link . "/" . $editMenuNavbar->slug : null;
         $editMenuNavbar->save();
         return redirect()->back();

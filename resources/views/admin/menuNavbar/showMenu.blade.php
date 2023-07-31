@@ -89,7 +89,7 @@
                                                     title="Edit" data-toggle="modal" data-target="#editMenu{{ $menu->id }}"><i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                             @elseif ($menu->tipe_menu === "sub_menu")
-                                                <a href="/admin/sub-menu-navbar/{{ $menu->id }}" class="btn btn-sm btn-success text-white"
+                                                <a href="/admin/sub-menu-navbar/{{ $menu->slug }}" class="btn btn-sm btn-success text-white"
                                                     title="Edit"><i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                             @endif
@@ -145,8 +145,18 @@
                                                             @enderror
                                                         </div>
                                                         <hr>
+                                                        {{-- @if ($menu->link !== NULL)
+                                                        <option value="" selected disabled>Kamu sudah memilih link dari {{ $menu->slug }}</option>
+                                                        @else
+                                                        <option value="" selected disabled>-- Pilih Link --</option>
+                                                        @endif --}}
                                                         <label>Link Navbar</label>
-                                                        <div class="input-group mb-3">
+                                                        <select class="form-control" name="link" id="link">
+                                                            <option @if ($menu->link == '/hosting-unlimited/' . $menu->slug) selected @endif value="/hosting-unlimited" >Hosting Unlimited</option>
+                                                            <option @if ($menu->link == '/promoKeren/' . $menu->slug) selected @endif value="/promoKeren">Promo</option>
+                                                            <option @if ($menu->link == '/domain/' . $menu->slug) selected @endif value="/domain">Domain</option>
+                                                        </select>
+                                                        {{-- <div class="input-group mb-3">
                                                             <input type="text" name="link" autocomplete='off' class="form-control
                                                             @error('link') is-invalid @enderror" value="{{ $menu->link }}" required>
                                                             @error('link')
@@ -154,7 +164,7 @@
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                             @enderror
-                                                        </div>
+                                                        </div> --}}
                                                         @endif
 
                                                     </div>

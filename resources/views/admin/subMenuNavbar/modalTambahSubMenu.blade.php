@@ -40,7 +40,13 @@
                     </div>
                     <div class="form-group">
                         <label>Link</label>
-                        <div class="input-group ">
+                        <select class="form-control" name="link" id="link">
+                            <option value="" selected disabled>-- Pilih Link --</option>
+                            <option value="/hosting-unlimited" >Hosting Unlimited</option>
+                            <option value="/promoKeren">Promo</option>
+                            <option value="/domain">Domain</option>
+                        </select>
+                        {{-- <div class="input-group ">
                             <input type="text" placeholder="Masukkan link"
                                 name="link" autocomplete='off'
                                 class="form-control @error('link') is-invalid @enderror" required>
@@ -49,7 +55,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="form-group">
                         <label>Icon</label>

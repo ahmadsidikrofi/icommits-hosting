@@ -36,55 +36,65 @@
                 <h4 class="card-title">Tambah Data Hero</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('hero.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="/admin/create/service/store" method="post">
                     @csrf
                     <div class="form-group">
-                        <label>Title Hero</label>
-                        <div class="input-group ">
-                            <input type="text" placeholder="Masukkan Judul Hero"
-                                name="title_hero" autocomplete='off' class="form-control @error('title_hero') is-invalid @enderror"
+                        <label>Section Name</label>
+                        <div class="input-group mb-3">
+                            @if ($readonlySectionTitle)
+                                <input type="text" name="section_title" autocomplete='off' class="form-control" placeholder="Section telah terisi, lakukan pengeditan apabila ingin dirubah" readonly>
+                            @else
+                                <input type="text" name="section_title" autocomplete='off' class="form-control @error('section_title') is-invalid @enderror">
+                                @error('section_title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            @endif
+                        </div>
+                        <label>Service Name</label>
+                        <div class="input-group mb-3">
+                            <input type="text" name="services_title" autocomplete='off'
+                                class="form-control
+                        @error('services_title') is-invalid @enderror"
                                 required>
-                            @error('title_hero')
+                            @error('services_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Mini Title</label>
-                        <div class="input-group ">
-                            <input type="text" placeholder="Masukkan Mini Judul Hero"
-                                name="mini_title" class="form-control @error('mini_title') is-invalid @enderror"
+                        <label>Service Description</label>
+                        <div class="input-group mb-3">
+                            <input type="text" name="services_deskripsi" autocomplete='off' maxlength="66"
+                                class="form-control
+                        @error('services_deskripsi') is-invalid @enderror"
                                 required>
-                            @error('mini_title')
+                            @error('services_deskripsi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Get Started (Optional)</label>
-                        <div class="input-group ">
-                            <input type="text" placeholder="cth:Dapatkan Sekarang"
-                                name="link_button" class="form-control @error('link_button') is-invalid @enderror"
+                        <label>Service Price</label>
+                        <div class="input-group mb-3">
+                            <input type="text" name="services_price" autocomplete='off'
+                                class="form-control
+                        @error('services_price') is-invalid @enderror"
                                 required>
-                            @error('link_button')
+                            @error('services_price')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Pilih Menu Navbar</label>
-                        <div class="input-group ">
+                        <label>Choose Navbar Menu</label>
+                        <div class="input-group mb-4">
                             <div class="col">
                                 <select class="form-control menu-navbar" name="menu_navbar" id="menu_navbar">
                                     <option disabled selected> -- Silahkan Pilih -- </option>
-                                    @foreach ( $menuNavbar as $menu )
-                                        @if ($menu->tipe_menu === "link")
+                                    @foreach ($menuNavbar as $menu)
+                                        @if ($menu->tipe_menu === 'link')
                                             <option value="{{ $menu->id }}">{{ $menu->nama_menu }}</option>
                                         @endif
                                     @endforeach
@@ -96,15 +106,14 @@
                                 </span>
                             @enderror
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Pilih Submenu Navbar</label>
+
+                        <label>Choose Navbar SubMenu</label>
                         <div class="input-group ">
                             <div class="col">
                                 <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
                                     <option disabled selected> -- Silahkan Pilih -- </option>
                                     @foreach ($subMenuNavbar as $subMenu)
-                                        <option value="{{ $subMenu->id }}" data-slug="{{ $subMenu->slug }}">{{ $subMenu->nama_sub_menu }}</option>
+                                        <option value="{{ $subMenu->id }}"> {{ $subMenu->nama_sub_menu }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -115,41 +124,9 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Deskripsi</label>
-                        <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
-                            cols="30" rows="8" placeholder="Tulis deskripsi hero disini"></textarea>
-                        @error('deskripsi')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Background Hero</label>
-                        <div class="input-group ">
-                            <input type="file" name="image_background" class="form-control @error('image_background') is-invalid @enderror">
-                                @error('image_background')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Right Hero</label>
-                        <div class="input-group ">
-                            <input type="file" name="image_right" class="form-control @error('image_right') is-invalid @enderror">
-                                @error('image_right')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-primary text-white">
-                            Simpan </button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-warning text-white">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>
@@ -200,6 +177,4 @@
             $('.menu_submenu').select2();
         });
     </script>
-
-
 @endsection

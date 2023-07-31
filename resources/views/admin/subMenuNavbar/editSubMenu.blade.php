@@ -44,59 +44,66 @@
                 <h4 class="card-title">Get Started</h4>
             </div>
             <div class="card-body">
-                <form action="/admin/edit/menu-navbar/{{ $subMenu->slug }}/store" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('put')
-                    <div class="form-group">
-                        <label for="nama_sub_menu">Nama sub menu</label>
-                        <div class="input-group">
-                            <input type="text" value="{{ $subMenu->nama_sub_menu }}" placeholder="Masukkan nama sub menu"
-                                name="nama_sub_menu" autocomplete='off' class="form-control @error('nama_sub_menu') is-invalid @enderror"
-                                required>
-                            @error('nama_sub_menu')
+                @if ($subMenu)
+                    <form action="/admin/edit/submenu/{{ $subMenu->slug }}/store" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('put')
+                        <div class="form-group">
+                            <label for="nama_sub_menu">Nama sub menu</label>
+                            <div class="input-group">
+                                <input type="text" value="{{ $subMenu->nama_sub_menu }}" placeholder="Masukkan nama sub menu"
+                                    name="nama_sub_menu" autocomplete='off' class="form-control @error('nama_sub_menu') is-invalid @enderror"
+                                    required>
+                                @error('nama_sub_menu')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi</label>
+                            <div class="input-group">
+                                <input type="text" value="{{ $subMenu->deskripsi }}" placeholder="Masukkan deskripsi submenu"
+                                    name="deskripsi" autocomplete='off' class="form-control @error('deskripsi') is-invalid @enderror"
+                                    required>
+                                @error('deskripsi')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Slug</label>
+                            <input type="text" name="slug" class="form-control" value="{{ $subMenu->slug }}"
+                            readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Link</label>
+                            <select class="form-control" name="link" id="link">
+                                <option @if ($subMenu->link == '/hosting-unlimited/' . $subMenu->slug) selected @endif value="/hosting-unlimited">Hosting Unlimited</option>
+                                <option @if ($subMenu->link == '/promoKeren/' . $subMenu->slug) selected @endif value="/promoKeren">Promo</option>
+                                <option @if ($subMenu->link == '/domain/' . $subMenu->slug) selected @endif value="/domain">Domain</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Logo Sub Menu</label>
+                            <input class="form-control" type="file" value="{{ $subMenu->image }}">
+                            @error('paket_unggulan')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Deskripsi</label>
-                        <div class="input-group">
-                            <input type="text" value="{{ $subMenu->deskripsi }}" placeholder="Masukkan deskripsi submenu"
-                                name="deskripsi" autocomplete='off' class="form-control @error('deskripsi') is-invalid @enderror"
-                                required>
-                            @error('deskripsi')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-primary text-white">
+                                Simpan </button>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Slug</label>
-                        <input type="text" name="slug" class="form-control" value="{{ $subMenu->slug }}"
-                        readonly>
-                    </div>
-                    <div class="form-group">
-                        <label>Link</label>
-                        <input type="text" name="link" class="form-control" value="{{ $subMenu->link }}"
-                         placeholder="Tulis link disini yang akan dituju">
-                    </div>
-                    <div class="form-group">
-                        <label>Logo Sub Menu</label>
-                        <input class="form-control" type="file" value="{{ $subMenu->image }}">
-                        @error('paket_unggulan')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-primary text-white">
-                            Simpan </button>
-                    </div>
-                </form>
+                    </form>
+                @else
+                    <p>Data sub menu tidak ditemukan</p>
+                @endif
             </div>
         </div>
     </div>

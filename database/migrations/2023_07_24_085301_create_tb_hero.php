@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_submenu_navbar')->nullable();
             $table->string('title_hero');
             $table->string('slug');
-            $table->string('slug_navbar')->nullable();
             $table->string('mini_title')->nullable();
             $table->string('deskripsi')->nullable();
             $table->string('link_button')->nullable();
