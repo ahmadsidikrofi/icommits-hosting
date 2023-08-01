@@ -21,6 +21,8 @@ class promoController extends Controller
         if ($menu) {
             $hero = Hero::where('id_menu_navbar', $menu->id)->firstOrFail();
             $services_section = ServicesSection::where('id_menu_navbar', $menu->id)->get();
+            $promo = Promo::where('id_menu_navbar', $menu->id)->get();
+            $check_promo = Promo::count();
         } else {
             // Cari data Hero berdasarkan slug dari SubMenuNavbar
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
@@ -28,20 +30,29 @@ class promoController extends Controller
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
             $promo = Promo::where('id_submenu_navbar', $subMenu->id)->get();
         }
-        return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo']));
+        return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo']));
     }
+
     public function index()
     {
+        $menuNavbar = MenuNavbar::all();
+        $subMenuNavbar = SubMenuNavbar::all();
         $promo = Promo::all();
-        return view('admin.module.promo.index', compact('promo'));
+        return view('admin.module.promo.index', compact(['menuNavbar', 'subMenuNavbar','promo']));
     }
 
     public function create(Request $request)
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
-        return view('admin.module.promo.create', compact([ 'menuNavbar', 'subMenuNavbar']));
+        $promo = Promo::first();
+        $readonlySectionTitle = false;
+        if ($promo) {
+            $readonlySectionTitle = true;
+        }
+        return view('admin.module.promo.create', compact(['menuNavbar', 'subMenuNavbar', 'readonlySectionTitle']));
     }
+
 
     public function store( Request $request )
     {
@@ -86,8 +97,6 @@ class promoController extends Controller
             $interval->i
         );
 
-    // Update the 'expired_at' attribute with the countdown time
-        $updatePromo->expired_at = $countdownTime;
 
         if ( $request -> hasFile("promo") ) {
             $request -> file("promo")->move("image/", $request->file("promo")->getClientOriginalName());

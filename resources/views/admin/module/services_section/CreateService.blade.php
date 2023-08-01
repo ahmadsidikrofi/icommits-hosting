@@ -21,7 +21,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/hero">Daftar Hero</a>
+                    <a href="/admin/services-section">Daftar Service</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -33,7 +33,7 @@
         </div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Tambah Data Hero</h4>
+                <h4 class="card-title">Tambah Data Service</h4>
             </div>
             <div class="card-body">
                 <form action="/admin/create/service/store" method="post">
