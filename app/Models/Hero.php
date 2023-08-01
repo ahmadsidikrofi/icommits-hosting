@@ -42,20 +42,6 @@ class Hero extends Model
     }
 
 
-    // function menu_navbar()
-    // {
-    //     return $this->belongsTo(MenuNavbar::class, "hero_relation", "id_menu_navbar", "id_submenu_navbar", "id_hero");
-    // }
-
-    // public function menus()
-    // {
-    //     return $this->belongsTo(MenuNavbar::class, "id_menu_navbar");
-    // }
-    // public function subMenus()
-    // {
-    //     return $this->belongsTo(MenuNavbar::class, "id_submenu_navbar");
-    // }
-
     public function gambar()
     {
         if ($this->image_background && file_exists(public_path('image/hero' . $this->image_background))) {

@@ -10,7 +10,7 @@
 @section('content')
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">Hero</h4>
+            <h4 class="page-title">Promo</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a href="/admin/dashboard">
@@ -21,30 +21,29 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/hero">Daftar Hero</a>
+                    <a href="/admin/hero">Daftar Promo</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="">Tambah Hero</a>
+                    <a href="">Tambah Promo</a>
                 </li>
             </ul>
         </div>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Tambah Data Hero</h4>
+                <h4 class="card-title">Tambah Data Promo</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('hero.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('promo.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>Hero's Title</label>
+                        <label>Section Title</label>
                         <div class="input-group ">
-                            <input type="text" placeholder="Insert Hero's Title"
-                                name="title_hero" autocomplete='off' class="form-control @error('title_hero') is-invalid @enderror"
-                                required>
-                            @error('title_hero')
+                            <input type="text" placeholder="Insert Title"
+                                name="title_promo" class="form-control @error('title_promo') is-invalid @enderror">
+                            @error('title_promo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -52,12 +51,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Mini Title</label>
+                        <label>Section Mini Title</label>
                         <div class="input-group ">
                             <input type="text" placeholder="Insert Mini Title"
-                                name="mini_title" class="form-control @error('mini_title') is-invalid @enderror"
-                                required>
-                            @error('mini_title')
+                                name="mini_title_promo"  class="form-control @error('mini_title_promo') is-invalid @enderror">
+                            @error('mini_title_promo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -65,12 +63,37 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Get Started (Optional)</label>
+                        <label>Card Mini Title</label>
+                        <div class="input-group ">
+                            <input type="text" placeholder="Insert Mini Title"
+                                name="mini_title_card" class="form-control @error('mini_title_card') is-invalid @enderror"
+                                required>
+                            @error('mini_title_card')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Title</label>
+                        <div class="input-group ">
+                            <input type="text" placeholder="Insert Title"
+                                name="title_card" class="form-control @error('title_card') is-invalid @enderror"
+                                required>
+                            @error('title_card')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Get Promo (Optional)</label>
                         <div class="input-group ">
                             <input type="text" placeholder="Ex: Get Now!"
-                                name="link_button" class="form-control @error('link_button') is-invalid @enderror"
-                                required>
-                            @error('link_button')
+                                name="link_promo" class="form-control @error('link_promo') is-invalid @enderror">
+                            @error('link_promo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -78,7 +101,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Choose Menu's Navbar</label>
+                        <label>Choose Navbar's Menu</label>
                         <div class="input-group ">
                             <div class="col">
                                 <select class="form-control menu-navbar" name="menu_navbar" id="menu_navbar">
@@ -116,31 +139,20 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
-                        <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
-                            cols="30" rows="8" placeholder="Insert Description"></textarea>
-                        @error('deskripsi')
+                        <label>Expired At</label>
+                        <input type="date" placeholder="Ex: Get Now!"
+                        name="expired_at" class="form-control @error('expired_at') is-invalid @enderror">
+                        @error('expired_at')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Background Hero</label>
+                        <label>Image</label>
                         <div class="input-group ">
-                            <input type="file" name="image_background" class="form-control @error('image_background') is-invalid @enderror">
-                                @error('image_background')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Right Hero</label>
-                        <div class="input-group ">
-                            <input type="file" name="image_right" class="form-control @error('image_right') is-invalid @enderror">
-                                @error('image_right')
+                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+                                @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -149,13 +161,23 @@
                     </div>
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary text-white">
-                            Save </button>
+                            Simpan </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
+    <script>
+        $(document).ready(function() {
+            // Fungsi untuk mengisi nilai slug_navbar saat subMenuNavbar dipilih
+            $('#submenu_navbar').change(function() {
+                const selectedSubmenu = $(this).find(':selected').val();
+                const selectedSubmenuSlug = $(this).find(':selected').data('slug');
+                $('#slug_navbar').val(selectedSubmenuSlug);
+            });
+        });
+    </script>
     <script>
         // Add the following code if you want the name of the file appear on select
         $(".custom-file-input").on("change", function() {

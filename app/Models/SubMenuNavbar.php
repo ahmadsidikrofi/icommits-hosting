@@ -30,9 +30,8 @@ class SubMenuNavbar extends Model
     {
         return $this->belongsTo(ServicesSection::class, 'id_submenu_navbar');
     }
+    public function promo()
+    {
+        return $this->belongsTo(Hero::class, 'id_submenu_navbar');
+    }
 }
-
-    // public function heroes()
-    // {
-    //     return $this->hasOne(Hero::class, 'id_submenu_navbar');
-    // }

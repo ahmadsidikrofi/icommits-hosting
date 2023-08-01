@@ -77,11 +77,14 @@
             <div class="col-sm-6 col-md-3">
                 <a href="/admin/services-section" style="text-decoration: none">
                     <div class="card card-stats card-round d-block bg-primary-gradient">
+                <a href="/admin/promo" style="text-decoration: none">
+                    <div class="card card-stats card-round d-block bg-info-gradient">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-5">
                                     <div class="icon-big text-center text-white">
                                         <i class="fa-solid fa-section"></i>
+                                        <i class="fa-solid fa-tag"></i>
                                     </div>
                                 </div>
                                 <div class="col-7 col-stats">
@@ -107,6 +110,7 @@
                                 <div class="col-7 col-stats">
                                     <div class="numbers ">
                                         <h1 class="card-title text-white">Blog Section</h2>
+                                        <h1 class="card-title text-white">Promo</h2>
                                     </div>
                                 </div>
                             </div>
