@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/plan_pro.css">
 
 <body>
-    @include('partials.Firstnavbar')
+    {{-- @include('partials.Firstnavbar') --}}
 
     <!-- Hero Section Begin -->
     <section class="hero-section">

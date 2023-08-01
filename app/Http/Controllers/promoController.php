@@ -42,6 +42,15 @@ class PromoController extends Controller
         return view('admin.module.promo.create', compact([ 'menuNavbar', 'subMenuNavbar']));
     }
 
+    public function section(Request $request)
+    {
+        $tambahPromo = new Promo();
+        $tambahPromo->title_promo = $request->title_promo;
+        $tambahPromo->mini_title_promo = $request->mini_title_promo;
+        $tambahPromo->save();
+        return redirect()->back();
+    }
+
     public function store( Request $request )
     {
         $tambahPromo = Promo::create($request->except('menu_navbar', 'submenu_navbar', 'slug_navbar'));
@@ -85,8 +94,6 @@ class PromoController extends Controller
             $interval->i
         );
 
-    // Update the 'expired_at' attribute with the countdown time
-        $updatePromo->expired_at = $countdownTime;
 
         if ( $request -> hasFile("promo") ) {
             $request -> file("promo")->move("image/", $request->file("promo")->getClientOriginalName());

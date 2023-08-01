@@ -66,7 +66,10 @@
                                             $now = new DateTime();
                                             $interval = $now->diff($expiredDateTime);
                                             ?>
-                                            <span class="fw-bold mx-1">{{ $interval->days }} hari {{ $interval->h }} jam {{ $interval->i }} menit</span>
+                                            <!-- Display the countdown time -->
+                                            <span class="fw-bold mx-1">
+                                                {{ $interval->d }} hari {{ $interval->h }} jam {{ $interval->i }} menit
+                                            </span>
                                         </h6>
                                     </li>
                                 </ul>

@@ -21,7 +21,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/hero">Daftar Promo</a>
+                    <a href="/admin/promo">Daftar Promo</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -38,30 +38,6 @@
             <div class="card-body">
                 <form action="{{ route('promo.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label>Section Title</label>
-                        <div class="input-group ">
-                            <input type="text" placeholder="Insert Title"
-                                name="title_promo" class="form-control @error('title_promo') is-invalid @enderror">
-                            @error('title_promo')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Section Mini Title</label>
-                        <div class="input-group ">
-                            <input type="text" placeholder="Insert Mini Title"
-                                name="mini_title_promo"  class="form-control @error('mini_title_promo') is-invalid @enderror">
-                            @error('mini_title_promo')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label>Card Mini Title</label>
                         <div class="input-group ">
@@ -140,7 +116,7 @@
                     </div>
                     <div class="form-group">
                         <label>Expired At</label>
-                        <input type="date" placeholder="Ex: Get Now!"
+                        <input type="datetime-local"
                         name="expired_at" class="form-control @error('expired_at') is-invalid @enderror">
                         @error('expired_at')
                             <span class="invalid-feedback" role="alert">
