@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\domainController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,7 @@ use App\Models\MenuNavbar;
 use App\Http\Controllers\QnaController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\HeroController;
+use App\Http\Controllers\ServicesSectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,9 @@ Route::post('admin/promo/section', [PromoController::class, "section"]);
 
 // Domain
 Route::get('/domain/{slug}', [DomainController::class, "searchDomainPage"]);
+
+// Article
+Route::get('/daftar-artikel', [BlogController::class, "allStories"]);
 
 // Cloud Hosting
 
@@ -79,13 +84,22 @@ Route::post('/admin/tambah/menu-navbar', [MenuNavbarController::class, "tambahMe
 Route::put('/admin/edit/menu-navbar/{slug}', [MenuNavbarController::class, "editMenu"]);
 
 // Fitur Sub Menu
-Route::get('/admin/sub-menu-navbar/{id}', [subMenuNavbarController::class, "viewPageSubMenu"]);
+Route::get('/admin/sub-menu-navbar/{slug}', [subMenuNavbarController::class, "viewPageSubMenu"]);
 Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tambahSubMenu"]);
-Route::get('/admin/edit/menu-navbar/{slug}', [subMenuNavbarController::class, "viewPageEditSubMenu"]);
-Route::put('/admin/edit/menu-navbar/{slug}/store', [subMenuNavbarController::class, "editSubMenuStore"]);
+Route::get('/admin/edit/submenu/{slug}', [subMenuNavbarController::class, "viewPageEditSubMenu"]);
+Route::put('/admin/edit/submenu/{slug}/store', [subMenuNavbarController::class, "editSubMenuStore"]);
 
 // Module Hero
 Route::resource('/admin/hero', HeroController::class);
+
+// Module Services Section
+Route::get('/admin/services-section', [ServicesSectionController::class, "viewPageServicesSection"]);
+Route::get('/admin/create/service', [ServicesSectionController::class, "viewPageCreateService"]);
+Route::post('/admin/create/service/store', [ServicesSectionController::class, "createServiceSection"]);
+Route::put('/admin/edit/service-section/{id}', [ServicesSectionController::class, "editServiceSection"]);
+
+// Module Blog Section
+Route::get('/admin/blog-section', [BlogController::class, "viewPageBlogSection"]);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 

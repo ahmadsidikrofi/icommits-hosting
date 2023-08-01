@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class subMenuNavbarController extends Controller
 {
-    public function viewPageSubMenu( $id, MenuNavbar $menuNavbar )
+    public function viewPageSubMenu( $slug, MenuNavbar $menuNavbar )
     {
         $submenu = SubMenuNavbar::orderBy('urutan', 'asc')->where('id_menu_navbar', $menuNavbar->id)->get();
         $submenuCount = SubMenuNavbar::where('id_menu_navbar', $menuNavbar->id)->count();
-        $menuNavbar = MenuNavbar::find($id);
+        $menuNavbar = MenuNavbar::where('slug', $slug)->first();
         $ShowSubMenu = SubMenuNavbar::where('id_menu_navbar', $menuNavbar->id)->get();
         return view('admin.subMenuNavbar.showSubMenu', compact(['ShowSubMenu', 'menuNavbar', 'submenu', 'submenuCount']));
         // return view('admin.subMenuNavbar.showSubMenu', compact(['ShowSubMenu']));
@@ -37,9 +37,9 @@ class subMenuNavbarController extends Controller
         $submenu = new SubMenuNavbar();
         $submenu->id_menu_navbar = $request->id_menu_navbar;
         $submenu->nama_sub_menu = $request->nama_sub_menu;
-        $submenu->slug = Str::slug($request->link);
-        $submenu->deskripsi = $request->deskripsi;
+        $submenu->slug = Str::slug($request->nama_sub_menu);
         $submenu->link = $request->link ."/". $submenu->slug;
+        $submenu->deskripsi = $request->deskripsi;
         $submenu->urutan = $submenuCount + 1;
         $submenu->save();
         DB::commit();
@@ -63,8 +63,20 @@ class subMenuNavbarController extends Controller
     public function editSubMenuStore( $slug, Request $request )
     {
         $editSubMenu = SubMenuNavbar::where('slug', $slug)->first();
-        $editSubMenu->update($request->all());
-        return redirect()->back();
+        if (!$editSubMenu) {
+            return redirect()->back()->with('error', 'Data sub menu tidak ditemukan.');
+        }
+        $editSubMenu->nama_sub_menu = $request->nama_sub_menu;
+        $editSubMenu->slug = Str::slug($request->nama_sub_menu);
+        $editSubMenu->link = $request->link ."/". $editSubMenu->slug;
+        $editSubMenu->deskripsi = $request->deskripsi;
+        $editSubMenu->image = $request->image;
+        if ( $request -> hasFile("image") ) {
+            $request -> file("image")->move("image/", $request->file("image")->getClientOriginalName());
+            $editSubMenu -> image = $request -> file("image")->getClientOriginalName();
+        }
+        $editSubMenu->save();
+        return redirect('/admin/edit/submenu/' . $editSubMenu->slug)->with('success', 'Sub menu berhasil diubah');
     }
 
 

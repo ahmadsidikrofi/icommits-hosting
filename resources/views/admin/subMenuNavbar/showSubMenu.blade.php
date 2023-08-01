@@ -76,7 +76,7 @@
                                     <td>
                                         <form action="submenu/{{ $subMenu->id }}/destroy" method="post">
                                             @csrf
-                                            <a class="btn btn-sm btn-warning text-white" href="/admin/edit/menu-navbar/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
+                                            <a class="btn btn-sm btn-warning text-white" href="/admin/edit/submenu/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
                                             <button type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
