@@ -57,7 +57,8 @@ class ModuleHostingUnlimitedController extends Controller
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
             $services_section = ServicesSection::where('id_submenu_navbar', $subMenu->id)->get();
-            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section']));
+            $check_service = ServicesSection::count();
+            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'check_service']));
         }
     }
 
