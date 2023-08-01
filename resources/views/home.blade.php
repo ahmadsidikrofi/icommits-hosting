@@ -357,19 +357,39 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="featured_customer mx-4">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
-                        <img src="https://www.pertamina.com/Media/Image/Pertamina.png" class="img-fluid" width="200" alt="">
+                    <div class="swiper featured_customer mx-4">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/image/ft-telkom.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
+                            </div>
+                            <!-- Tambahkan swiper-slide untuk gambar-gambar lainnya -->
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="p-2">
+                            <div class="swiper-scrollbar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -414,5 +434,7 @@
     <!-- FAQ Start -->
 </body>
 @include('partials.jsPlugin')
+
+
 
 </html>

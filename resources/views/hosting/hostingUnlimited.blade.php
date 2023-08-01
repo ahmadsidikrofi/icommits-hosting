@@ -41,36 +41,37 @@
     <!-- Hero Section End -->
 
     <!-- Services Section Begin -->
-    @if (!$services_section)
-    @else
-        <section class="spad">
-            <div class="container">
-                @foreach ( $services_section as $service)
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title__wrapper">
-                            <div class="section-title">
-                                <h3>{{ $service->section_title }}</h3>
-                            </div>
+    @if ($check_service < 1)
+    <section></section>
+    @elseif ($check_service >= 1)
+    <section class="spad">
+        <div class="container">
+            @foreach ( $services_section as $service)
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title__wrapper">
+                        <div class="section-title">
+                            <h3>{{ $service->section_title }}</h3>
                         </div>
                     </div>
                 </div>
-                @endforeach
-                <div class="row mt-0">
-                    @foreach ($services_section as $service)
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="services__item_wrapper">
-                                <div class="services__item">
-                                    <h5>{{ $service->services_title }}</h5>
-                                    <span>{{ $service->services_price }}</span>
-                                    <p>{{ $service->services_deskripsi }}</p>
-                                </div>
+            </div>
+            @endforeach
+            <div class="row mt-0">
+                @foreach ($services_section as $service)
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="services__item_wrapper">
+                            <div class="services__item">
+                                <h5>{{ $service->services_title }}</h5>
+                                <span>{{ $service->services_price }}</span>
+                                <p>{{ $service->services_deskripsi }}</p>
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
-        </section>
+        </div>
+    </section>
     @endif
 
     <!-- Paket Web Hosting Section Start -->
