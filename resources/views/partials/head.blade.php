@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/css/newstyle.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 </head>
 
 @yield('head')
