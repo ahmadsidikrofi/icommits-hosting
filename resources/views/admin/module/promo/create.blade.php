@@ -39,6 +39,36 @@
                 <form action="{{ route('promo.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
+                        <label>Section Title</label>
+                        <div class="input-group mb-3">
+                        @if ($readonlySectionTitle)
+                            <input type="text" name="title_promo" autocomplete='off' class="form-control" placeholder="Section telah terisi, lakukan pengeditan apabila ingin dirubah" readonly>
+                        @else
+                            <input type="text" name="title_promo" autocomplete='off' class="form-control @error('title_promo') is-invalid @enderror">
+                            @error('title_promo')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        @endif
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipe_menu">Section Mini Title</label>
+                        <div class="input-group mb-3">
+                            @if ($readonlySectionTitle)
+                                <input type="text" name="mini_title_promo" autocomplete='off' class="form-control" placeholder="Section telah terisi, lakukan pengeditan apabila ingin dirubah" readonly>
+                            @else
+                                <input type="text" name="mini_title_promo" autocomplete='off' class="form-control @error('mini_title_promo') is-invalid @enderror">
+                                @error('mini_title_promo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>Card Mini Title</label>
                         <div class="input-group ">
                             <input type="text" placeholder="Insert Mini Title"

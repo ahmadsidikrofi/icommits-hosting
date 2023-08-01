@@ -51,9 +51,6 @@
                         <div class="card-title"> Kumpulan Promo </div>
                     </div>
                     <div class="col mt-3">
-                        <a class="btn btn-primary text-white float-right" data-toggle="modal" data-target="#sectionPromo" >Section Promo</a>
-                    </div>
-                    <div class="col mt-3">
                         <a class="btn btn-primary text-white float-right" href="{{ route('promo.create') }}">Tambah Promo</a>
                     </div>
                 </div>
@@ -106,6 +103,5 @@
             </div>
         </div>
     </div>
-    @include('admin.module.promo.sectionModal')
 
 @endsection

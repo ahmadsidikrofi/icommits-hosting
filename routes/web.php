@@ -29,7 +29,7 @@ use App\Http\Controllers\ServicesSectionController;
 Route::get('/', [HomeController::class, "showHome"]);
 
 //Bab Promo
-Route::get('/promo/{slug}', [PromoController::class, "allPromo"]);
+Route::get('/promoKeren/{slug}', [PromoController::class, "allPromo"]);
 Route::resource('/admin/promo', PromoController::class);
 Route::post('admin/promo/section', [PromoController::class, "section"]);
 

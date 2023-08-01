@@ -21,6 +21,7 @@ class promoController extends Controller
         if ($menu) {
             $hero = Hero::where('id_menu_navbar', $menu->id)->firstOrFail();
             $services_section = ServicesSection::where('id_menu_navbar', $menu->id)->get();
+            $promo = Promo::where('id_menu_navbar', $menu->id)->get();
         } else {
             // Cari data Hero berdasarkan slug dari SubMenuNavbar
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
@@ -29,28 +30,28 @@ class promoController extends Controller
             $promo = Promo::where('id_submenu_navbar', $subMenu->id)->get();
         }
         return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo']));
+    }
 
     public function index()
     {
+        $menuNavbar = MenuNavbar::all();
+        $subMenuNavbar = SubMenuNavbar::all();
         $promo = Promo::all();
-        return view('admin.module.promo.index', compact('promo'));
+        return view('admin.module.promo.index', compact(['menuNavbar', 'subMenuNavbar','promo']));
     }
 
     public function create(Request $request)
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
-        return view('admin.module.promo.create', compact([ 'menuNavbar', 'subMenuNavbar']));
+        $promo = Promo::first();
+        $readonlySectionTitle = false;
+        if ($promo) {
+            $readonlySectionTitle = true;
+        }
+        return view('admin.module.promo.create', compact(['menuNavbar', 'subMenuNavbar', 'readonlySectionTitle']));
     }
 
-    public function section(Request $request)
-    {
-        $tambahPromo = new Promo();
-        $tambahPromo->title_promo = $request->title_promo;
-        $tambahPromo->mini_title_promo = $request->mini_title_promo;
-        $tambahPromo->save();
-        return redirect()->back();
-    }
 
     public function store( Request $request )
     {

@@ -37,43 +37,6 @@
     </section>
     <!-- Hero Section End -->
 
-    @if (!$services_section)
-        <style>
-            .promo-section {
-                margin-bottom: -20px; /* Sesuaikan ukuran padding sesuai kebutuhan */
-            }
-        </style>
-    @else
-        <section class="spad">
-            <div class="container">
-                @foreach ( $services_section as $service)
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title__wrapper">
-                            <div class="section-title">
-                                <h3>{{ $service->section_title }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                <div class="row mt-0">
-                    @foreach ($services_section as $service)
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="services__item_wrapper">
-                                <div class="services__item">
-                                    <h5>{{ $service->services_title }}</h5>
-                                    <span>{{ $service->services_price }}</span>
-                                    <p>{{ $service->services_deskripsi }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
-
     <!-- Promo Section Start -->
     <section class="promo-section spad" id="promo">
         <div class="container">
@@ -115,78 +78,6 @@
                         </div>       
                     </div>
                     @endforeach
-                {{-- <div class="col-lg-4 col-md-5 col-sm-6">
-                    <div class="promo_card">
-                        <div class="promo_pic set-bg " data-setbg="image/blog/blog-5.jpg">
-                            <div class="label">Promo Hosting UMKM</div>
-                        </div>
-                        <div class="promo_text">
-                            <h5 class="mb-2"><a href="#">Promo Diskon 40% Hosting UMKM & Personal</a></h5>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> <span class="fw-semibold">Berlaku Hingga</span></li>
-                                <li class="p-2 rounded-bottom">
-                                    <h6>
-                                        <span class="fw-bold mx-1">35</span>
-                                        <span class="text-secondary fw-bold mx-1">hari</span>
-                                        <span class="fw-bold mx-1">12</span>
-                                        <span class="text-secondary fw-bold mx-1">jam</span>
-                                        <span class="fw-bold mx-1">00</span>
-                                        <span class="text-secondary fw-bold mx-1">menit</span>
-                                    </h6>
-                                </li>
-                            </ul>
-                        </div>
-                        <a class="btn btn-go-link w-100 mt-2">Dapatkan Promo!</a></>
-                    </div>
-                </div> --}}
-                {{-- <div class="col-lg-4 col-md-5 col-sm-6">
-                    <div class="promo_card">
-                        <div class="promo_pic set-bg " data-setbg="image/blog/blog-5.jpg">
-                            <div class="label">Promo Hosting UMKM</div>
-                        </div>
-                        <div class="promo_text">
-                            <h5 class="mb-2"><a href="#">Promo Diskon 40% Hosting UMKM & Personal</a></h5>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> <span class="fw-semibold">Berlaku Hingga</span></li>
-                                <li class="p-2 rounded-bottom">
-                                    <h6>
-                                        <span class="fw-bold mx-1">35</span>
-                                        <span class="text-secondary fw-bold mx-1">hari</span>
-                                        <span class="fw-bold mx-1">12</span>
-                                        <span class="text-secondary fw-bold mx-1">jam</span>
-                                        <span class="fw-bold mx-1">00</span>
-                                        <span class="text-secondary fw-bold mx-1">menit</span>
-                                    </h6>
-                                </li>
-                            </ul>
-                        </div>
-                        <a class="btn btn-go-link w-100 mt-2">Dapatkan Promo!</a></>
-                    </div>
-                </div> --}}
-                {{-- <div class="col-lg-4 col-md-5 col-sm-6">
-                    <div class="promo_card">
-                        <div class="promo_pic set-bg " data-setbg="image/blog/blog-1.jpg">
-                            <div class="label">Promo Hosting UMKM</div>
-                        </div>
-                        <div class="promo_text">
-                            <h5 class="mb-2"><a href="#">Promo Diskon 40% Hosting UMKM & Personal</a></h5>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i> <span class="fw-semibold">Berlaku Hingga</span></li>
-                                <li class="p-2 rounded-bottom">
-                                    <h6>
-                                        <span class="fw-bold mx-1">35</span>
-                                        <span class="text-secondary fw-bold mx-1">hari</span>
-                                        <span class="fw-bold mx-1">12</span>
-                                        <span class="text-secondary fw-bold mx-1">jam</span>
-                                        <span class="fw-bold mx-1">00</span>
-                                        <span class="text-secondary fw-bold mx-1">menit</span>
-                                    </h6>
-                                </li>
-                            </ul>
-                        </div>
-                        <a class="btn btn-go-link w-100 mt-2">Dapatkan Promo!</a></>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
