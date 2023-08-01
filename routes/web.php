@@ -96,8 +96,8 @@ Route::get('/admin/create/service', [ServicesSectionController::class, "viewPage
 Route::post('/admin/create/service/store', [ServicesSectionController::class, "createServiceSection"]);
 Route::put('/admin/edit/service-section/{id}', [ServicesSectionController::class, "editServiceSection"]);
 
-// Module Blog Section
-Route::get('/admin/blog-section', [BlogController::class, "viewPageBlogSection"]);
+// Module Stories Section
+Route::get('/admin/stories-section', [BlogController::class, "viewPageBlogSection"]);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 
