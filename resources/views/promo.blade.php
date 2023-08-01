@@ -38,7 +38,10 @@
     <!-- Hero Section End -->
 
     <!-- Promo Section Start -->
-    <section class="promo-section spad" id="promo">
+    @if ($check_promo < 1)
+    <section></section>
+    @elseif ($check_promo >= 1)
+    <section class="spad">
         <div class="container">
             @foreach ($promo as $item )
             <div class="row mb-5">
@@ -81,6 +84,7 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- Promo Section End -->
 
     <!-- Promo Menarik yang kelewatan Start -->

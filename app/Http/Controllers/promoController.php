@@ -22,6 +22,7 @@ class promoController extends Controller
             $hero = Hero::where('id_menu_navbar', $menu->id)->firstOrFail();
             $services_section = ServicesSection::where('id_menu_navbar', $menu->id)->get();
             $promo = Promo::where('id_menu_navbar', $menu->id)->get();
+            $check_promo = Promo::count();
         } else {
             // Cari data Hero berdasarkan slug dari SubMenuNavbar
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
@@ -29,7 +30,7 @@ class promoController extends Controller
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
             $promo = Promo::where('id_submenu_navbar', $subMenu->id)->get();
         }
-        return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo']));
+        return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo']));
     }
 
     public function index()
