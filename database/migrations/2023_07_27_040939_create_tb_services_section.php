@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_menu_submenu', function (Blueprint $table) {
+        Schema::create('tb_services_section', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_menu_navbar')->unsigned();
-            $table->string('nama_sub_menu');
-            $table->string('slug')->default(0);
-            $table->string('deskripsi');
-            $table->string('link')->nullable();
-            $table->string('image')->nullable();
-            $table->integer('urutan')->nullable();
+            $table->unsignedBigInteger('id_menu_navbar')->nullable();
+            $table->unsignedBigInteger('id_submenu_navbar')->nullable();
+            $table->string('section_title')->nullable();
+            $table->string('services_title');
+            $table->string('slug')->nullable();
+            $table->string('services_deskripsi')->nullable();
+            $table->string('services_price');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_menu_submenu');
+        Schema::dropIfExists('tb_services_section');
     }
 };

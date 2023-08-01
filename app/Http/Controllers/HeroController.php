@@ -24,15 +24,10 @@ class HeroController extends Controller
         $subMenuNavbar = SubMenuNavbar::all();
         return view('admin.module.hero.create', compact([ 'menuNavbar', 'subMenuNavbar']));
     }
-    // $hero = new Hero();
-    // $hero->slug = Str::slug('title_hero');
-    // $hero->slug_navbar = $request->input('slug_navbar');
 
     public function store( Request $request )
     {
-        $tambahHero = Hero::create($request->except('menu_navbar', 'submenu_navbar'));
-        $slugSubMenu = $request->input('slug_navbar');
-        $tambahHero->slug_navbar = $slugSubMenu;
+        $tambahHero = Hero::create($request->except('menu_navbar', 'submenu_navbar', 'slug_navbar'));
         $tambahHero->menu_navbar()->associate($request->menu_navbar);
 
         // Jika submenu_navbar dipilih dan nilainya valid, simpan relasinya

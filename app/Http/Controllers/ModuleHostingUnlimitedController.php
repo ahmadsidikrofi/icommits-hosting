@@ -8,6 +8,7 @@ use App\Models\MenuNavbar;
 use App\Models\SubMenuNavbar;
 use Illuminate\Support\Facades\DB;
 use App\Models\ModuleHostingUnlimited;
+use App\Models\ServicesSection;
 use Illuminate\Support\Facades\Request;
 
 class ModuleHostingUnlimitedController extends Controller
@@ -49,31 +50,14 @@ class ModuleHostingUnlimitedController extends Controller
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_menu_navbar', $menuParent->id)->firstOrFail();
-            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+            $services_section = ServicesSection::where('id_menu_navbar', $menuParent->id)->get();
+            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section']));
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+            $services_section = ServicesSection::where('id_submenu_navbar', $subMenu->id)->get();
+            return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section']));
         }
-
-    //     $menu = MenuNavbar::where('slug' , $slug)->first();
-    //     if ($menu) {
-    //         if ($menu->tipe_menu === 'link') {
-    //             // Jika tipe menu adalah 'link', cari hero berdasarkan id_menu_navbar
-    //             $menuLink = MenuNavbar::where('slug' , $slug)->first();
-    //             $hero = Hero::where('id_menu_navbar', $menuLink->id)->firstOrFail();
-    //         } elseif ($menu->tipe_menu === 'sub_menu') {
-    //             // Jika tipe menu adalah 'sub_menu', gunakan relasi untuk mencari hero berdasarkan id_submenu_navbar
-    //             $subMenu = $menu->subMenu;
-    //             if ($subMenu) {
-    //                 $subMenu = SubMenuNavbar::where('slug', $slug);
-    //                 $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-    //             } else {
-    //                 abort(404);
-    //             }
-    //         }
-    //         return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
-    //     }
     }
 
 

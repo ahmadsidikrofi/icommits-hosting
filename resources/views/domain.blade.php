@@ -2,6 +2,11 @@
 <html lang="en">
 @include('partials.head')
 <link rel="stylesheet" href="/css/plan_pro.css">
+<style>
+ .hero_item_domain::before {
+     background-image: url('/image/hero/{{ $hero->image_background }}');
+ }
+</style>
 <body>
     @include('partials.Firstnavbar')
     <!-- Hero Section Begin -->
