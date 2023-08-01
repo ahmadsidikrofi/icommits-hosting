@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class subMenuNavbarController extends Controller
 {
@@ -66,6 +67,15 @@ class subMenuNavbarController extends Controller
         if (!$editSubMenu) {
             return redirect()->back()->with('error', 'Data sub menu tidak ditemukan.');
         }
+        $request->validate([
+            'nama_sub_menu' => [
+                'required',
+                'string',
+                'regex:/^\w+( +\w+)+$/', // Regex untuk minimal 2 kata
+                Rule::unique('tb_menu_submenu')->ignore($editSubMenu->id), // Pastikan nama_sub_menu unik kecuali untuk data saat ini
+            ],
+        ]);
+
         $editSubMenu->nama_sub_menu = $request->nama_sub_menu;
         $editSubMenu->slug = Str::slug($request->nama_sub_menu);
         $editSubMenu->link = $request->link ."/". $editSubMenu->slug;
@@ -78,32 +88,4 @@ class subMenuNavbarController extends Controller
         $editSubMenu->save();
         return redirect('/admin/edit/submenu/' . $editSubMenu->slug)->with('success', 'Sub menu berhasil diubah');
     }
-
-
-    // public function tambahSubMenu(Request $request)
-    // {
-    //     DB::beginTransaction();
-    //     SubMenuNavbar::create($request->all());
-    //     DB::commit();
-    //     return redirect()->back();
-    // }
-
-
-
-    // public function tambahSubMenu( Request $request)
-    // {
-    //     $menuNavbar = new MenuNavbar();
-    //     $submenuCount = SubMenuNavbar::where('id_menu_navbar', $menuNavbar->id)->count();
-    //     $relatedMenuNavbar = MenuNavbar::find($menuNavbar->id);
-    //     $submenu = new SubMenuNavbar();
-    //     $submenu->menu()->associate($relatedMenuNavbar);
-    //     $submenu->nama_sub_menu = $request->nama_sub_menu;
-    //     $submenu->slug = Str::slug($request->nama_sub_menu);
-    //     $submenu->deskripsi = $request->deskripsi;
-    //     $submenu->link = $request->link;
-    //     $submenu->urutan = $submenuCount + 1;
-    //     $submenu->save();
-    //     session()->put('success', 'Data Berhasil ditambahkan');
-    //     return redirect()->back();
-    // }
 }

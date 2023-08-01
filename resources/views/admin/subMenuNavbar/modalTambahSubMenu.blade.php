@@ -42,7 +42,7 @@
                         <label>Link</label>
                         <select class="form-control" name="link" id="link">
                             <option value="" selected disabled>-- Pilih Link --</option>
-                            <option value="/hosting-unlimited" >Hosting Unlimited</option>
+                            <option value="/hostingUnlimited" >Hosting Unlimited</option>
                             <option value="/promoKeren">Promo</option>
                             <option value="/domain">Domain</option>
                         </select>
