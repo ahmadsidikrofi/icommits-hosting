@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_menu_navbar')->nullable();
             $table->unsignedBigInteger('id_submenu_navbar')->nullable();
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('title_promo')->nullable();
             $table->string('mini_title_promo')->nullable();
-            $table->string('mini_title_card');
-            $table->string('title_card');
+            $table->string('mini_title_card')->nullable();
+            $table->string('title_card')->nullable();
             $table->string('link_promo')->nullable();
             $table->string('image')->nullable();
             $table->timestamp('expired_at')->nullable();

@@ -108,7 +108,7 @@
                     </div>
                     <div class="form-group">
                         <label>Expired At</label>
-                        <input type="date" value="{{ $promo->expired_at }}" placeholder="Ex: Get Now!"
+                        <input type="datetime-local" value="{{ $promo->expired_at }}" placeholder="Ex: Get Now!"
                         name="expired_at" class="form-control @error('expired_at') is-invalid @enderror">
                         @error('expired_at')
                             <span class="invalid-feedback" role="alert">
