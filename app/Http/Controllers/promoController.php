@@ -29,7 +29,7 @@ class promoController extends Controller
             $promo = Promo::where('id_submenu_navbar', $subMenu->id)->get();
         }
         return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo']));
-
+    }
     public function index()
     {
         $promo = Promo::all();
