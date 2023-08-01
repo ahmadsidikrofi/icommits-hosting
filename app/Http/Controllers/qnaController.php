@@ -5,7 +5,7 @@ use App\Models\Qna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class qnaController extends Controller
+class QnaController extends Controller
 {
     public function index()
     {

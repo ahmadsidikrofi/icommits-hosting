@@ -27,27 +27,9 @@ class MenuNavbar extends Model
     {
         return $this->belongsTo(ServicesSection::class, 'id_menu_navbar');
     }
-
-
-
-
-
-    // public function subMenu()
-    // {
-    //     return $this->hasOne(SubMenuNavbar::class, 'id_menu_navbar');
-    // }
-
-    // public function heroes()
-    // {
-    //     return $this->hasOne(Hero::class, 'id_menu_navbar');
-    // }
-
-    // public function sluggable(): array
-    // {
-    //     return [
-    //         'slug' => [
-    //             'source' => 'nama_menu',
-    //         ]
-    //     ];
-    // }
+  
+    public function promo()
+    {
+        return $this->belongsTo(Hero::class, 'id_menu_navbar');
+    }
 }
