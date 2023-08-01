@@ -978,7 +978,7 @@ ol {
 
 .services-section {
 	background: #eeeffb;
-	padding-bottom: 60px;
+	padding-bottom: 20px;
 }
 
 .services__item {
@@ -1155,15 +1155,22 @@ ol {
 }
 
 /* Featured Customer Section Start */
-/* .featured_customer {
-	margin-right: 30px;
-	margin-left: 80px;
-} */
-.featured_customer img {
+.swiper-slide img {
+    width: 70%; /* Lebar gambar saat layar besar */
+    height: auto; /* Sesuaikan tinggi gambar secara otomatis */
+}
+/* CSS untuk ukuran gambar saat layar kecil (misalnya ukuran hp) */
+@media (max-width: 768px) {
+    .swiper-slide img {
+        width: 100%; /* Lebar gambar mengisi seluruh lebar swiper-slide */
+        height: auto; /* Sesuaikan tinggi gambar secara otomatis */
+    }
+}
+/* .featured_customer img {
 	display: inline-block;
 	font-size: 30px;
-	padding-top: 10px;
-	padding-bottom: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	padding-right: 30px;
 	padding-left: 30px;
 	margin-bottom: 10px;
@@ -1174,15 +1181,15 @@ ol {
 	-webkit-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
-}
+} */
 
 .featured_customer img:last-child {
 	margin-right: 0;
 }
 
 .featured_customer img:hover {
-	-webkit-box-shadow: 0px 8px 30px rgba(23, 8, 81, 0.3);
-	box-shadow: 0px 8px 30px rgba(23, 8, 81, 0.3);
+	/* -webkit-box-shadow: 0px 8px 30px rgba(23, 8, 81, 0.3);
+	box-shadow: 0px 8px 30px rgba(23, 8, 81, 0.3); */
 }
 .customer_trust {
 	/* background: #ffffff; */
