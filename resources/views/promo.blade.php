@@ -158,6 +158,9 @@
     <!-- Promo Menarik yang kelewatan End -->
 
         <!-- FAQ Start -->
+    @if ($check_qna < 1)
+    <section></section>
+    @elseif ($check_qna >= 1)
         <section class="faq spad">
             <div class="container">
                 <div class="row">
@@ -189,6 +192,7 @@
                 </div>
             </div>
         </section>
+    @endif
         <!-- FAQ End-->
 
     <!-- Js Plugins -->
