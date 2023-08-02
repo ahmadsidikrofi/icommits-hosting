@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('tb_qna', function (Blueprint $table) {
             $table->id();
             $table->string('slug',255);
-            $table->enum('kategori', ['Home','Unlimited Hosting','Cloud Hosting Cpanel','Migration Hosting','Domain','VPS','Email Bisnis','Email Hosting','SSL Certificate','CPanel','Promo','Poin']);
+            $table->unsignedBigInteger('id_menu_navbar')->nullable();
+            $table->unsignedBigInteger('id_submenu_navbar')->nullable();
             $table->text('pertanyaan');
             $table->text('jawaban');
             $table->timestamps();

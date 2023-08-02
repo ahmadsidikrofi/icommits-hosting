@@ -31,7 +31,7 @@ Route::get('/', [HomeController::class, "showHome"]);
 //Bab Promo
 Route::get('/promoKeren/{slug}', [PromoController::class, "allPromo"]);
 Route::resource('/admin/promo', PromoController::class);
-Route::post('admin/promo/section', [PromoController::class, "section"]);
+// Route::post('admin/promo/section', [PromoController::class, "section"]);
 
 // Domain
 Route::get('/domain/{slug}', [DomainController::class, "searchDomainPage"]);

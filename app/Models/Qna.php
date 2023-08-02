@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Support\Facades\DB;
 
 class Qna extends Model
 {
@@ -13,6 +12,7 @@ class Qna extends Model
     use Sluggable;
 
     protected $table = "tb_qna";
+    protected $guarded = [];
 
     public function sluggable(): array
     {
@@ -23,11 +23,13 @@ class Qna extends Model
         ];
     }
 
-    public function heroes()
+    public function menu_navbar()
     {
-        return DB::table('tb_hero')
-            ->join('tb_qna', 'tb_hero.halaman', '=', 'tb_qna.kategori')
-            ->select('tb_hero.*')
-            ->get();
+        return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar', 'nama_menu');
+    }
+
+    public function submenu_navbar()
+    {
+        return $this->belongsTo(SubMenuNavbar::class, 'id_submenu_navbar');
     }
 }
