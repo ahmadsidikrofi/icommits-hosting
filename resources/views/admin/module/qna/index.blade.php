@@ -45,69 +45,58 @@
             </ul>
 
         </div>
-        @foreach ($pertanyaan as $item)
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <div class="card-title">Pertanyaan {{ $item->id }}</div>
-                        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="card-title"> Kumpulan Pertanyaan </div>
+                    </div>
+                    <div class="col mt-3">
+                        <a class="btn btn-primary text-white float-right" data-toggle="modal" data-target="#tambahPertanyaan" href="{{ route('qna.create') }}">Tambah Pertanyaan</a>
                     </div>
                 </div>
-                <div class="card-body">
-                    <form action="{{ route('qna.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group">
-                            <label for="kategori">Kategori</label>
-                            <div class="input-group">
-                                <select class="form-control kategori" name="kategori">
-                                    <option @if ($item->kategori === "Home") selected  @endif value="Home" >Home</option>
-                                    <option @if ($item->kategori === "Unlimited Hosting") selected  @endif >Unlimited Hosting</option>
-                                    <option @if ($item->kategori === "Cloud Hosting CPanel") selected  @endif >Cloud Hosting CPanel</option>
-                                    <option @if ($item->kategori === "Migration Hosting") selected  @endif >Migration Hosting</option>
-                                    <option @if ($item->kategori === "Domain") selected  @endif >Domain</option>
-                                    <option @if ($item->kategori === "VPS") selected  @endif >VPS</option>
-                                    <option @if ($item->kategori === "Email Bisnis") selected  @endif >Email Bisnis</option>
-                                    <option @if ($item->kategori === "Email Hosting") selected  @endif >Email Hosting</option>
-                                    <option @if ($item->kategori === "SSL Certificate") selected  @endif >SSL Certificate</option>
-                                    <option @if ($item->kategori === "CPanel") selected  @endif >CPanel</option>
-                                    <option @if ($item->kategori === "Promo") selected  @endif >Promo</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Pertanyaan</label>
-                            <div class="input-group ">
-                                <input type="text" value="{{ $item->pertanyaan }}" placeholder="Masukkan pertanyaan"
-                                    name="pertanyaan" autocomplete='off'
-                                    class="form-control @error('pertanyaan') is-invalid @enderror">
-                                @error('pertanyaan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Jawaban</label>
-                            <div class="input-group ">
-                                <textarea name="jawaban" class="form-control @error('jawaban') is-invalid @enderror">{{ $item->jawaban }}</textarea>
-                                @error('jawaban')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group float-right">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
-                    </form>
-                </div>
             </div>
+            @foreach ($pertanyaan as $item)
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Pertanyaan</label>
+                    <div class="input-group ">
+                        <input type="text" value="{{ $item->pertanyaan }}"
+                        name="pertanyaan" autocomplete='off'
+                        class="form-control @error('pertanyaan') is-invalid @enderror" readonly>
+                        @error('pertanyaan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Jawaban</label>
+                    <div class="input-group ">
+                        <input type="text"  value="{{ $item->jawaban }}" name="jawaban" class="form-control @error('jawaban') is-invalid @enderror readonly" readonly>
+                        @error('jawaban')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <form action="{{ route('qna.destroy', $item->id) }}" method="post">
+                    @method('delete')
+                    @csrf
+                    <a href="{{ route('qna.edit', $item->id) }}"
+                        class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
+                        data-placement="top" title="Edit"><i
+                            class="fa-solid fa-pen-to-square"></i> </a>
+                    <button type="submit" class="btn btn-danger btn-sm delete-confirm"
+                        data-toggle="tooltip" data-placement="top" title="Hapus"><i
+                            class="fa-solid fa-trash"></i></button>
+                </form>
+            </div>
+        </div>
         @endforeach
-
+        
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
@@ -121,4 +110,5 @@
         });
     </script>
 
+@include('admin.module.qna.create')
 @endsection
