@@ -57,9 +57,18 @@
                 </div>
             </div>
         </div>
-            @foreach ($pertanyaan as $item)
+        @foreach ($pertanyaan as $item)
         <div class="card">
             <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group">
+                        @if (optional($item->menu_navbar)->tipe_menu === "link")
+                        <h4 class="fw-bold">Menu Saat Ini: {{ optional($item->menu_navbar)->nama_menu }}</h4>
+                        @else
+                        <h4 class="fw-bold">Menu Saat Ini: {{ optional($item->submenu_navbar)->nama_sub_menu }}</h4>
+                        @endif
+                    </div>
+                </div>
                 <div class="form-group">
                     <label>Pertanyaan</label>
                     <div class="input-group ">
@@ -99,7 +108,7 @@
                 </div>
             </div>
         </div>
-            @endforeach      
+        @endforeach      
     </div>
 </div>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>

@@ -9,30 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class QnaController extends Controller
 {
-    // public function tanya($slug)
-    // {
-    //     $menuNavbar = MenuNavbar::all();
-    //     $subMenuNavbar = SubMenuNavbar::all();
-    //     $menu = MenuNavbar::where('slug', $slug)->first();
-    //     if ($menu) {
-    //         $pertanyaan = Qna::where('id_menu_navbar', $menu->id)->get();
-    //         $check_pertanyaan = Qna::count();
-    //     } else {
-    //         // Cari data Hero berdasarkan slug dari SubMenuNavbar
-    //         $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
-    //         $pertanyaan = Qna::where('id_submenu_navbar', $menu->id)->get();
-    //         $check_pertanyaan = Qna::count();
-    //     }
-    //     return view('qna', compact(['menuNavbar', 'subMenuNavbar', 'check_promo', 'pertanyaan']));
-    //     // $pertanyaan = Qna::all();
-    //     // return view('admin.module.qna.index', compact('pertanyaan'));
-    // }
     
     public function index()
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
-        $pertanyaan = Qna::all();
+        $pertanyaan = Qna::with(['menu_navbar', 'submenu_navbar'])->get();
         return view('admin.module.qna.index', compact(['menuNavbar', 'subMenuNavbar','pertanyaan']));
     }
 
