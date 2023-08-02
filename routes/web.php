@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\StoriesController;
 use App\Http\Controllers\domainController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +13,7 @@ use App\Models\MenuNavbar;
 use App\Http\Controllers\qnaController;
 use App\Http\Controllers\promoController;
 use App\Http\Controllers\HeroController;
+use App\Http\Controllers\KategoriStoriesController;
 use App\Http\Controllers\ServicesSectionController;
 
 /*
@@ -100,6 +101,21 @@ Route::post('/admin/create/service/store', [ServicesSectionController::class, "c
 Route::put('/admin/edit/service-section/{id}', [ServicesSectionController::class, "editServiceSection"]);
 
 // Module Stories Section
+Route::get('/admin/kategori-stories', [KategoriStoriesController::class, "viewPageKategoriStories"]);
+Route::post('/admin/create/data/kategori-stories/store', [KategoriStoriesController::class, "CreateKategoriStoriesStore"]);
+Route::get('/admin/edit/data/kategori-stories/{slug}', [KategoriStoriesController::class, "ViewPageEditKategoriStories"]);
+Route::put('/admin/edit/data/kategori-stories/store/{slug}', [KategoriStoriesController::class, "EditKategoriStoriesStore"]);
+Route::delete('/admin/destroy/data/kategori-stories/{slug}', [KategoriStoriesController::class, "DestroyKategoriStoriesStore"]);
+
+Route::get('/admin/stories-section', [StoriesController::class, "viewPageStoriesSection"]);
+Route::get('/admin/create/stories', [StoriesController::class, "viewPageCreateStories"]);
+Route::post('/admin/create/stories/store', [StoriesController::class, "CreateStoriesStore"]);
+Route::get('/admin/edit/stories/{slug}', [StoriesController::class, "viewPageEditStories"]);
+Route::put('/admin/edit/stories/store/{slug}', [StoriesController::class, "EditStoriesStore"]);
+Route::delete('/admin/destroy/stories/{slug}', [StoriesController::class, "DestroyStories"]);
+
+Route::get('/stories', [StoriesController::class, "showStories"]);
+Route::get('/stories/{slug}', [StoriesController::class, "showDetailStories"]);
 Route::get('/admin/stories-section', [BlogController::class, "viewPageBlogSection"]);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 

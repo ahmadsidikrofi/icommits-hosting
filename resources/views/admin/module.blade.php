@@ -95,7 +95,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-3">
-                <a href="/admin/blog-section" style="text-decoration: none">
+                <a href="/admin/stories-section" style="text-decoration: none">
                     <div class="card card-stats card-round d-block bg-primary-gradient">
                         <div class="card-body">
                             <div class="row">
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="col-7 col-stats">
                                     <div class="numbers ">
-                                        <h1 class="card-title text-white">Blog Section</h2>
+                                        <h1 class="card-title text-white">Stories Section</h2>
                                     </div>
                                 </div>
                             </div>

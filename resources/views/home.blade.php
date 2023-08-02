@@ -402,9 +402,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 d-flex align-items-center">
-                    <h1 class="text-center fw-bold mx-5 text-light">FAQ <br>
+                    <img src="/image/faq.png" alt="">
+                    {{-- <h1 class="text-center fw-bold mx-5 text-light">FAQ <br>
                         <span><p class="text-light fw-bold fs-5">Frequently Ask Question</p></span>
-                    </h1>
+                    </h1> --}}
                 </div>
                 <div class="col-lg-8 col-md-8">
                     @foreach ($pertanyaan as $index => $item)

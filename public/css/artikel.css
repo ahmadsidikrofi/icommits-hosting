@@ -20,9 +20,9 @@ body{
 
 /*--blog--------------------------*/
 #blog{
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     padding: 40px;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -30,10 +30,10 @@ body{
 }
 
 .blog-heading{
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: start; */
+    align-items: start;
 }
 .blog-heading span{
     color: #424242;
@@ -42,6 +42,7 @@ body{
     font-size: 2.0rem;
     color: #32299A;
     font-weight: 400;
+    margin-left: 70px;
     text-shadow: 2px 4px 10px #32299A;
 }
 .blog-container{

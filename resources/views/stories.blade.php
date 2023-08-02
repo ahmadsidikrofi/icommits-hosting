@@ -15,55 +15,33 @@
         <div class="blog-heading">
             <h3>All Stories</h3>
         </div>
+
         <div class="blog-container">
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="/image/blog/blog-1.jpeg" alt="blog">
+            @foreach ( $stories as $story )
+                <div class="blog-box">
+                    <a href="/stories/{{ $story->slug }}">
+                        <div class="blog-img">
+                            <img src="/image/blog/{{ $story->image }}" alt="blog">
+                        </div>
+                    </a>
+                    <!--text--->
+                    <div class="blog-text">
+                        <span>tanggal, bulan, Tahun /
+                            @foreach ( $story->kategori as $kategori )
+                                {{ $kategori->nama_kategori }}
+                            @endforeach
+                        </span>
+                        <a href="/stories/{{ $story->slug }}" class="blog-title">{{ $story->stories_title }}</a>
+                        <p>{{ $story->deskripsi }}</p>
+                        <a href="/stories/{{ $story->slug }}">Read More</a>
+                    </div>
                 </div>
-                <!--text--->
-                <div class="blog-text">
-                    <span>tanggal, bulan, Tahun</span>
-                    <a href="#" class="blog-title">Cara Membuat Blog Keren untuk Menghasilkan Cuan</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis
-                        adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum
-                        perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
-                    <a href="/blog-keren">Read More</a>
-                </div>
-            </div>
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="/image/blog/blog-2.jpeg" alt="blog">
-                </div>
-                <!--text--->
-                <div class="blog-text">
-                    <span>tanggal, bulan, Tahun</span>
-                    <a href="#" class="blog-title">Cara Membuat Blog Keren untuk Menghasilkan Cuan</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis
-                        adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum
-                        perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
-                    <a href="#">Read More</a>
-                </div>
-
-            </div>
-
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="/image/blog/blog-3.jpeg" alt="blog">
-                </div>
-                <!--text--->
-                <div class="blog-text">
-                    <span>tanggal, bulan, Tahun</span>
-                    <a href="#" class="blog-title">Cara Membuat Blog Keren untuk Menghasilkan Cuan</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis modi veritatis
-                        adipisci omnis perferendis deleniti tempore quasi? Explicabo recusandae soluta vel cum
-                        perspiciatis consequuntur dolorum distinctio minima voluptate quae?</p>
-                    <a href="#">Read More</a>
-                </div>
-
-            </div>
+            @endforeach
         </div>
     </section>
 
+    <!-- Js Plugins -->
+    @include('partials.jsPlugin')
 </body>
 
 </html>
