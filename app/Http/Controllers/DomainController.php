@@ -19,12 +19,14 @@ class DomainController extends Controller
             $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_menu_navbar', $menuParent->id)->firstOrFail();
             $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
-            return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+            $check_qna = Qna::count();
+            return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
             $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
-            return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan']));
+            $check_qna = Qna::count();
+            return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
         }
     }
 }

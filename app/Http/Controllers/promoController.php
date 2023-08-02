@@ -23,6 +23,7 @@ class promoController extends Controller
             $promo = Promo::where('id_menu_navbar', $menu->id)->get();
             $pertanyaan = Qna::where('id_menu_navbar', $menu->id)->get();
             $check_promo = Promo::count();
+            $check_qna = Qna::count();
         } else {
             // Cari data Hero berdasarkan slug dari SubMenuNavbar
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
@@ -31,8 +32,9 @@ class promoController extends Controller
             $promo = Promo::where('id_submenu_navbar', $subMenu->id)->get();
             $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
             $check_promo = Promo::count();
+            $check_qna = Qna::count();
         }
-        return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo']));
+        return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
     }
 
     public function index()
