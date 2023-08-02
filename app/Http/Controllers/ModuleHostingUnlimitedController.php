@@ -33,14 +33,6 @@ class ModuleHostingUnlimitedController extends Controller
         return redirect('/admin/paket-unlimited');
     }
 
-    // function editPaketHostingUnlimited( $slug, Request $request )
-    // {
-    //     $editPaketHosting = ModuleHostingUnlimited::where('slug', $slug)->first();
-    //     $editPaketHosting->slug = NULL;
-    //     $editPaketHosting->update($request->all());
-    //     return redirect('/admin/paket-unlimited');
-    // }
-
     function hostingUnlimited($slug)
     {
         $menuNavbar = MenuNavbar::all();

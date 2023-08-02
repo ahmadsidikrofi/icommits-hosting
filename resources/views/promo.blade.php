@@ -48,7 +48,7 @@
                 <div class="col">
                     <h2 class="fw-medium text-center lh-base" style="color: #1f72db;">{{ $item->title_promo }}</h2>
                     <p class="text-lg-center fs-6 mt-3 fw-semibold">{{ $item->mini_title_promo }}</p>
-                </div>   
+                </div>
             </div>
             @endforeach
             <div class="row">
@@ -78,7 +78,7 @@
                                 </ul>
                             </div>
                             <a href="/hosting-unlimited" class="btn btn-go-link w-100 mt-2">{{ $promo->link_promo }}</a></>
-                        </div>       
+                        </div>
                     </div>
                     @endforeach
             </div>
