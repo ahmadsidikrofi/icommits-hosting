@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_blog', function (Blueprint $table) {
+        Schema::create('tb_stories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_menu_navbar')->nullable();
             $table->unsignedBigInteger('id_submenu_navbar')->nullable();
             $table->string('section_title')->nullable();
-            $table->string('blog_title');
+            $table->string('stories_title');
             $table->string('slug')->nullable();
+            $table->string('image')->nullable();
             $table->string('deskripsi')->nullable();
             $table->string('isi_blog')->nullable();
             $table->timestamp('created_at')->nullable();
