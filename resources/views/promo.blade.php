@@ -158,6 +158,9 @@
     <!-- Promo Menarik yang kelewatan End -->
 
         <!-- FAQ Start -->
+    @if ($check_qna < 1)
+    <section></section>
+    @elseif ($check_qna >= 1)
         <section class="faq spad">
             <div class="container">
                 <div class="row">
@@ -168,7 +171,6 @@
                     </div>
                     <div class="col-lg-8 col-md-8">
                         @foreach ($pertanyaan as $question => $item)
-                            @if ($item->kategori === "Promo")
                                 <div class="faq-body rounded-4 p-3 mb-5">
                                     <div class="faq-title">
                                         <a href="#faqOne{{ $question }}" class="faq-question text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqOne">
@@ -185,12 +187,12 @@
                                         <p class="text-light">{{ $item->jawaban }}</p>
                                     </div>
                                 </div>
-                            @endif
                         @endforeach
                     </div>
                 </div>
             </div>
         </section>
+    @endif
         <!-- FAQ End-->
 
     <!-- Js Plugins -->

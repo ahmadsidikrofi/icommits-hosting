@@ -33,7 +33,7 @@ Route::get('/', [HomeController::class, "showHome"]);
 
 Route::get('/promoKeren/{slug}', [PromoController::class, "allPromo"]);
 Route::resource('/admin/promo', PromoController::class);
-Route::post('admin/promo/section', [PromoController::class, "section"]);
+// Route::post('admin/promo/section', [PromoController::class, "section"]);
 
 // Domain
 Route::get('/domain/{slug}', [DomainController::class, "searchDomainPage"]);
@@ -116,6 +116,7 @@ Route::delete('/admin/destroy/stories/{slug}', [StoriesController::class, "Destr
 
 Route::get('/stories', [StoriesController::class, "showStories"]);
 Route::get('/stories/{slug}', [StoriesController::class, "showDetailStories"]);
+Route::get('/admin/stories-section', [BlogController::class, "viewPageBlogSection"]);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 
