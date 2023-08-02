@@ -45,7 +45,6 @@ class ModuleHostingUnlimitedController extends Controller
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
-        $pertanyaan = Qna::all();
         $menu = MenuNavbar::where('slug', $slug)->first();
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
