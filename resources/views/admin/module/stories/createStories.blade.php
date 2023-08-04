@@ -59,7 +59,7 @@
                         </div>
                         <label>Stories Title</label>
                         <div class="input-group mb-3">
-                            <input type="text" name="stories_title" autocomplete='off'
+                            <input type="text" name="stories_title" autocomplete='off' maxlength="40"
                                 class="form-control
                         @error('stories_title') is-invalid @enderror"
                                 required>
@@ -78,7 +78,7 @@
                         </select>
                         <label>Deskripsi Stories</label>
                         <div class="input-group mb-3">
-                            <input type="text" name="deskripsi" autocomplete='off' maxlength="66"
+                            <input type="text" name="deskripsi" autocomplete='off'
                                 class="form-control
                         @error('deskripsi') is-invalid @enderror"
                                 required>
@@ -89,7 +89,7 @@
                             @enderror
                         </div>
                         <label>Konten Stories</label>
-                        <textarea name="isi_blog" id="isi_blog" cols="30" rows="10">Konten dari Stories dapat dibuat disini</textarea>
+                        <textarea name="isi_stories" id="isi_stories" cols="30" rows="10">Konten dari Stories dapat dibuat disini</textarea>
                         <label for="image" class="mt-4">Stories Image</label>
                         <input type="file" class="form-control" name="image">
                     </div>

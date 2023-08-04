@@ -56,7 +56,7 @@
                         </div>
                         <label>Stories Title</label>
                         <div class="input-group mb-3">
-                            <input type="text" name="stories_title" value="{{ $editStories->stories_title }}" class="form-control @error('stories_title') is-invalid @enderror" required>
+                            <input type="text" name="stories_title" value="{{ $editStories->stories_title }}" class="form-control @error('stories_title') is-invalid @enderror" required maxlength="40">
                             @error('stories_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
                             @endforeach
                         </select>
                         <label>Deskripsi Stories</label>
-                        <div class="input-group mb-3"> <input type="text" name="deskripsi" value="{{ $editStories->deskripsi }}" maxlength="66" class="form-control
+                        <div class="input-group mb-3"> <input type="text" name="deskripsi" value="{{ $editStories->deskripsi }}" class="form-control
                         @error('deskripsi') is-invalid @enderror"
                                 required>
                             @error('deskripsi')
@@ -85,7 +85,7 @@
                             @enderror
                         </div>
                         <label>Konten Stories</label>
-                        <textarea name="isi_blog" id="isi_blog" cols="30" rows="10">{{ $editStories->deskripsi }}</textarea>
+                        <textarea name="isi_stories" id="isi_stories" cols="30" rows="10">{{ $editStories->isi_stories }}</textarea>
                         <label for="image" class="mt-4">Stories Image</label>
                         <div class="row">
                             <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">

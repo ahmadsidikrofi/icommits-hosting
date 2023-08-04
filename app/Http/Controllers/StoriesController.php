@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
 use App\Models\StoriesSection;
 use App\Models\KategoriStories;
+use Intervention\Image\Facades\Image;
+use Carbon\Carbon;
 
 class StoriesController extends Controller
 {
@@ -34,8 +36,10 @@ class StoriesController extends Controller
         $createStories = StoriesSection::create($request->except('kategori'));
         $createStories->kategori()->sync($request->kategori);
         if ( $request -> hasFile("image") ) {
-            $request -> file("image")->move("image/blog", $request->file("image")->getClientOriginalName());
+            $image = $request -> file("image")->move("image/blog", $request->file("image")->getClientOriginalName());
             $createStories -> image = $request -> file("image")->getClientOriginalName();
+            $createStories -> save();
+            $createStories = Image::make($image)->resize(680, 450);
             $createStories -> save();
         }
         return redirect('/admin/stories-section');
@@ -50,39 +54,45 @@ class StoriesController extends Controller
 
     public function EditStoriesStore( $slug, Request $request )
     {
-        $createStories = StoriesSection::where('slug', $slug)->first();
-        $createStories->update($request->except('kategori'));
+        $editStories = StoriesSection::where('slug', $slug)->first();
+        $editStories->update($request->except('kategori'));
         if ($request->kategori) {
-            $createStories->kategori()->sync($request->kategori);
+            $editStories->kategori()->sync($request->kategori);
         }
         if ( $request -> hasFile("image") ) {
-            $request -> file("image")->move("image/blog", $request->file("image")->getClientOriginalName());
-            $createStories -> image = $request -> file("image")->getClientOriginalName();
-            $createStories -> save();
+            $image = $request -> file("image")->move("image/blog", $request->file("image")->getClientOriginalName());
+            $editStories -> image = $request -> file("image")->getClientOriginalName();
+            $editStories -> save();
+            $editStories = Image::make($image)->resize(680, 450);
+            $editStories -> save();
         }
         return redirect('/admin/stories-section');
     }
 
     public function DestroyStories( $slug )
     {
-        $createStories = StoriesSection::where('slug', $slug)->first()->delete();
+        $destroyStories = StoriesSection::where('slug', $slug)->first()->delete();
         return redirect('/admin/stories-section');
     }
 
-    public function showStories()
+    public function showStories( Request $request )
     {
+        $kategori = KategoriStories::all()->take(4);
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
-        $stories = StoriesSection::all();
-        // $menu = MenuNavbar::where('slug', $slug)->first();
-        // if ($menu) {
-        //     $hero = Hero::where('id_menu_navbar', $menu->id)->firstOrFail();
-        // } else {
-        //     // Cari data Hero berdasarkan slug dari SubMenuNavbar
-        //     $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
-        //     $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-        // }
-        return view('stories', compact(['menuNavbar', 'subMenuNavbar', 'stories']));
+        $stories = StoriesSection::latest()->get();
+        if ( $request->has('kategori') ) {
+            $stories = StoriesSection::whereHas('kategori', function($query) use ($request) {
+                $query->where('kategori.slug', $request->kategori);
+            })->get();
+        } else {
+            $stories = StoriesSection::latest()->get();
+        }
+        Carbon::setLocale('id');
+        foreach ($stories as $story) {
+            $story->formatted_created_at = Carbon::parse($story->created_at)->isoFormat('MMMM DD, YYYY');
+        }
+        return view('stories', compact(['menuNavbar', 'subMenuNavbar', 'stories', 'kategori']));
     }
 
     function showDetailStories( $slug )
@@ -90,7 +100,13 @@ class StoriesController extends Controller
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         $storiesDetail = StoriesSection::where('slug', $slug)->first();
-        return view('detailStories', compact(['menuNavbar', 'subMenuNavbar', 'storiesDetail']));
+        $related_category = $storiesDetail->kategori()->get();
+        $related_stories = StoriesSection::whereHas('kategori', function($query) use ($related_category) {
+            $query->whereIn('kategori.id', $related_category->pluck('id'));
+        })
+        ->where('tb_stories.id', '!=', $storiesDetail->id)
+        ->get();
+        return view('detailStories', compact(['menuNavbar', 'subMenuNavbar', 'storiesDetail', 'related_category', 'related_stories']));
     }
 
 }

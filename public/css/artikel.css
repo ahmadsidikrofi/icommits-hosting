@@ -39,11 +39,12 @@ body{
     color: #424242;
 }
 .blog-heading h3{
+    font-family: Georgia, Times, 'Times New Roman', serif;
     font-size: 2.0rem;
-    color: #32299A;
+    color: #000000;
     font-weight: 400;
     margin-left: 70px;
-    text-shadow: 2px 4px 10px #32299A;
+    text-shadow: 2px 2px 8px #4b4b4b;
 }
 .blog-container{
     display: flex;
@@ -87,31 +88,38 @@ body{
     height: 100%;
     object-fit: cover;
     object-position: center;
+    margin-bottom: -30px;
 }
 .blog-text{
     padding: 30px;
     display: flex;
     flex-direction: column;
 }
-.blog-text span{
+.blog-text .stories-date{
     color: #32299A;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
+/* .blog-text span{
+    color: #32299A;
+    font-size: 8px;
+} */
+
 .blog-text .blog-title{
     font-size: 1.3rem;
     font-weight: 500;
     color: #272727;
 }
-.blog-text p{
-    color: #9b9b9b;
-    font-size: 0.9rem;
+.blog-text p {
+    color: #6b6b6b;
+    font-size: 12px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 20px 0px;
+    margin: 2px 0px;
 }
+
 .blog-text a{
     color: #0f0f0f;
 }
