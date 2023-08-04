@@ -1,0 +1,235 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #ffffff;
+    --main-color: #2b72c4;
+    --navbar-color: #8008af;
+}
+
+body {
+    min-height: 100vh;
+    /* background-image: url('/image/stories-bg.png'); */
+    background: rgb(19,107,210);
+    /* background: radial-gradient(circle, rgba(19,107,210,1) 0%, rgba(238,174,202,1) 75%, rgba(74,149,244,1) 100%); */
+    background: radial-gradient(circle, #eeaeca 0%, #4a95f4 94%, #136bd2 100%);
+}
+
+header {
+    /* background: var(--navbar-color); */
+    background: rgb(238,174,202);
+    background: linear-gradient(342deg, rgba(238,174,202,1) 0%, rgba(0,86,186,1) 56%, rgba(74,149,244,1) 100%);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    padding: 28px 12%;
+    transition: all .50s ease-in-out;
+    box-shadow: 2px 2px 10px #5c5c5c;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    width: 50%;
+    display: flex;
+    /* color: var(--main-color); */
+    /* font-size: 28px; */
+}
+
+/* .logo a {
+    color: var(--text-color);
+    font-size: 1.7rem;
+    font-weight: 600;
+} */
+
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    color: var(--text-color);
+    font-size: 1.0rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0 30px;
+    transition: all .50s ease;
+}
+.navbar a:hover {
+    color: var(--main-color);
+}
+.navbar a:active {
+    color: var(--main-color)
+}
+
+.main {
+    display: flex;
+    align-items: center;
+}
+
+.main a {
+    margin-right: 25px;
+    margin-left: 10px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all .50s ease;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+.user i {
+    color: var(--main-color);
+    font-size: 28px;
+    margin-right: 7px;
+}
+.main a:hover {
+    color: var(--main-color);
+}
+
+#menu-icon {
+    font-size: 35px;
+    cursor: pointer;
+    color: var(--text-color);
+    z-index: 10001;
+    display: none;
+}
+
+@media (max-width: 1280px) {
+    header {
+        padding: 14px 2%;
+        transition: .2s;
+    }
+    .navbar a {
+        padding: 5px 0;
+    }
+}
+
+@media (max-width: 1090px) {
+    #menu-icon {
+        display: block;
+    }
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 270px;
+        height: 35vh;
+        background: var(--main-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 10px;
+        transition: all .50s ease;
+    }
+    .navbar a {
+        display: block;
+        margin: 12px 0;
+        padding: 0 25px;
+        transition: all .50s ease;
+    }
+    .navbar a:hover {
+        color: var(--text-color);
+    }
+    .navbar a.active {
+        color: var(--text-color);
+    }
+    .navbar.open {
+        right: 2%;
+    }
+}
+
+
+/* Search Bar */
+.container {
+    position: relative;
+    --size-button: 40px;
+  }
+
+  .input {
+    padding-left: var(--size-button);
+    height: var(--size-button);
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    outline: none;
+    width: var(--size-button);
+    transition: all ease 0.3s;
+    background-color: #ffffff;
+    box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .input:focus,
+  .input:not(:invalid) {
+    width: 200px;
+    cursor: text;
+    box-shadow: 0px 0px 0px #ffffff, 0px 0px 0px rgba(255, 255, 255, 0.25), inset 1.5px 1.5px 3px #ffffff, inset -1.5px -1.5px 3px #ffffff;
+  }
+
+  .input:focus + .icon,
+  .input:not(:invalid) + .icon {
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+  .container .icon {
+    position: absolute;
+    width: var(--size-button);
+    height: var(--size-button);
+    top: 0;
+    left: 10px;
+    padding: 8px;
+    pointer-events: none;
+  }
+
+  .container .icon svg {
+    width: 100%;
+    height: 100%;
+  }
+/* .input {
+    width: 100%;
+    max-width: 220px;
+    height: 45px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid lightgrey;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0px 0px 20px -18px;
+}
+
+::placeholder {
+    color: #3573e6;
+}
+
+.input:hover {
+    border: 2px solid #3573e6;
+    box-shadow: 0px 0px 20px -17px;
+}
+
+.input:active {
+    transform: scale(0.95);
+}
+
+.input:focus {
+    border: 2px solid #6176b1;
+} */
