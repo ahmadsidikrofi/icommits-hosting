@@ -32,4 +32,14 @@ class MenuNavbar extends Model
     {
         return $this->belongsTo(Hero::class, 'id_menu_navbar');
     }
+
+    public function tanya()
+    {
+        return $this->belongsTo(Hero::class, 'id_menu_navbar');
+    }
+
+    public function domain()
+    {
+        return $this->belongsTo(Hero::class, 'id_menu_navbar');
+    }
 }
