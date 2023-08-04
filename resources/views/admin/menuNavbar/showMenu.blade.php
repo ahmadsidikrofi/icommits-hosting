@@ -145,26 +145,12 @@
                                                             @enderror
                                                         </div>
                                                         <hr>
-                                                        {{-- @if ($menu->link !== NULL)
-                                                        <option value="" selected disabled>Kamu sudah memilih link dari {{ $menu->slug }}</option>
-                                                        @else
-                                                        <option value="" selected disabled>-- Pilih Link --</option>
-                                                        @endif --}}
                                                         <label>Link Navbar</label>
                                                         <select class="form-control" name="link" id="link">
                                                             <option @if ($menu->link == '/hosting-unlimited/' . $menu->slug) selected @endif value="/hosting-unlimited" >Hosting Unlimited</option>
                                                             <option @if ($menu->link == '/promoKeren/' . $menu->slug) selected @endif value="/promoKeren">Promo</option>
                                                             <option @if ($menu->link == '/domain/' . $menu->slug) selected @endif value="/domain">Domain</option>
                                                         </select>
-                                                        {{-- <div class="input-group mb-3">
-                                                            <input type="text" name="link" autocomplete='off' class="form-control
-                                                            @error('link') is-invalid @enderror" value="{{ $menu->link }}" required>
-                                                            @error('link')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div> --}}
                                                         @endif
 
                                                     </div>

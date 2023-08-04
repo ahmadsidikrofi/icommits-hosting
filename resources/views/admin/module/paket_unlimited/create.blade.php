@@ -78,7 +78,7 @@
                     </div>
                     <div class="form-group">
                         <label>Paket Unggulan</label>
-                        <textarea name="paket_unggulan" id="paket_unggulan" autocomplete='off'
+                        <textarea name="paket_unggulan" id="paket_unggulan"
                             class="form-control @error('paket_unggulan') is-invalid @enderror" cols="30" rows="8">{{ old('paket_unggulan') }}</textarea>
                         @error('paket_unggulan')
                             <span class="invalid-feedback" role="alert">

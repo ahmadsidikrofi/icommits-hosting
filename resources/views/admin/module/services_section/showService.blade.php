@@ -63,7 +63,6 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Section Title</th>
                                 <th>Service Title</th>
                                 <th>Service Price</th>
                                 <th>Aksi</th>
@@ -76,7 +75,6 @@
                             @foreach ($showServices as $service)
                                 <tr>
                                     <td data-header="No">{{ $no++ }}</td>
-                                    <td> {{ $service->section_title }}</td>
                                     <td> {{ $service->services_title }} </td>
                                     <td> {{ $service->services_price }} </td>
                                     <td>
@@ -151,39 +149,6 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        {{-- <label>Choose Navbar Menu</label>
-                                                        <div class="input-group mb-4">
-                                                            <div class="col">
-                                                                <select class="form-control menu-navbar" name="menu_navbar" id="menu_navbar">
-                                                                    @foreach ($menuNavbar as $menu)
-                                                                        @if ($menu->tipe_menu === 'link')
-                                                                            <option>{{ $menu->nama_menu }}</option>
-                                                                        @endif
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            @error('menu_navbar')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-
-                                                        <label>Choose Navbar SubMenu</label>
-                                                        <div class="input-group ">
-                                                            <div class="col">
-                                                                <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
-                                                                    @foreach ($subMenuNavbar as $subMenu)
-                                                                        <option> {{ $subMenu->nama_sub_menu }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            @error('submenu_navbar')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div> --}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-dark"

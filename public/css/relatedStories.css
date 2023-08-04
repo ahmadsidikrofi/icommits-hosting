@@ -1,0 +1,151 @@
+.card-related-book {
+    width: 195px;
+    height: 285px;
+    background: #303030;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: 0.2s ease-in-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.card-related-book::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: inherit;
+    filter: blur(0);
+    transition: filter 0.2s ease-in-out;
+}
+
+.card-related-book:hover::before {
+    filter: blur(25px) brightness(80%);
+}
+
+
+.textBox {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    gap: 5px;
+    transition: 0.2s ease-in-out;
+    z-index: 2;
+    position: relative;
+}
+
+.textBox::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    z-index: -1;
+}
+
+.textBox>.text {
+    font-weight: medium;
+}
+
+.textBox>.head {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.textBox>.price {
+    width: 35%;
+    font-size: 12px;
+    color: #000000;
+    background: #ffffff;
+    border-radius: 4px 45px 45px 50px;
+    display: inline-block;
+    font-weight: bold;
+    padding: 5px 4px 5px 4px;
+}
+
+.textBox>span {
+    font-size: 12px;
+    color: lightgrey;
+}
+
+.card-related-book:hover>.textBox {
+    opacity: 1;
+}
+
+.card-related-book:hover>.textBox::after {
+    opacity: 0;
+}
+
+.card-related-book:hover {
+    color: #ffffff;
+    animation: anim 3s infinite;
+}
+
+@keyframes anim {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/*CSS ToC */
+
+.TOC {
+    line-height: 1.4em;
+    padding: 20px 30px 20px 10px;
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 1px 1px 2px #fff inset, -1px -1px 2px #fff inset;
+    border-radius: 3px/6px
+}
+
+.TOC ol,
+.TOC ul {
+    margin: 0;
+    padding: 0;
+}
+
+.TOC ul {
+    list-style: none;
+}
+
+.TOC ol li,
+.TOC ul li {
+    padding: 15px 0 0;
+    margin: 0 0 0 30px;
+    font-size: 15px;
+}
+
+.TOC a {
+    color: #0080ff;
+    text-decoration: none;
+}
+
+.TOC a:hover {
+    text-decoration: underline;
+
+}
+
+

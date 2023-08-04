@@ -10,7 +10,7 @@
 @section('content')
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">Hero</h4>
+            <h4 class="page-title">Service Section</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a href="/admin/dashboard">
