@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class HeroController extends Controller
@@ -85,5 +86,35 @@ class HeroController extends Controller
         $hero->delete();
         session()->put('success', 'Data Berhasil dihapus');
         return redirect()->route('hero.index');
+    }
+
+    public function removeHero( $slug )
+    {
+        $deleteBackground = Hero::where('slug', $slug)->first();
+        $img_path = public_path().'/image/hero';
+
+        if (File::exists($img_path)) {
+            File::delete($img_path);
+
+            $deleteBackground->update([
+                'image_background' => null,
+            ]);
+        }
+        return redirect()->back();
+    }
+
+    function removeHeroRight( $slug )
+    {
+        $deleteImage_right = Hero::where('slug', $slug)->first();
+        $img_path = public_path().'/image/hero';
+
+        if (File::exists($img_path)) {
+            File::delete($img_path);
+
+            $deleteImage_right->update([
+                'image_right' => null,
+            ]);
+        }
+        return redirect()->back();
     }
 }

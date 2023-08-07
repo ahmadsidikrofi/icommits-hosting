@@ -2,11 +2,19 @@
 <html lang="en">
 @include('partials.head')
 <link rel="stylesheet" href="/css/plan_pro.css">
-<style>
- .hero_item_domain::before {
-     background-image: url('/image/hero/{{ $hero->image_background }}');
- }
-</style>
+@if ($hero->image_background === NULL)
+    <style>
+        .hero_item_domain::before {
+            background-image: url('/image/hero/hero-default.jpg');
+        }
+    </style>
+@else
+    <style>
+        .hero_item_domain::before {
+            background-image: url('/image/hero/{{ $hero->image_background }}');
+        }
+    </style>
+@endif
 <body>
     @include('partials.Firstnavbar')
     <!-- Hero Section Begin -->
@@ -201,9 +209,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 d-flex align-items-center">
-                    <h1 class="text-center fw-bold mx-5 text-light">FAQ <br>
-                        <span><p class="text-light fw-bold fs-5">Frequently Ask Question</p></span>
-                    </h1>
+                    <img src="/image/FAQ.png" alt="">
                 </div>
                 <div class="col-lg-8 col-md-8">
                     @foreach ($pertanyaan as $question => $item)

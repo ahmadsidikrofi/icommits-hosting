@@ -86,6 +86,7 @@
                 <div class="col-lg-9 col-md-9">
                     <nav class="header__menu">
                         <ul>
+                            <li class=""><a href="/stories">Stories</a></li>
                             @foreach ( $menuNavbar as $menu )
                                 @if ($menu->tipe_menu === "link")
                                     <li><a href="{{ $menu->link }}">{{ $menu->nama_menu }}</a></li>

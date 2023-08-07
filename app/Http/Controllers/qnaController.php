@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class QnaController extends Controller
 {
-    
+
     public function index()
     {
         $menuNavbar = MenuNavbar::all();
@@ -58,7 +58,6 @@ class QnaController extends Controller
     public function destroy($id)
     {
         $pertanyaan = Qna::findOrFail($id);
-        $pertanyaan->deleteGambar();
         $pertanyaan->delete();
         session()->put('success', 'Data Berhasil dihapus');
         return redirect()->route('qna.index');
