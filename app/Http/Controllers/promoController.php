@@ -10,31 +10,42 @@ use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
 use App\Models\ServicesSection;
 
-class promoController extends Controller
+class PromoController extends Controller
 {
     function allPromo($slug)
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         $menu = MenuNavbar::where('slug', $slug)->first();
+
         if ($menu) {
-            $hero = Hero::where('id_menu_navbar', $menu->id)->firstOrFail();
-            $services_section = ServicesSection::where('id_menu_navbar', $menu->id)->get();
-            $promo = Promo::where('id_menu_navbar', $menu->id)->get();
-            $pertanyaan = Qna::where('id_menu_navbar', $menu->id)->get();
-            $check_promo = Promo::count();
-            $check_qna = Qna::count();
-        } else {
+            $hero = Hero::where('id_menu_navbar',$menu->id)->first();
+            if ( $hero ) {
+                $services_section = ServicesSection::where('id_menu_navbar', $menu->id)->get();
+                $promo = Promo::where('id_menu_navbar', $menu->id)->get();
+                $pertanyaan = Qna::where('id_menu_navbar', $menu->id)->get();
+                $check_promo = Promo::count();
+                $check_qna = Qna::count();
+                return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
+            } else {
+                return view('404');
+            }
+        } elseif (!$menu) {
             // Cari data Hero berdasarkan slug dari SubMenuNavbar
-            $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
-            $services_section = ServicesSection::where('id_submenu_navbar', $subMenu->id)->get();
-            $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-            $promo = Promo::where('id_submenu_navbar', $subMenu->id)->get();
-            $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
-            $check_promo = Promo::count();
-            $check_qna = Qna::count();
+            $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+            $hero = Hero::where('id_submenu_navbar', $subMenu->id)->first();
+            if ( $hero ) {
+                $services_section = ServicesSection::where('id_submenu_navbar', $subMenu->id)->get();
+                $promo = Promo::where('id_submenu_navbar', $subMenu->id)->get();
+                $check_promo = Promo::count();
+                $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
+                $check_qna = Qna::count();
+                return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
+            } else {
+                return view('404');
+            }
         }
-        return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
+
     }
 
     public function index()
@@ -101,10 +112,9 @@ class promoController extends Controller
             $interval->i
         );
 
-
-        if ( $request -> hasFile("promo") ) {
-            $request -> file("promo")->move("image/", $request->file("promo")->getClientOriginalName());
-            $updatePromo -> promo = $request -> file("promo")->getClientOriginalName();
+        if ( $request -> hasFile("image") ) {
+            $request -> file("image")->move("image/", $request->file("image")->getClientOriginalName());
+            $updatePromo -> image = $request -> file("image")->getClientOriginalName();
             $updatePromo -> save();
         }
 

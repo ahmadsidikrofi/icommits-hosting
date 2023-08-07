@@ -81,8 +81,9 @@
                         <label>Choose Menu's Navbar</label>
                         <div class="input-group ">
                             <div class="col">
-                                <select class="form-control menu-navbar" name="menu_navbar" id="menu_navbar">
+                                <select class="form-control menu_navbar" name="menu_navbar" id="menu_navbar">
                                     <option disabled selected> -- Please Choose -- </option>
+                                    <option value="Tidak jadi"> -- Tidak jadi -- </option>
                                     @foreach ( $menuNavbar as $menu )
                                         @if ($menu->tipe_menu === "link")
                                             <option value="{{ $menu->id }}">{{ $menu->nama_menu }}</option>
@@ -103,6 +104,7 @@
                             <div class="col">
                                 <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
                                     <option disabled selected> -- Please Choose -- </option>
+                                    <option value="Tidak jadi"> -- Tidak jadi -- </option>
                                     @foreach ($subMenuNavbar as $subMenu)
                                         <option value="{{ $subMenu->id }}" data-slug="{{ $subMenu->slug }}">{{ $subMenu->nama_sub_menu }}</option>
                                     @endforeach
@@ -156,48 +158,23 @@
         </div>
     </div>
 
-    <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
-
-    <script>
-        function tampilkanPreview(gambar, idpreview) {
-            var gb = gambar.files;
-            for (var i = 0; i < gb.length; i++) {
-                var gbPreview = gb[i];
-                var imageType = /image.*/;
-                var preview = document.getElementById(idpreview);
-                var reader = new FileReader();
-
-                if (gbPreview.type.match(imageType)) {
-                    preview.file = gbPreview;
-                    reader.onload = (function(element) {
-                        return function(e) {
-                            element.src = e.target.result;
-                        };
-                    })(preview);
-                    reader.readAsDataURL(gbPreview);
-                } else {
-                    alert("file yang anda upload tidak sesuai. Khusus mengunakan image.");
-                }
-
-            }
-        }
-    </script>
-
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function() {
-            $('.menu-navbar').select2();
+        const menuNavbarSelect = document.getElementById('menu_navbar');
+        const submenuNavbarSelect = document.getElementById('submenu_navbar');
+
+        menuNavbarSelect.addEventListener('change', function () {
+            submenuNavbarSelect.disabled = this.value !== ''; // Jika memilih menu, submenu menjadi disabled
+            if (this.value === 'Tidak jadi') {
+                submenuNavbarSelect.disabled = false;
+            }
         });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('.menu_submenu').select2();
+
+        submenuNavbarSelect.addEventListener('change', function () {
+            menuNavbarSelect.disabled = this.value !== '';
+            if (this.value === 'Tidak jadi') {
+                menuNavbarSelect.disabled = false;
+            }
         });
     </script>
 

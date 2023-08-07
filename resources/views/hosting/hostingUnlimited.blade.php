@@ -11,7 +11,11 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class=" z-0">
+            @if ( $hero->image_background === NULL )
+            <div class="hero__item set-bg" data-setbg="/image/hero/hero-default.jpg">
+            @else
             <div class="hero__item set-bg" data-setbg="/image/hero/{{ $hero->image_background }}">
+            @endif
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -29,9 +33,13 @@
                             </div>
                         </div>
                         <div class="col-lg-6 z-1">
-                            <div class="hero-right">
-                                <img src="/image/hero/{{ $hero->image_right }}" class="img-fluid" alt="">
-                            </div>
+                            @if ( $hero->image_right === NULL )
+                                <img src="/image/hero/hero-right.png" class="img-fluid" alt="">
+                            @else
+                                <div class="hero-right">
+                                    <img src="/image/hero/{{ $hero->image_right }}" class="img-fluid" alt="">
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -73,6 +81,7 @@
         </div>
     </section>
     @endif
+    <!-- Services Section End -->
 
     <!-- Paket Web Hosting Section Start -->
     <section class="pricing-section spad">
@@ -491,9 +500,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 d-flex align-items-center">
-                    <h1 class="text-center fw-bold mx-5 text-light">FAQ <br>
-                        <span><p class="text-light fw-bold fs-5">Frequently Ask Question</p></span>
-                    </h1>
+                    <img src="/image/FAQ.png" alt="">
                 </div>
                 <div class="col-lg-8 col-md-8">
                     @foreach ($pertanyaan as $question => $item)

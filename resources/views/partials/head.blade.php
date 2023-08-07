@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/css/newstyle.css" type="text/css">
     <link rel="stylesheet" href="/css/relatedStories.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/css/stories.css">
 </head>
 
 @yield('head')

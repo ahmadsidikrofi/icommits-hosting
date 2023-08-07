@@ -89,7 +89,7 @@
     <!-- Register Domain Section End -->
 
     <!-- Services Section Begin -->
-    <section class="services-section spad">
+    {{-- <section class="services-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -143,7 +143,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Paket Web Hosting Section Start -->
     <section class="pricing-section spad">
