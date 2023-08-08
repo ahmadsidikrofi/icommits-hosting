@@ -30,7 +30,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/menu">Menu</a>
+                    <a href="/admin/menu-navbar">Menu</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -81,16 +81,16 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <form action="#" method="post">
+                                        <form action="/admin/hapus/{{ $menu->id }}" method="post">
                                             @method('delete')
                                             @csrf
                                             @if ($menu->tipe_menu === "link")
                                                 <a class="btn btn-sm btn-warning text-white"
-                                                    title="Edit" data-toggle="modal" data-target="#editMenu{{ $menu->id }}"><i class="fa-solid fa-pen-to-square"></i>
+                                                data-placement="top" title="Edit" data-toggle="modal" data-target="#editMenu{{ $menu->id }}"><i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                             @elseif ($menu->tipe_menu === "sub_menu")
                                                 <a href="/admin/sub-menu-navbar/{{ $menu->slug }}" class="btn btn-sm btn-success text-white"
-                                                    title="Edit"><i class="fa-solid fa-pen-to-square"></i>
+                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                             @endif
                                             <button type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
@@ -100,7 +100,7 @@
                                     </td>
                                     <td>
                                         {{-- /admin/urutan/{{ $menu->id }}/atas --}}
-                                        <form action="#" method="post">
+                                        <form action="" method="post">
                                             @csrf
                                             @if ($menu->urutan != 1)
                                                 <button type="submit" class="btn btn-primary btn-sm">

@@ -491,9 +491,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 d-flex align-items-center">
-                    <h1 class="text-center fw-bold mx-5 text-light">FAQ <br>
-                        <span><p class="text-light fw-bold fs-5">Frequently Ask Question</p></span>
-                    </h1>
+                    <img src="/image/faq.png" alt="">
                 </div>
                 <div class="col-lg-8 col-md-8">
                     @foreach ($pertanyaan as $question => $item)
@@ -523,5 +521,8 @@
 
     <!-- Js Plugins -->
     @include('partials.jsPlugin')
+
+    <!-- Footer-->
+    @include('partials.footer')
 </body>
 </html>

@@ -29,7 +29,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/menu">Menu</a>
+                    <a href="/admin/menu-navbar">Menu</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>
@@ -74,7 +74,8 @@
                                         {{ $subMenu->link }}
                                     </td>
                                     <td>
-                                        <form action="submenu/{{ $subMenu->id }}/destroy" method="post">
+                                        <form action="/admin/hapus/{{ $subMenu->id }}" method="post">
+                                            @method('delete')
                                             @csrf
                                             <a class="btn btn-sm btn-warning text-white" href="/admin/edit/submenu/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
                                                 <i class="fa-solid fa-pen-to-square"></i>

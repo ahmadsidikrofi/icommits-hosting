@@ -29,7 +29,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/menu">Menu</a>
+                    <a href="/admin/menu-navbar">Menu</a>
                 </li>
                 <li class="separator">
                     <i class="fa-solid fa-chevron-right"></i>

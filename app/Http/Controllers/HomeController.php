@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Qna;
 use App\Models\Hero;
 use App\Models\MenuNavbar;
 use App\Models\SubMenuNavbar;
@@ -15,7 +14,6 @@ class HomeController extends Controller
     public function showHome()
     {
         $paketUnlimited = ModuleHostingUnlimited::all();
-        $pertanyaan = Qna::all();
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         // $hero = Hero::where('slug', $slug)->first();
@@ -24,6 +22,6 @@ class HomeController extends Controller
         ->where('slug', $selectedMenuSlug)
         ->first();
 
-        return view('home', compact(['paketUnlimited', 'pertanyaan', 'menuNavbar', 'subMenuNavbar', 'hero']));
+        return view('home', compact(['paketUnlimited', 'menuNavbar', 'subMenuNavbar', 'hero']));
     }
 }

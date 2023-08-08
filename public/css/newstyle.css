@@ -4363,7 +4363,7 @@ ol {
 .info-section {
 	position: relative;
 	margin-top: -300px;
-	padding-bottom: 60px;
+	/* padding-bottom: 60px; */
 	padding-top: 60px;
 	z-index: 1;
 }
@@ -4372,7 +4372,7 @@ ol {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	padding: 30px 30px 50cm 50px;
+	padding: 30px 30px 0 50px;
 	border-radius: 40px;
 	background-color: #6697d6;
 	z-index: 2;
@@ -4381,6 +4381,11 @@ ol {
 /* .card-domain_layanan {
 	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 118, 1) 53%, rgba(0, 212, 255, 1) 95%);
 } */
+
+.card-domain_layanan {
+	background: rgb(46,25,175);
+	background: linear-gradient(117deg, rgba(46,25,175,1) 48%, rgba(0,20,122,1) 48%, rgba(25,23,106,1) 48%);
+}
 
 .card-domain_layanan .daftarkan {
 	width: 179px;
@@ -4424,32 +4429,48 @@ ol {
 	color: #2677E0;
 }
 
-.InputContainer {
-	width: 310px;
-	height: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(to bottom,rgb(227, 213, 255),rgb(255, 231, 231));
-	border-radius: 30px;
-	overflow: hidden;
-	cursor: pointer;
-	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
-  }
-  
-  .input {
-	width: 300px;
-	height: 40px;
+.client_unlimited {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+}
+
+.client_unlimited img {
+	margin: 40px auto 0 auto;
+	width: 40%;
+}
+
+.client_unlimited .unlimited_text {
+	color: #2677E0;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 600;
+}
+
+.input {
+	padding: 10px;
+	width: 120px;
 	border: none;
 	outline: none;
-	caret-color: rgb(255, 81, 0);
-	background-color: rgb(255, 255, 255);
-	border-radius: 30px;
-	padding-left: 15px;
-	letter-spacing: 0.8px;
-	color: rgb(19, 19, 19);
-	font-size: 13.4px;
+	border-radius: 5px;
+	box-shadow: 0 1px  gray;
+	font-size: 18px;
+	transition: width 0.3s;
+	font-family: Consolas,monaco,monospace;
   }
+  
+  .input:focus {
+	outline: 1px solid blue;
+	box-shadow: none;
+	width: 230px;
+  }
+  
+  .input::placeholder {
+	color: blue;
+  }
+  
+  
+  
 
   /* Gaya default untuk layar besar */
 .card-domain_layanan .daftarkan,
@@ -4485,10 +4506,15 @@ ol {
   
 	.InputContainer {
 	  width: 100%;
+	  margin-bottom: 15px;
+	  padding-left: 30px;
+	  padding-right: 30px;
+	  /* margin-left: 50px; */
 	}
-  
+	
 	.input {
 	  width: 100%;
+	  padding-left: 30px;
 	  font-size: 14px;
 	}
   }

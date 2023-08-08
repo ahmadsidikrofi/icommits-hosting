@@ -44,7 +44,7 @@ class ModuleHostingUnlimitedController extends Controller
             $services_section = ServicesSection::where('id_menu_navbar', $menuParent->id)->get();
             $check_service = ServicesSection::count();
             $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
-            $check_qna = Qna::count();
+            $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
             return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'check_service', 'check_qna']));
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
@@ -52,7 +52,7 @@ class ModuleHostingUnlimitedController extends Controller
             $services_section = ServicesSection::where('id_submenu_navbar', $subMenu->id)->get();
             $check_service = ServicesSection::count();
             $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
-            $check_qna = Qna::count();
+            $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
             return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'check_service', 'check_qna']));
         }
     }
