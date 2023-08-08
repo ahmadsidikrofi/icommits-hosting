@@ -77,8 +77,28 @@
                                             <td data-header="No">{{ $no++ }}</td>
                                             <td data-header="Judul Hero"> {{ $item->title_hero }}</td>
                                             <td data-header="Get Started"> {{ $item->link_button}} </td>
-                                            <td data-header="Background Hero"> <img src="/image/hero/{{ $item->image_background}}" class="img-responsive w-75 h-75" alt=""> </td>
-                                        <td data-header="Right Hero"> <img src="/image/hero/{{ $item->image_right}}" class="img-responsive w-50 h-50" alt=""> </td>
+                                            <td data-header="Background Hero">
+                                                @if ($item->image_background)
+                                                <img src="/image/hero/{{ $item->image_background }}" alt="avatar"
+                                                    class="rounded img-fluid shadow-lg"
+                                                    id="image_preview" height="20" width="100">
+                                                @else
+                                                    <img src="/image/hero/hero-default.jpg" alt="avatar"
+                                                    class="rounded img-fluid shadow-lg"
+                                                    id="image_preview" height="20" width="100">
+                                                @endif
+                                            </td>
+                                            <td data-header="Right Hero">
+                                                @if ($item->image_right)
+                                                <img src="/image/hero/{{ $item->image_right }}" alt="avatar"
+                                                    class="rounded img-fluid shadow-lg my-1" height="10" width="100"
+                                                    id="heroRight_preview">
+                                                @else
+                                                    <img src="/image/hero/hero-right.png" alt="avatar"
+                                                    class="rounded img-fluid shadow-lg my-1" height="10" width="100"
+                                                    id="heroRight_preview">
+                                                @endif
+                                            </td>
                                             <td>
                                                 <form action="{{ route('hero.destroy', $item->id) }}" method="post">
                                                     @method('delete')

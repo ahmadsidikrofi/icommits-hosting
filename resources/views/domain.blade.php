@@ -2,11 +2,19 @@
 <html lang="en">
 @include('partials.head')
 <link rel="stylesheet" href="/css/plan_pro.css">
-<style>
- .hero_item_domain::before {
-     background-image: url('/image/hero/{{ $hero->image_background }}');
- }
-</style>
+@if ($hero->image_background === NULL)
+    <style>
+        .hero_item_domain::before {
+            background-image: url('/image/hero/hero-default.jpg');
+        }
+    </style>
+@else
+    <style>
+        .hero_item_domain::before {
+            background-image: url('/image/hero/{{ $hero->image_background }}');
+        }
+    </style>
+@endif
 <body>
     @include('partials.Firstnavbar')
     <!-- Hero Section Begin -->

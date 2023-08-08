@@ -1,0 +1,56 @@
+
+input[readonly] {
+    background-color: #f2f2f2;
+}
+
+.img-wrap {
+    position: relative;
+    display: inline-block;
+    font-size: 0;
+}
+
+.img-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #23261f;
+    padding: 10px 8px 8px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .7;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 10%;
+}
+
+.img-wrap:hover .close {
+    opacity: 1;
+    border: 2px solid white;
+    transition: .3s ease-out;
+}
+.img-wrap .edit {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 100;
+    background-color: #23261f;
+    padding: 10px 8px 8px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .7;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 10%;
+}
+
+.img-wrap:hover .edit {
+    opacity: 1;
+    border: 2px solid white;
+    transition: .3s ease-out;
+}
+

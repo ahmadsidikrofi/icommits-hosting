@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class QnaController extends Controller
 {
-    
+
     public function index()
     {
         $menuNavbar = MenuNavbar::all();

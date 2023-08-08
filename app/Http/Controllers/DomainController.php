@@ -10,29 +10,57 @@ use App\Models\SubMenuNavbar;
 
 class DomainController extends Controller
 {
-    public function searchDomainPage( $slug )
+    // public function searchDomainPage( $slug )
+    // {
+    //     $menuNavbar = MenuNavbar::all();
+    //     $subMenuNavbar = SubMenuNavbar::all();
+    //     $menu = MenuNavbar::where('slug', $slug)->first();
+    //     if ($menu) {
+    //         $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
+    //         $hero = Hero::where('id_menu_navbar', $menuParent->id)->firstOrFail();
+    //         if (!$hero) {
+    //             return view('admin.dashboard');
+    //         }
+    //         $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
+    //         $check_qna = Qna::count();
+    //         return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
+    //     } elseif (!$menu) {
+    //         $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
+    //         $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
+    //         if (!$hero) {
+    //             return view('admin.dashboard');
+    //         }
+    //         $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
+    //         $check_qna = Qna::count();
+    //         return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
+    //     }
+    // }
+    public function searchDomainPage($slug)
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         $menu = MenuNavbar::where('slug', $slug)->first();
+
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
-            $hero = Hero::where('id_menu_navbar', $menuParent->id)->firstOrFail();
-            $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
-            $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
-            return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
-        } else {
-            $subMenu = SubMenuNavbar::where('slug', $slug)->firstOrFail();
-            $hero = Hero::where('id_submenu_navbar', $subMenu->id)->firstOrFail();
-            $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
-            $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
-            return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
+            $hero = Hero::where('id_menu_navbar', $menuParent->id)->first();
+            if ($hero) {
+                $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
+                $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
+                return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
+            } else {
+                return view('404');
+            }
+        } elseif (!$menu) {
+            $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+            $hero = Hero::where('id_submenu_navbar', $subMenu->id)->first();
+            if ($hero) {
+                $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
+                $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
+                return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
+            } else {
+                return view('404');
+            }
         }
     }
 }
-
-// $hero = Hero::whereHas('menu_navbar', function ($query) use ($slug) {
-//     $query->where('slug', $slug);
-// })->orWhereHas('submenu_navbar', function ($query) use ($slug) {
-//     $query->where('slug', $slug);
-// })->firstOrFail();

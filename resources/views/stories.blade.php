@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('partials.head')
-<link rel="stylesheet" href="/css/artikel.css">
 <style>
     .section-title__wrapper {
         margin-bottom: -30px;
@@ -11,7 +10,6 @@
 
 <body class="">
     @include('partials.storiesNavbar')
-    {{-- @include('partials.Firstnavbar') --}}
     <section id="blog">
         <div class="blog-heading mt-5">
             <div class="container">

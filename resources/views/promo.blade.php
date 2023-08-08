@@ -6,7 +6,11 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="">
+            @if ( $hero->image_background === NULL )
+            <div class="hero__item set-bg" data-setbg="/image/hero/hero-default.jpg">
+            @else
             <div class="hero__item set-bg" data-setbg="/image/hero/{{ $hero->image_background }}">
+            @endif
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -19,16 +23,20 @@
                                 @if ($hero->link_button === NULL)
 
                                 @else
-                                    <a href="#promo" class="btn btn-outline-primary fw-semibold">
+                                    <a href="#promo" class="btn btn-dark btn-lg fw-semibold">
                                         {{ $hero->link_button }}
                                     </a>
                                 @endif
                             </div>
                         </div>
                         <div class="col-lg-6 z-1">
-                            <div class="hero-right">
-                                <img src="/image/hero/{{ $hero->image_right }}" class="img-fluid" alt="">
-                            </div>
+                            @if ( $hero->image_right === NULL )
+                                <img src="/image/hero/hero-right.png" class="img-fluid" alt="">
+                            @else
+                                <div class="hero-right">
+                                    <img src="/image/hero/{{ $hero->image_right }}" class="img-fluid" alt="">
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

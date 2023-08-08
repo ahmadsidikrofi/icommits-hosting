@@ -5,6 +5,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/deleteBackgroundHero.css">
 
     <div class="page-inner">
         <div class="page-header">
@@ -95,20 +96,31 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Background Hero</label>
-                        <div class="row">
-                            <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">
-                                <img src="/image/hero/{{ $hero->image_background }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6 mx-auto">
-                                <div> class="custom-file mb-3">
-                                    <input type="file" id="file" name="image_background"
-                                        class="custom-file-input @error('image_background') is-invalid @enderror" accept="image/*"
-                                        onchange="tampilkanPreview(this,'preview')" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose
-                                        file</label>
+                        <label>Backround Image</label>
+                        <div class="row mb-5">
+                            <div class="col-lg-4 mx-auto">
+                                <div class="card-body">
+                                    <div class="img-wrap">
+                                        <span class="close">
+                                            <a href="/admin/hero/remove/background-hero/{{ $hero->slug }}">
+                                                <i class="fa-solid fa-trash" style="font-size: 1rem; color: rgba(255, 255, 255, 0.644);"></i>
+                                            </a>
+                                        </span>
+                                        @if ($hero->image_background)
+                                            <img src="/image/hero/{{ $hero->image_background }}" alt="avatar"
+                                                class="rounded img-fluid shadow-lg" height="20" width="200"
+                                                id="image_preview">
+                                        @else
+                                            <img src="/image/hero/hero-default.jpg" alt="avatar"
+                                            class="rounded img-fluid shadow-lg" height="20" width="200"
+                                            id="image_preview">
+                                        @endif
+                                    </div>
+                                    <div class="mt-3">
+                                        <label for="image" class="btn btn-dark text-light"><i class="fa-solid fa-upload"></i> Pilih gambar</label>
+                                        <input type="file" name="image_background" class="form-control" id="image"
+                                            style="display: none;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -120,19 +132,30 @@
                     </div>
                     <div class="form-group">
                         <label>Right Hero</label>
-                        <div class="row">
-                            <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">
-                                <img src="/image/hero/{{ $hero->image_right }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6 mx-auto">
-                                <div> class="custom-file mb-3">
-                                    <input type="file" id="file" name="image_right"
-                                        class="custom-file-input @error('image_right') is-invalid @enderror" accept="image/*"
-                                        onchange="tampilkanPreview(this,'preview')" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose
-                                        file</label>
+                        <div class="row mb-5">
+                            <div class="col-lg-4 mx-auto">
+                                <div class="card-body">
+                                    <div class="img-wrap">
+                                        <span class="close">
+                                            <a href="/admin/hero/remove/background-hero-right/{{ $hero->slug }}">
+                                                <i class="fa-solid fa-trash" style="font-size: 1rem; color: rgba(255, 255, 255, 0.644);"></i>
+                                            </a>
+                                        </span>
+                                        @if ($hero->image_right)
+                                            <img src="/image/hero/{{ $hero->image_right }}" alt="avatar"
+                                                class="rounded img-fluid shadow-lg" height="20" width="300"
+                                                id="heroRight_preview">
+                                        @else
+                                            <img src="/image/hero/hero-right.png" alt="avatar"
+                                            class="rounded img-fluid shadow-lg" height="20" width="200"
+                                            id="heroRight_preview">
+                                        @endif
+                                    </div>
+                                    <div class="mt-3">
+                                        <label for="image_right" class="btn btn-dark text-light"><i class="fa-solid fa-upload"></i> Pilih gambar</label>
+                                        <input type="file" name="image_right" class="form-control" id="image_right"
+                                            style="display: none;">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -151,39 +174,35 @@
         </div>
     </div>
 
+<script>
+    // Update Hero Image Background
+    $(document).ready(function () {
+        // image preview
+        $('#image').change(function() {
+            let reader = new FileReader();
 
-    <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            reader.onload = (e) => {
+                $('#image_preview').attr('src', e.target.result);
+                $('#image_preview').width(200);
+            };
+            reader.readAsDataURL(this.files[0]);
         });
-    </script>
+    });
 
-    <script>
-        function tampilkanPreview(image_background, idpreview) {
-            var gb = image_background.files;
-            for (var i = 0; i < gb.length; i++) {
-                var gbPreview = gb[i];
-                var imageType = /image.*/;
-                var preview = document.getElementById(idpreview);
-                var reader = new FileReader();
+    // Update Hero Right Background
+    $(document).ready(function () {
+        // image preview
+        $('#image_right').change(function() {
+            let reader = new FileReader();
 
-                if (gbPreview.type.match(imageType)) {
-                    preview.file = gbPreview;
-                    reader.onload = (function(element) {
-                        return function(e) {
-                            element.src = e.target.result;
-                        };
-                    })(preview);
-                    document.getElementById("panah").innerHTML =
-                        "<br><img src='{{ asset('images/arrow.png') }}' width='90'>";
-                    reader.readAsDataURL(gbPreview);
-                } else {
-                    alert("file yang anda upload tidak sesuai. Khusus mengunakan image.");
-                }
+            reader.onload = (e) => {
+                $('#heroRight_preview').attr('src', e.target.result);
+                $('#heroRight_preview').width(200);
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+    });
 
-            }
-        }
-    </script>
+</script>
+
 @endsection

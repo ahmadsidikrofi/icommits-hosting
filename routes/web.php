@@ -11,7 +11,7 @@ use App\Http\Controllers\ModuleHostingUnlimitedController;
 use App\Http\Controllers\subMenuNavbarController;
 use App\Models\MenuNavbar;
 use App\Http\Controllers\qnaController;
-use App\Http\Controllers\promoController;
+use App\Http\Controllers\PromoController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\KategoriStoriesController;
 use App\Http\Controllers\ServicesSectionController;
@@ -78,7 +78,7 @@ Route::put('/admin/edit/paket-hosting-unlimited/{slug}/store', [ModuleHostingUnl
 
 //Module QnA
 //Menampilkan QnA dihalaman admin
-Route::resource('admin/qna', qnaController::class);
+Route::resource('/admin/qna', qnaController::class);
 
 // Fitur Menu Navbar
 Route::get('/admin/menu-navbar', [MenuNavbarController::class, "viewPageMenu"]);
@@ -95,6 +95,8 @@ Route::delete('/admin/hapus/{id}', [MenuNavbarController::class, "hapusMenu"]);
 
 // Module Hero
 Route::resource('/admin/hero', HeroController::class);
+Route::get('/admin/hero/remove/background-hero/{slug}', [HeroController::class, "removeHero"]);
+Route::get('/admin/hero/remove/background-hero-right/{slug}', [HeroController::class, "removeHeroRight"]);
 
 // Module Services Section
 Route::get('/admin/services-section', [ServicesSectionController::class, "viewPageServicesSection"]);
@@ -118,7 +120,7 @@ Route::delete('/admin/destroy/stories/{slug}', [StoriesController::class, "Destr
 
 Route::get('/stories', [StoriesController::class, "showStories"]);
 Route::get('/stories/{slug}', [StoriesController::class, "showDetailStories"]);
-Route::get('/admin/stories-section', [BlogController::class, "viewPageBlogSection"]);
+Route::get('/admin/stories-section', [StoriesController::class, "viewPageStoriesSection"]);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 
