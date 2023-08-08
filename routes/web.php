@@ -83,6 +83,7 @@ Route::resource('/admin/qna', qnaController::class);
 // Fitur Menu Navbar
 Route::get('/admin/menu-navbar', [MenuNavbarController::class, "viewPageMenu"]);
 Route::post('/admin/tambah/menu-navbar', [MenuNavbarController::class, "tambahMenu"]);
+Route::delete('/admin/hapus/{id}', [MenuNavbarController::class, "hapusMenu"]);
 Route::put('/admin/edit/menu-navbar/{slug}', [MenuNavbarController::class, "editMenu"]);
 
 // Fitur Sub Menu
@@ -90,6 +91,7 @@ Route::get('/admin/sub-menu-navbar/{slug}', [subMenuNavbarController::class, "vi
 Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tambahSubMenu"]);
 Route::get('/admin/edit/submenu/{slug}', [subMenuNavbarController::class, "viewPageEditSubMenu"]);
 Route::put('/admin/edit/submenu/{slug}/store', [subMenuNavbarController::class, "editSubMenuStore"]);
+Route::delete('/admin/hapus/{id}', [MenuNavbarController::class, "hapusMenu"]);
 
 // Module Hero
 Route::resource('/admin/hero', HeroController::class);

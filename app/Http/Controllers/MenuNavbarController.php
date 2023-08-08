@@ -36,4 +36,17 @@ class MenuNavbarController extends Controller
         $editMenuNavbar->save();
         return redirect()->back();
     }
+
+    public function hapusMenu($id)
+    {
+        $menu = MenuNavbar::where('id', $id)->first();
+        if ($menu->tipe_menu === "link"){
+            $hapusMenu = MenuNavbar::where('id', $id)->first()->delete();
+            return redirect('/admin/menu-navbar');
+        } elseif ($menu->tipe_menu === "sub_menu") {
+            $hapusMenu = MenuNavbar::where('id', $id)->first()->delete();
+            $hapusMenuParent = SubMenuNavbar::where('id_menu_navbar', $menu->id)->delete();
+            return redirect('/admin/menu-navbar');
+        }
+    }
 }
