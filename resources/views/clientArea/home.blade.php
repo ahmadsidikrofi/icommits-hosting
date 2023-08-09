@@ -2,11 +2,6 @@
 <html lang="en">
 @include('partials.head')
 <link rel="stylesheet" href="/css/plan_pro.css">
-<style>
-    .card .card-header img {
-        margin: 0 0 0 -40px
-    }
-</style>
 
 <body>
     {{-- @include('partials.Firstnavbar') --}}
@@ -45,7 +40,7 @@
                                         <span style="color: darkblue;font-weight:500;">Layanan</span>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text fs-3 text-center fw-bold" style="color:blueviolet">0</p>
+                                        <p class="card-text fs-3 text-center fw-bold" style="color:blueviolet">1</p>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +51,7 @@
                                         <span style="color: darkblue;font-weight:500;">Domains</span>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text fs-3 text-center fw-bold" style="color:blueviolet">0</p>
+                                        <p class="card-text fs-3 text-center fw-bold" style="color:blueviolet">2</p>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +62,7 @@
                                         <span style="color: darkblue;font-weight:500;">Tagihan</span>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text fs-3 text-center fw-bold" style="color:blueviolet">0</p>
+                                        <p class="card-text fs-3 text-center fw-bold" style="color:blueviolet">1</p>
                                     </div>
                                 </div>
                             </div>
@@ -78,62 +73,28 @@
                                         <span style="color: darkblue;font-weight:500;">Poin</span>
                                     </div>
                                     <div class="card-body text-success">
-                                        <p class="card-text fs-3 text-center fw-bold" style="color:blueviolet">0</p>
+                                        <p class="card-text fs-3 text-center fw-bold" style="color:blueviolet">5</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 col-md-12 mb-5 w-100 riwayat_layanan">
                                 <div class="card mb-3 rounded-4">
                                     <div class="card-header fw-bold text-dark bg-transparent">Riwayat Layanan</div>
-                                    <div class="card-body text-success">
-                                        <p class="card-text fs-5">Kamu belum pernah berlangganan</p>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="p-2 flex-grow-1 bd-highlight mx-2">Unlimited Hosting Premium <p class="fst-italic">icommits.id</p></div>
+                                        <div class="px-5 pt-2 bd-highlight justify-content-end"><span class="bg-success badge fs-6 fw-normal">Aktif</span></div>
+                                        <div class="px-4 pt-2 bd-highlight justify-content-end"><span class="bg-secondary badge fs-6 fw-normal">Managed</span></div>
                                     </div>
-                                    <div class="img mt-4 mx-auto">
-                                        <img src="/image/emptyCart.png" alt="">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="p-2 flex-grow-1 bd-highlight mx-2">.xyz <p class="fst-italic">ayobelajar.xyz</p></div>
+                                        <div class="px-2 pt-2 bd-highlight justify-content-end"><span class="bg-danger badge fs-6 fw-normal">Non-Aktif</span></div>
+                                        <div class="px-3 pt-2 bd-highlight justify-content-end"><span class="bg-secondary badge fs-6 fw-normal">Perpanjang</span></div>
                                     </div>
-                                    <p class="card-text text-dark fw-bold fs-3 mx-auto">Ternyata masih kosong😢</p>
-                                    <p class="card-text text-dark mx-auto mb-5 fw-semibold">
-                                        Coba buat layanan kamu terlebih dulu yuk. <br>
-                                        Dipilih dulu yaa siapa tau ada yang menarik
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-10 col-sm-12 mb-5">
-                                <div class="row">
-                                    <div class="col-lg-12 col-sm-6 col-md-12">
-                                        <div class="card-domain_layanan card mb-3 rounded-4">
-                                            <div class="card-body">
-                                                <p class="card-text fs-5 mt-3 fw-bold text-center text-light">Daftarkan
-                                                    domain barumu</p>
-                                            </div>
-                                            <input placeholder="Search..." class="input mx-auto" name="text" type="text">
-                                            <div class="mx-auto mt-3">
-                                                <button class="btn btn-lg daftarkan mx-2">Daftarkan</button>
-                                                <button class="btn btn-lg transfer mx-2">Transfer</button>
-                                            </div>
-                                        </div>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="p-2 flex-grow-1 bd-highlight mx-2">.id <p class="fst-italic">icommits.id</p></div>
+                                        <div class="px-5 pt-2 bd-highlight justify-content-end"><span class="bg-success badge fs-6 fw-normal">Aktif</span></div>
+                                        <div class="px-3 pt-2 bd-highlight justify-content-end"><span class="bg-secondary badge fs-6 fw-normal">Perpanjang</span></div>
                                     </div>
-                                    <!-- Jangan perlu menggunakan col-lg-6 di sini -->
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-10 col-sm-12">
-                                <div class="row">
-                                    <div class="col-lg-9 col-sm-6 col-md-12 client_unlimited">
-                                        <div class="card rounded-4">
-                                            <img src="/image/client_unlimited.png" alt="">
-                                            <div class="card-body">
-                                                <p class="card-text unlimited_text fs-5 mt-3 fw-bold text-center">
-                                                    Unlimited Hosting</p>
-                                            </div>
-                                            <p class="text-center">Mulai website Anda dengan paket hosting murah dengan
-                                                disk space dan bandwidth unlimited</p>
-                                            <div class="mx-auto">
-                                                <button class="btn btn-lg btn-primary rounded-5 mx-auto mb-4">Coba
-                                                    Sekarang</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Jangan perlu menggunakan col-lg-6 di sini -->
                                 </div>
                             </div>
                         </div>
