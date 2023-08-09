@@ -29,6 +29,12 @@ use App\Http\Controllers\ServicesSectionController;
 
 Route::get('/', [HomeController::class, "showHome"]);
 
+//Bab VPS
+Route::get('/vps', function () {
+    return view('vps.vpsPage');
+});
+
+
 //Bab Promo
 
 Route::get('/promoKeren/{slug}', [PromoController::class, "allPromo"]);
@@ -53,6 +59,10 @@ Route::get('/cloud-hosting', function () {
 
 Route::get('/client', function () {
     return view('clientArea.homeClient');
+});
+
+Route::get('/homeClient', function () {
+    return view('clientArea.home');
 });
 
 // Route::get('/hosting-unlimited', [ModuleHostingUnlimitedController::class, "tanya"]);

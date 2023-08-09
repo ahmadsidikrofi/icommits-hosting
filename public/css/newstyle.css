@@ -4448,7 +4448,7 @@ ol {
 }
 
 .input {
-	padding: 10px;
+	padding: 20px;
 	width: 120px;
 	border: none;
 	outline: none;
@@ -4466,7 +4466,7 @@ ol {
   }
   
   .input::placeholder {
-	color: blue;
+	color: rgb(32, 32, 181);
   }
   
   
