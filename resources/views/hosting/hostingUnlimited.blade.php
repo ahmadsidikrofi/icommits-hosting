@@ -500,7 +500,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 d-flex align-items-center">
-                    <img src="/image/FAQ.png" alt="">
+                    <img src="/image/faq.png" alt="">
                 </div>
                 <div class="col-lg-8 col-md-8">
                     @foreach ($pertanyaan as $question => $item)
@@ -530,5 +530,8 @@
 
     <!-- Js Plugins -->
     @include('partials.jsPlugin')
+
+    <!-- Footer-->
+    @include('partials.footer')
 </body>
 </html>

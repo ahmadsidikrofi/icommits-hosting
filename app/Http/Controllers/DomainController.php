@@ -46,7 +46,7 @@ class DomainController extends Controller
             $hero = Hero::where('id_menu_navbar', $menuParent->id)->first();
             if ($hero) {
                 $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
-                $check_qna = Qna::count();
+                $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
                 return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
             } else {
                 return view('404');
@@ -56,7 +56,7 @@ class DomainController extends Controller
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->first();
             if ($hero) {
                 $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
-                $check_qna = Qna::count();
+                $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
                 return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
             } else {
                 return view('404');

@@ -45,7 +45,7 @@ class ModuleHostingUnlimitedController extends Controller
                 $services_section = ServicesSection::where('id_menu_navbar', $menuParent->id)->get();
                 $check_service = ServicesSection::count();
                 $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
-                $check_qna = Qna::count();
+                $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
             } else {
                 return view('404');
             }
@@ -56,7 +56,7 @@ class ModuleHostingUnlimitedController extends Controller
                 $services_section = ServicesSection::where('id_submenu_navbar', $subMenu->id)->get();
                 $check_service = ServicesSection::count();
                 $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
-                $check_qna = Qna::count();
+                $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
             } else {
                 return view('404');
             }
