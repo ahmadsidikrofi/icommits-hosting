@@ -26,7 +26,7 @@ class PromoController extends Controller
                 $pertanyaan = Qna::where('id_menu_navbar', $menu->id)->get();
                 $check_promo = Promo::count();
                 $check_qna = Qna::where('id_menu_navbar', $menu->id)->count();
-                return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
+                return view('promoPage.promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
             } else {
                 return view('404');
             }
@@ -40,7 +40,7 @@ class PromoController extends Controller
                 $check_promo = Promo::count();
                 $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
                 $check_qna = Qna::where('id_submenu_navbar', $menu->id)->count();
-                return view('promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
+                return view('promoPage.promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
             } else {
                 return view('404');
             }
@@ -128,5 +128,13 @@ class PromoController extends Controller
         $promo->delete();
         session()->put('success', 'Data Berhasil dihapus');
         return redirect()->route('promo.index');
+    }
+
+    function detailPromo( $slug )
+    {
+        $menuNavbar = MenuNavbar::all();
+        $subMenuNavbar = SubMenuNavbar::all();
+        $menu = MenuNavbar::where('slug', $slug)->first();
+        return view('promoPage.detailPromo', compact(['menuNavbar', 'subMenuNavbar', 'menu']));
     }
 }

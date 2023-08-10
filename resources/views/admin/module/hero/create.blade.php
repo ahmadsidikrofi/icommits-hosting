@@ -128,6 +128,54 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label>Backround Image</label>
+                        <div class="row mb-5">
+                            <div class="col-lg-4 mx-auto">
+                                <div class="card-body">
+                                    <div class="img-wrap">
+                                        <img src="https://kodfun.github.io/Reels/ImagePreview/choose.png" alt="avatar"
+                                        class="img-fluid shadow-lg rounded" height="20" width="200"
+                                        id="image_preview">
+                                    </div>
+                                    <div class="mt-3 mx-4">
+                                        <label for="image" class="btn btn-dark text-light"><i class="fa-solid fa-upload"></i> Pilih gambar</label>
+                                        <input type="file" name="image_background" class="form-control" id="image"
+                                            style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @error('image_background')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Right Hero</label>
+                        <div class="row mb-5">
+                            <div class="col-lg-4 mx-auto">
+                                <div class="card-body">
+                                    <div class="img-wrap">
+                                        <img src="https://kodfun.github.io/Reels/ImagePreview/choose.png" alt="avatar"
+                                        class="img-fluid shadow-lg rounded" height="20" width="200"
+                                        id="heroRight_preview">
+                                    </div>
+                                    <div class="mt-3 mx-4">
+                                        <label for="image_right" class="btn btn-dark text-light"><i class="fa-solid fa-upload"></i> Pilih gambar</label>
+                                        <input type="file" name="image_right" class="form-control" id="image_right"
+                                            style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @error('image_right')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    {{-- <div class="form-group">
                         <label>Background Hero</label>
                         <div class="input-group ">
                             <input type="file" name="image_background" class="form-control @error('image_background') is-invalid @enderror">
@@ -148,7 +196,7 @@
                                 </span>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary text-white">
                             Save </button>
@@ -159,6 +207,36 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>
+        // Update Hero Image Background
+        $(document).ready(function () {
+            // image preview
+            $('#image').change(function() {
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+                    $('#image_preview').attr('src', e.target.result);
+                    $('#image_preview').width(200);
+                };
+                reader.readAsDataURL(this.files[0]);
+            });
+        });
+
+        // Update Hero Right Background
+        $(document).ready(function () {
+            // image preview
+            $('#image_right').change(function() {
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+                    $('#heroRight_preview').attr('src', e.target.result);
+                    $('#heroRight_preview').width(200);
+                };
+                reader.readAsDataURL(this.files[0]);
+            });
+        });
+
+    </script>
     <script>
         const menuNavbarSelect = document.getElementById('menu_navbar');
         const submenuNavbarSelect = document.getElementById('submenu_navbar');

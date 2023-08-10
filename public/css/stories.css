@@ -152,3 +152,29 @@ body{
     }
 }
 
+
+/* Kategori */
+.kategori-list {
+    justify-content: center;
+}
+
+/* Media query for smartphones */
+@media (max-width: 574px) {
+    .kategori-list {
+        width: 80%;
+    }
+}
+
+@media (max-width: 767px) {
+    .kategori-list {
+        width: 80%;
+    }
+}
+
+/* Media query for desktop screens */
+@media (min-width: 768px) {
+    .kategori-list {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+}

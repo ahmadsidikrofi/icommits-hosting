@@ -30,6 +30,24 @@ class StoriesSection extends Model
         return $this->belongsToMany(KategoriStories::class, "kategori_stories", "stories_id", "kategori_id");
     }
 
+    function storiesView()
+    {
+        return $this->hasMany(StoriesViews::class);
+    }
+    
+    public function showStories()
+    {
+        if(auth()->id() == NULL){
+            return $this->storiesView()
+            ->where('ip', '=',  request()->ip())->exists();
+        }
+
+        return $this->storiesView()
+        ->where(function($storiesViewsQuery) { $storiesViewsQuery
+            ->where('session_id', '=', request()->getSession()->getId())
+            ->orWhere('user_id', '=', (auth()->check()));})->exists();
+    }
+
     public function menu_navbar()
     {
         return $this->belongsTo(MenuNavbar::class, 'id_menu_navbar');

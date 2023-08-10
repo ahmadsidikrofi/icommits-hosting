@@ -104,51 +104,91 @@
                                                     @csrf
                                                     @method('put')
                                                     <div class="form-group">
-                                                        <label>Section Name</label>
-                                                        <div class="input-group mb-3">
-                                                            <input type="text" name="section_title" autocomplete='off' value="{{ $service->section_title }}" class="form-control  @error('section_title') is-invalid @enderror" >
-                                                            @error('section_title')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <label>Service Name</label>
-                                                        <div class="input-group mb-3">
-                                                            <input type="text" name="services_title" autocomplete='off' value="{{ $service->services_title }}"
-                                                                class="form-control
-                                                        @error('services_title') is-invalid @enderror"
-                                                                required>
-                                                            @error('services_title')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <label>Service Description</label>
-                                                        <div class="input-group mb-3">
-                                                            <input type="text" name="services_deskripsi" autocomplete='off' maxlength="66" value="{{ $service->services_deskripsi }}"
-                                                                class="form-control
-                                                        @error('services_deskripsi') is-invalid @enderror"
-                                                                required>
-                                                            @error('services_deskripsi')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <label>Service Price</label>
-                                                        <div class="input-group mb-3">
-                                                            <input type="text" name="services_price" autocomplete='off' value="{{ $service->services_price }}"
-                                                                class="form-control
-                                                        @error('services_price') is-invalid @enderror"
-                                                                required>
-                                                            @error('services_price')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
+                                                        <label>Section Title</label>
+                                                        @if ( $service->section_title < 1 )
+                                                            <p class="text-danger fw-bold">Silahkan edit Section Title pada service pertama</p>
+                                                            <label>Service Name</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="services_title" autocomplete='off' value="{{ $service->services_title }}"
+                                                                    class="form-control
+                                                                @error('services_title') is-invalid @enderror"
+                                                                    required>
+                                                                @error('services_title')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <label>Service Description</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="services_deskripsi" autocomplete='off' maxlength="66" value="{{ $service->services_deskripsi }}"
+                                                                    class="form-control
+                                                                @error('services_deskripsi') is-invalid @enderror"
+                                                                    required>
+                                                                @error('services_deskripsi')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <label>Service Price</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="services_price" autocomplete='off' value="{{ $service->services_price }}"
+                                                                    class="form-control
+                                                                @error('services_price') is-invalid @enderror"
+                                                                    required>
+                                                                @error('services_price')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        @else
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="section_title" autocomplete='off' value="{{ $service->section_title }}" class="form-control  @error('section_title') is-invalid @enderror" >
+                                                                @error('section_title')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <label>Service Name</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="services_title" autocomplete='off' value="{{ $service->services_title }}"
+                                                                    class="form-control
+                                                                @error('services_title') is-invalid @enderror"
+                                                                    required>
+                                                                @error('services_title')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <label>Service Description</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="services_deskripsi" autocomplete='off' maxlength="66" value="{{ $service->services_deskripsi }}"
+                                                                    class="form-control
+                                                                @error('services_deskripsi') is-invalid @enderror"
+                                                                    required>
+                                                                @error('services_deskripsi')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <label>Service Price</label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" name="services_price" autocomplete='off' value="{{ $service->services_price }}"
+                                                                    class="form-control
+                                                                @error('services_price') is-invalid @enderror"
+                                                                    required>
+                                                                @error('services_price')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-dark"
