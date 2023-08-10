@@ -348,21 +348,28 @@
     <!-- Discount Forever Start -->
 
     <!-- Featured Partners Start -->
+{{-- @if ($check_promo < 1)
+<section></section>
+@elseif ($check_promo >= 1) --}}
     <section class="services-section spad">
         <div class="container">
             <div class="row ">
+                @foreach ($partner as $item )
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h3>Percayakan Kami Yang Telah Dipercaya <br> Banyak Pelanggan Sebelum Kamu</h3>
+                        <h3>{{ $item->judul_section }}</h3>
                     </div>
                 </div>
+                @endforeach
+
+                @foreach ($partner as $partner )
                 <div class="col">
                     <div class="swiper featured_customer mx-4">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
+                                <img src="/image/{{ $partner->logo }}" class="img-fluid" alt="">
                             </div>
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <img src="/image/ft-telkom.png" class="img-fluid" alt="">
                             </div>
                             <div class="swiper-slide">
@@ -382,7 +389,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <img src="/image/logo icommits.png" class="img-fluid" alt="">
-                            </div>
+                            </div> --}}
                             <!-- Tambahkan swiper-slide untuk gambar-gambar lainnya -->
                         </div>
                         <div class="swiper-button-prev"></div>
@@ -392,9 +399,11 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>
+{{-- @endif --}}
     <!-- Featured Partners End -->
 
     <!-- FAQ Start -->
