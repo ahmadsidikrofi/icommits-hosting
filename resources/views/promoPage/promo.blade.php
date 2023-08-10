@@ -85,7 +85,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a href="/hosting-unlimited" class="btn btn-go-link w-100 mt-2">{{ $promo->link_promo }}</a></>
+                            <a href="/promo/{{ $promo->slug }}" class="btn btn-go-link w-100 mt-2">{{ $promo->link_promo }}</a></>
                         </div>
                     </div>
                     @endforeach

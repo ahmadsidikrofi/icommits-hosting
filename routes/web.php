@@ -40,7 +40,7 @@ Route::get('/vps', function () {
 
 Route::get('/promoKeren/{slug}', [PromoController::class, "allPromo"]);
 Route::resource('/admin/promo', PromoController::class);
-// Route::post('admin/promo/section', [PromoController::class, "section"]);
+Route::get('/promo/{slug}', [PromoController::class, "detailPromo"]);
 
 // Domain
 Route::get('/domain/{slug}', [DomainController::class, "searchDomainPage"]);
