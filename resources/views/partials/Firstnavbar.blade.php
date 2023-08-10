@@ -14,7 +14,25 @@
         </div>
         <nav class="offcanvas__menu mobile-menu">
             <ul>
-                <li class="active"><a href="#">Hosting</a>
+                <li><a href="/stories">Stories</a></li>
+                @foreach ( $menuNavbar as $menu )
+                    @if ( $menu->tipe_menu === "link" )
+                        <li><a href="{{ $menu->link }}">{{ $menu->nama_menu }}</a></li>
+                    @else
+                        <li class="active"><a href="#">{{ $menu->nama_menu }}</a>
+                            <ul class="dropdown">
+                                @foreach ( $menu->subMenus as $submenu )
+                                        <li>
+                                            <a class="btn bg-secondary" style="text-align: left;" href="{{ $submenu->link }}">
+                                                <span style="margin-left: 10px; display: flex;">{{ $submenu->nama_sub_menu }}</span>
+                                            </a>
+                                        </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endif
+                @endforeach
+                {{-- <li class="active"><a href="#">Hosting</a>
                     <ul class="dropdown">
                         <li><a class="btn bg-secondary" style="text-align: left;" href="hosting-unlimited">
                                 <span style="margin-left: 10px; display: flex;">Web Hosting Unlimited Indonesia</span>
@@ -29,11 +47,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li><a href="#">Domain</a></li>
-                <li><a href="#">VPS</a></li>
-                <li><a href="#">Email</a></li>
-                <li><a href="#">Plugins</a></li>
+                </li> --}}
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>

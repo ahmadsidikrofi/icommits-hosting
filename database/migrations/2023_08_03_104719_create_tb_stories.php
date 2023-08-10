@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->longText('deskripsi')->nullable();
             $table->longText('isi_stories')->nullable();
+            $table->longText('count_stories')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();

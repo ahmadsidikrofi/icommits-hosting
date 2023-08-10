@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
 use App\Models\StoriesSection;
 use App\Models\KategoriStories;
+use App\Models\StoriesViews;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 
@@ -78,6 +79,7 @@ class StoriesController extends Controller
     public function showStories( Request $request )
     {
         $kategori = KategoriStories::all()->take(4);
+        $kategories = KategoriStories::all();
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         $stories = StoriesSection::latest()->get();
@@ -92,21 +94,29 @@ class StoriesController extends Controller
         foreach ($stories as $story) {
             $story->formatted_created_at = Carbon::parse($story->created_at)->isoFormat('MMMM DD, YYYY');
         }
-        return view('stories', compact(['menuNavbar', 'subMenuNavbar', 'stories', 'kategori']));
+        return view('stories', compact(['menuNavbar', 'subMenuNavbar', 'stories', 'kategori', 'kategories']));
     }
 
     function showDetailStories( $slug )
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
+        $kategories = KategoriStories::all();
         $storiesDetail = StoriesSection::where('slug', $slug)->first();
+        $storiesDetail->count_stories += 1;
+        $storiesDetail->save();
+        // $updateCount = StoriesSection::where('slug', $storiesDetail->slug)->update();
         $related_category = $storiesDetail->kategori()->get();
+        $latest_stories = StoriesSection::latest()->take(6)->get();
         $related_stories = StoriesSection::whereHas('kategori', function($query) use ($related_category) {
             $query->whereIn('kategori.id', $related_category->pluck('id'));
         })
         ->where('tb_stories.id', '!=', $storiesDetail->id)
         ->get();
-        return view('detailStories', compact(['menuNavbar', 'subMenuNavbar', 'storiesDetail', 'related_category', 'related_stories']));
+        foreach ($latest_stories as $latest) {
+            $latest->formatted_created_at = Carbon::parse($latest->created_at)->isoFormat('MMMM DD, YYYY');
+        }
+        return view('detailStories', compact(['menuNavbar', 'subMenuNavbar', 'storiesDetail', 'related_category', 'related_stories', 'kategories', 'latest_stories']));
     }
 
 }
