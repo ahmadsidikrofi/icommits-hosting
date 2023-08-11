@@ -5,6 +5,14 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/o61nnuwogclhd3z601n2k0zh479m9kbnsivauhaxrlu4jco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -42,10 +50,10 @@
                         <label>Section Title</label>
                         <div class="input-group mb-3">
                         @if ($readonlySectionTitle)
-                            <input type="text" name="title_promo" autocomplete='off' class="form-control" placeholder="Section telah terisi, lakukan pengeditan apabila ingin dirubah" readonly>
+                            <input type="text" name="title_section" autocomplete='off' class="form-control" placeholder="Section telah terisi, lakukan pengeditan apabila ingin dirubah" readonly>
                         @else
-                            <input type="text" name="title_promo" autocomplete='off' class="form-control @error('title_promo') is-invalid @enderror">
-                            @error('title_promo')
+                            <input type="text" name="title_section" autocomplete='off' class="form-control @error('title_section') is-invalid @enderror">
+                            @error('title_section')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -85,9 +93,9 @@
                         <label>Card Title</label>
                         <div class="input-group ">
                             <input type="text" placeholder="Insert Title"
-                                name="title_card" class="form-control @error('title_card') is-invalid @enderror"
+                                name="title_promo" class="form-control @error('title_promo') is-invalid @enderror"
                                 required>
-                            @error('title_card')
+                            @error('title_promo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -105,6 +113,16 @@
                                 </span>
                             @enderror
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi Promo</label>
+                        <textarea name="deskripsi_promo" id="deskripsi_promo"
+                            class="form-control @error('deskripsi_promo') is-invalid @enderror" cols="30" rows="8">{{ old('deskripsi_promo') }}</textarea>
+                        @error('deskripsi_promo')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Choose Navbar's Menu</label>
@@ -194,32 +212,9 @@
         });
     </script>
 
-    <script>
-        function tampilkanPreview(gambar, idpreview) {
-            var gb = gambar.files;
-            for (var i = 0; i < gb.length; i++) {
-                var gbPreview = gb[i];
-                var imageType = /image.*/;
-                var preview = document.getElementById(idpreview);
-                var reader = new FileReader();
-
-                if (gbPreview.type.match(imageType)) {
-                    preview.file = gbPreview;
-                    reader.onload = (function(element) {
-                        return function(e) {
-                            element.src = e.target.result;
-                        };
-                    })(preview);
-                    reader.readAsDataURL(gbPreview);
-                } else {
-                    alert("file yang anda upload tidak sesuai. Khusus mengunakan image.");
-                }
-
-            }
-        }
-    </script>
 
     {{-- <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
             $('.menu-navbar').select2();
