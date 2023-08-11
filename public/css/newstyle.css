@@ -2659,12 +2659,11 @@ ol {
     background-color: #5285d3;
 }
 
-@media (max-width: 574px) {
+@media (max-width: 576px) {
     .hero-section .hero_item .hero__text {
         display: none;
     }
     .card-promo {
-        display: inline-block;
         position: absolute;
         margin-top: 120px;
         margin-bottom: -350px;
@@ -2676,7 +2675,6 @@ ol {
         display: none;
     }
     .card-promo {
-        display: inline-block;
         position: absolute;
         margin-top: 120px;
         margin-bottom: -350px;

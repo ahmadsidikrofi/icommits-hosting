@@ -57,7 +57,7 @@
                             </div>
                         </div> --}}
                     </div>
-                    <div class="col-lg-8 col-sm-4 p-4">
+                    <div class="col-lg-8 col-sm-12 p-4">
                         {!! $promoDetail->deskripsi_promo !!}
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 rounded" style="height: auto;">
