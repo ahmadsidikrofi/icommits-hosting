@@ -54,7 +54,7 @@
             @foreach ($promo as $item )
             <div class="row mb-5">
                 <div class="col">
-                    <h2 class="fw-medium text-center lh-base" style="color: #1f72db;">{{ $item->title_promo }}</h2>
+                    <h2 class="fw-medium text-center lh-base" style="color: #1f72db;">{{ $item->title_section }}</h2>
                     <p class="text-lg-center fs-6 mt-3 fw-semibold">{{ $item->mini_title_promo }}</p>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                                 <div class="label">{{ $promo->mini_title_card }}</div>
                             </div>
                             <div class="promo_text">
-                                <h5 class="mb-2"><a href="#">{{ $promo->title_card }}</a></h5>
+                                <h5 class="mb-2"><a href="#">{{ $promo->title_promo }}</a></h5>
                                 <ul>
                                     <li><i class="fa fa-clock-o"></i> <span class="fw-semibold">Berlaku Hingga</span></li>
                                     <li class="p-2 rounded-bottom">

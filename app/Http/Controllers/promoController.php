@@ -9,6 +9,7 @@ use App\Models\MenuNavbar;
 use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
 use App\Models\ServicesSection;
+use Carbon\Carbon;
 
 class PromoController extends Controller
 {
@@ -135,6 +136,8 @@ class PromoController extends Controller
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         $menu = MenuNavbar::where('slug', $slug)->first();
-        return view('promoPage.detailPromo', compact(['menuNavbar', 'subMenuNavbar', 'menu']));
+        $promoDetail = Promo::where('slug', $slug)->first();
+        $promoDetail->formatted_expired_at = Carbon::parse($promoDetail->expired_at)->isoFormat('MMMM DD, YYYY');
+        return view('promoPage.detailPromo', compact(['menuNavbar', 'subMenuNavbar', 'menu', 'promoDetail']));
     }
 }

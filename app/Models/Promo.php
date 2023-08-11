@@ -21,7 +21,7 @@ class Promo extends Model
     {
         return [
             'slug' => [
-                'source' => 'title_card',
+                'source' => 'title_promo',
             ]
         ];
     }
