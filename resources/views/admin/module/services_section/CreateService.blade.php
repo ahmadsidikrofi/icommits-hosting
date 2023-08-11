@@ -91,10 +91,11 @@
                         <label>Choose Navbar Menu</label>
                         <div class="input-group mb-4">
                             <div class="col">
-                                <select class="form-control menu-navbar" name="menu_navbar" id="menu_navbar">
-                                    <option disabled selected> -- Silahkan Pilih -- </option>
-                                    @foreach ($menuNavbar as $menu)
-                                        @if ($menu->tipe_menu === 'link')
+                                <select class="form-control menu_navbar" name="menu_navbar" id="menu_navbar">
+                                    <option disabled selected> -- Please Choose -- </option>
+                                    <option value="Tidak jadi"> -- Tidak jadi -- </option>
+                                    @foreach ( $menuNavbar as $menu )
+                                        @if ($menu->tipe_menu === "link")
                                             <option value="{{ $menu->id }}">{{ $menu->nama_menu }}</option>
                                         @endif
                                     @endforeach
@@ -111,9 +112,10 @@
                         <div class="input-group ">
                             <div class="col">
                                 <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
-                                    <option disabled selected> -- Silahkan Pilih -- </option>
+                                    <option disabled selected> -- Please Choose -- </option>
+                                    <option value="Tidak jadi"> -- Tidak jadi -- </option>
                                     @foreach ($subMenuNavbar as $subMenu)
-                                        <option value="{{ $subMenu->id }}"> {{ $subMenu->nama_sub_menu }}</option>
+                                        <option value="{{ $subMenu->id }}" data-slug="{{ $subMenu->slug }}">{{ $subMenu->nama_sub_menu }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -166,7 +168,7 @@
         }
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
             $('.menu-navbar').select2();
@@ -175,6 +177,25 @@
     <script>
         $(document).ready(function() {
             $('.menu_submenu').select2();
+        });
+    </script> --}}
+
+    <script>
+        const menuNavbarSelect = document.getElementById('menu_navbar');
+        const submenuNavbarSelect = document.getElementById('submenu_navbar');
+
+        menuNavbarSelect.addEventListener('change', function () {
+            submenuNavbarSelect.disabled = this.value !== ''; // Jika memilih menu, submenu menjadi disabled
+            if (this.value === 'Tidak jadi') {
+                submenuNavbarSelect.disabled = false;
+            }
+        });
+
+        submenuNavbarSelect.addEventListener('change', function () {
+            menuNavbarSelect.disabled = this.value !== '';
+            if (this.value === 'Tidak jadi') {
+                menuNavbarSelect.disabled = false;
+            }
         });
     </script>
 @endsection

@@ -348,53 +348,39 @@
     <!-- Discount Forever Start -->
 
     <!-- Featured Partners Start -->
+{{-- @if ($check_promo < 1)
+<section></section>
+@elseif ($check_promo >= 1) --}}
     <section class="services-section spad">
         <div class="container">
             <div class="row ">
+                @foreach ($partner as $item )
                 <div class="col-lg-12">
-                    <div class="section-title">
-                        <h3>Percayakan Kami Yang Telah Dipercaya <br> Banyak Pelanggan Sebelum Kamu</h3>
+                    <div class="section-title-partner">
+                        <h3>{{ $item->judul_section }}</h3>
                     </div>
                 </div>
+                @endforeach
+
                 <div class="col">
                     <div class="swiper featured_customer mx-4">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/image/ft-telkom.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/image/logo icommits.png" class="img-fluid" alt="">
-                            </div>
-                            <!-- Tambahkan swiper-slide untuk gambar-gambar lainnya -->
+                            @foreach ($partner as $partnerItem )
+                                <div class="swiper-slide">
+                                    <img src="/image/partner/{{ $partnerItem->logo }}" class="img-fluid" alt="">
+                                </div>
+                            @endforeach
                         </div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
-                        <div class="p-2">
-                            <div class="swiper-scrollbar"></div>
-                        </div>
+                        <div class="p-2"></div>
+                        <div class="swiper-scrollbar"></div>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     </section>
+{{-- @endif --}}
     <!-- Featured Partners End -->
 
     <!-- FAQ Start -->
@@ -462,9 +448,42 @@
         </div>
     </section>
     <!-- FAQ Start -->
+
 </body>
 @include('partials.jsPlugin')
 @include('partials.footer')
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+        autoplay: {
+            delay: 2000, // Atur delay di sini (dalam milidetik)
+            disableOnInteraction: false, // Biarkan slide berjalan walaupun ada interaksi pengguna
+        },
+        direction: 'horizontal',
+        loop: false,
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+            // clickable: true,
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+            el: '.swiper-scrollbar',
+            draggable: true,
+        },
+        slidesPerView: 4,
+        spaceBetween: 30,
+    });
+</script>
+
 
 
 </html>
