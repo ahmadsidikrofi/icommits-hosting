@@ -2649,6 +2649,71 @@ ol {
 	background-color: #1f72db;
 }
 
+.card-promo {
+    position: sticky;
+    top: 0;
+    bottom: 850px;
+    margin-top: -350px;
+    margin-bottom: -350px;
+    border-radius: 20px;
+    background-color: #5285d3;
+}
+
+@media (max-width: 576px) {
+    .hero-section .hero_item .hero__text {
+        display: none;
+    }
+    .card-promo {
+        position: absolute;
+        margin-top: 120px;
+        margin-bottom: -350px;
+        background-color: #5285d3;
+    }
+}
+@media (max-width: 992px) {
+    .hero-section .hero_item .hero__text {
+        display: none;
+    }
+    .card-promo {
+        position: absolute;
+        margin-top: 120px;
+        margin-bottom: -350px;
+        background-color: #5285d3;
+    }
+}
+.card-title h3 {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 27px;
+}
+
+.card-title p {
+    color: #fcfcfc;
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+.card-title p span {
+    font-weight: 500;
+}
+
+.card_expired p {
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.button {
+    text-align: center;
+    padding: 30px 30px 30px 30px;
+}
+.button button {
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 80px 15px 80px;
+}
 
 /* Promo End */
 
@@ -4458,19 +4523,19 @@ ol {
 	transition: width 0.3s;
 	font-family: Consolas,monaco,monospace;
   }
-  
+
   .input:focus {
 	outline: 1px solid blue;
 	box-shadow: none;
 	width: 230px;
   }
-  
+
   .input::placeholder {
 	color: rgb(32, 32, 181);
   }
-  
-  
-  
+
+
+
 
   /* Gaya default untuk layar besar */
 .card-domain_layanan .daftarkan,
@@ -4503,7 +4568,7 @@ ol {
 	  margin-bottom: 15px;
 	  margin-left: 50px;
 	}
-  
+
 	.InputContainer {
 	  width: 100%;
 	  margin-bottom: 15px;
@@ -4511,14 +4576,14 @@ ol {
 	  padding-right: 30px;
 	  /* margin-left: 50px; */
 	}
-	
+
 	.input {
 	  width: 100%;
 	  padding-left: 30px;
 	  font-size: 14px;
 	}
   }
-  
+
 /* .client_card {
 	margin-bottom: 10px;
 	border-radius: 10px;
