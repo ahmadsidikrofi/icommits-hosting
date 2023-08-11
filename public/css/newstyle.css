@@ -98,6 +98,29 @@ ol {
 /*---------------------
   Helper CSS
 -----------------------*/
+.section-title-partner {
+	margin-bottom: 10px;
+}
+
+.section-title-partner h3 {
+	color: #111111;
+	font-weight: 700;
+	text-transform: uppercase;
+	position: relative;
+	text-align: center;
+}
+
+.section-title-partner h3:after {
+	position: absolute;
+	left: 0;
+	bottom: -30px;
+	right: 0;
+	height: 13px;
+	width: 83px;
+	/* background-image: url(../image/line.png); */
+	content: "";
+	margin: 0 auto;
+}
 
 .section-title {
 	margin-bottom: 70px;

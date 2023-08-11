@@ -37,6 +37,38 @@
                 <form action="{{ route('partner.update', $partner->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    @if ( $partner->judul_section < 1 )
+                    <div class="form-group">
+                        <label>Judul Section</label>
+                        <p class="text-danger fw-bold">Section telah terisi, lakukan pengeditan pada partner pertama apabila ingin dirubah</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Partner</label>
+                        <div class="input-group ">
+                            <input type="text" value="{{ $partner->nama_partner }}" placeholder="Masukkan nama partner"
+                                name="nama_partner"  class="form-control @error('nama_partner') is-invalid @enderror">
+                            @error('nama_partner')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Logo</label>
+                        <div class="row">
+                            <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">
+                                <img src="/image/partner/{{ $partner->logo }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
+                            </div>
+                            <input type="file" class="form-control" name="logo">
+                        </div>
+                        @error('logo')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    @else
                     <div class="form-group">
                         <label>Judul Section</label>
                         <div class="input-group ">
@@ -65,19 +97,9 @@
                         <label>Logo</label>
                         <div class="row">
                             <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">
-                                <img src="/image/{{ $partner->logo }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
+                                <img src="/image/partner/{{ $partner->logo }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6 mx-auto">
-                                <div> class="custom-file mb-3">
-                                    <input type="file" id="file" name="logo"
-                                        class="custom-file-input @error('logo') is-invalid @enderror" accept="logo/*"
-                                        onchange="tampilkanPreview(this,'preview')" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose
-                                        file</label>
-                                </div>
-                            </div>
+                            <input type="file" class="form-control" name="logo">
                         </div>
                         @error('logo')
                             <span class="invalid-feedback" role="alert">
@@ -85,6 +107,7 @@
                             </span>
                         @enderror
                     </div>
+                    @endif
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-warning text-white"><i class="fa fa-save mr-1"></i>
                             Simpan Perubahan</button>

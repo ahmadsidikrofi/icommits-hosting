@@ -74,7 +74,7 @@
                                 <tr>
                                     <td data-header="No">{{ $no++ }}</td>
                                     <td data-header="nama_partner">{{ $item->nama_partner }}</td>
-                                    <td data-header="logo"><img src="/image/{{ $item->logo }}"
+                                    <td data-header="logo"><img src="/image/partner/{{ $item->logo }}"
                                             class="img-responsive w-50 h-50"> </td>
                                     <td>
                                         <form action="{{ route('partner.destroy', $item->id) }}" method="post">

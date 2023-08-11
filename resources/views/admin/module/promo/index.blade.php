@@ -80,7 +80,7 @@
                                             <td data-header="title_promo"> {{ $item->title_card}} </td>
                                             <td data-header="link_promo"> {{ $item->link_promo}} </td>
                                             <td data-header="expired_at"> {{ $item->expired_at}} </td>
-                                            <td data-header="gambar_promo"> <img src="/image/{{ $item->image}}" class="img-responsive w-75 h-75" alt=""> </td>
+                                            <td data-header="gambar_promo"> <img src="/image/{{ $item->image}}" class="img-responsive w-150 h-100" alt=""> </td>
                                             <td>
                                                 <form action="{{ route('promo.destroy', $item->id) }}" method="post">
                                                     @method('delete')
