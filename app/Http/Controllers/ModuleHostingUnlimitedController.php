@@ -21,7 +21,9 @@ class ModuleHostingUnlimitedController extends Controller
 
     function viewPageAddPaketHostingUnlimited()
     {
-        return view('admin.module.paket_unlimited.create');
+        $menuNavbar = MenuNavbar::all();
+        $subMenuNavbar = SubMenuNavbar::all();
+        return view('admin.module.paket_unlimited.create', compact(['menuNavbar', 'subMenuNavbar']));
     }
 
     function addPaketHostingUnlimited( Request $request )
@@ -33,10 +35,27 @@ class ModuleHostingUnlimitedController extends Controller
         return redirect('/admin/paket-unlimited');
     }
 
+    public function editPaketHostingUnlimited( $slug, Request $request )
+    {
+        $validate = $request->validate([
+            'nama_paket' => 'required|max:100',
+        ]);
+        $editPaketHosting = ModuleHostingUnlimited::where('slug', $slug)->first();
+        $editPaketHosting->update($request->all());
+        return redirect('/admin/paket-unlimited');
+    }
+
+    public function deletePaketHostingUnlimited( $slug )
+    {
+        $deletePaketHosting = ModuleHostingUnlimited::where('slug', $slug)->first()->delete();
+        return redirect('/admin/paket-unlimited')->with('success', 'apa?');
+    }
+
     function hostingUnlimited($slug)
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
+        $paketUnlimited = ModuleHostingUnlimited::all();
         $menu = MenuNavbar::where('slug', $slug)->first();
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->first();
@@ -61,7 +80,7 @@ class ModuleHostingUnlimitedController extends Controller
                 return view('404');
             }
         }
-        return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'check_service', 'check_qna']));
+        return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'check_service', 'check_qna', 'paketUnlimited']));
     }
 
 

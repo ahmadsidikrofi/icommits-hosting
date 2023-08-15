@@ -26,7 +26,7 @@
 @section('content')
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">Paket Web Hosting</h4>
+            <h4 class="page-title">Paket Hosting VPS</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a href="/admin/dashboard">
@@ -43,7 +43,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="">Paket Unlimited</a>
+                    <a href="">Paket VPS</a>
                 </li>
             </ul>
 
@@ -52,10 +52,10 @@
             <div class="card-header">
                 <div class="row ">
                     <div class="col-sm-8">
-                        <div class="card-title">Paket Web Hosting Unlimited</div>
+                        <div class="card-title">Paket VPS Hosting</div>
                     </div>
                     <div class="col mt-3">
-                        <a class="btn btn-primary text-white float-right" href="/admin/create/paket-hosting-unlimited">Tambah Paket Web Hosting</a>
+                        <a class="btn btn-primary text-white float-right" href="/admin/create/paket-vps">Tambah Paket Web Hosting</a>
                     </div>
                 </div>
             </div>
@@ -75,20 +75,20 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ( $webHostingUnlimited as $paketWebHosting )
+                            @foreach ( $paketVPS as $paket )
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $paketWebHosting->nama_paket }}</td>
-                                <td>{{ $paketWebHosting->deskripsi_paket }}</td>
-                                <td>{{ $paketWebHosting->harga_paket }}</td>
+                                <td>{{ $paket->nama_paket }}</td>
+                                <td>{{ $paket->deskripsi_paket }}</td>
+                                <td>{{ $paket->harga_paket }}</td>
                                 <td>
-                                    <a title="Edit" data-toggle="modal" data-target="#edit{{ $paketWebHosting->id }}" href="#" class="btn btn-outline-warning text-dark btn-sm">
+                                    <a title="Edit" data-toggle="modal" data-target="#edit{{ $paket->id }}" href="#" class="btn btn-outline-warning text-dark btn-sm">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="/admin/delete/paket-unlimited-hosting/{{ $paket->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="/admin/delete/paket-vps/{{ $paket->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
-                            <div class="modal fade" id="edit{{ $paketWebHosting->id }}" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="edit{{ $paket->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="modalSayaLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg border-0" role="document">
                                     <div class="modal-content">
@@ -100,20 +100,20 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="/admin/edit/paket-hosting-unlimited/{{ $paketWebHosting->slug }}/store" method="POST">
+                                            <form action="/admin/edit/paket-vps/{{ $paket->slug }}/store" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="form-group">
                                                     <label for="durasi">Durasi Paket</label>
                                                     <div class="input-group mb-3">
                                                         <select class="get-durasi form-control" name="durasi" id="durasi">
-                                                            <option @if ($paketWebHosting->durasi === "jam") selected @endif>Jam</option>
-                                                            <option @if ($paketWebHosting->durasi === "bulan") selected @endif>Bulan</option>
+                                                            <option @if ($paket->durasi === "jam") selected @endif>Jam</option>
+                                                            <option @if ($paket->durasi === "bulan") selected @endif>Bulan</option>
                                                         </select>
                                                     </div>
                                                     <label>Nama Paket</label>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" value="{{ $paketWebHosting->nama_paket }}"
+                                                        <input type="text" value="{{ $paket->nama_paket }}"
                                                         name="nama_paket" autocomplete='off' class="form-control
                                                         @error('nama_paket') is-invalid @enderror"
                                                         required>
@@ -125,16 +125,16 @@
                                                     </div>
                                                     <label>Deskripsi Paket</label>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" name="deskripsi_paket" class="form-control" value="{{ $paketWebHosting->deskripsi_paket }}">
+                                                        <input type="text" name="deskripsi_paket" class="form-control" value="{{ $paket->deskripsi_paket }}">
                                                     </div>
                                                     <label>Harga Paket</label>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" name="harga_paket" class="form-control" value="{{ $paketWebHosting->harga_paket }}">
+                                                        <input type="text" name="harga_paket" class="form-control" value="{{ $paket->harga_paket }}">
                                                     </div>
                                                     <label>Paket Unggulan</label>
                                                     <div class="input-group mb-3">
                                                         <textarea name="paket_unggulan" id="paket_unggulan" autocomplete='off'
-                                                            class="form-control @error('paket_unggulan') is-invalid @enderror" cols="30" rows="8">{{ $paketWebHosting->paket_unggulan }}</textarea>
+                                                            class="form-control @error('paket_unggulan') is-invalid @enderror" cols="30" rows="8">{{ $paket->paket_unggulan }}</textarea>
                                                         @error('paket_unggulan')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>

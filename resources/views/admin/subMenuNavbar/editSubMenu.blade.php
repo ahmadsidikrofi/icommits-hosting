@@ -83,6 +83,7 @@
                             <label>Link</label>
                             <select class="form-control" name="link" id="link">
                                 <option @if ($subMenu->link == '/hosting-unlimited/' . $subMenu->slug) selected @endif value="/hosting-unlimited">Hosting Unlimited</option>
+                                <option value="/vps" >VPS Hosting</option>
                                 <option @if ($subMenu->link == '/promoKeren/' . $subMenu->slug) selected @endif value="/promoKeren">Promo</option>
                                 <option @if ($subMenu->link == '/domain/' . $subMenu->slug) selected @endif value="/domain">Domain</option>
                             </select>
