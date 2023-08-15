@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\StoriesController;
-use App\Http\Controllers\domainController;
-use Illuminate\Support\Facades\Route;
-
-use App\Models\ModuleHostingUnlimited;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MenuNavbarController;
-use App\Http\Controllers\ModuleHostingUnlimitedController;
-use App\Http\Controllers\subMenuNavbarController;
 use App\Models\MenuNavbar;
+use Illuminate\Support\Facades\Route;
+use App\Models\ModuleHostingUnlimited;
+
 use App\Http\Controllers\qnaController;
-use App\Http\Controllers\PromoController;
 use App\Http\Controllers\HeroController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PromoController;
+use App\Http\Controllers\domainController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\StoriesController;
+use App\Http\Controllers\MenuNavbarController;
+use App\Http\Controllers\subMenuNavbarController;
 use App\Http\Controllers\KategoriStoriesController;
 use App\Http\Controllers\ModulePaketVPSController;
 use App\Http\Controllers\ServicesSectionController;
+use App\Http\Controllers\ModuleHostingUnlimitedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +137,9 @@ Route::delete('/admin/destroy/stories/{slug}', [StoriesController::class, "Destr
 Route::get('/stories', [StoriesController::class, "showStories"]);
 Route::get('/stories/{slug}', [StoriesController::class, "showDetailStories"]);
 Route::get('/admin/stories-section', [StoriesController::class, "viewPageStoriesSection"]);
+
+//Module Partners
+Route::resource('/admin/partner', PartnerController::class);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 

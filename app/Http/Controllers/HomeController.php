@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Qna;
 use App\Models\Hero;
+use App\Models\Partner;
 use App\Models\MenuNavbar;
 use App\Models\SubMenuNavbar;
 use Illuminate\Support\Facades\DB;
@@ -17,11 +18,12 @@ class HomeController extends Controller
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         $paketUnlimited = ModuleHostingUnlimited::all();
+        $partner = Partner::all();
         $selectedMenuSlug = Request::input('menu_navbar');
         $hero = DB::table('tb_hero')
         ->where('slug', $selectedMenuSlug)
         ->first();
 
-        return view('home', compact(['paketUnlimited', 'menuNavbar', 'subMenuNavbar']));
+        return view('home', compact(['paketUnlimited', 'menuNavbar', 'subMenuNavbar', 'hero', 'partner']));
     }
 }
