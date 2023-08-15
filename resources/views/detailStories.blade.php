@@ -56,6 +56,33 @@
 <section class="spad">
     <div class="container mt-5">
         <div class="row">
+            <div class="col-lg-12 mb-5 mx-3">
+                <nav class="breadcrumbs">
+                    <a href="/stories" class="breadcrumbs__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+                        </svg>
+                        Home
+                    </a>
+                    <a href="/stories?kategori={{ $storiesDetail->kategori()->pluck('slug')->implode(' ') }}" class="breadcrumbs__item">{{ $storiesDetail->kategori()->pluck('nama_kategori')->implode(' ') }}</a>
+                    <a href="#" class="breadcrumbs__item is-active">{{ $storiesDetail->stories_title }}</a>
+                </nav>
+            </div>
+            {{-- <div class="col-lg-12 bg-breadcrumbs p-3 rounded-3 w-25">
+                <nav class="" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb mx-auto mt-3">
+                        <li class="breadcrumb-item"><a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+                            </svg>
+                            Home</a>
+                        </li>
+                      <li class="breadcrumb-item active" aria-current="page">Library</li>
+                    </ol>
+                </nav>
+            </div> --}}
+        </div>
+        <div class="row">
             <div class="col-lg-7">
                 <img src="/image/blog/{{ $storiesDetail->image }}" class="rounded-5 w-100" alt="">
                 <div class="d-flex align-items-center">
@@ -180,13 +207,14 @@
 
         for (var i = 0; i < headings.length; i++) {
             var heading = headings[i];
-            var headingId = 'heading-' + i;
+            var headingId = 'pembahasan-' + i;
 
             heading.id = headingId;
 
             var listItem = document.createElement('li');
             listItem.setAttribute('class', 'mx-3 mt-2')
             var link = document.createElement('a');
+            link.setAttribute('class', 'text-success');
             link.href = '#' + headingId;
             link.textContent = heading.textContent;
             link.classList.add('heading');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Qna;
 use App\Models\Hero;
 use App\Models\Partner;
 use App\Models\MenuNavbar;
@@ -14,11 +15,10 @@ class HomeController extends Controller
 {
     public function showHome()
     {
-        $paketUnlimited = ModuleHostingUnlimited::all();
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
+        $paketUnlimited = ModuleHostingUnlimited::all();
         $partner = Partner::all();
-        // $hero = Hero::where('slug', $slug)->first();
         $selectedMenuSlug = Request::input('menu_navbar');
         $hero = DB::table('tb_hero')
         ->where('slug', $selectedMenuSlug)

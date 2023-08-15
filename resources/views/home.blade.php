@@ -171,7 +171,6 @@
                     @if ($paketWebHosting->durasi === "jam")
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="harga_paket">
-                                <p>{{ $paketWebHosting->durasi }}</p>
                                 <h4>{{ $paketWebHosting->nama_paket }}</h4>
                                 <p>{{ $paketWebHosting->deskripsi_paket }}</p>
                                 <h3>Rp{{ $paketWebHosting->harga_paket }} <span>/ jam</span></h3>

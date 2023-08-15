@@ -1238,6 +1238,106 @@ ol {
 	padding: 14px 0 12px;
 }
 
+/* Harga Paket VPS Start */
+.harga_paket_vps {
+	padding-bottom: 20px;
+	padding-top: 22px;
+	background: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+	-webkit-box-shadow: 0px 0px 10px rgba(18, 8, 81, 0.1);
+	box-shadow: 0px 0px 10px rgba(18, 8, 81, 0.1);
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	margin-bottom: 40px;
+}
+
+.harga_paket_vps:hover {
+	-webkit-box-shadow: 0px 8px 30px rgba(37, 23, 126, 0.3);
+	box-shadow: 0px 8px 30px rgba(37, 23, 126, 0.3);
+	border-radius: 50px;
+	border: solid #4c57d6 2px;
+}
+
+.harga_paket_vps:hover .primary-btn {
+	background: #4c57d6;
+	color: #ffffff;
+}
+
+.harga_paket_vps h4 {
+	color: #1f72db;
+	font-weight: 700;
+	margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.harga_paket_vps h5 {
+	color: #1f72db;
+	margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.harga_paket_vps p {
+    margin-left: 20px;
+}
+
+.harga_paket_vps h3 {
+    font-size: 45px;
+	font-weight: 600;
+	color: #120851;
+	margin-bottom: 26px;
+    margin-left: 20px;
+	border-radius: 10px;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.harga_paket_vps h3 span {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.harga_paket_vps ul {
+	margin-bottom: 26px;
+}
+
+.harga_paket_vps ul li {
+	font-size: 14px;
+	color: #444444;
+	line-height: 40px;
+	list-style: none;
+    margin-left: 10px;
+}
+
+.harga_paket_vps a {
+    margin-left: 20px;
+    color: #fdfdfd;
+    background-color: #fc5185 ;
+    border-radius: 20px;
+    padding: 15px 15px;
+}
+
+.harga_paket_vps a:hover {
+    border-radius: 10px;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+    color: #fdfdfd;
+    background-color: #bb204e ;
+}
+
+.harga_paket_vps .primary-btn {
+	color: #111111;
+	background: #f2f2f2;
+	display: block;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	padding: 14px 0 12px;
+}
+
 /* Featured Customer Section Start */
 .swiper-slide img {
 	width: 70%;
