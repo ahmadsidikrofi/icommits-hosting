@@ -126,14 +126,10 @@
                                     <td> {{ $service->services_title }} </td>
                                     <td> {{ $service->services_price }} </td>
                                     <td>
-                                        <form action="{{ route('hero.destroy', $service->id) }}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <a class="btn btn-sm btn-warning text-white" data-toggle="modal" data-placement="top" title="Edit" data-target="#editService{{ $service->slug }}">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
-                                            <button type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></button>
-                                        </form>
+                                        <a class="btn btn-sm btn-warning text-white" data-toggle="modal" data-placement="top" title="Edit" data-target="#editService{{ $service->slug }}">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="/admin/delete/service-section/{{ $service->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="editService{{ $service->slug }}" tabindex="-1" role="dialog"

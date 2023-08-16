@@ -55,7 +55,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-3">
-                <a href="/admin/vps" style="text-decoration: none">
+                <a href="/admin/paket-vps" style="text-decoration: none">
                     <div class="card card-stats card-round d-block bg-info-gradient">
                         <div class="card-body">
                             <div class="row">

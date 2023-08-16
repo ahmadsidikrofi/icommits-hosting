@@ -14,7 +14,8 @@ class ModulePaketVPSController extends Controller
     public function viewPagePaketVPS()
     {
         $paketVPS = ModulePaketVPS::all();
-        return view('admin.module.paketVPS.show', compact(['paketVPS']));
+        $menuNavbar = new MenuNavbar();
+        return view('admin.module.paketVPS.show', compact(['paketVPS', 'menuNavbar']));
     }
 
     public function viewPageAddPaketVPS()

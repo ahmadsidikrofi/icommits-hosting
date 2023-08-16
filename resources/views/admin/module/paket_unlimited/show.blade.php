@@ -109,6 +109,9 @@
                     </div>
                 </div>
             </div>
+            <h5 class="p-2 mx-3 bg-warning text-dark fw-bold rounded w-75 mt-3"> Mohon hapus paket web hosting yang sudah tidak
+                memiliki menu yaa, biar ga lemot dan kebanyakan data 😍
+            </h5>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table responsive-3 table-hover" id="artikel">

@@ -26,6 +26,12 @@
                         <p>Menu</p>
                     </a>
                 </li>
+                <li class="nav-item {{ Request::is('admin/link') ? 'active' : '' }}">
+                    <a href="/admin/link">
+                        <i class="fa-solid fa-link"></i>
+                        <p>Daftarkan Link</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>

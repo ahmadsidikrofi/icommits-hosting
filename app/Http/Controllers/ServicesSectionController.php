@@ -55,4 +55,10 @@ class ServicesSectionController extends Controller
 
         return redirect()->back()->with('editSS', 'Edit service berhasil dilakukan');
     }
+
+    public function deleteServiceSection( $slug )
+    {
+        $deletePaketVPS = ServicesSection::where('slug', $slug)->first()->delete();
+        return redirect('/admin/paket-vps')->with('success', 'apa?');
+    }
 }
