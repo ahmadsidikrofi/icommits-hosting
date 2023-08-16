@@ -1,10 +1,10 @@
 @extends('partials.admin')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.23/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/toastr.css">
-    <link rel="stylesheet" href="/css/sweetAlert.css">
 @endsection
 
 @section('js')
@@ -90,14 +90,16 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col">
-                        <a href="{{ route('qna.edit', $item->id) }}" class="btn btn-sm btn-warning text-white"
-                            data-toggle="tooltip" data-placement="top" title="Edit"><i
+
+                </div>
+                <div class="col">
+                        <a href="{{ route('qna.edit', $item->id) }}"
+                            class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
+                            data-placement="top" title="Edit"><i
                                 class="fa-solid fa-pen-to-square"></i> </a>
-                        <a href="/admin/hapus/tanya/{{ $item->id }}" type="submit"
-                            class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top"
-                            title="Hapus" data-id="{{ $item->id }}"><i class="fa-solid fa-trash"></i></a>
-                    </div>
+                        <a href="/admin/hapus/tanya/{{ $item->id }}" type="submit" class="btn btn-danger btn-sm delete-confirm"
+                            data-toggle="tooltip" data-placement="top" title="Hapus" data-id="{{ $item->id }}"><i
+                                class="fa-solid fa-trash"></i></a>
                 </div>
             </div>
         @endforeach
@@ -106,66 +108,24 @@
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/toastr.js"></script>
     <script>
-        @if (Session::has('addTanya'))
-            toastr.success('Pertanyaan berhasil ditambah')
-        @endif
+    @if (Session::has('addTanya'))
+        toastr.success('QnA berhasil ditambah')
+    @endif
     </script>
     <script>
-        @if (Session::has('editTanya'))
-            toastr.success('Edit QnA berhasil dilakukan')
-        @endif
+    @if (Session::has('editTanya'))
+        toastr.success('Edit QnA berhasil dilakukan')
+    @endif
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        var isModalOpen = false; // Track whether the modal is open or not
-
-        $('.delete-confirm').click(function(e) {
-            if (isModalOpen) {
-                return; // Do nothing if the modal is already open
-            }
-
-            var pertanyaan = $(this).attr('data-id');
-            e.preventDefault();
-            isModalOpen = true; // Set modal state to open
-
-            Swal.fire({
-                title: 'Yakin Ingin Di Hapus?',
-                text: "Pertanyaan akan dihapus",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#11111',
-                confirmButtonText: 'Hapus Sekarang!',
-                allowOutsideClick: false,
-                onBeforeOpen: () => {
-                    $('.swal2-confirm').prop('disabled', true); // Disable "OK" button
-                },
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location = '/admin/hapus/tanya/' + pertanyaan + '';
-                    Swal.fire(
-                        'Sukses Terhapus!',
-                        'Pertanyaan berhasil dihapus',
-                        'success'
-                    );
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire(
-                        'Gajadi',
-                        'Pertanyaan masih ada disini',
-                        'error'
-                    );
-                }
-                isModalOpen = false; // Reset modal state to closed
-            });
-        });
-    </script>
-
-
-    {{-- <script>
-        $('.delete-confirm').click(function(e) {
+        $('.delete-confirm').click(function (e) {
             var pertanyaan = $(this).attr('data-id');
             e.preventDefault()
             Swal.fire({
@@ -175,8 +135,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#11111',
-                confirmButtonText: 'Hapus Sekarang!',
-                allowOutsideClick: false,
+                confirmButtonText: 'Hapus Sekarang!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location = '/admin/hapus/tanya/' + pertanyaan + ''
@@ -188,15 +147,16 @@
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     {
                         Swal.fire(
-                            'Gajadi',
-                            'Pertanyaan masih ada disini',
-                            'error'
+                        'Gajadi',
+                        'Pertanyaan masih ada disini',
+                        'error'
                         )
                     }
                 }
             })
         });
-    </script> --}}
+    </script>
 
-    @include('admin.module.qna.create')
+
+@include('admin.module.qna.create')
 @endsection

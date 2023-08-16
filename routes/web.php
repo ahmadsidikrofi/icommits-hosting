@@ -114,6 +114,7 @@ Route::get('/admin/delete/submenu/{slug}', [subMenuNavbarController::class, "del
 // Link
 Route::get('/admin/link');
 
+
 // Module Hero
 Route::resource('/admin/hero', HeroController::class);
 Route::get('/admin/hero/remove/background-hero/{slug}', [HeroController::class, "removeHero"]);
@@ -125,6 +126,7 @@ Route::get('/admin/services-section', [ServicesSectionController::class, "viewPa
 Route::get('/admin/create/service', [ServicesSectionController::class, "viewPageCreateService"]);
 Route::post('/admin/create/service/store', [ServicesSectionController::class, "createServiceSection"]);
 Route::put('/admin/edit/service-section/{id}', [ServicesSectionController::class, "editServiceSection"]);
+
 Route::get('/admin/delete/service-section/{slug}', [ServicesSectionController::class, "deleteServiceSection"]);
 
 // Module Stories Section

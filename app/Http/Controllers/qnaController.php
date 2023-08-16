@@ -37,7 +37,8 @@ class QnaController extends Controller
         }
 
         $tambahPertanyaan->save();
-        return redirect()->back()->with('addTanya', 'Pertanyaan berhasil ditambah');
+        return redirect()->back()->with('addTanya', 'QnA berhasil ditambah');
+
     }
 
     public function edit(Request $request, $id)
