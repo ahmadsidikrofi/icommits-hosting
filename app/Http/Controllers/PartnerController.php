@@ -36,7 +36,7 @@ class PartnerController extends Controller
         }
 
         $tambahPartner->save();
-        return redirect('/admin/partner');
+        return redirect('/admin/partner')->with('addPartner', 'Partner berhasil ditambah');;
     }
 
     public function edit($id, Request $request)
@@ -56,7 +56,7 @@ class PartnerController extends Controller
             $updatePartner -> save();
         }
 
-        return redirect('/admin/partner');
+        return redirect('/admin/partner')->with('editPartner', 'Edit partner berhasil dilakukan');;
     }
 
     public function destroy($id)

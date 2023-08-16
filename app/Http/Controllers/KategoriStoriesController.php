@@ -19,7 +19,7 @@ class KategoriStoriesController extends Controller
             'nama_kategori' => 'required|unique:kategori|max:100',
         ]);
         $addKategori = KategoriStories::create($request->all());
-        return redirect()->back();
+        return redirect()->back()->with('addKategori', 'Kategori berhasil ditambah');
     }
 
     public function ViewPageEditKategoriStories( $slug )
@@ -36,7 +36,7 @@ class KategoriStoriesController extends Controller
         $editKategori = KategoriStories::where('slug', $slug)->first();
         $editKategori->slug = NULL;
         $editKategori->update($request->all());
-        return redirect('/admin/kategori-stories')->with('berhasilEdit_kategori', 'Genre berhasil diedit');
+        return redirect('/admin/kategori-stories')->with('editKategori', 'Edit kategori berhasil dilakukan');
     }
 
     public function DestroyKategoriStoriesStore($slug)

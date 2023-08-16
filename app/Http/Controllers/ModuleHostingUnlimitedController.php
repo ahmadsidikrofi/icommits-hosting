@@ -30,7 +30,7 @@ class ModuleHostingUnlimitedController extends Controller
             'nama_paket' => 'required|max:100',
         ]);
         $tambahPaketHosting = ModuleHostingUnlimited::create($request->all());
-        return redirect('/admin/paket-unlimited');
+        return redirect('/admin/paket-unlimited')->with('addPaket', 'Paket berhasil ditambah');;
     }
 
     function hostingUnlimited($slug)

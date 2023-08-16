@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="/css/toastr.css">
 @endsection
 
 @section('js')
@@ -94,17 +95,13 @@
                     </div>
                 </div>
                 <div class="col">
-                    <form action="{{ route('qna.destroy', $item->id) }}" method="post">
-                        @method('delete')
-                        @csrf
                         <a href="{{ route('qna.edit', $item->id) }}"
                             class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
                             data-placement="top" title="Edit"><i
                                 class="fa-solid fa-pen-to-square"></i> </a>
-                        <button type="submit" class="btn btn-danger btn-sm delete-confirm"
-                            data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                class="fa-solid fa-trash"></i></button>
-                    </form>
+                        <a href="/admin/hapus/tanya/{{ $item->id }}" type="submit" class="btn btn-danger btn-sm delete-confirm"
+                            data-toggle="tooltip" data-placement="top" title="Hapus" data-id="{{ $item->id }}"><i
+                                class="fa-solid fa-trash"></i></a>
                 </div>
             </div>
         </div>
@@ -113,14 +110,58 @@
 </div>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
     <!-- Skrip inisialisasi Select2 -->
-
     <script>
         $(document).ready(function() {
             $('.kategori').select2();
         });
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastr.js"></script>
+    <script>
+    @if (Session::has('addTanya'))
+        toastr.success('Pertanyaan berhasil ditambah')
+    @endif
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.delete-confirm').click(function (e) {
+            var pertanyaan = $(this).attr('data-id');
+            e.preventDefault()
+            Swal.fire({
+                title: 'Yakin Ingin Di Hapus?',
+                text: "Pertanyaan akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#11111',
+                confirmButtonText: 'Hapus Sekarang!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = '/admin/hapus/tanya/'+pertanyaan+''
+                    Swal.fire(
+                    'Sukses Terhapus!',
+                    'Pertanyaan berhasil dihapus',
+                    'BERHASIL'
+                    )
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    {
+                        Swal.fire(
+                        'Gajadi',
+                        'Pertanyaan masih ada disini',
+                        'error'
+                        )
+                    }
+                }
+            })
+        });
+    </script>
+
 
 @include('admin.module.qna.create')
 @endsection

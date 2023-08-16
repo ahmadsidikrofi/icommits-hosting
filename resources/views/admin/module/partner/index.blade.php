@@ -1,19 +1,65 @@
 @extends('partials.admin')
 
 @section('css')
+    <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('assets/admin/assets/js/plugin/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert2.js') }}"></script>
-    <script src="{{ asset('js/delete.js') }}"></script>
     <script>
         new DataTable('#partner');
     </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/js/toastr.js"></script>
+        <script>
+            @if (Session::has('editPartner'))
+            toastr.success('Edit Partner berhasil dilakukan')
+            @endif
+            @if (Session::has('addPartner'))
+            toastr.success('Partner berhasil ditambah')
+            @endif
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $('.delete-confirm').click(function (e) {
+                var partner = $(this).attr('data-id');
+                e.preventDefault()
+                Swal.fire({
+                    title: 'Yakin Ingin Di Hapus?',
+                    text: "Partner akan dihapus",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#11111',
+                    confirmButtonText: 'Hapus Sekarang!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = '/admin/hapus/partner/'+partner+''
+                        Swal.fire(
+                        'Sukses Terhapus!',
+                        'Partner berhasil dihapus',
+                        'BERHASIL'
+                        )
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        {
+                            Swal.fire(
+                            'Gajadi',
+                            'Partner masih ada disini',
+                            'error'
+                            )
+                        }
+                    }
+                })
+            });
+        </script>
 @endsection
 
 @section('content')
@@ -77,16 +123,12 @@
                                     <td data-header="logo"><img src="/image/partner/{{ $item->logo }}"
                                             class="img-responsive w-50 h-50"> </td>
                                     <td>
-                                        <form action="{{ route('partner.destroy', $item->id) }}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <a href="{{ route('partner.edit', $item->id) }}" class="btn btn-sm btn-warning text-white"
-                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                    class="fa-solid fa-pen-to-square"></i> </a>
-                                            <button type="submit" class="btn btn-danger btn-sm delete-confirm"
-                                                data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                                    class="fa-solid fa-trash"></i></button>
-                                        </form>
+                                        <a href="{{ route('partner.edit', $item->id) }}" class="btn btn-sm btn-warning text-white"
+                                            data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                class="fa-solid fa-pen-to-square"></i> </a>
+                                        <a href="/admin/hapus/partner/{{ $item->id }}" type="submit" class="btn btn-danger btn-sm delete-confirm"
+                                            data-toggle="tooltip" data-placement="top" title="Hapus" data-id="{{ $item->id }}"><i
+                                                class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

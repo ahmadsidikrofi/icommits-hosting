@@ -52,7 +52,7 @@
                             <h4 class="fw-bold">Menu saat ini: {{ $subMenuNavbar->nama_sub_menu }}</h4>
                         @endif
                     </div>
-                    @if ( $promo->title_promo < 1 )
+                    @if ( $promo->title_section < 1 )
                     <div class="form-group">
                         <label>Judul Section</label>
                         <p class="text-danger fw-bold">Section Title dan Mini Title telah terisi, lakukan pengeditan pada promo pertama apabila ingin dirubah</p>

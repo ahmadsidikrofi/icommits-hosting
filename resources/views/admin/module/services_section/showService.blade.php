@@ -1,20 +1,32 @@
 @extends('partials.admin')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('assets/admin/assets/js/plugin/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert2.js') }}"></script>
-    <script src="{{ asset('js/delete.js') }}"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         new DataTable('#hero');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastr.js"></script>
+    <script>
+        @if (Session::has('addSS'))
+            toastr.success('Service berhasil ditambah')
+        @endif
+    </script>
+    <script>
+        @if (Session::has('success'))
+            toastr.success('Edit Service berhasil dilakukan')
+        @endif
     </script>
 @endsection
 
@@ -124,11 +136,11 @@
                                                                 <input type="text" name="services_deskripsi" autocomplete='off' maxlength="66" value="{{ $service->services_deskripsi }}"
                                                                     class="form-control
                                                                 @error('services_deskripsi') is-invalid @enderror"
-                                                                    required>
-                                                                @error('services_deskripsi')
+                                                                required>
+                                                            @error('services_deskripsi')
                                                                     <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
+                                                           <strong>{{ $message }}</strong>
+                                                      </span>
                                                                 @enderror
                                                             </div>
                                                             <label>Service Price</label>
@@ -209,8 +221,7 @@
     </div>
 @endsection
 
-<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-    crossorigin="anonymous"></script>
+
 <script>
     $(document).ready(function() {
         $('.menu-navbar').select2();
@@ -221,3 +232,40 @@
         $('.menu_submenu').select2();
     });
 </script>
+
+
+
+{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('.delete-confirm').click(function (e) {
+        var pertanyaan = $(this).attr('data-id');
+        e.preventDefault()
+        Swal.fire({
+            title: 'Yakin Ingin Di Hapus?',
+            text: "Pertanyaan akan dihapus",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#11111',
+            confirmButtonText: 'Hapus Sekarang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = '/admin/hapus/tanya/'+pertanyaan+''
+                Swal.fire(
+                'Sukses Terhapus!',
+                'Pertanyaan berhasil dihapus',
+                'BERHASIL'
+                )
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                {
+                    Swal.fire(
+                    'Gajadi',
+                    'Pertanyaan masih ada disini',
+                    'error'
+                    )
+                }
+            }
+        })
+    });
+</script> --}}
