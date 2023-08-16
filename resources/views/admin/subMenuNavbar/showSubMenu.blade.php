@@ -76,7 +76,7 @@
                                         <a class="btn btn-sm btn-warning text-white" href="/admin/edit/submenu/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="/admin/delete/submenu/{{ $subMenu->slug }}" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
+                                        <a href="/admin/delete/submenu/{{ $subMenu->slug }}" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus" data-id="{{ $subMenu->slug }}">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>
@@ -136,7 +136,7 @@
             confirmButtonText: 'Hapus Sekarang!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location = '/admin/hapus/sub-menu'+SubmenuNavbar+''
+                window.location = '/admin/delete/submenu/'+SubmenuNavbar+''
                 Swal.fire(
                 'Sukses Terhapus!',
                 'Menu berhasil dihapus',

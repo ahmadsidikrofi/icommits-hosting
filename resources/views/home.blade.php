@@ -47,6 +47,10 @@
     </section>
     <!-- Hero Section End -->
 
+    <!-- Button WA START -->
+    @include('wa')
+    <!-- Button WA End -->
+
     <!-- Register Domain Section Begin -->
     <section class="register-domain spad">
         <div class="container">
@@ -375,7 +379,7 @@
                         <div class="p-2"></div>
                         <div class="swiper-scrollbar"></div>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </section>

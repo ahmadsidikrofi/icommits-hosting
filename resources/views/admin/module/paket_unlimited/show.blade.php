@@ -60,6 +60,9 @@
                     </div>
                 </div>
             </div>
+            <h5 class="p-2 mx-3 bg-warning text-dark fw-bold rounded w-75 mt-3"> Mohon hapus paket web hosting yang sudah tidak
+                memiliki menu yaa, biar ga lemot dan kebanyakan data 😍
+            </h5>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table responsive-3 table-hover" id="artikel">
@@ -86,7 +89,7 @@
                                     <a title="Edit" data-toggle="modal" data-target="#edit{{ $paketWebHosting->id }}" href="#" class="btn btn-outline-warning text-dark btn-sm">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="/admin/delete/paket-unlimited-hosting/{{ $paket->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="/admin/delete/paket-unlimited-hosting/{{ $paketWebHosting->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                             <div class="modal fade" id="edit{{ $paketWebHosting->id }}" tabindex="-1" role="dialog"

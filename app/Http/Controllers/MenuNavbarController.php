@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Hero;
 use App\Models\Promo;
 use App\Models\MenuNavbar;
+use App\Models\ModulePaketVPS;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
@@ -50,6 +51,7 @@ class MenuNavbarController extends Controller
         } elseif ($menu->tipe_menu === "sub_menu") {
             $hapusMenu = MenuNavbar::where('id', $id)->first()->delete();
             $hapusMenuParent = SubMenuNavbar::where('id_menu_navbar', $menu->id)->delete();
+            $hapusHero = Hero::where('id_menu_navbar', NULL)->delete();
             return redirect('/admin/menu-navbar');
         }
     }

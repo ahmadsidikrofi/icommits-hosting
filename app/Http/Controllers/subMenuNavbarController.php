@@ -74,7 +74,7 @@ class subMenuNavbarController extends Controller
                 'required',
                 'string',
                 'regex:/^\w+( +\w+)+$/', // Regex untuk minimal 2 kata
-                Rule::unique('tb_menu_submenu')->ignore($editSubMenu->id), // Pastikan nama_sub_menu unik kecuali untuk data saat ini
+                // Rule::unique('tb_menu_submenu')->ignore($editSubMenu->id), // Pastikan nama_sub_menu unik kecuali untuk data saat ini
             ],
         ]);
 
@@ -100,8 +100,8 @@ class subMenuNavbarController extends Controller
     {
         $subMenu = SubMenuNavbar::where('slug', $slug)->first();
         $subMenu->delete();
-        $hapusPromo = Promo::where('id_submenu_navbar', $subMenu->id)->delete();
         $hapusHero = Hero::where('id_submenu_navbar', $subMenu->id)->delete();
+        $hapusPromo = Promo::where('id_submenu_navbar', $subMenu->id)->delete();
         return redirect()->back();
     }
 }
