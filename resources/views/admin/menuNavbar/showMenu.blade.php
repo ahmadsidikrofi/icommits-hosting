@@ -12,8 +12,6 @@
             $('#menu').DataTable();
         });
     </script>
-    <script src="{{ asset('js/sweetalert2.js') }}"></script>
-    <script src="{{ asset('js/delete.js') }}"></script>
 @endsection
 
 @section('content')
@@ -81,22 +79,20 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <form action="/admin/hapus/{{ $menu->id }}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            @if ($menu->tipe_menu === "link")
-                                                <a class="btn btn-sm btn-warning text-white"
-                                                data-placement="top" title="Edit" data-toggle="modal" data-target="#editMenu{{ $menu->id }}"><i class="fa-solid fa-pen-to-square"></i>
-                                                </a>
-                                            @elseif ($menu->tipe_menu === "sub_menu")
-                                                <a href="/admin/sub-menu-navbar/{{ $menu->slug }}" class="btn btn-sm btn-success text-white"
-                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa-solid fa-pen-to-square"></i>
-                                                </a>
-                                            @endif
-                                            <button type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        @method('delete')
+                                        @csrf
+                                        @if ($menu->tipe_menu === "link")
+                                            <a class="btn btn-sm btn-warning text-white"
+                                            data-placement="top" title="Edit" data-toggle="modal" data-target="#editMenu{{ $menu->id }}"><i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                        @elseif ($menu->tipe_menu === "sub_menu")
+                                            <a href="/admin/sub-menu-navbar/{{ $menu->slug }}" class="btn btn-sm btn-success text-white"
+                                                data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                        @endif
+                                        <a href="/admin/hapus/{{ $menu->id }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus" data-id="{{ $menu->id }}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
                                     </td>
                                     <td>
                                         {{-- /admin/urutan/{{ $menu->id }}/atas --}}
@@ -160,16 +156,62 @@
                                                         <button type="submit" class="btn btn-warning text-white">Simpan Perubahan</button>
                                                     </div>
                                                 </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    @include('admin.menuNavbar.modalMenu')
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastr.js"></script>
+    <script>
+        @if (Session::has('editMenu'))
+            toastr.success('Edit menu berhasil dilakukan')
+        @endif
+        @if (Session::has('addMenu'))
+            toastr.success('Menu berhasil ditambah')
+        @endif
+    </script>
+    <script>
+        $('.delete-confirm').click(function (e) {
+            var menuNavbar = $(this).attr('data-id');
+            e.preventDefault()
+            Swal.fire({
+                title: 'Yakin Ingin Di Hapus?',
+                text: "Menu akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#11111',
+                confirmButtonText: 'Hapus Sekarang!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = '/admin/hapus/'+menuNavbar+''
+                    Swal.fire(
+                    'Sukses Terhapus!',
+                    'Menu berhasil dihapus',
+                    'BERHASIL'
+                    )
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    {
+                        Swal.fire(
+                        'Gajadi',
+                        'Menu masih ada disini',
+                        'error'
+                        )
+                    }
+                }
+            })
+        });
+    </script>
+    @include('admin.menuNavbar.modalMenu')    
 @endsection

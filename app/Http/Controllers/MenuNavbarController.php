@@ -26,7 +26,7 @@ class MenuNavbarController extends Controller
         $tambahMenu->slug = Str::slug($request->nama_menu);
         $tambahMenu->link = $request->link ? $request->link . "/" . $tambahMenu->slug : null;
         $tambahMenu->save();
-        return redirect()->back();
+        return redirect('/admin/menu-navbar')->with('addMenu', 'Menu berhasil ditambah');
     }
 
     public function editMenu($id, Request $request)
@@ -36,7 +36,7 @@ class MenuNavbarController extends Controller
         $editMenuNavbar->slug = Str::slug($request->nama_menu);
         $editMenuNavbar->link = $request->link ? $request->link . "/" . $editMenuNavbar->slug : null;
         $editMenuNavbar->save();
-        return redirect()->back();
+        return redirect()->back()->with('editMenu', 'Edit menu berhasil dilakukan');
     }
 
     public function hapusMenu($id)
@@ -44,6 +44,7 @@ class MenuNavbarController extends Controller
         $menu = MenuNavbar::where('id', $id)->first();
         if ($menu->tipe_menu === "link"){
             $hapusMenu = MenuNavbar::where('id', $id)->first()->delete();
+            $hapusHero = Hero::where('id_menu_navbar', $menu->id)->delete();
             $hapusPromo = Promo::where('id_menu_navbar', $menu->id)->delete();
             return redirect('/admin/menu-navbar');
         } elseif ($menu->tipe_menu === "sub_menu") {

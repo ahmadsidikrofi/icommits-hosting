@@ -87,7 +87,7 @@ class PromoController extends Controller
         }
 
         $tambahPromo->save();
-        return redirect()->back();
+        return redirect('/admin/promo')->with('addPromo', 'Promo berhasil ditambah');;
     }
 
     public function edit($id, Request $request)
@@ -119,7 +119,7 @@ class PromoController extends Controller
             $updatePromo -> save();
         }
 
-        return redirect('/admin/promo');
+        return redirect('/admin/promo')->with('editPromo', 'Edit promo berhasil dilakukan');
     }
 
     public function destroy($id)

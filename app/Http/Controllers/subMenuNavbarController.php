@@ -54,7 +54,7 @@ class subMenuNavbarController extends Controller
         }
 
         session()->put('success', 'Data Berhasil ditambahkan');
-        return redirect()->back();
+        return redirect()->back()->with('addSubMenu', 'SubMenu berhasil ditambah');
     }
 
     public function viewPageEditSubMenu($slug)
@@ -88,7 +88,12 @@ class subMenuNavbarController extends Controller
             $editSubMenu -> image = $request -> file("image")->getClientOriginalName();
         }
         $editSubMenu->save();
-        return redirect('/admin/edit/submenu/' . $editSubMenu->slug)->with('success', 'Sub menu berhasil diubah');
+        return redirect('/admin/edit/submenu/' . $editSubMenu->slug)->with('editSubMenu', 'Sub menu berhasil diubah');
+    }
+
+    public function hapusSubMenu ($id){
+        $subMenu = SubMenuNavbar::where('id', $id)->first()->delete();
+        return redirect('/admin/menu-navbar');
     }
 
     public function deleteSubMenuStore( $slug )

@@ -78,9 +78,15 @@
                                             $interval = $now->diff($expiredDateTime);
                                             ?>
                                             <!-- Display the countdown time -->
-                                            <span class="fw-bold mx-1">
-                                                {{ $interval->d }} hari {{ $interval->h }} jam {{ $interval->i }} menit
-                                            </span>
+                                            @if ( $expiredDateTime < $now )
+                                                <span class="fw-bold mx-1">
+                                                    Waktu promo habis
+                                                </span>
+                                            @else
+                                                <span class="fw-bold mx-1">
+                                                    {{ $interval->d }} hari {{ $interval->h }} jam {{ $interval->i }} menit
+                                                </span>
+                                            @endif
                                         </h6>
                                     </li>
                                 </ul>
@@ -206,6 +212,8 @@
 
     <!-- Footer-->
     @include('partials.footer')
+
+
 </body>
 
 </html>

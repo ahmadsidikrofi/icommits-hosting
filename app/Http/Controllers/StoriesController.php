@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Hero;
 use App\Models\Stories;
 use App\Models\MenuNavbar;
+use App\Models\StoriesViews;
 use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
 use App\Models\StoriesSection;
 use App\Models\KategoriStories;
-use App\Models\StoriesViews;
 use Intervention\Image\Facades\Image;
-use Carbon\Carbon;
 
 class StoriesController extends Controller
 {
@@ -43,7 +43,7 @@ class StoriesController extends Controller
             $createStories = Image::make($image)->resize(680, 450);
             $createStories -> save();
         }
-        return redirect('/admin/stories-section');
+        return redirect('/admin/stories-section')->with('addStories', 'Stories berhasil ditambah');
     }
 
     public function viewPageEditStories( $slug )
@@ -67,7 +67,7 @@ class StoriesController extends Controller
             $editStories = Image::make($image)->resize(680, 450);
             $editStories -> save();
         }
-        return redirect('/admin/stories-section');
+        return redirect('/admin/stories-section')->with('editStories', 'Edit stories berhasil dilakukan');
     }
 
     public function DestroyStories( $slug )

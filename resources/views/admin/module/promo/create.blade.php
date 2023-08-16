@@ -1,10 +1,7 @@
 @extends('partials.admin')
 
 @section('js')
-    <script src="{{ asset('assets/admin/js/jquery.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="crossorigin="anonymous"></script>
     <script src="https://cdn.tiny.cloud/1/o61nnuwogclhd3z601n2k0zh479m9kbnsivauhaxrlu4jco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
@@ -13,6 +10,51 @@
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>
+        <script>
+            $(document).ready(function() {
+                // Fungsi untuk mengisi nilai slug_navbar saat subMenuNavbar dipilih
+                $('#submenu_navbar').change(function() {
+                    const selectedSubmenu = $(this).find(':selected').val();
+                    const selectedSubmenuSlug = $(this).find(':selected').data('slug');
+                    $('#slug_navbar').val(selectedSubmenuSlug);
+                });
+            });
+        </script>
+        <script>
+            // Add the following code if you want the name of the file appear on select
+            $(".custom-file-input").on("change", function() {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>
+        <script>
+            const menuNavbarSelect = document.getElementById('menu_navbar');
+            const submenuNavbarSelect = document.getElementById('submenu_navbar');
+    
+            menuNavbarSelect.addEventListener('change', function () {
+                submenuNavbarSelect.disabled = this.value !== ''; // Jika memilih menu, submenu menjadi disabled
+                if (this.value === 'Tidak jadi') {
+                    submenuNavbarSelect.disabled = false;
+                }
+            });
+    
+            submenuNavbarSelect.addEventListener('change', function () {
+                menuNavbarSelect.disabled = this.value !== '';
+                if (this.value === 'Tidak jadi') {
+                    menuNavbarSelect.disabled = false;
+                }
+            });
+        </script>
+    
+        <script>
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+    
+            today = yyyy + '-' + mm + '-' + dd + 'T00:00';
+            $('#date_picker').attr('min',today);
+        </script>
 @endsection
 
 @section('content')
@@ -128,8 +170,9 @@
                         <label>Choose Navbar's Menu</label>
                         <div class="input-group ">
                             <div class="col">
-                                <select class="form-control menu-navbar" name="menu_navbar" id="menu_navbar">
+                                <select class="form-control menu_navbar" name="menu_navbar" id="menu_navbar">
                                     <option disabled selected> -- Please Choose -- </option>
+                                    <option value="Tidak jadi"> -- Tidak jadi -- </option>
                                     @foreach ( $menuNavbar as $menu )
                                         @if ($menu->tipe_menu === "link")
                                             <option value="{{ $menu->id }}">{{ $menu->nama_menu }}</option>
@@ -150,6 +193,7 @@
                             <div class="col">
                                 <select class="form-control menu_submenu" name="submenu_navbar" id="submenu_navbar">
                                     <option disabled selected> -- Please Choose -- </option>
+                                    <option value="Tidak jadi"> -- Tidak jadi -- </option>
                                     @foreach ($subMenuNavbar as $subMenu)
                                         <option value="{{ $subMenu->id }}" data-slug="{{ $subMenu->slug }}">{{ $subMenu->nama_sub_menu }}</option>
                                     @endforeach
@@ -163,9 +207,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        @php
+                            $now = new Date()
+                        @endphp
                         <label>Expired At</label>
                         <input type="datetime-local"
-                        name="expired_at" class="form-control @error('expired_at') is-invalid @enderror">
+                        name="expired_at" id="date_picker" class="form-control @error('expired_at') is-invalid @enderror">
                         @error('expired_at')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -192,35 +239,6 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            // Fungsi untuk mengisi nilai slug_navbar saat subMenuNavbar dipilih
-            $('#submenu_navbar').change(function() {
-                const selectedSubmenu = $(this).find(':selected').val();
-                const selectedSubmenuSlug = $(this).find(':selected').data('slug');
-                $('#slug_navbar').val(selectedSubmenuSlug);
-            });
-        });
-    </script>
-    <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('.menu-navbar').select2();
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('.menu_submenu').select2();
-        });
-    </script>
 
 
 @endsection

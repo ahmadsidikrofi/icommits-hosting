@@ -23,25 +23,31 @@
                     <div class="col-md-3 col-lg-2 mt-3">
                         <h6 class="title-list-footer mx-4">Produk</h6>
                         <ul class="footer-links mx-4">
-                            <li><a href="#" class="text-decoration-none">Web Hosting</a></li>
-                            <li><a href="#" class="text-decoration-none">Domain</a></li>
-                            <li><a href="#" class="text-decoration-none">VPS</a></li>
-                            <li><a href="#" class="text-decoration-none">Email</a></li>
-                            <li><a href="/riwayatlamaran" class="text-decoration-none">Buat Website</a></li>
+                            <li class=""><a href="/stories">Stories</a></li>
+                            @foreach ( $menuNavbar as $menu )
+                                @if ( $menu->tipe_menu === "link" )
+                                    <li><a href="{{ $menu->link }}" class="text-decoration-none">{{ $menu->nama_menu }}</a></li>
+                                @endif
+                            @endforeach
                         </ul>
+
                     </div>
                     <div class="col-md-3 col-lg-2 mt-3">
                         <h6 class="title-list-footer">Perusahaan</h6>
                         <ul class="footer-links">
-                            <li><a href="#" class="text-decoration-none">Tentang</a></li>
-                            <li><a href="#" class="text-decoration-none">Media</a></li>
-                            <li><a href="#" class="text-decoration-none">Teknologi</a></li>
-                            <li><a href="#" class="text-decoration-none">Hubungi Kami</a></li>
+                            @foreach ( $menuNavbar as $menu )
+                                @if ( $menu->tipe_menu === "sub_menu" )
+                                    @foreach ( $menu->subMenus as $subMenu )
+                                        <li><a href="{{ $subMenu->link }}" class="text-decoration-none">{{ $subMenu->nama_sub_menu }}</a></li>
+                                    @endforeach
+                                @endif
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-md-3 col-lg-2 mt-3">
                         <h6 class="title-list-footer">Informasi</h6>
                         <ul class="footer-links">
+                            <li><a href="/stories">Stories</a></li>
                             <li><a href="#" class="text-decoration-none">Pembayaran</a></li>
                             <li><a href="#" class="text-decoration-none">Blog</a></li>
                             <li><a href="#" class="text-decoration-none">Loyalty Poin</a></li>
@@ -64,17 +70,20 @@
                             <a href=“#”>Kebijakan Privasi</a>
                             <a href=“#”>Service Level Management</a>
                         </div>
-                        {{-- <ul class="hubungi-Kami footer-links inline">
-                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul> --}}
                     </div>
                 </div>
             </div>
         </div>
-    </footer>   
+    </footer>
 </body>
 </html>
 
+
+
+{{-- <ul class="footer-links mx-4">
+    <li><a href="#" class="text-decoration-none">Web Hosting</a></li>
+    <li><a href="#" class="text-decoration-none">Domain</a></li>
+    <li><a href="#" class="text-decoration-none">VPS</a></li>
+    <li><a href="#" class="text-decoration-none">Email</a></li>
+    <li><a href="/riwayatlamaran" class="text-decoration-none">Buat Website</a></li>
+</ul> --}}

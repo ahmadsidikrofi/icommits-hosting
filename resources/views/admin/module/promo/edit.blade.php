@@ -52,29 +52,10 @@
                             <h4 class="fw-bold">Menu saat ini: {{ $subMenuNavbar->nama_sub_menu }}</h4>
                         @endif
                     </div>
+                    @if ( $promo->title_section < 1 )
                     <div class="form-group">
-                        <label>Section Title</label>
-                        <div class="input-group ">
-                            <input type="text" value="{{ $promo->title_section }}" placeholder="Insert Title"
-                                name="title_section" class="form-control @error('title_section') is-invalid @enderror">
-                            @error('title_section')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Section Mini Title</label>
-                        <div class="input-group ">
-                            <input type="text" value="{{ $promo->mini_title_promo }}" placeholder="Insert Mini Title"
-                                name="mini_title_promo"  class="form-control @error('mini_title_promo') is-invalid @enderror">
-                            @error('mini_title_promo')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        <label>Judul Section</label>
+                        <p class="text-danger fw-bold">Section Title dan Mini Title telah terisi, lakukan pengeditan pada promo pertama apabila ingin dirubah</p>
                     </div>
                     <div class="form-group">
                         <label>Card Mini Title</label>
@@ -140,17 +121,7 @@
                             <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">
                                 <img src="/image/{{ $promo->image }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6 mx-auto">
-                                <div> class="custom-file mb-3">
-                                    <input type="file" id="file" name="image"
-                                        class="custom-file-input @error('image') is-invalid @enderror" accept="image/*"
-                                        onchange="tampilkanPreview(this,'preview')" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose
-                                        file</label>
-                                </div>
-                            </div>
+                            <input type="file" class="form-control" name="image">
                         </div>
                         @error('image')
                             <span class="invalid-feedback" role="alert">
@@ -158,6 +129,104 @@
                             </span>
                         @enderror
                     </div>
+                    @else
+                        <div class="form-group">
+                            <label>Section Title</label>
+                            <div class="input-group ">
+                                <input type="text" value="{{ $promo->title_section }}" placeholder="Insert Title"
+                                    name="title_section" class="form-control @error('title_section') is-invalid @enderror">
+                                @error('title_section')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Section Mini Title</label>
+                            <div class="input-group ">
+                                <input type="text" value="{{ $promo->mini_title_promo }}" placeholder="Insert Mini Title"
+                                    name="mini_title_promo"  class="form-control @error('mini_title_promo') is-invalid @enderror">
+                                @error('mini_title_promo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Card Mini Title</label>
+                            <div class="input-group ">
+                                <input type="text" value="{{ $promo->mini_title_card }}" placeholder="Insert Mini Title"
+                                    name="mini_title_card" class="form-control @error('mini_title_card') is-invalid @enderror"
+                                    required>
+                                @error('mini_title_card')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Card Title</label>
+                            <div class="input-group ">
+                                <input type="text" value="{{ $promo->title_promo }}" placeholder="Insert Title"
+                                    name="title_promo" class="form-control @error('title_promo') is-invalid @enderror"
+                                    required>
+                                @error('title_promo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Get Promo (Optional)</label>
+                            <div class="input-group ">
+                                <input type="text" value="{{ $promo->link_promo }}" placeholder="Ex: Get Now!"
+                                    name="link_promo" class="form-control @error('link_promo') is-invalid @enderror">
+                                @error('link_promo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Expired At</label>
+                            <input type="datetime-local" value="{{ $promo->expired_at }}" placeholder="Ex: Get Now!"
+                            name="expired_at" class="form-control @error('expired_at') is-invalid @enderror">
+                            @error('expired_at')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <div class="row">
+                                <div class="col-sm-6 mx-auto d-flex justify-content-center p-3 rounded">
+                                    <img src="/image/{{ $promo->image }}" class="img-fluid rounded-4 shadow " height="20" width="200" alt="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 mx-auto">
+                                    <div> class="custom-file mb-3">
+                                        <input type="file" id="file" name="image"
+                                            class="custom-file-input @error('image') is-invalid @enderror" accept="image/*"
+                                            onchange="tampilkanPreview(this,'preview')" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose
+                                            file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    @endif
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-warning text-white"><i class="fa fa-save mr-1"></i>
                             Simpan Perubahan</button>
