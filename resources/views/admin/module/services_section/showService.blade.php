@@ -24,7 +24,7 @@
         @endif
     </script>
     <script>
-        @if (Session::has('success'))
+        @if (Session::has('editSS'))
             toastr.success('Edit Service berhasil dilakukan')
         @endif
     </script>

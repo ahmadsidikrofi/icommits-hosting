@@ -52,7 +52,7 @@ class QnaController extends Controller
     {
         $pertanyaan = Qna::findOrFail($id);
         $pertanyaan->update($request->except('menu_navbar', 'submenu_navbar'));
-        return redirect('/admin/qna');
+        return redirect('/admin/qna')->with('editTanya', 'Edit QnA berhasil dilakukan');;
     }
 
     public function destroy($id)
