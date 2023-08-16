@@ -3,28 +3,40 @@
 @include('partials.head')
 
 <body>
-    {{-- @include('partials.Firstnavbar') --}}
+    @include('partials.Firstnavbar')
 
     <!-- Hero Section Begin -->
-    <section class="hero-section ">
-        <div class="hero__slider owl-carousel z-0">
-            <div class="hero__item set-bg " data-setbg="/image/hero/AstronautNight.jpg">
+    <section class="hero-section">
+        <div class=" z-0">
+            @if ( $hero->image_background === NULL )
+            <div class="hero__item set-bg" data-setbg="/image/hero/hero-default.jpg">
+            @else
+            <div class="hero__item set-bg" data-setbg="/image/hero/{{ $hero->image_background }}">
+            @endif
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
-                                <h5><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> Rp9000/bulan</h5>
-                                <h2>NIKMATI VPS DENGAN HARGA TERJANGKAU</h2>
+                                <h5 class="text-light"><span class="shadow rounded-4 bg-danger p-1 get-packet">Mulai</span> {{ $hero->mini_title }}</h5>
+                                <h2>{{ $hero->title_hero }}</h2>
                                 <p class="text-light fs-5 lh-lg">
-                                    Rasakan fleksibilitas yang lebih tinggi, kinerja yang lebih cepat, dan kemampuan yang lebih kuat untuk menunjang kebutuhan bisnis atau proyek Anda.
+                                    {{ $hero->deskripsi }}
                                 </p>
-                                <a href="#promo" class="btn btn-outline-primary fw-semibold">LIHAT PENAWARAN</a>
+                                @if ($hero->link_button === NULL)
+
+                                @else
+                                    <a href="#promo" class="btn btn-dark rounded-pill fw-semibold">{{ $hero->link_button }}</a>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-6 z-1">
-                            <div class="hero-right-unlimited-hosting ">
-                                <img src="img/hero/hero-right-unlimited-hosting.png" class="" alt="">
-                            </div>
+                            @if ( $hero->image_right === NULL )
+                                <img src="/image/hero/hero-right.png" class="img-fluid" alt="">
+                            @else
+                                <div class="hero-right">
+                                    <img src="/image/hero/{{ $hero->image_right }}" class="img-fluid" alt="">
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -44,65 +56,53 @@
                 </div>
                 <div class="col-lg-5 col-md-5">
                     <div class="pricing__swipe-btn">
-                        <label for="bulanan" class="active">Bulanan
-                            <input type="radio" id="bulanan">
+                        <label for="jam" class="active">Jam
+                            <input type="radio" id="jam">
                         </label>
-                        <label for="tahunan">Tahunan
-                            <input type="radio" id="tahunan">
+                        <label for="bulanan">Bulanan
+                            <input type="radio" id="bulanan">
                         </label>
                     </div>
                 </div>
             </div>
+            <!-- Paket Perjam -->
+            <div class="row paket_perjam active">
+                @foreach ( $showPaketVPS as $paketVPS )
+                    @if ($paketVPS->durasi === "jam")
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="harga_paket_vps">
+                                <h4>{{ $paketVPS->nama_paket }}</h4>
+                                <ul class="paket-list-jam">
+                                    <li>
+                                        {!! $paketVPS->paket_unggulan !!}
+                                    </li>
+                                </ul>
+                                <h3 class="mb-4"><span>Rp</span>{{ $paketVPS->harga_paket }}<span>/ jam</span></h3>
+                                <a class="btn btn-lg mb-4">Beli Sekarang</a>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+
             <!-- Paket Bulanan -->
-            <div class="row paket_bulanan active">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="harga_paket">
-                        <h4>VPS #1</h4>
-                        <p>Untuk memulai bisnis online Anda</p>
-                        <h3>Rp25.000 <span>/ bulan</span></h3>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span>1 vCPU Core</li>
-                            <li><span class="fa fa-check text-primary"></span>RAM 4 GB</li>
-                            <li><span class="fa fa-check text-primary"></span>50 GB NVMe Disk space</li>
-                            <li><span class="fa fa-check text-primary"></span>1 TB Bandwidth</li>
-                            <li><span class="fa fa-check text-primary"></span>1 Snapshot</li>
-                            <li><span class="fa fa-check text-primary"></span>Backup Mingguan</li>
-                            <li><span class="fa fa-check text-primary"></span>Alamat IP Dedicated</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="harga_paket">
-                        <h4>VPS #2</h4>
-                        <p>Pengalaman online lebih kuat & stabil</p>
-                        <h3>Rp25.000 <span>/ bulan</span></h3>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span>2 vCPU Core</li>
-                            <li><span class="fa fa-check text-primary"></span>RAM 8 GB</li>
-                            <li><span class="fa fa-check text-primary"></span>100 GB NVMe Disk space</li>
-                            <li><span class="fa fa-check text-primary"></span>2 TB Bandwidth</li>
-                            <li><span class="fa fa-check text-primary"></span>1 Snapshot</li>
-                            <li><span class="fa fa-check text-primary"></span>Backup Mingguan</li>
-                            <li><span class="fa fa-check text-primary"></span>Alamat IP Dedicated</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="harga_paket">
-                        <h4>VPS #3</h4>
-                        <p>Keamanan dan Sumber Daya Tinggi</p>
-                        <h3>Rp25.000 <span>/ bulan</span></h3>
-                        <ul>
-                            <li><span class="fa fa-check text-primary"></span>3 vCPU Core</li>
-                            <li><span class="fa fa-check text-primary"></span>RAM 16 GB</li>
-                            <li><span class="fa fa-check text-primary"></span>150 GB NVMe Disk space</li>
-                            <li><span class="fa fa-check text-primary"></span>3 TB Bandwidth</li>
-                            <li><span class="fa fa-check text-primary"></span>1 Snapshot</li>
-                            <li><span class="fa fa-check text-primary"></span>Backup Mingguan</li>
-                            <li><span class="fa fa-check text-primary"></span>Alamat IP Dedicated</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="row paket_bulanan">
+                @foreach ( $showPaketVPS as $paketVPS )
+                    @if ($paketVPS->durasi === "bulan")
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="harga_paket_vps">
+                                <h4>{{ $paketVPS->nama_paket }}</h4>
+                                <ul class="paket-list-bulan">
+                                    <li>
+                                        {!! $paketVPS->paket_unggulan !!}
+                                    </li>
+                                </ul>
+                                <h3 class="mb-4"><span>Rp</span>{{ $paketVPS->harga_paket }}<span>/ jam</span></h3>
+                                <a class="btn btn-lg mb-4">Beli Sekarang</a>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>
@@ -373,11 +373,11 @@
                         <hr style="border: 2px solid;">
                         <div class="faq-answer collapse" id="faqOne">
                             <p class="text-light">
-                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang. 
-                                Tanpa hosting, Anda tidak akan bisa membuat website. 
-                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses. 
-                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang 
-                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk 
+                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                Tanpa hosting, Anda tidak akan bisa membuat website.
+                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
                                 menemani perjalanan Anda di dunia digital!
                             </p>
                         </div>
@@ -396,11 +396,11 @@
                         <hr style="border: 2px solid;">
                         <div class="faq-answer collapse" id="faqTwo">
                             <p class="text-light">
-                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang. 
-                                Tanpa hosting, Anda tidak akan bisa membuat website. 
-                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses. 
-                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang 
-                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk 
+                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                Tanpa hosting, Anda tidak akan bisa membuat website.
+                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
                                 menemani perjalanan Anda di dunia digital!
                             </p>
                         </div>
@@ -419,11 +419,11 @@
                         <hr style="border: 2px solid;">
                         <div class="faq-answer collapse" id="faqThree">
                             <p class="text-light">
-                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang. 
-                                Tanpa hosting, Anda tidak akan bisa membuat website. 
-                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses. 
-                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang 
-                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk 
+                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                Tanpa hosting, Anda tidak akan bisa membuat website.
+                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
                                 menemani perjalanan Anda di dunia digital!
                             </p>
                         </div>
@@ -442,11 +442,11 @@
                         <hr style="border: 2px solid;">
                         <div class="faq-answer collapse" id="faqFour">
                             <p class="text-light">
-                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang. 
-                                Tanpa hosting, Anda tidak akan bisa membuat website. 
-                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses. 
-                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang 
-                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk 
+                                Hosting adalah layanan penyimpanan data website sehingga dapat diakses secara online oleh semua orang.
+                                Tanpa hosting, Anda tidak akan bisa membuat website.
+                                Kualitas layanan hosting menentukan cepat atau lambatnya suatu website diakses.
+                                Penyedia layanan hosting harus bertanggung jawab atas kecepatan dan uptime dari server yang
+                                dikelola. Oleh karena itu, saran kami selalu pilih penyedia layanan hosting terbaik untuk
                                 menemani perjalanan Anda di dunia digital!
                             </p>
                         </div>
@@ -456,7 +456,6 @@
         </div>
     </section>
     <!-- FAQ Start -->
-
 </body>
 
     <!-- Js Plugins -->

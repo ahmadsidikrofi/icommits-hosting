@@ -135,6 +135,26 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-3">
+                <a href="/admin/paket-vps" style="text-decoration: none">
+                    <div class="card card-stats card-round d-block bg-info-gradient">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="icon-big text-center text-white">
+                                        <i class="fa-solid fa-server"></i>
+                                    </div>
+                                </div>
+                                <div class="col-7 col-stats">
+                                    <div class="numbers ">
+                                        <h1 class="card-title text-white">Paket VPS</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-3">
                 <a href="/admin/partner" style="text-decoration: none">
                     <div class="card card-stats card-round d-block bg-info-gradient">
                         <div class="card-body">

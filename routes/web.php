@@ -14,6 +14,7 @@ use App\Http\Controllers\StoriesController;
 use App\Http\Controllers\MenuNavbarController;
 use App\Http\Controllers\subMenuNavbarController;
 use App\Http\Controllers\KategoriStoriesController;
+use App\Http\Controllers\ModulePaketVPSController;
 use App\Http\Controllers\ServicesSectionController;
 use App\Http\Controllers\ModuleHostingUnlimitedController;
 
@@ -31,10 +32,12 @@ use App\Http\Controllers\ModuleHostingUnlimitedController;
 Route::get('/', [HomeController::class, "showHome"]);
 
 //Bab VPS
-Route::get('/vps', function () {
-    return view('vps.vpsPage');
-});
-
+Route::get('/vps/{slug}', [ModulePaketVPSController::class, "paketVPS"]);
+Route::get('/admin/paket-vps', [ModulePaketVPSController::class, "viewPagePaketVPS"]);
+Route::get('/admin/create/paket-vps', [ModulePaketVPSController::class, "viewPageAddPaketVPS"]);
+Route::post('/admin/create/paket-vps/store', [ModulePaketVPSController::class, "addPaketVpsStore"]);
+Route::put('/admin/edit/paket-vps/{slug}/store', [ModulePaketVPSController::class, "editPaketVpsStore"]);
+Route::get('/admin/delete/paket-vps/{slug}', [ModulePaketVPSController::class, "deletePaketVpsStore"]);
 
 //Bab Promo
 
@@ -86,6 +89,8 @@ Route::get('/admin/create/paket-hosting-unlimited', [ModuleHostingUnlimitedContr
 Route::post('/admin/create/paket-hosting-unlimited/store', [ModuleHostingUnlimitedController::class, "addPaketHostingUnlimited"]);
 // Update Paket Hosting Unlimited
 Route::put('/admin/edit/paket-hosting-unlimited/{slug}/store', [ModuleHostingUnlimitedController::class, "editPaketHostingUnlimited"]);
+// Delete
+Route::get('/admin/delete/paket-unlimited-hosting/{slug}', [ModuleHostingUnlimitedController::class, "deletePaketHostingUnlimited"]);
 
 
 //Module QnA

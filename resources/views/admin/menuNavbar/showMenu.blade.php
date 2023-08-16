@@ -144,6 +144,7 @@
                                                         <label>Link Navbar</label>
                                                         <select class="form-control" name="link" id="link">
                                                             <option @if ($menu->link == '/hosting-unlimited/' . $menu->slug) selected @endif value="/hosting-unlimited" >Hosting Unlimited</option>
+                                                            <option @if ($menu->link == '/vps/' . $menu->slug) selected @endif value="/vps" >VPS Hosting</option>
                                                             <option @if ($menu->link == '/promoKeren/' . $menu->slug) selected @endif value="/promoKeren">Promo</option>
                                                             <option @if ($menu->link == '/domain/' . $menu->slug) selected @endif value="/domain">Domain</option>
                                                         </select>
