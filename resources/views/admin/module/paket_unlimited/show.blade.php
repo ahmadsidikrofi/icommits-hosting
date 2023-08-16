@@ -22,6 +22,55 @@
     </script>
     <script src="{{ asset('js/sweetalert2.js') }}"></script>
     <script src="{{ asset('js/delete.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastr.js"></script>
+    <script>
+        @if (Session::has('editPaket'))
+            toastr.success('Edit Paket berhasil dilakukan')
+        @endif
+        @if (Session::has('addPaket'))
+            toastr.success('Paket berhasil ditambah')
+        @endif
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.delete-confirm').click(function (e) {
+            var paket = $(this).attr('data-slug');
+            e.preventDefault()
+            Swal.fire({
+                title: 'Yakin Ingin Di Hapus?',
+                text: "Paket akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#11111',
+                confirmButtonText: 'Hapus Sekarang!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = '/admin/delete/paket-unlimited-hosting/'+paket+''
+                    Swal.fire(
+                    'Sukses Terhapus!',
+                    'Paket berhasil dihapus',
+                    'BERHASIL'
+                    )
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    {
+                        Swal.fire(
+                        'Gajadi',
+                        'Paket masih ada disini',
+                        'error'
+                        )
+                    }
+                }
+            })
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -86,7 +135,7 @@
                                     <a title="Edit" data-toggle="modal" data-target="#edit{{ $paketWebHosting->id }}" href="#" class="btn btn-outline-warning text-dark btn-sm">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="/admin/delete/paket-unlimited-hosting/{{ $paket->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="/admin/delete/paket-unlimited-hosting/{{ $paketWebHosting->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-slug="{{ $paketWebHosting->slug }}" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                             <div class="modal fade" id="edit{{ $paketWebHosting->id }}" tabindex="-1" role="dialog"
@@ -174,18 +223,4 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/js/toastr.js"></script>
-    <script>
-        @if (Session::has('editPaket'))
-            toastr.success('Edit Paket berhasil dilakukan')
-        @endif
-        @if (Session::has('addPaket'))
-            toastr.success('Paket berhasil ditambah')
-        @endif
-    </script>
-
 @endsection

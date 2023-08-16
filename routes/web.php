@@ -111,6 +111,7 @@ Route::put('/admin/edit/submenu/{slug}/store', [subMenuNavbarController::class, 
 Route::get('/admin/delete/submenu/{slug}', [subMenuNavbarController::class, "deleteSubMenuStore"]);
 // Route::get('/admin/hapus/sub-menu/{id}', [subMenuNavbarController::class, "hapusSubMenu"]);
 
+
 // Module Hero
 Route::resource('/admin/hero', HeroController::class);
 Route::get('/admin/hero/remove/background-hero/{slug}', [HeroController::class, "removeHero"]);
@@ -122,6 +123,7 @@ Route::get('/admin/services-section', [ServicesSectionController::class, "viewPa
 Route::get('/admin/create/service', [ServicesSectionController::class, "viewPageCreateService"]);
 Route::post('/admin/create/service/store', [ServicesSectionController::class, "createServiceSection"]);
 Route::put('/admin/edit/service-section/{id}', [ServicesSectionController::class, "editServiceSection"]);
+Route::put('/admin/hapus/service-section/{id}', [ServicesSectionController::class, "editServiceSection"]);
 
 // Module Stories Section
 Route::get('/admin/kategori-stories', [KategoriStoriesController::class, "viewPageKategoriStories"]);
