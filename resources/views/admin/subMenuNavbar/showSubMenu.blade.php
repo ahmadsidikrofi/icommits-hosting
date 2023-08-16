@@ -74,16 +74,12 @@
                                         {{ $subMenu->link }}
                                     </td>
                                     <td>
-                                        <form action="/admin/hapus/{{ $subMenu->id }}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <a class="btn btn-sm btn-warning text-white" href="/admin/edit/submenu/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
-                                            <button type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        <a class="btn btn-sm btn-warning text-white" href="/admin/edit/submenu/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="/admin/delete/submenu/{{ $subMenu->slug }}" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
                                     </td>
                                     <td>
                                         <form action="submenu/urutan/{{ $subMenu->id }}/atas" method="post">

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hero;
+use App\Models\Promo;
 use App\Models\MenuNavbar;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class subMenuNavbarController extends Controller
 {
@@ -87,5 +89,14 @@ class subMenuNavbarController extends Controller
         }
         $editSubMenu->save();
         return redirect('/admin/edit/submenu/' . $editSubMenu->slug)->with('success', 'Sub menu berhasil diubah');
+    }
+
+    public function deleteSubMenuStore( $slug )
+    {
+        $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+        $subMenu->delete();
+        $hapusPromo = Promo::where('id_submenu_navbar', $subMenu->id)->delete();
+        $hapusHero = Hero::where('id_submenu_navbar', $subMenu->id)->delete();
+        return redirect()->back();
     }
 }
