@@ -44,6 +44,7 @@ Route::get('/admin/delete/paket-vps/{slug}', [ModulePaketVPSController::class, "
 Route::get('/promoKeren/{slug}', [PromoController::class, "allPromo"]);
 Route::resource('/admin/promo', PromoController::class);
 Route::get('/promo/{slug}', [PromoController::class, "detailPromo"]);
+Route::get('/admin/hapus/promo/{id}', [PromoController::class, "destroy"]);
 
 // Domain
 Route::get('/domain/{slug}', [DomainController::class, "searchDomainPage"]);
@@ -95,24 +96,26 @@ Route::get('/admin/delete/paket-unlimited-hosting/{slug}', [ModuleHostingUnlimit
 //Module QnA
 //Menampilkan QnA dihalaman admin
 Route::resource('/admin/qna', qnaController::class);
-
+Route::get('/admin/hapus/tanya/{id}', [qnaController::class, "destroy"]);
 // Fitur Menu Navbar
 Route::get('/admin/menu-navbar', [MenuNavbarController::class, "viewPageMenu"]);
 Route::post('/admin/tambah/menu-navbar', [MenuNavbarController::class, "tambahMenu"]);
-Route::delete('/admin/hapus/{id}', [MenuNavbarController::class, "hapusMenu"]);
 Route::put('/admin/edit/menu-navbar/{slug}', [MenuNavbarController::class, "editMenu"]);
+Route::get('/admin/hapus/{id}', [MenuNavbarController::class, "hapusMenu"]);
 
 // Fitur Sub Menu
 Route::get('/admin/sub-menu-navbar/{slug}', [subMenuNavbarController::class, "viewPageSubMenu"]);
 Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tambahSubMenu"]);
 Route::get('/admin/edit/submenu/{slug}', [subMenuNavbarController::class, "viewPageEditSubMenu"]);
 Route::put('/admin/edit/submenu/{slug}/store', [subMenuNavbarController::class, "editSubMenuStore"]);
-Route::delete('/admin/hapus/{id}', [MenuNavbarController::class, "hapusMenu"]);
+Route::get('/admin/delete/submenu/{slug}', [subMenuNavbarController::class, "deleteSubMenuStore"]);
+// Route::get('/admin/hapus/sub-menu/{id}', [subMenuNavbarController::class, "hapusSubMenu"]);
 
 // Module Hero
 Route::resource('/admin/hero', HeroController::class);
 Route::get('/admin/hero/remove/background-hero/{slug}', [HeroController::class, "removeHero"]);
 Route::get('/admin/hero/remove/background-hero-right/{slug}', [HeroController::class, "removeHeroRight"]);
+Route::get('/admin/hapus/hero/{id}', [HeroController::class, "destroy"]);
 
 // Module Services Section
 Route::get('/admin/services-section', [ServicesSectionController::class, "viewPageServicesSection"]);
@@ -125,14 +128,14 @@ Route::get('/admin/kategori-stories', [KategoriStoriesController::class, "viewPa
 Route::post('/admin/create/data/kategori-stories/store', [KategoriStoriesController::class, "CreateKategoriStoriesStore"]);
 Route::get('/admin/edit/data/kategori-stories/{slug}', [KategoriStoriesController::class, "ViewPageEditKategoriStories"]);
 Route::put('/admin/edit/data/kategori-stories/store/{slug}', [KategoriStoriesController::class, "EditKategoriStoriesStore"]);
-Route::delete('/admin/destroy/data/kategori-stories/{slug}', [KategoriStoriesController::class, "DestroyKategoriStoriesStore"]);
+Route::get('/admin/destroy/data/kategori-stories/{slug}', [KategoriStoriesController::class, "DestroyKategoriStoriesStore"]);
 
 Route::get('/admin/stories-section', [StoriesController::class, "viewPageStoriesSection"]);
 Route::get('/admin/create/stories', [StoriesController::class, "viewPageCreateStories"]);
 Route::post('/admin/create/stories/store', [StoriesController::class, "CreateStoriesStore"]);
 Route::get('/admin/edit/stories/{slug}', [StoriesController::class, "viewPageEditStories"]);
 Route::put('/admin/edit/stories/store/{slug}', [StoriesController::class, "EditStoriesStore"]);
-Route::delete('/admin/destroy/stories/{slug}', [StoriesController::class, "DestroyStories"]);
+Route::get('/admin/destroy/stories/{slug}', [StoriesController::class, "DestroyStories"]);
 
 Route::get('/stories', [StoriesController::class, "showStories"]);
 Route::get('/stories/{slug}', [StoriesController::class, "showDetailStories"]);
@@ -140,6 +143,7 @@ Route::get('/admin/stories-section', [StoriesController::class, "viewPageStories
 
 //Module Partners
 Route::resource('/admin/partner', PartnerController::class);
+Route::get('/admin/hapus/partner/{id}', [PartnerController::class, "destroy"]);
 // ====== Halaman dan Menu Admin (CMS) End // ======
 
 

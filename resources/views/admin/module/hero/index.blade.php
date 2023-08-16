@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 @endsection
 
@@ -100,26 +101,69 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <form action="{{ route('hero.destroy', $item->id) }}" method="post">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <a href="{{ route('hero.edit', $item->id) }}"
-                                                        class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
-                                                        data-placement="top" title="Edit"><i
-                                                            class="fa-solid fa-pen-to-square"></i> </a>
-                                                    <button type="submit" class="btn btn-danger btn-sm delete-confirm"
-                                                        data-toggle="tooltip" data-placement="top" title="Hapus"><i
-                                                            class="fa-solid fa-trash"></i></button>
-                                                </form>
+                                                <a href="{{ route('hero.edit', $item->id) }}"
+                                                    class="btn btn-sm btn-warning text-white" data-toggle="tooltip"
+                                                    data-placement="top" title="Edit"><i
+                                                        class="fa-solid fa-pen-to-square"></i> </a>
+                                                <a href="/admin/hapus/hero/{{ $item->id }}" type="submit" class="btn btn-danger btn-sm delete-confirm"
+                                                    data-toggle="tooltip" data-placement="top" title="Hapus" data-id="{{ $item->id }}"><i
+                                                        class="fa-solid fa-trash"></i></a>
                                             </td>
                                         </tr>
                                 @endforeach
                         </tbody>
-                    </table>
+                    </table> 
 
                 </div>
             </div>
         </div>
     </div>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.delete-confirm').click(function (e) {
+            var hero = $(this).attr('data-id');
+            e.preventDefault()
+            Swal.fire({
+                title: 'Yakin Ingin Di Hapus?',
+                text: "Hero akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#11111',
+                confirmButtonText: 'Hapus Sekarang!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = '/admin/hapus/hero/'+hero+''
+                    Swal.fire(
+                    'Sukses Terhapus!',
+                    'Hero berhasil dihapus',
+                    'BERHASIL'
+                    )
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    {
+                        Swal.fire(
+                        'Gajadi',
+                        'Hero masih ada disini',
+                        'error'
+                        )
+                    }
+                }
+            })
+        });
+    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastr.js"></script>
+    <script>
+        @if (Session::has('editHero'))
+            toastr.success('Edit Hero berhasil dilakukan')
+        @endif
+        @if (Session::has('addHero'))
+            toastr.success('Hero berhasil ditambah')
+        @endif
+    </script>
 @endsection

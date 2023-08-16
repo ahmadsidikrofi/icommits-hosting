@@ -32,7 +32,7 @@ class ModuleHostingUnlimitedController extends Controller
             'nama_paket' => 'required|max:100',
         ]);
         $tambahPaketHosting = ModuleHostingUnlimited::create($request->all());
-        return redirect('/admin/paket-unlimited');
+        return redirect('/admin/paket-unlimited')->with('addPaket', 'Paket berhasil ditambah');;
     }
 
     public function editPaketHostingUnlimited( $slug, Request $request )
@@ -66,7 +66,7 @@ class ModuleHostingUnlimitedController extends Controller
                 $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
                 $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
             } else {
-                return view('404');
+                return view('404.heroNotFound');
             }
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->first();
@@ -77,7 +77,7 @@ class ModuleHostingUnlimitedController extends Controller
                 $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
                 $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
             } else {
-                return view('404');
+                return view('404.heroNotFound');
             }
         }
         return view('hosting.hostingUnlimited', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'check_service', 'check_qna', 'paketUnlimited']));

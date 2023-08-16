@@ -29,7 +29,7 @@ class PromoController extends Controller
                 $check_qna = Qna::where('id_menu_navbar', $menu->id)->count();
                 return view('promoPage.promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
             } else {
-                return view('404');
+                return view('404.heroNotFound');
             }
         } elseif (!$menu) {
             // Cari data Hero berdasarkan slug dari SubMenuNavbar
@@ -40,10 +40,10 @@ class PromoController extends Controller
                 $promo = Promo::where('id_submenu_navbar', $subMenu->id)->get();
                 $check_promo = Promo::count();
                 $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
-                $check_qna = Qna::where('id_submenu_navbar', $menu->id)->count();
+                $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
                 return view('promoPage.promo', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'services_section', 'promo', 'check_promo', 'check_qna']));
             } else {
-                return view('404');
+                return view('404.heroNotFound');
             }
         }
 
@@ -87,7 +87,7 @@ class PromoController extends Controller
         }
 
         $tambahPromo->save();
-        return redirect()->back();
+        return redirect('/admin/promo')->with('addPromo', 'Promo berhasil ditambah');;
     }
 
     public function edit($id, Request $request)
@@ -119,7 +119,7 @@ class PromoController extends Controller
             $updatePromo -> save();
         }
 
-        return redirect('/admin/promo');
+        return redirect('/admin/promo')->with('editPromo', 'Edit promo berhasil dilakukan');
     }
 
     public function destroy($id)
@@ -135,9 +135,10 @@ class PromoController extends Controller
     {
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
+        $promoLain = Promo::latest()->get();
         $menu = MenuNavbar::where('slug', $slug)->first();
         $promoDetail = Promo::where('slug', $slug)->first();
         $promoDetail->formatted_expired_at = Carbon::parse($promoDetail->expired_at)->isoFormat('MMMM DD, YYYY');
-        return view('promoPage.detailPromo', compact(['menuNavbar', 'subMenuNavbar', 'menu', 'promoDetail']));
+        return view('promoPage.detailPromo', compact(['menuNavbar', 'subMenuNavbar', 'menu', 'promoDetail', 'promoLain']));
     }
 }

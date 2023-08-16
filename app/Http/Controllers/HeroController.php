@@ -15,7 +15,7 @@ class HeroController extends Controller
 {
     public function index()
     {
-        $hero = Hero::all();
+        $hero = Hero::latest()->get();
         return view('admin.module.hero.index', compact('hero'));
     }
 
@@ -48,7 +48,7 @@ class HeroController extends Controller
             $tambahHero -> save();
         }
         $tambahHero->save();
-        return redirect()->back();
+        return redirect()->back()->with('addHero', 'Hero berhasil ditambah');;
     }
 
 
@@ -76,7 +76,7 @@ class HeroController extends Controller
             $updateHero -> image_right = $request -> file("image_right")->getClientOriginalName();
             $updateHero -> save();
         }
-        return redirect('/admin/hero');
+        return redirect('/admin/hero')->with('editHero', 'Edit hero berhasil dilakukan');
     }
 
     public function destroy($id)

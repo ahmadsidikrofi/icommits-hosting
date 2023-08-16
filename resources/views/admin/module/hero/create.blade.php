@@ -2,6 +2,7 @@
 
 @section('js')
     <script src="{{ asset('assets/admin/js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -254,6 +255,16 @@
                 menuNavbarSelect.disabled = false;
             }
         });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastr.js"></script>
+    <script>
+    @if (Session::has('addHero'))
+        toastr.success('Hero berhasil ditambah')
+    @endif
     </script>
 
 

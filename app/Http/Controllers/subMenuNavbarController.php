@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hero;
+use App\Models\Promo;
 use App\Models\MenuNavbar;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\SubMenuNavbar;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class subMenuNavbarController extends Controller
 {
@@ -52,7 +54,7 @@ class subMenuNavbarController extends Controller
         }
 
         session()->put('success', 'Data Berhasil ditambahkan');
-        return redirect()->back();
+        return redirect()->back()->with('addSubMenu', 'SubMenu berhasil ditambah');
     }
 
     public function viewPageEditSubMenu($slug)
@@ -86,6 +88,20 @@ class subMenuNavbarController extends Controller
             $editSubMenu -> image = $request -> file("image")->getClientOriginalName();
         }
         $editSubMenu->save();
-        return redirect('/admin/edit/submenu/' . $editSubMenu->slug)->with('success', 'Sub menu berhasil diubah');
+        return redirect('/admin/edit/submenu/' . $editSubMenu->slug)->with('editSubMenu', 'Sub menu berhasil diubah');
+    }
+
+    public function hapusSubMenu ($id){
+        $subMenu = SubMenuNavbar::where('id', $id)->first()->delete();
+        return redirect('/admin/menu-navbar');
+    }
+
+    public function deleteSubMenuStore( $slug )
+    {
+        $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+        $subMenu->delete();
+        $hapusPromo = Promo::where('id_submenu_navbar', $subMenu->id)->delete();
+        $hapusHero = Hero::where('id_submenu_navbar', $subMenu->id)->delete();
+        return redirect()->back();
     }
 }

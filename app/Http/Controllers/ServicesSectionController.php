@@ -42,7 +42,7 @@ class ServicesSectionController extends Controller
         }
         $tambahLayanan->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('addSS', 'Service berhasil ditambah');
     }
 
     public function editServiceSection( $id, Request $request )
@@ -53,6 +53,6 @@ class ServicesSectionController extends Controller
         $editLayanan->slug = Str::slug($request->services_title);
         $editLayanan->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('editSS', 'Edit service berhasil dilakukan');
     }
 }

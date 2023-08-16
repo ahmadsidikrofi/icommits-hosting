@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="/css/toastr.css">
 @endsection
 
 @section('js')
@@ -11,8 +12,6 @@
             $('#submenu').DataTable();
         });
     </script>
-    <script src="{{ asset('js/sweetalert2.js') }}"></script>
-    <script src="{{ asset('js/delete.js') }}"></script>
 @endsection
 
 @section('content')
@@ -67,23 +66,19 @@
                             @endphp
                             @foreach ($ShowSubMenu as $subMenu)
                                 <tr>
-                                    <td data-header="No">{{ $subMenu->id }}</td>
+                                    <td data-header="No">{{ $no++ }}</td>
                                     <td data-header="Nama SubMenu">{{ $subMenu->nama_sub_menu }}</td>
                                     <td>{{ $subMenu->deskripsi }}</td>
                                     <td data-header="Isi Konten">
                                         {{ $subMenu->link }}
                                     </td>
                                     <td>
-                                        <form action="/admin/hapus/{{ $subMenu->id }}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <a class="btn btn-sm btn-warning text-white" href="/admin/edit/submenu/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </a>
-                                            <button type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        <a class="btn btn-sm btn-warning text-white" href="/admin/edit/submenu/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="/admin/delete/submenu/{{ $subMenu->slug }}" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
                                     </td>
                                     <td>
                                         <form action="submenu/urutan/{{ $subMenu->id }}/atas" method="post">
@@ -109,5 +104,55 @@
             </div>
         </div>
     </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/toastr.js"></script>
+<script>
+    @if (Session::has('addSubMenu'))
+    toastr.success('SubMenu berhasil ditambah')
+    @endif
+    @if (Session::has('editSubMenu'))
+        toastr.success('Edit sub-menu berhasil dilakukan')
+    @endif
+    @if (Session::has('error'))
+        toastr.error('Data sub menu tidak ditemukan.')
+    @endif
+</script>
+<script>
+    $('.delete-confirm').click(function (e) {
+        var SubmenuNavbar = $(this).attr('data-id');
+        e.preventDefault()
+        Swal.fire({
+            title: 'Yakin Ingin Di Hapus?',
+            text: "Menu akan dihapus",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#11111',
+            confirmButtonText: 'Hapus Sekarang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = '/admin/hapus/sub-menu'+SubmenuNavbar+''
+                Swal.fire(
+                'Sukses Terhapus!',
+                'Menu berhasil dihapus',
+                'BERHASIL'
+                )
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                {
+                    Swal.fire(
+                    'Gajadi',
+                    'Menu masih ada disini',
+                    'error'
+                    )
+                }
+            }
+        })
+    });
+</script>
 @include('admin.subMenuNavbar.modalTambahSubMenu')
 @endsection
