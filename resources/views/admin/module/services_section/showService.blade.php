@@ -24,10 +24,46 @@
         @endif
     </script>
     <script>
-        @if (Session::has('success'))
+        @if (Session::has('editSS'))
             toastr.success('Edit Service berhasil dilakukan')
         @endif
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.delete-confirm').click(function (e) {
+            var Service = $(this).attr('data-id');
+            e.preventDefault()
+            Swal.fire({
+                title: 'Yakin Ingin Di Hapus?',
+                text: "Service akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#11111',
+                confirmButtonText: 'Hapus Sekarang!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = '/admin/hapus/Service/'+Service+''
+                    Swal.fire(
+                    'Sukses Terhapus!',
+                    'Service berhasil dihapus',
+                    'BERHASIL'
+                    )
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    {
+                        Swal.fire(
+                        'Gajadi',
+                        'Service masih ada disini',
+                        'error'
+                        )
+                    }
+                }
+            })
+        });
+    </script>
+
 @endsection
 
 @section('content')

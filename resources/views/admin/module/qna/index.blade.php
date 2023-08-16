@@ -123,7 +123,12 @@
     <script src="/js/toastr.js"></script>
     <script>
     @if (Session::has('addTanya'))
-        toastr.success('Pertanyaan berhasil ditambah')
+        toastr.success('QnA berhasil ditambah')
+    @endif
+    </script>
+    <script>
+    @if (Session::has('editTanya'))
+        toastr.success('Edit QnA berhasil dilakukan')
     @endif
     </script>
 

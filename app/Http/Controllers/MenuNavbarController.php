@@ -24,7 +24,7 @@ class MenuNavbarController extends Controller
         $tambahMenu->slug = Str::slug($request->nama_menu);
         $tambahMenu->link = $request->link ? $request->link . "/" . $tambahMenu->slug : null;
         $tambahMenu->save();
-        return redirect('/admin/hero')->with('addMenu', 'Menu berhasil ditambah');
+        return redirect('/admin/menu-navbar')->with('addMenu', 'Menu berhasil ditambah');
     }
 
     public function editMenu($id, Request $request)

@@ -28,7 +28,7 @@ class ModulePaketVPSController extends Controller
             'nama_paket' => 'required|max:100',
         ]);
         $tambahPaketVPS = ModulePaketVPS::create($request->all());
-        return redirect('/admin/paket-vps');
+        return redirect('/admin/paket-vps')->with('addVPS', 'VPS berhasil ditambah');;
     }
 
     public function editPaketVpsStore( $slug, Request $request )
@@ -38,7 +38,7 @@ class ModulePaketVPSController extends Controller
         ]);
         $editPaketVPS = ModulePaketVPS::where('slug', $slug)->first();
         $editPaketVPS->update($request->all());
-        return redirect('/admin/paket-vps');
+        return redirect('/admin/paket-vps')->with('editVPS', 'Edit VPS berhasil dilakukan');
     }
 
     function deletePaketVpsStore( $slug )

@@ -122,6 +122,7 @@ Route::get('/admin/services-section', [ServicesSectionController::class, "viewPa
 Route::get('/admin/create/service', [ServicesSectionController::class, "viewPageCreateService"]);
 Route::post('/admin/create/service/store', [ServicesSectionController::class, "createServiceSection"]);
 Route::put('/admin/edit/service-section/{id}', [ServicesSectionController::class, "editServiceSection"]);
+Route::put('/admin/hapus/service-section/{id}', [ServicesSectionController::class, "editServiceSection"]);
 
 // Module Stories Section
 Route::get('/admin/kategori-stories', [KategoriStoriesController::class, "viewPageKategoriStories"]);

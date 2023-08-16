@@ -53,6 +53,6 @@ class ServicesSectionController extends Controller
         $editLayanan->slug = Str::slug($request->services_title);
         $editLayanan->save();
 
-        return redirect()->back()->with('success', 'Edit service berhasil dilakukan');
+        return redirect()->back()->with('editSS', 'Edit service berhasil dilakukan');
     }
 }
