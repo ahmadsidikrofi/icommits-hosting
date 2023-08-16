@@ -30,14 +30,14 @@
         <script>
             const menuNavbarSelect = document.getElementById('menu_navbar');
             const submenuNavbarSelect = document.getElementById('submenu_navbar');
-    
+
             menuNavbarSelect.addEventListener('change', function () {
                 submenuNavbarSelect.disabled = this.value !== ''; // Jika memilih menu, submenu menjadi disabled
                 if (this.value === 'Tidak jadi') {
                     submenuNavbarSelect.disabled = false;
                 }
             });
-    
+
             submenuNavbarSelect.addEventListener('change', function () {
                 menuNavbarSelect.disabled = this.value !== '';
                 if (this.value === 'Tidak jadi') {
@@ -45,13 +45,13 @@
                 }
             });
         </script>
-    
+
         <script>
             var today = new Date();
             var dd = String(today.getDate()).padStart(2, '0');
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var yyyy = today.getFullYear();
-    
+
             today = yyyy + '-' + mm + '-' + dd + 'T00:00';
             $('#date_picker').attr('min',today);
         </script>
@@ -239,6 +239,35 @@
         </div>
     </div>
 
+    <script>
+        $(document).ready(function() {
+            // Fungsi untuk mengisi nilai slug_navbar saat subMenuNavbar dipilih
+            $('#submenu_navbar').change(function() {
+                const selectedSubmenu = $(this).find(':selected').val();
+                const selectedSubmenuSlug = $(this).find(':selected').data('slug');
+                $('#slug_navbar').val(selectedSubmenuSlug);
+            });
+        });
+    </script>
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('.menu-navbar').select2();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.menu_submenu').select2();
+        });
+    </script>
 
 
 @endsection
