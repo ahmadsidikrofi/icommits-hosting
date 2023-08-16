@@ -105,7 +105,7 @@
                                 @if ($menu->tipe_menu === "link")
                                     <li><a href="{{ $menu->link }}">{{ $menu->nama_menu }}</a></li>
                                 @else
-                                    <li class="active"><a href="{{ $menu->link }}">{{ $menu->nama_menu }}</a>
+                                    <li class="active"><a href="#">{{ $menu->nama_menu }}</a>
                                         <ul class="dropdown rounded-4">
                                             @foreach ($menu->subMenus as $subMenu )
                                             <li class="btn w-100 rounded-4 d-flex text-light">

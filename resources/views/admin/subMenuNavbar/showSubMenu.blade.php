@@ -73,12 +73,10 @@
                                         {{ $subMenu->link }}
                                     </td>
                                     <td>
-                                        @method('delete')
-                                        @csrf
                                         <a class="btn btn-sm btn-warning text-white" href="/admin/edit/submenu/{{ $subMenu->slug }}" data-toggle="tooltip" title="Edit">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="/admin/hapus/sub-menu/{{ $subMenu->id }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus" data-id="{{ $subMenu->id }}">
+                                        <a href="/admin/delete/submenu/{{ $subMenu->slug }}" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" title="Hapus">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>

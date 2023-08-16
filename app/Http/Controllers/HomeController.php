@@ -19,6 +19,7 @@ class HomeController extends Controller
         $subMenuNavbar = SubMenuNavbar::all();
         $paketUnlimited = ModuleHostingUnlimited::all();
         $partner = Partner::all();
+        // $hero = Hero::where('slug', $slug)->first();
         $selectedMenuSlug = Request::input('menu_navbar');
         $hero = DB::table('tb_hero')
         ->where('slug', $selectedMenuSlug)

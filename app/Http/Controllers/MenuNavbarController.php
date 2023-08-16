@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hero;
+use App\Models\Promo;
 use App\Models\MenuNavbar;
-use App\Models\SubMenuNavbar;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\SubMenuNavbar;
 
 class MenuNavbarController extends Controller
 {
@@ -42,6 +44,8 @@ class MenuNavbarController extends Controller
         $menu = MenuNavbar::where('id', $id)->first();
         if ($menu->tipe_menu === "link"){
             $hapusMenu = MenuNavbar::where('id', $id)->first()->delete();
+            $hapusHero = Hero::where('id_menu_navbar', $menu->id)->delete();
+            $hapusPromo = Promo::where('id_menu_navbar', $menu->id)->delete();
             return redirect('/admin/menu-navbar');
         } elseif ($menu->tipe_menu === "sub_menu") {
             $hapusMenu = MenuNavbar::where('id', $id)->first()->delete();

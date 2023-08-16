@@ -223,6 +223,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection

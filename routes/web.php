@@ -108,8 +108,9 @@ Route::get('/admin/sub-menu-navbar/{slug}', [subMenuNavbarController::class, "vi
 Route::post('/admin/submenu/create/store', [subMenuNavbarController::class, "tambahSubMenu"]);
 Route::get('/admin/edit/submenu/{slug}', [subMenuNavbarController::class, "viewPageEditSubMenu"]);
 Route::put('/admin/edit/submenu/{slug}/store', [subMenuNavbarController::class, "editSubMenuStore"]);
-Route::get('/admin/hapus/sub-menu/{id}', [subMenuNavbarController::class, "hapusSubMenu"]);
-Route::get('/admin/hapus/{id}', [MenuNavbarController::class, "hapusMenu"]);
+Route::get('/admin/delete/submenu/{slug}', [subMenuNavbarController::class, "deleteSubMenuStore"]);
+// Route::get('/admin/hapus/sub-menu/{id}', [subMenuNavbarController::class, "hapusSubMenu"]);
+
 
 // Module Hero
 Route::resource('/admin/hero', HeroController::class);

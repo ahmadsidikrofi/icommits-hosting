@@ -49,7 +49,7 @@ class DomainController extends Controller
                 $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
                 return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
             } else {
-                return view('404');
+                return view('404.heroNotFound');
             }
         } elseif (!$menu) {
             $subMenu = SubMenuNavbar::where('slug', $slug)->first();
@@ -59,7 +59,7 @@ class DomainController extends Controller
                 $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
                 return view('domain', compact(['menuNavbar', 'subMenuNavbar', 'hero', 'pertanyaan', 'check_qna']));
             } else {
-                return view('404');
+                return view('404.heroNotFound');
             }
         }
     }

@@ -15,7 +15,7 @@ class HeroController extends Controller
 {
     public function index()
     {
-        $hero = Hero::all();
+        $hero = Hero::latest()->get();
         return view('admin.module.hero.index', compact('hero'));
     }
 

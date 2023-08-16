@@ -60,7 +60,7 @@ class ModulePaketVPSController extends Controller
                 $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
                 $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
             } else {
-                return view('404');
+                return view('404.heroNotFound');
             }
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->first();
@@ -70,7 +70,7 @@ class ModulePaketVPSController extends Controller
                 $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();
                 $check_qna = Qna::where('id_submenu_navbar', $subMenu->id)->count();
             } else {
-                return view('404');
+                return view('404.heroNotFound');
             }
         }
         return view('vps.vpsPage', compact(['menuNavbar', 'subMenuNavbar', 'showPaketVPS' ,'hero', 'pertanyaan', 'check_qna']));
