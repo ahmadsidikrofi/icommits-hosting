@@ -5,6 +5,14 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/o61nnuwogclhd3z601n2k0zh479m9kbnsivauhaxrlu4jco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
 
     <div class="page-inner">
         <div class="page-header">
@@ -65,10 +73,10 @@
                     <div class="form-group">
                         <label>Card Title</label>
                         <div class="input-group ">
-                            <input type="text" value="{{ $promo->title_card }}" placeholder="Insert Title"
-                                name="title_card" class="form-control @error('title_card') is-invalid @enderror"
+                            <input type="text" value="{{ $promo->title_promo }}" placeholder="Insert Title"
+                                name="title_promo" class="form-control @error('title_promo') is-invalid @enderror"
                                 required>
-                            @error('title_card')
+                            @error('title_promo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -86,6 +94,16 @@
                                 </span>
                             @enderror
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi Promo</label>
+                        <textarea name="deskripsi_promo" id="deskripsi_promo"
+                            class="form-control @error('deskripsi_promo') is-invalid @enderror" cols="30" rows="8">{{ $promo->deskripsi_promo }}</textarea>
+                        @error('deskripsi_promo')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Expired At</label>
@@ -115,9 +133,9 @@
                         <div class="form-group">
                             <label>Section Title</label>
                             <div class="input-group ">
-                                <input type="text" value="{{ $promo->title_promo }}" placeholder="Insert Title"
-                                    name="title_promo" class="form-control @error('title_promo') is-invalid @enderror">
-                                @error('title_promo')
+                                <input type="text" value="{{ $promo->title_section }}" placeholder="Insert Title"
+                                    name="title_section" class="form-control @error('title_section') is-invalid @enderror">
+                                @error('title_section')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -152,10 +170,10 @@
                         <div class="form-group">
                             <label>Card Title</label>
                             <div class="input-group ">
-                                <input type="text" value="{{ $promo->title_card }}" placeholder="Insert Title"
-                                    name="title_card" class="form-control @error('title_card') is-invalid @enderror"
+                                <input type="text" value="{{ $promo->title_promo }}" placeholder="Insert Title"
+                                    name="title_promo" class="form-control @error('title_promo') is-invalid @enderror"
                                     required>
-                                @error('title_card')
+                                @error('title_promo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
