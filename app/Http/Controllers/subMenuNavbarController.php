@@ -99,10 +99,6 @@ class subMenuNavbarController extends Controller
         return redirect('/admin/edit/submenu/' . $editSubMenu->slug)->with('editSubMenu', 'Sub menu berhasil diubah');
     }
 
-    public function hapusSubMenu ($id){
-        $subMenu = SubMenuNavbar::where('id', $id)->first()->delete();
-        return redirect('/admin/menu-navbar');
-    }
 
     public function deleteSubMenuStore( $slug )
     {

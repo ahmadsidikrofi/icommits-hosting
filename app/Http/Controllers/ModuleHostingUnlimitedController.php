@@ -42,7 +42,7 @@ class ModuleHostingUnlimitedController extends Controller
         ]);
         $editPaketHosting = ModuleHostingUnlimited::where('slug', $slug)->first();
         $editPaketHosting->update($request->all());
-        return redirect('/admin/paket-unlimited');
+        return redirect('/admin/paket-unlimited')->with('editPaket', 'Edit paket berhasil dilakukan');
     }
 
     public function deletePaketHostingUnlimited( $slug )

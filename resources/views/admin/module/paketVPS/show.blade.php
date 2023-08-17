@@ -1,10 +1,13 @@
 @extends('partials.admin')
 
 @section('css')
+    <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
 @endsection
 
 @section('js')
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
     <script src="{{ asset('assets/admin/assets/js/plugin/datatables/datatables.min.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/o61nnuwogclhd3z601n2k0zh479m9kbnsivauhaxrlu4jco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
@@ -19,8 +22,53 @@
             $('#artikel').DataTable();
         });
     </script>
-    <script src="{{ asset('js/sweetalert2.js') }}"></script>
-    <script src="{{ asset('js/delete.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastr.js"></script>
+    <script>
+        @if (Session::has('editVPS'))
+        toastr.success('Edit VPS berhasil dilakukan')
+        @endif
+        @if (Session::has('addVPS'))
+        toastr.success('VPS berhasil ditambah')
+        @endif
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.delete-confirm').click(function (e) {
+            var vps = $(this).attr('data-slug');
+            e.preventDefault()
+            Swal.fire({
+                title: 'Yakin Ingin Di Hapus?',
+                text: "VPS akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#11111',
+                confirmButtonText: 'Hapus Sekarang!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = '/admin/delete/paket-vps/'+vps+''
+                    Swal.fire(
+                    'Sukses Terhapus!',
+                    'VPS berhasil dihapus',
+                    'BERHASIL'
+                    )
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    {
+                        Swal.fire(
+                        'Gajadi',
+                        'VPS masih ada disini',
+                        'error'
+                        )
+                    }
+                }
+            })
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -89,7 +137,7 @@
                                     <a title="Edit" data-toggle="modal" data-target="#edit{{ $paket->id }}" href="#" class="btn btn-outline-warning text-dark btn-sm">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="/admin/delete/paket-vps/{{ $paket->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="/admin/delete/paket-vps/{{ $paket->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-slug="{{ $paket->slug }}"data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                             <div class="modal fade" id="edit{{ $paket->id }}" tabindex="-1" role="dialog"
