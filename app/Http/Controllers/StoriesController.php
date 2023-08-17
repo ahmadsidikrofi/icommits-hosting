@@ -17,7 +17,7 @@ class StoriesController extends Controller
 {
     public function viewPageStoriesSection()
     {
-        $showStories = StoriesSection::all();
+        $showStories = StoriesSection::latest()->get();
         return view('admin.module.stories.showStories', compact(['showStories']));
     }
 
@@ -82,14 +82,15 @@ class StoriesController extends Controller
         $kategories = KategoriStories::all();
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
-        $stories = StoriesSection::latest()->get();
-        if ( $request->has('kategori') ) {
+        $stories = StoriesSection::latest();
+        if ( $request->kategori ) {
             $stories = StoriesSection::whereHas('kategori', function($query) use ($request) {
                 $query->where('kategori.slug', $request->kategori);
-            })->get();
-        } else {
-            $stories = StoriesSection::latest()->get();
+            });
+        } elseif ( $request->search ) {
+            $stories = $stories->filter(['search' => $request->search]);
         }
+        $stories = $stories->get();
         Carbon::setLocale('id');
         foreach ($stories as $story) {
             $story->formatted_created_at = Carbon::parse($story->created_at)->isoFormat('MMMM DD, YYYY');

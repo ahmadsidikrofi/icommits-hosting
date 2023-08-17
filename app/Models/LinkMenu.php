@@ -10,7 +10,8 @@ class LinkMenu extends Model
 {
     use HasFactory;
     use Sluggable;
-
+    protected $table = "links";
+    protected $guarded = [];
     function sluggable(): array
     {
         return [

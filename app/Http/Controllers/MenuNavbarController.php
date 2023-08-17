@@ -43,6 +43,7 @@ class MenuNavbarController extends Controller
     public function hapusMenu($id)
     {
         $menu = MenuNavbar::where('id', $id)->first();
+        $subMenu = SubMenuNavbar::where('id', $id)->first();
         if ($menu->tipe_menu === "link"){
             $hapusMenu = MenuNavbar::where('id', $id)->first()->delete();
             $hapusHero = Hero::where('id_menu_navbar', $menu->id)->delete();
@@ -51,8 +52,9 @@ class MenuNavbarController extends Controller
         } elseif ($menu->tipe_menu === "sub_menu") {
             $hapusMenu = MenuNavbar::where('id', $id)->first()->delete();
             $hapusMenuParent = SubMenuNavbar::where('id_menu_navbar', $menu->id)->delete();
-            $hapusHero = Hero::where('id_menu_navbar', NULL)->delete();
             return redirect('/admin/menu-navbar');
+        } elseif ($subMenu) {
+            $hapusHero = Hero::where('id_submenu_navbar', $subMenu->id)->delete();
         }
     }
 }

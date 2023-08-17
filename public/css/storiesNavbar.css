@@ -170,7 +170,8 @@ header {
     border: none;
     color: #353535;
     outline: none;
-    width: var(--size-button);
+    width: 120px;
+    /* width: var(--size-button); */
     transition: all ease 0.3s;
     background-color: #ffffff;
     box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;

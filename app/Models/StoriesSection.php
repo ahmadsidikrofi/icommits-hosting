@@ -34,19 +34,6 @@ class StoriesSection extends Model
     {
         return $this->hasMany(StoriesViews::class);
     }
-    
-    public function showStories()
-    {
-        if(auth()->id() == NULL){
-            return $this->storiesView()
-            ->where('ip', '=',  request()->ip())->exists();
-        }
-
-        return $this->storiesView()
-        ->where(function($storiesViewsQuery) { $storiesViewsQuery
-            ->where('session_id', '=', request()->getSession()->getId())
-            ->orWhere('user_id', '=', (auth()->check()));})->exists();
-    }
 
     public function menu_navbar()
     {
@@ -56,5 +43,15 @@ class StoriesSection extends Model
     public function submenu_navbar()
     {
         return $this->belongsTo(SubMenuNavbar::class, 'id_submenu_navbar');
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters["search"] ?? false, function( $query, $search ) {
+            return $query->where('stories_title', 'like', '%'. $search . '%')
+            ->orWhere('deskripsi', 'like', '%' . $search . '%')
+            ->orWhere('isi_stories', 'like', '%'. $search . '%');
+        });
+        return $query;
     }
 }
