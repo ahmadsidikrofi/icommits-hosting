@@ -20,8 +20,10 @@
                                 <h3>All Stories</h3>
                             </div>
                             <div class="container mx-5">
-                                <input placeholder="Type to search..." required="" class="input" name="text"
-                                    type="text">
+                                <form action="/stories" role="search" method="get">
+                                    <input placeholder="Ctrl K" class="input" id="input" name="search" value="{{ request('search') }}" type="search">
+                                    <button class="btn btn-dark" type="submit">Submit</button>
+                                </form>
                                 <div class="icon">
                                     <svg viewBox="0 0 512 512" class="ionicon" xmlns="http://www.w3.org/2000/svg">
                                         <title>Search</title>
@@ -89,6 +91,19 @@
 
     <!-- Js Plugins -->
     @include('partials.jsPlugin')
+    <script>
+        const focusInput = document.getElementById('input');
+        document.addEventListener('keydown', e => {
+            if (e.key.toLowerCase() === "k" && e.ctrlKey) {
+                e.preventDefault();
+                if (focusInput === document.activeElement) {
+                    focusInput.blur(); // Menghilangkan fokus dari elemen
+                } else {
+                    focusInput.focus(); // Memberi fokus ke elemen
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>

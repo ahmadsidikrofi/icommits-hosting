@@ -59,6 +59,9 @@ class ModuleHostingUnlimitedController extends Controller
         $menu = MenuNavbar::where('slug', $slug)->first();
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->first();
+            if ( $menuParent === NULL) {
+                return view('404.404');
+            }
             $hero = Hero::where('id_menu_navbar', $menuParent->id)->first();
             if ( $hero ) {
                 $services_section = ServicesSection::where('id_menu_navbar', $menuParent->id)->get();
@@ -70,6 +73,9 @@ class ModuleHostingUnlimitedController extends Controller
             }
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+            if ($subMenu === NULL) {
+                return view('404.404');
+            }
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->first();
             if ( $hero ) {
                 $services_section = ServicesSection::where('id_submenu_navbar', $subMenu->id)->get();

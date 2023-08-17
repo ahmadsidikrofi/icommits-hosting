@@ -46,6 +46,14 @@
                         <a class="btn btn-primary text-white" data-toggle="modal" data-target="#tambahSubMenu">Tambah SubMenu</a>
                     </div>
                 </div>
+                <input type="hidden" placeholder="Masukkan Nama SubMenu"
+                name="nama_sub_menu" autocomplete='off'
+                class="form-control @error('nama_sub_menu') is-invalid @enderror" required>
+                @error('nama_sub_menu')
+                    <span class="invalid-feedback" role="alert">
+                        <strong><p>Nama sub menu minimal 2 kata</p></strong>
+                    </span>
+                @enderror
             </div>
             <div class="card-body">
                 <div class="table-responsive ">

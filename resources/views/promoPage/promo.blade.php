@@ -79,7 +79,7 @@
                                             ?>
                                             <!-- Display the countdown time -->
                                             @if ( $expiredDateTime < $now )
-                                                <span class="fw-bold mx-1">
+                                                <span class="fw-bold mx-1 text-danger">
                                                     Waktu promo habis
                                                 </span>
                                             @else

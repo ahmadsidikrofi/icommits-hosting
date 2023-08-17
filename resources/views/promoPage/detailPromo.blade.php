@@ -68,9 +68,15 @@
                                     $interval = $now->diff($expiredDateTime);
                                 @endphp
                                 <p>
-                                    <span class="fw-bold">
-                                        {{ $interval->d }} hari {{ $interval->h }} jam {{ $interval->i }} menit
-                                    </span>
+                                    @if ( $expiredDateTime < $now )
+                                        <span class="fw-bold mx-1 text-dark">
+                                            Waktu promo habis
+                                        </span>
+                                    @else
+                                        <span class="fw-bold mx-1">
+                                            {{ $interval->d }} hari {{ $interval->h }} jam {{ $interval->i }} menit
+                                        </span>
+                                    @endif
                                 </p>
                             </div>
                             <div class="button mt-4 mx-auto">
@@ -112,9 +118,15 @@
                                                 $interval = $now->diff($expiredDateTime);
                                                 ?>
                                                 <!-- Display the countdown time -->
-                                                <span class="fw-bold mx-1">
-                                                    {{ $interval->d }} hari {{ $interval->h }} jam {{ $interval->i }} menit
-                                                </span>
+                                                @if ( $expiredDateTime < $now )
+                                                    <span class="fw-bold mx-1 text-danger">
+                                                        Waktu promo habis
+                                                    </span>
+                                                @else
+                                                    <span class="fw-bold mx-1">
+                                                        {{ $interval->d }} hari {{ $interval->h }} jam {{ $interval->i }} menit
+                                                    </span>
+                                                @endif
                                             </h6>
                                         </li>
                                     </ul>

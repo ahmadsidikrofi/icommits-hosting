@@ -29,6 +29,14 @@ class subMenuNavbarController extends Controller
         $validator = Validator::make($request->all(), [
             'id_menu_navbar' => 'required',
         ]);
+        $request->validate([
+            'nama_sub_menu' => [
+                'required',
+                'string',
+                'regex:/^\w+( +\w+)+$/', // Regex untuk minimal 2 kata
+                // Rule::unique('tb_menu_submenu')->ignore($editSubMenu->id), // Pastikan nama_sub_menu unik kecuali untuk data saat ini
+            ],
+        ]);
 
         if ($validator->fails()) {
             // Jika validasi gagal, kembalikan pesan error atau lakukan pengalihan

@@ -18,7 +18,9 @@ class PromoController extends Controller
         $menuNavbar = MenuNavbar::all();
         $subMenuNavbar = SubMenuNavbar::all();
         $menu = MenuNavbar::where('slug', $slug)->first();
-
+        if ( $menu === NULL) {
+            return view('404.404');
+        }
         if ($menu) {
             $hero = Hero::where('id_menu_navbar',$menu->id)->first();
             if ( $hero ) {
@@ -34,6 +36,9 @@ class PromoController extends Controller
         } elseif (!$menu) {
             // Cari data Hero berdasarkan slug dari SubMenuNavbar
             $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+            if ($subMenu === NULL) {
+                return view('404.404');
+            }
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->first();
             if ( $hero ) {
                 $services_section = ServicesSection::where('id_submenu_navbar', $subMenu->id)->get();

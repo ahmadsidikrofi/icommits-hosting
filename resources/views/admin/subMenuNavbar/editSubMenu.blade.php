@@ -54,11 +54,11 @@
                                 <input type="text" value="{{ $subMenu->nama_sub_menu }}" placeholder="Masukkan nama sub menu"
                                     name="nama_sub_menu" autocomplete='off' class="form-control @error('nama_sub_menu') is-invalid @enderror"
                                     required>
-                                @error('nama_sub_menu')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('nama_sub_menu')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong><p>Nama sub menu minimal 2 kata</p></strong>
+                                        </span>
+                                    @enderror
                             </div>
                         </div>
                         <div class="form-group">

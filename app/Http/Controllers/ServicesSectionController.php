@@ -59,6 +59,6 @@ class ServicesSectionController extends Controller
     public function deleteServiceSection( $slug )
     {
         $deletePaketVPS = ServicesSection::where('slug', $slug)->first()->delete();
-        return redirect('/admin/paket-vps')->with('success', 'apa?');
+        return redirect('/admin/services-section');
     }
 }
