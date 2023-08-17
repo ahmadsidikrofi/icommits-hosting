@@ -55,6 +55,9 @@ class ModulePaketVPSController extends Controller
         $menu = MenuNavbar::where( 'slug', $slug )->first();
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->first();
+            if ( $menuParent === NULL) {
+                return view('404.404');
+            }
             $hero = Hero::where('id_menu_navbar', $menuParent->id)->first();
             if ( $hero ) {
                 $showPaketVPS = ModulePaketVPS::all();
@@ -65,6 +68,9 @@ class ModulePaketVPSController extends Controller
             }
         } else {
             $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+            if ($subMenu === NULL) {
+                return view('404.404');
+            }
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->first();
             if ( $hero ) {
                 $showPaketVPS = ModulePaketVPS::all();

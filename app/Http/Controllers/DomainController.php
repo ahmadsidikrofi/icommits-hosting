@@ -43,7 +43,11 @@ class DomainController extends Controller
 
         if ($menu) {
             $menuParent = MenuNavbar::where('slug', $slug)->firstOrFail();
+            if ( $menuParent === NULL) {
+                return view('404.404');
+            }
             $hero = Hero::where('id_menu_navbar', $menuParent->id)->first();
+
             if ($hero) {
                 $pertanyaan = Qna::where('id_menu_navbar', $menuParent->id)->get();
                 $check_qna = Qna::where('id_menu_navbar', $menuParent->id)->count();
@@ -53,6 +57,9 @@ class DomainController extends Controller
             }
         } elseif (!$menu) {
             $subMenu = SubMenuNavbar::where('slug', $slug)->first();
+            if ($subMenu === NULL) {
+                return view('404.404');
+            }
             $hero = Hero::where('id_submenu_navbar', $subMenu->id)->first();
             if ($hero) {
                 $pertanyaan = Qna::where('id_submenu_navbar', $subMenu->id)->get();

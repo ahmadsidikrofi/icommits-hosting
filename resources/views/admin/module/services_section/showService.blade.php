@@ -33,7 +33,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('.delete-confirm').click(function (e) {
-            var Service = $(this).attr('data-id');
+            var Service = $(this).attr('data-slug');
             e.preventDefault()
             Swal.fire({
                 title: 'Yakin Ingin Di Hapus?',
@@ -45,7 +45,7 @@
                 confirmButtonText: 'Hapus Sekarang!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location = '/admin/hapus/Service/'+Service+''
+                    window.location = '/admin/delete/service-section/'+Service+''
                     Swal.fire(
                     'Sukses Terhapus!',
                     'Service berhasil dihapus',
@@ -129,7 +129,7 @@
                                         <a class="btn btn-sm btn-warning text-white" data-toggle="modal" data-placement="top" title="Edit" data-target="#editService{{ $service->slug }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="/admin/delete/service-section/{{ $service->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa-solid fa-trash"></i></a>
+                                        <a href="/admin/delete/service-section/{{ $service->slug }}" type="submit" class="btn btn-danger btn-sm delete-confirm" data-toggle="tooltip" data-placement="top" title="Hapus" data-slug="{{ $service->slug }}"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="editService{{ $service->slug }}" tabindex="-1" role="dialog"
