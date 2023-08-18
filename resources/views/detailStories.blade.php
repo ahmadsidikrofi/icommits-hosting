@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('partials.head')
+<link rel="stylesheet" href="/css/relatedStories.css" type="text/css">
 <style>
     .hero__item-stories::before {
         background-image: url('/image/blog/{{ $storiesDetail->image }}')
